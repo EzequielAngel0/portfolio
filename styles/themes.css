@@ -1,0 +1,65 @@
+:root {
+  /* Light Mode Variables */
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-navbar-bg: #ffffff;
+  --color-navbar-border: #e0e0e0;
+  --color-button-bg: #f0f2f5;
+  --color-button-border: #cdd0d4;
+  --color-button-hover: #e5e8ec;
+  --color-card-bg: #fafafa;
+  --color-skill-bg: #e0e0e0;
+  --color-input-bg: #f5f5f5;
+  --color-link-hover: #555555;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #f0f0f0;
+  --color-navbar-bg: #1e1e1e;
+  --color-navbar-border: #333333;
+  --color-button-bg: #1f1f1f;
+  --color-button-border: #444444;
+  --color-button-hover: #2a2a2a;
+  --color-card-bg: #1e1e1e;
+  --color-skill-bg: #333333;
+  --color-input-bg: #2a2a2a;
+  --color-link-hover: #aaaaaa;
+}
+
+/* Estilos específicos que no cambian por variable (solo contexto visual) */
+body.dark-mode .hero-text {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.light-mode .hero-text {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+body.dark-mode footer {
+  color: #aaa;
+}
+body.light-mode footer {
+  color: #888;
+}
+
+/* Botón de tema (opcional, si se separa del botón actual) */
+.theme-button {
+  padding: 6px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.theme-button:hover {
+  transform: scale(1.1);
+}

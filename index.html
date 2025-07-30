@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angel Ezequiel</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body class="light-mode">
+  <header>
+    <nav class="navbar">
+      <div class="logo">Portfolio</div>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-about">About</a></li>
+        <li><a href="#projects" class="nav-projects">Projects</a></li>
+        <li><a href="#skills" class="nav-skills">Skills</a></li>
+        <li><a href="#contact" class="nav-contact">Contact</a></li>
+        <li><a href="assets/resume.pdf" class="nav-button resume-button" download>Resume</a></li>
+        <li><button class="nav-button theme-switch" aria-label="Toggle Theme">🌞</button></li>
+        <li><button class="nav-button lang-switch" aria-label="Toggle Language">🌐 En</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-image">
+        <img src="your-hero-image.jpg" alt="Workspace Setup" />
+        <div class="hero-text">
+          <h1 class="hero-title">Hi, I'm Alex, a Product Designer</h1>
+          <p class="hero-description">Crafting intuitive and engaging digital experiences that solve real-world problems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="about-heading">About Me</h2>
+      <p class="about-description">
+        I'm a creative professional with a background in design and a knack for coding.
+        I love bringing ideas to life through elegant and user-friendly interfaces.
+        My goal is to create impactful digital solutions that resonate with users and meet their needs.
+      </p>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2 class="projects-heading">Featured Projects</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="fitness-app.jpg" alt="Mobile App for Fitness" />
+          <h3 class="project-title">Mobile App for Fitness Tracking</h3>
+          <p class="project-description">A fitness tracking app designed to help users achieve their health goals.</p>
+        </article>
+
+        <article class="project-card">
+          <img src="ecommerce-platform.jpg" alt="Web Platform" />
+          <h3 class="project-title">Web Platform for E-commerce</h3>
+          <p class="project-description">An e-commerce platform with a focus on user experience and seamless transactions.</p>
+        </article>
+
+        <article class="project-card">
+          <img src="social-network.jpg" alt="Social App" />
+          <h3 class="project-title">Mobile App for Social Networking</h3>
+          <p class="project-description">A social networking app connecting people through shared interests.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2 class="skills-heading">Skills</h2>
+      <div class="skills-grid">
+        <span class="skill">UX/UI Design</span>
+        <span class="skill">Front-end Development</span>
+        <span class="skill">Responsive Design</span>
+        <span class="skill">User Research</span>
+        <span class="skill">Prototyping</span>
+        <span class="skill">Interaction Design</span>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="contact-heading">Contact</h2>
+      <form action="#" method="POST" class="contact-form">
+        <label for="email" class="label-email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required />
+
+        <label for="message" class="label-message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+
+        <button type="submit" class="send-button">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Angel Ezequiel Barbosa Lomeli</p>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
