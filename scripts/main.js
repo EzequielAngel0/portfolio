@@ -1,4 +1,3 @@
-// Forzamos tema claro y limpiamos cualquier preferencia previa
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.remove('dark-mode');
   document.body.classList.add('light-mode');
