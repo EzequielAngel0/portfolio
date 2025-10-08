@@ -1,7 +1,6 @@
-import { setupThemeToggle } from './theme-toggle.js';
-import { setupLanguageToggle } from './lang-toggle.js';
-
+// Forzamos tema claro y limpiamos cualquier preferencia previa
 document.addEventListener('DOMContentLoaded', () => {
-  setupThemeToggle();
-  setupLanguageToggle();
+  document.body.classList.remove('dark-mode');
+  document.body.classList.add('light-mode');
+  try { localStorage.removeItem('theme'); } catch(e) {}
 });
