@@ -105,3 +105,52 @@
   padding:10px 16px;font-weight:700;box-shadow:0 2px 6px rgba(37,99,235,.25)
 }
 .send-button:hover{background:var(--brand-hover)}
+
+/* ===== Badges de contacto ===== */
+.contact-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:8px 0 18px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:0.9rem;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 2px 4px rgba(0,0,0,.12);
+  transition:transform .06s, filter .2s, box-shadow .2s;
+}
+
+/* puntito a la izquierda como en tu md */
+.badge::before{
+  content:"•";
+  font-size:1.1rem;
+  line-height:1;
+  opacity:.9;
+  transform:translateY(-1px);
+}
+
+/* Colores de marca */
+.badge.linkedin{ background:#0077B5; }
+.badge.x       { background:#000000; }
+.badge.discord { background:#5865F2; }
+.badge.email   { background:#D14836; }
+
+/* Hover/Active */
+.badge:hover{
+  filter:brightness(1.08);
+  box-shadow:0 6px 14px rgba(0,0,0,.16);
+}
+.badge:active{ transform:translateY(1px); }
+
+/* Responsive: centrados en móvil */
+@media (max-width:768px){
+  .contact-links{ justify-content:center; }
+}
