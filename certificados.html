@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificados | Angel Ezequiel</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/certificados.css" />
+</head>
+<body class="light-mode">
+  <header>
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration:none; color:inherit;">
+            Angel Ezequiel • Portafolio
+        </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about" class="nav-about">Sobre mí</a></li>
+        <li><a href="index.html#projects" class="nav-projects">Proyectos</a></li>
+        <li><a href="index.html#skills" class="nav-skills">Habilidades</a></li>
+        <li><a href="index.html#contact" class="nav-contact">Contacto</a></li>
+        <li><a href="certificados.html" class="nav-certificates" style="font-weight:700;background:#E6E9F0;border-radius:10px;padding:8px 10px;">Certificados</a></li>
+        <li><a href="BarbosaLomeliAngelEzequiel-CV.pdf" class="nav-button resume-button" download>Currículum</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cert-hero">
+      <h1>Certificados y Educación</h1>
+      <p id="cert-count">Cargando certificados…</p>
+    </section>
+
+    <div class="cert-toolbar">
+      <button class="chip" data-filter="all" aria-pressed="true">Todos</button>
+      <button class="chip" data-filter="dev">Desarrollo</button>
+      <button class="chip" data-filter="cloud">Cloud</button>
+      <button class="chip" data-filter="design">Diseño</button>
+
+      <div class="searchbar">
+        <input id="searchBox" type="search" placeholder="Buscar por título, emisor, habilidad…" />
+      </div>
+    </div>
+
+    <section class="cert-grid" id="certGrid">
+      <!-- Se llena por JS -->
+    </section>
+
+    <section class="timeline">
+      <h2 style="padding: 0 24px 8px;">Educación</h2>
+      <div class="tl">
+        <div class="item">
+          <div class="head">
+            <div>
+              <div class="role">Técnologo en Desarrollo de Software</div>
+              <div class="where">CETI Tonalá · Tonalá, Jalisco</div>
+            </div>
+            <div class="when">2022 — 2026</div>
+          </div>
+          <p class="desc">Desarrollo de software, redes, electrónica y proyectos integradores.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========= Modal para ver PDF (sin descarga directa) ========= -->
+  <dialog id="pdfModal" class="pdf-modal">
+    <div class="pdf-modal__bar">
+      <span id="pdfTitle" class="pdf-modal__title">Ver certificado</span>
+      <button id="pdfClose" class="pdf-modal__close" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="pdf-modal__viewport">
+      <embed id="pdfViewer" type="application/pdf" src="" />
+    </div>
+  </dialog>
+
+  <footer>
+    <p>© 2025 Angel Ezequiel Barbosa Lomeli</p>
+  </footer>
+
+  <script defer src="scripts/certificados.js"></script>
+</body>
+</html>

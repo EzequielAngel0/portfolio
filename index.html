@@ -9,12 +9,16 @@
 <body class="light-mode">
   <header>
     <nav class="navbar">
-      <div class="logo">Angel Ezequiel • Portafolio</div>
+      <a href="index.html" class="logo" style="text-decoration:none; color:inherit;">
+        Angel Ezequiel • Portafolio
+      </a>
       <ul class="nav-links">
         <li><a href="#about" class="nav-about">Sobre mí</a></li>
         <li><a href="#projects" class="nav-projects">Proyectos</a></li>
         <li><a href="#skills" class="nav-skills">Habilidades</a></li>
         <li><a href="#contact" class="nav-contact">Contacto</a></li>
+        <!-- NUEVO: enlace directo a Certificados -->
+        <li><a href="certificados.html" class="nav-certificates">Certificados</a></li>
         <li><a href="BarbosaLomeliAngelEzequiel-CV.pdf" class="nav-button resume-button" download>Currículum</a></li>
       </ul>
     </nav>
@@ -87,6 +91,27 @@
         <span class="skill">UI/UX • Figma</span>
       </div>
     </section>
+
+    <!-- NUEVO: sección que lleva a la página de Certificados -->
+      <section id="cert-preview" class="cert-preview">
+      <h2 class="cert-heading">Certificados y Educación</h2>
+      <p class="cert-description">
+        Explora mis certificaciones y visualízalas.
+      </p>
+
+      <!-- TAGS (chips) que activan filtros en certificados.html -->
+      <div class="tagbar">
+        <a class="chip" href="certificados.html?tag=all">Todos</a>
+        <a class="chip" href="certificados.html?tag=dev">Desarrollo</a>
+        <a class="chip" href="certificados.html?tag=cloud">Cloud</a>
+        <a class="chip" href="certificados.html?tag=design">Diseño</a>
+      </div>
+
+      <div style="margin-top:12px">
+        <a href="certificados.html" class="repo-button">Ver certificados</a>
+      </div>
+    </section>
+
 
     <section id="contact" class="contact">
       <h2 class="contact-heading">Contacto</h2>
