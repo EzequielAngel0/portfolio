@@ -1,20 +1,17 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   content: [
-    './index.html',
-    './certificados.html',
-    './**/*.html',
-    './scripts/**/*.js'
+    "./index.html",
+    "./certificados.html",
+    "./scripts/**/*.{js,ts}",
   ],
   theme: {
     extend: {
       colors: {
-        background: '#050816',
-        surface: '#111827',
-        primary: '#0ea5e9',
-        accent: '#22c55e'
-      }
-    }
+        background: "#020617",
+        primary: "#0EA5E9",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
