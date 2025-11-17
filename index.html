@@ -1,341 +1,561 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angel Ezequiel | Portafolio</title>
-  <link rel="stylesheet" href="styles/tailwind.css" />
-</head>
-<body class="bg-animated-gradient text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angel Ezequiel | Portafolio</title>
+    <link rel="stylesheet" href="styles/tailwind.css" />
+  </head>
+  <body class="bg-animated-gradient text-slate-100">
+    <!-- Blobs animados de fondo -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-sky-500/25 blur-3xl animate-blob"
+      ></div>
+      <div
+        class="absolute top-1/3 -right-16 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl animate-blob animation-delay-2000"
+      ></div>
+      <div
+        class="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-blob animation-delay-4000"
+      ></div>
+    </div>
 
-  <!-- Blobs animados de fondo -->
-  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-sky-500/25 blur-3xl animate-blob"></div>
-    <div class="absolute top-1/3 -right-16 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-blob animation-delay-4000"></div>
-  </div>
+    <!-- Header fijo -->
+    <header
+      class="sticky top-0 z-50 border-b border-white/5 bg-background/95 backdrop-blur"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <!-- Logo / nombre -->
+        <a href="#inicio" class="flex items-center gap-2">
+          
+          <span class="font-semibold text-sm sm:text-base text-slate-100">
+            Angel Ezequiel • Portafolio
+          </span>
+        </a>
 
-  <!-- Header fijo -->
-  <header class="sticky top-0 z-50 border-b border-white/5 bg-background/95 backdrop-blur">
-    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <!-- Logo / nombre -->
-      <a href="#inicio" class="flex items-center gap-2">
-        <span class="font-semibold text-sm sm:text-base text-slate-100">
-          Angel Ezequiel • Portafolio
-        </span>
-      </a>
+        <!-- Links desktop -->
+        <ul class="hidden md:flex items-center gap-5 text-sm text-slate-200">
+          <li>
+            <a href="#inicio" class="hover:text-primary transition-colors"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a href="#about" class="hover:text-primary transition-colors"
+              >Sobre mí</a
+            >
+          </li>
+          <li>
+            <a href="#projects" class="hover:text-primary transition-colors"
+              >Proyectos</a
+            >
+          </li>
+          <li>
+            <a href="#skills" class="hover:text-primary transition-colors"
+              >Habilidades</a
+            >
+          </li>
+          <li>
+            <a
+              href="certificados.html"
+              class="hover:text-primary transition-colors"
+              >Certificados</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="hover:text-primary transition-colors"
+              >Contacto</a
+            >
+          </li>
+          <li>
+            <a
+              href="BarbosaLomeliAngelEzequiel-CV.pdf"
+              class="inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/60 px-4 py-1.5 text-xs font-semibold shadow hover:border-primary/60 hover:text-primary transition-colors"
+              download
+            >
+              Currículum
+            </a>
+          </li>
+        </ul>
 
-      <!-- Links desktop -->
-      <ul class="hidden md:flex items-center gap-5 text-sm text-slate-200">
-        <li><a href="#inicio" class="hover:text-primary transition-colors">Inicio</a></li>
-        <li><a href="#about" class="hover:text-primary transition-colors">Sobre mí</a></li>
-        <li><a href="#projects" class="hover:text-primary transition-colors">Proyectos</a></li>
-        <li><a href="#skills" class="hover:text-primary transition-colors">Habilidades</a></li>
-        <li><a href="certificados.html" class="hover:text-primary transition-colors">Certificados</a></li>
-        <li><a href="#contact" class="hover:text-primary transition-colors">Contacto</a></li>
-        <li>
-          <a href="BarbosaLomeliAngelEzequiel-CV.pdf"
-             class="inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/60 px-4 py-1.5 text-xs font-semibold shadow hover:border-primary/60 hover:text-primary transition-colors"
-             download>
-            Currículum
-          </a>
-        </li>
-      </ul>
+        <!-- Botón menú móvil -->
+        <button
+          id="mobileMenuButton"
+          class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-700 bg-slate-900/80 text-slate-100"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </nav>
 
-      <!-- Botón menú móvil (solo visual por ahora) -->
-      <button class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-700 bg-slate-900/80 text-slate-100">
-        <span class="sr-only">Abrir menú</span>
-        ☰
-      </button>
-    </nav>
-  </header>
-
-  <main id="inicio" class="min-h-screen bg-background/60">
-    <!-- HERO -->
-    <section class="max-w-6xl mx-auto px-4 pt-10 pb-14">
-      <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-2xl overflow-hidden">
-        <div class="grid gap-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <!-- Texto -->
-          <div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-            <p class="text-xs font-semibold tracking-[0.2em] text-sky-400 uppercase mb-2">
-              Desarrollador de software
-            </p>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
-              Back-end & Sistemas Embebidos
-            </h1>
-            <p class="mt-4 text-sm sm:text-base text-slate-200 max-w-xl">
-              Especializado en backend, sistemas embebidos y desarrollo de aplicaciones Android.
-              Experiencia con C#/.NET, Kotlin, Java, Lua/LuaU y hardware como Arduino y ESP32.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="#projects"
-                 class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 hover:bg-sky-500">
-                Ver Proyectos
-              </a>
-              <a href="BarbosaLomeliAngelEzequiel-CV.pdf"
-                 class="inline-flex items-center justify-center rounded-xl border border-slate-500/70 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-primary/70 hover:text-primary"
-                 download>
-                Descargar CV
-              </a>
-            </div>
-          </div>
-
-          <!-- Imagen + badge -->
-          <div class="relative bg-slate-950">
-            <img src="hero-setup.jpg"
-                 alt="Escritorio de trabajo de Angel Ezequiel"
-                 class="h-full w-full object-cover opacity-80" />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-
-            <div class="absolute top-5 right-5 rounded-full bg-emerald-500/90 px-4 py-1.5 text-xs font-semibold text-emerald-50 shadow-lg flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-100 animate-pulse"></span>
-              Disponible para colaborar
-            </div>
-          </div>
-        </div>
+      <!-- Menú móvil -->
+      <div
+        id="mobileMenu"
+        class="md:hidden border-t border-slate-800/70 bg-slate-950/95 backdrop-blur px-4 pb-4 space-y-2 hidden"
+      >
+        <a
+          href="#inicio"
+          class="block pt-3 text-sm text-slate-100 hover:text-primary"
+          >Inicio</a
+        >
+        <a href="#about" class="block text-sm text-slate-100 hover:text-primary"
+          >Sobre mí</a
+        >
+        <a
+          href="#projects"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Proyectos</a
+        >
+        <a
+          href="#skills"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Habilidades</a
+        >
+        <a
+          href="certificados.html"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Certificados</a
+        >
+        <a
+          href="#contact"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Contacto</a
+        >
+        <a
+          href="BarbosaLomeliAngelEzequiel-CV.pdf"
+          class="mt-2 inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-100 hover:border-primary hover:text-primary"
+          download
+        >
+          Currículum
+        </a>
       </div>
-    </section>
+    </header>
 
-    <!-- SOBRE MÍ -->
-    <section id="about" class="max-w-4xl mx-auto px-4 pb-14">
-      <div class="rounded-3xl bg-slate-900/70 border border-slate-700/80 px-6 sm:px-8 py-8 sm:py-10 shadow-xl">
-        <div class="flex flex-col items-center text-center gap-4">
-          <!-- Avatar con anillo animado + glow + entrada suave -->
-          <div class="relative group animate-subtle-up">
-            <!-- glow exterior -->
-            <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-sky-400 via-emerald-400 to-purple-500 opacity-60 blur-md group-hover:blur-xl group-hover:opacity-100 transition-all duration-300"></div>
+    <main id="inicio" class="min-h-screen bg-background/60">
+      <!-- HERO -->
+      <section class="max-w-6xl mx-auto px-4 pt-10 pb-14">
+        <div
+          class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-2xl overflow-hidden"
+        >
+          <div class="grid gap-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+            <!-- Texto -->
+            <div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+              <p
+                class="text-xs font-semibold tracking-[0.2em] text-sky-400 uppercase mb-2"
+              >
+                Desarrollador de software
+              </p>
+              <h1
+                class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white"
+              >
+                Back-end & Sistemas Embebidos
+              </h1>
+              <p class="mt-4 text-sm sm:text-base text-slate-200 max-w-xl">
+                Especializado en backend, sistemas embebidos y desarrollo de
+                aplicaciones Android. Experiencia con C#/.NET, Kotlin, Java,
+                Lua/LuaU y hardware como Arduino y ESP32.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#projects"
+                  class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 hover:bg-sky-500"
+                >
+                  Ver Proyectos
+                </a>
+                <a
+                  href="BarbosaLomeliAngelEzequiel-CV.pdf"
+                  class="inline-flex items-center justify-center rounded-xl border border-slate-500/70 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:border-primary/70 hover:text-primary"
+                  download
+                >
+                  Descargar CV
+                </a>
+              </div>
+            </div>
 
-            <!-- contenedor principal -->
-            <div class="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full bg-slate-950/80 p-1 shadow-xl">
-              <!-- anillo animado -->
-              <div class="pointer-events-none absolute inset-0 rounded-full border border-sky-400/40 animate-spin-slow"></div>
+            <!-- Imagen + badge -->
+            <div class="relative bg-slate-950">
+              <img
+                src="hero-setup.jpg"
+                alt="Escritorio de trabajo de Angel Ezequiel"
+                class="h-full w-full object-cover opacity-80"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"
+              ></div>
 
-              <!-- foto -->
-              <div class="relative h-full w-full rounded-full overflow-hidden border border-slate-700 bg-slate-900 transform transition-transform duration-300 ease-out group-hover:scale-105">
-                <img
-                  src="https://github.com/EzequielAngel0.png"
-                  alt="Foto de perfil de Angel Ezequiel"
-                  class="h-full w-full object-cover"
-                />
+              <div
+                class="absolute top-5 right-5 rounded-full bg-emerald-500/90 px-4 py-1.5 text-xs font-semibold text-emerald-50 shadow-lg flex items-center gap-2"
+              >
+                <span
+                  class="h-2 w-2 rounded-full bg-emerald-100 animate-pulse"
+                ></span>
+                Disponible para colaborar
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-1">Sobre mí</h2>
-            <p class="text-sm text-sky-300">
-              Desarrollador Backend | Sistemas Embebidos | Android Apps
+      <!-- SOBRE MÍ -->
+      <section id="about" class="max-w-4xl mx-auto px-4 pb-14">
+        <div
+          class="rounded-3xl bg-slate-900/70 border border-slate-700/80 px-6 sm:px-8 py-8 sm:py-10 shadow-xl"
+        >
+          <div class="flex flex-col items-center text-center gap-4">
+            <!-- Avatar con anillo animado + glow + entrada suave -->
+            <div class="relative group animate-subtle-up">
+              <!-- glow exterior -->
+              <div
+                class="absolute -inset-1 rounded-full bg-gradient-to-tr from-sky-400 via-emerald-400 to-purple-500 opacity-60 blur-md group-hover:blur-xl group-hover:opacity-100 transition-all duration-300"
+              ></div>
+
+              <!-- contenedor principal -->
+              <div
+                class="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full bg-slate-950/80 p-1 shadow-xl"
+              >
+                <!-- anillo animado -->
+                <div
+                  class="pointer-events-none absolute inset-0 rounded-full border border-sky-400/40 animate-spin-slow"
+                ></div>
+
+                <!-- foto -->
+                <div
+                  class="relative h-full w-full rounded-full overflow-hidden border border-slate-700 bg-slate-900 transform transition-transform duration-300 ease-out group-hover:scale-105"
+                >
+                  <img
+                    src="https://github.com/EzequielAngel0.png"
+                    alt="Foto de perfil de Angel Ezequiel"
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold mb-1">Sobre mí</h2>
+              <p class="text-sm text-sky-300">
+                Desarrollador Backend | Sistemas Embebidos | Android Apps
+              </p>
+            </div>
+            <p class="text-sm sm:text-base text-slate-200 max-w-2xl">
+              Soy estudiante y desarrollador con enfoque en crear soluciones
+              prácticas y bien documentadas. Me apasiona combinar software y
+              electrónica: desde WPF/MVVM y bases de datos hasta sensores con
+              Arduino y experiencias interactivas en Roblox. Disfruto del
+              aprendizaje iterativo, la escritura técnica y el diseño de
+              interfaces claras. Busco que mis proyectos sean útiles, eficientes
+              y puedan crecer.
             </p>
           </div>
-          <p class="text-sm sm:text-base text-slate-200 max-w-2xl">
-            Soy estudiante y desarrollador con enfoque en crear soluciones prácticas y bien documentadas.
-            Me apasiona combinar software y electrónica: desde WPF/MVVM y bases de datos hasta sensores con Arduino
-            y experiencias interactivas en Roblox. Disfruto del aprendizaje iterativo, la escritura técnica
-            y el diseño de interfaces claras. Busco que mis proyectos sean útiles, eficientes y puedan crecer.
+        </div>
+      </section>
+
+      <!-- PROYECTOS -->
+      <section id="projects" class="max-w-6xl mx-auto px-4 pb-14">
+        <div class="mb-6 flex flex-col gap-2">
+          <h2 class="text-2xl sm:text-3xl font-bold">Proyectos Destacados</h2>
+          <p class="text-sm sm:text-base text-slate-300 max-w-2xl">
+            Una selección de mis proyectos más relevantes, mostrando mi
+            experiencia en desarrollo backend, aplicaciones móviles y
+            videojuegos educativos.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- PROYECTOS -->
-    <section id="projects" class="max-w-6xl mx-auto px-4 pb-14">
-      <div class="mb-6 flex flex-col gap-2">
-        <h2 class="text-2xl sm:text-3xl font-bold">Proyectos Destacados</h2>
-        <p class="text-sm sm:text-base text-slate-300 max-w-2xl">
-          Una selección de mis proyectos más relevantes, mostrando mi experiencia en desarrollo backend,
-          aplicaciones móviles y videojuegos educativos.
-        </p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- IDEn -->
-        <article class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200">
-          <h3 class="text-base font-semibold text-white">
-            IDEn — Indicador de Desempeño Energético (C# WPF, MVVM)
-          </h3>
-          <p class="mt-2 text-sm text-slate-300 flex-1">
-            Aplicación de escritorio multicapa para visualizar y analizar consumo/producción energética con
-            navegación por servicios, gráficos y organización modular (App/Core/Infrastructure).
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
-            <span class="rounded-full bg-slate-800 px-3 py-1">C#</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">WPF</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">MVVM</span>
-          </div>
-          <a href="https://github.com/EzequielAngel0/IDEn"
-             target="_blank"
-             class="mt-4 inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-white shadow hover:bg-sky-500">
-            Ver Repositorio
-          </a>
-        </article>
-
-        <!-- ACP -->
-        <article class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200">
-          <h3 class="text-base font-semibold text-white">
-            ACP (Kotlin + Firestore)
-          </h3>
-          <p class="mt-2 text-sm text-slate-300 flex-1">
-            App Android para registro de pasajeros, generación de tickets, sincronización offline/online con Firestore
-            y preparación para impresión Bluetooth.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
-            <span class="rounded-full bg-slate-800 px-3 py-1">Kotlin</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">Android</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">Firestore</span>
-          </div>
-          <a href="https://github.com/EzequielAngel0/ACP"
-             target="_blank"
-             class="mt-4 inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-white shadow hover:bg-sky-500">
-            Ver Repositorio
-          </a>
-        </article>
-
-        <!-- HorrorEdu -->
-        <article class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200">
-          <h3 class="text-base font-semibold text-white">
-            Más allá del aula — Videojuego educativo (Roblox + Lua/LuaU)
-          </h3>
-          <p class="mt-2 text-sm text-slate-300 flex-1">
-            Experiencia de terror con objetivos de aprendizaje en sistemas de información, con mecánicas, sonido dinámico
-            y niveles inmersivos. <strong class="font-semibold text-sky-300">Desarrollo aún en proceso.</strong>
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
-            <span class="rounded-full bg-slate-800 px-3 py-1">Roblox Studio</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">Lua</span>
-            <span class="rounded-full bg-slate-800 px-3 py-1">LuaU</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- HABILIDADES -->
-    <section id="skills" class="max-w-6xl mx-auto px-4 pb-14">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Habilidades</h2>
-      <div class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl">
-        <div class="flex flex-wrap gap-3">
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            C# • .NET • WPF (MVVM) • Windows Forms
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            Android • Kotlin • Java
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            Roblox Studio • Lua • LuaU
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            Arduino • ESP32
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            Firebase / Firestore
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            Git • GitHub • Releases
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            SQL • EF Core (básico)
-          </span>
-          <span class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100">
-            UI/UX • Figma
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PREVIEW CERTIFICADOS -->
-    <section id="cert-preview" class="max-w-6xl mx-auto px-4 pb-14">
-      <div class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Certificados y Educación</h2>
-        <p class="text-sm sm:text-base text-slate-300 max-w-xl">
-          Explora mis certificaciones y visualízalas. Usa las categorías para filtrar según el tipo de habilidad.
-        </p>
-
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
-             href="certificados.html?tag=all">Todos</a>
-          <a class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
-             href="certificados.html?tag=dev">Desarrollo</a>
-          <a class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
-             href="certificados.html?tag=cloud">Cloud</a>
-          <a class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
-             href="certificados.html?tag=design">Diseño</a>
-        </div>
-
-        <div class="mt-5">
-          <a href="certificados.html"
-             class="inline-flex items-center rounded-xl bg-primary px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-sky-500">
-            Ver certificados
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Contacto</h2>
-      <div class="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-        <!-- Links -->
-        <div class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl flex flex-col justify-between gap-4">
-          <div>
-            <p class="text-sm sm:text-base text-slate-300">
-              Si quieres colaborar en un proyecto, hacerme preguntas o revisar mi trabajo con más detalle,
-              puedes contactarme por cualquiera de estos medios:
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- IDEn -->
+          <article
+            class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+          >
+            <h3 class="text-base font-semibold text-white">
+              IDEn — Indicador de Desempeño Energético (C# WPF, MVVM)
+            </h3>
+            <p class="mt-2 text-sm text-slate-300 flex-1">
+              Aplicación de escritorio multicapa para visualizar y analizar
+              consumo/producción energética con navegación por servicios,
+              gráficos y organización modular (App/Core/Infrastructure).
             </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+              <span class="rounded-full bg-slate-800 px-3 py-1">C#</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1">WPF</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1">MVVM</span>
+            </div>
+            <a
+              href="https://github.com/EzequielAngel0/IDEn"
+              target="_blank"
+              class="mt-4 inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-white shadow hover:bg-sky-500"
+            >
+              Ver Repositorio
+            </a>
+          </article>
+
+          <!-- ACP -->
+          <article
+            class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+          >
+            <h3 class="text-base font-semibold text-white">
+              ACP (Kotlin + Firestore)
+            </h3>
+            <p class="mt-2 text-sm text-slate-300 flex-1">
+              App Android para registro de pasajeros, generación de tickets,
+              sincronización offline/online con Firestore y preparación para
+              impresión Bluetooth.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+              <span class="rounded-full bg-slate-800 px-3 py-1">Kotlin</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1">Android</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1">Firestore</span>
+            </div>
+            <a
+              href="https://github.com/EzequielAngel0/ACP"
+              target="_blank"
+              class="mt-4 inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-white shadow hover:bg-sky-500"
+            >
+              Ver Repositorio
+            </a>
+          </article>
+
+          <!-- HorrorEdu -->
+          <article
+            class="flex flex-col rounded-2xl bg-slate-900/70 border border-slate-700/80 p-5 shadow hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+          >
+            <h3 class="text-base font-semibold text-white">
+              Más allá del aula — Videojuego educativo (Roblox + Lua/LuaU)
+            </h3>
+            <p class="mt-2 text-sm text-slate-300 flex-1">
+              Experiencia de terror con objetivos de aprendizaje en sistemas de
+              información, con mecánicas, sonido dinámico y niveles inmersivos.
+              <strong class="font-semibold text-sky-300"
+                >Desarrollo aún en proceso.</strong
+              >
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+              <span class="rounded-full bg-slate-800 px-3 py-1"
+                >Roblox Studio</span
+              >
+              <span class="rounded-full bg-slate-800 px-3 py-1">Lua</span>
+              <span class="rounded-full bg-slate-800 px-3 py-1">LuaU</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- HABILIDADES -->
+      <section id="skills" class="max-w-6xl mx-auto px-4 pb-14">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Habilidades</h2>
+        <div
+          class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl"
+        >
+          <div class="flex flex-wrap gap-3">
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              C# • .NET • WPF (MVVM) • Windows Forms
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              Android • Kotlin • Java
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              Roblox Studio • Lua • LuaU
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              Arduino • ESP32
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              Firebase / Firestore
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              Git • GitHub • Releases
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              SQL • EF Core (básico)
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-slate-800 px-4 py-2 text-xs sm:text-sm text-slate-100"
+            >
+              UI/UX • Figma
+            </span>
           </div>
-          <div class="flex flex-wrap gap-3 mt-2">
-            <a href="https://www.linkedin.com/in/angelezequiel" target="_blank"
-               class="inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-sky-500">
-              LinkedIn
-            </a>
-            <a href="https://x.com/Ezequiel27Angel" target="_blank"
-               class="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-slate-800">
-              X
-            </a>
-            <a href="https://discord.com/users/angelezequiel" target="_blank"
-               class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-indigo-500">
-              Discord
-            </a>
-            <a href="mailto:barbosalomeliangelezequiel@gmail.com"
-               class="inline-flex items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-rose-500">
-              Email
-            </a>
-            <a href="https://wa.me/523320191633?text=Hola%20Angel,%20vi%20tu%20portafolio%20y%20quiero%20contactarte"
-               target="_blank"
-               class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-emerald-500">
-              WhatsApp
+        </div>
+      </section>
+
+      <!-- PREVIEW CERTIFICADOS -->
+      <section id="cert-preview" class="max-w-6xl mx-auto px-4 pb-14">
+        <div
+          class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl"
+        >
+          <h2 class="text-2xl sm:text-3xl font-bold mb-2">
+            Certificados y Educación
+          </h2>
+          <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+            Explora mis certificaciones y visualízalas. Usa las categorías para
+            filtrar según el tipo de habilidad.
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            <a
+              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
+              href="certificados.html?tag=all"
+              >Todos</a
+            >
+            <a
+              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
+              href="certificados.html?tag=dev"
+              >Desarrollo</a
+            >
+            <a
+              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
+              href="certificados.html?tag=cloud"
+              >Cloud</a
+            >
+            <a
+              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary"
+              href="certificados.html?tag=design"
+              >Diseño</a
+            >
+          </div>
+
+          <div class="mt-5">
+            <a
+              href="certificados.html"
+              class="inline-flex items-center rounded-xl bg-primary px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-sky-500"
+            >
+              Ver certificados
             </a>
           </div>
         </div>
+      </section>
 
-        <!-- Formulario -->
-        <form action="#" method="POST"
-              class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl space-y-4">
-          <div class="space-y-1">
-            <label for="email" class="text-sm font-semibold text-slate-100">Correo</label>
-            <input type="email" id="email" name="email" required
-                   placeholder="Tu correo"
-                   class="w-full rounded-xl border border-slate-600 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40" />
+      <!-- CONTACTO -->
+      <section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Contacto</h2>
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+          <!-- Links -->
+          <div
+            class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl flex flex-col justify-between gap-4"
+          >
+            <div>
+              <p class="text-sm sm:text-base text-slate-300">
+                Si quieres colaborar en un proyecto, hacerme preguntas o revisar
+                mi trabajo con más detalle, puedes contactarme por cualquiera de
+                estos medios:
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-2">
+              <a
+                href="https://www.linkedin.com/in/angelezequiel"
+                target="_blank"
+                class="inline-flex items-center gap-2 rounded-full bg-sky-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-sky-500"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://x.com/Ezequiel27Angel"
+                target="_blank"
+                class="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-slate-800"
+              >
+                X
+              </a>
+              <a
+                href="https://discord.com/users/angelezequiel"
+                target="_blank"
+                class="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-indigo-500"
+              >
+                Discord
+              </a>
+              <a
+                href="mailto:barbosalomeliangelezequiel@gmail.com"
+                class="inline-flex items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-rose-500"
+              >
+                Email
+              </a>
+              <a
+                href="https://wa.me/523320191633?text=Hola%20Angel,%20vi%20tu%20portafolio%20y%20quiero%20contactarte"
+                target="_blank"
+                class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow hover:bg-emerald-500"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
 
-          <div class="space-y-1">
-            <label for="message" class="text-sm font-semibold text-slate-100">Mensaje</label>
-            <textarea id="message" name="message" rows="5" required
-                      placeholder="Tu mensaje"
-                      class="w-full rounded-xl border border-slate-600 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"></textarea>
-          </div>
+          <!-- Formulario -->
+          <form
+            action="#"
+            method="POST"
+            class="rounded-3xl bg-slate-900/70 border border-slate-700/80 p-6 sm:p-8 shadow-xl space-y-4"
+          >
+            <div class="space-y-1">
+              <label for="email" class="text-sm font-semibold text-slate-100"
+                >Correo</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Tu correo"
+                class="w-full rounded-xl border border-slate-600 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
 
-          <button type="submit"
-                  class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-sky-500">
-            Enviar mensaje
-          </button>
-        </form>
+            <div class="space-y-1">
+              <label for="message" class="text-sm font-semibold text-slate-100"
+                >Mensaje</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Tu mensaje"
+                class="w-full rounded-xl border border-slate-600 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-sky-500"
+            >
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800/80 bg-slate-950/90">
+      <div
+        class="max-w-6xl mx-auto px-4 py-6 text-center text-xs sm:text-sm text-slate-500"
+      >
+        © 2025 Angel Ezequiel Barbosa Lomeli
       </div>
-    </section>
-  </main>
+    </footer>
+    <script>
+      const mobileBtn = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-  <footer class="border-t border-slate-800/80 bg-slate-950/90">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-xs sm:text-sm text-slate-500">
-      © 2025 Angel Ezequiel Barbosa Lomeli
-    </div>
-  </footer>
-</body>
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+          const isHidden = mobileMenu.classList.contains("hidden");
+          mobileMenu.classList.toggle("hidden", !isHidden);
+          mobileBtn.setAttribute("aria-expanded", String(isHidden));
+        });
+      }
+    </script>
+  </body>
 </html>
