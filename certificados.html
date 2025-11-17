@@ -4,65 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificados | Angel Ezequiel</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/tailwind.css" />
+  <!-- CSS ligero solo para modal y pequeños detalles -->
   <link rel="stylesheet" href="styles/certificados.css" />
 </head>
-<body class="light-mode">
-  <header>
-    <nav class="navbar">
-        <a href="index.html" class="logo" style="text-decoration:none; color:inherit;">
-            Angel Ezequiel • Portafolio
-        </a>
-      <ul class="nav-links">
-        <li><a href="index.html#about" class="nav-about">Sobre mí</a></li>
-        <li><a href="index.html#projects" class="nav-projects">Proyectos</a></li>
-        <li><a href="index.html#skills" class="nav-skills">Habilidades</a></li>
-        <li><a href="index.html#contact" class="nav-contact">Contacto</a></li>
-        <li><a href="certificados.html" class="nav-certificates" style="font-weight:700;background:#E6E9F0;border-radius:10px;padding:8px 10px;">Certificados</a></li>
-        <li><a href="BarbosaLomeliAngelEzequiel-CV.pdf" class="nav-button resume-button" download>Currículum</a></li>
+<body class="bg-background text-slate-100">
+  <!-- Header igual estilo que el index -->
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-background/95 backdrop-blur">
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo / nombre -->
+      <a href="index.html#inicio" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-xs font-bold text-white">
+          AE
+        </div>
+        <span class="font-semibold text-sm sm:text-base text-slate-100">
+          Angel Ezequiel • Portafolio
+        </span>
+      </a>
+
+      <!-- Links desktop -->
+      <ul class="hidden md:flex items-center gap-5 text-sm text-slate-200">
+        <li><a href="index.html#about" class="hover:text-primary transition-colors">Sobre mí</a></li>
+        <li><a href="index.html#projects" class="hover:text-primary transition-colors">Proyectos</a></li>
+        <li><a href="index.html#skills" class="hover:text-primary transition-colors">Habilidades</a></li>
+        <li>
+          <a href="certificados.html"
+             class="rounded-full bg-slate-900/80 px-4 py-1.5 font-semibold text-primary border border-primary/60">
+            Certificados
+          </a>
+        </li>
+        <li><a href="index.html#contact" class="hover:text-primary transition-colors">Contacto</a></li>
+        <li>
+          <a href="BarbosaLomeliAngelEzequiel-CV.pdf"
+             class="inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/60 px-4 py-1.5 text-xs font-semibold shadow hover:border-primary/60 hover:text-primary transition-colors"
+             download>
+            Currículum
+          </a>
+        </li>
       </ul>
+
+      <!-- Botón menú móvil (solo visual) -->
+      <button class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-700 bg-slate-900/80 text-slate-100">
+        <span class="sr-only">Abrir menú</span>
+        ☰
+      </button>
     </nav>
   </header>
 
-  <main>
-    <section class="cert-hero">
-      <h1>Certificados y Educación</h1>
-      <p id="cert-count">Cargando certificados…</p>
-    </section>
-
-    <div class="cert-toolbar">
-      <button class="chip" data-filter="all" aria-pressed="true">Todos</button>
-      <button class="chip" data-filter="dev">Desarrollo</button>
-      <button class="chip" data-filter="cloud">Cloud</button>
-      <button class="chip" data-filter="design">Diseño</button>
-
-      <div class="searchbar">
-        <input id="searchBox" type="search" placeholder="Buscar por título, emisor, habilidad…" />
+  <main class="bg-background min-h-screen">
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-4 pt-10 pb-4">
+      <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-8 sm:py-10 shadow-xl">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+          Certificados y Educación
+        </h1>
+        <p id="cert-count" class="mt-2 text-sm sm:text-base text-slate-300">
+          Cargando certificados…
+        </p>
       </div>
-    </div>
-
-    <section class="cert-grid" id="certGrid">
-      <!-- Se llena por JS -->
     </section>
 
-    <section class="timeline">
-      <h2 style="padding: 0 24px 8px;">Educación</h2>
-      <div class="tl">
-        <div class="item">
-          <div class="head">
-            <div>
-              <div class="role">Técnologo en Desarrollo de Software</div>
-              <div class="where">CETI Tonalá · Tonalá, Jalisco</div>
+    <!-- Toolbar filtros + búsqueda -->
+    <section class="max-w-6xl mx-auto px-4 pb-4">
+      <div class="flex flex-wrap items-center gap-3 rounded-3xl bg-slate-900/70 border border-slate-700/80 px-4 sm:px-6 py-4 shadow-lg">
+        <div class="flex flex-wrap gap-2">
+          <!-- dejamos la clase .chip porque la usa tu JS -->
+          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+                  data-filter="all" aria-pressed="true">
+            Todos
+          </button>
+          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+                  data-filter="dev">
+            Desarrollo
+          </button>
+          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+                  data-filter="cloud">
+            Cloud
+          </button>
+          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+                  data-filter="design">
+            Diseño
+          </button>
+        </div>
+
+        <div class="ml-auto flex-1 min-w-[200px] max-w-sm">
+          <input id="searchBox"
+                 type="search"
+                 placeholder="Buscar por título, emisor, habilidad…"
+                 class="w-full rounded-2xl border border-slate-600 bg-slate-950/70 px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid de certificados (rellenado por JS) -->
+    <section class="max-w-6xl mx-auto px-4 pb-10">
+      <div id="certGrid"
+           class="cert-grid grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <!-- JS inyecta aquí .cert-card -->
+      </div>
+    </section>
+
+    <!-- Educación / Timeline -->
+    <section class="max-w-6xl mx-auto px-4 pb-16">
+      <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-7 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold mb-4">Educación</h2>
+        <div class="tl space-y-5 border-l border-dashed border-slate-600 pl-4">
+          <div class="item relative">
+            <div class="absolute -left-[9px] top-2 h-3 w-3 rounded-full bg-primary shadow-[0_0_0_3px_rgba(56,189,248,0.35)]"></div>
+            <div class="head flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3">
+              <div>
+                <div class="role text-sm sm:text-base font-semibold text-white">
+                  Técnologo en Desarrollo de Software
+                </div>
+                <div class="where text-xs sm:text-sm text-slate-300">
+                  CETI Tonalá · Tonalá, Jalisco
+                </div>
+              </div>
+              <div class="when text-xs sm:text-sm text-slate-400">
+                2022 — 2026
+              </div>
             </div>
-            <div class="when">2022 — 2026</div>
+            <p class="desc mt-1 text-xs sm:text-sm text-slate-300">
+              Desarrollo de software, redes, electrónica y proyectos integradores.
+            </p>
           </div>
-          <p class="desc">Desarrollo de software, redes, electrónica y proyectos integradores.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ========= Modal para ver PDF (sin descarga directa) ========= -->
+  <!-- Modal para ver PDF (IDs iguales para que tu JS siga funcionando) -->
   <dialog id="pdfModal" class="pdf-modal">
     <div class="pdf-modal__bar">
       <span id="pdfTitle" class="pdf-modal__title">Ver certificado</span>
@@ -73,8 +144,10 @@
     </div>
   </dialog>
 
-  <footer>
-    <p>© 2025 Angel Ezequiel Barbosa Lomeli</p>
+  <footer class="border-t border-slate-800/80 bg-slate-950/90">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-xs sm:text-sm text-slate-500">
+      © 2025 Angel Ezequiel Barbosa Lomeli
+    </div>
   </footer>
 
   <script defer src="scripts/certificados.js"></script>

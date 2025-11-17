@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Fondo animado de gradiente (Idea A)
+------------------------------------------------------------------ */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(120deg, #020617, #0f172a, #0369a1);
+  background-size: 200% 200%;
+  animation: gradient-shift 18s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------
+   Animación subtle-up: entrada suave hacia arriba con escala
+------------------------------------------------------------------ */
+@keyframes subtle-up {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-subtle-up {
+  animation: subtle-up 0.7s ease-out both;
+}
+
+/* ------------------------------------------------------------------
+   Anillo lento girando alrededor del avatar
+------------------------------------------------------------------ */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
