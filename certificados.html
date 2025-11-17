@@ -1,181 +1,336 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificados | Angel Ezequiel</title>
-  <link rel="stylesheet" href="styles/tailwind.css" />
-  <!-- CSS ligero solo para modal y tarjetas dinámicas -->
-  <link rel="stylesheet" href="styles/certificados.css" />
-</head>
-<body class="bg-animated-gradient text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificados | Angel Ezequiel</title>
+    <link rel="stylesheet" href="styles/tailwind.css" />
+    <!-- CSS ligero solo para modal y tarjetas dinámicas -->
+    <link rel="stylesheet" href="styles/certificados.css" />
+  </head>
+  <body class="bg-animated-gradient text-slate-100">
+    <!-- Blobs animados de fondo -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-sky-500/25 blur-3xl animate-blob"
+      ></div>
+      <div
+        class="absolute top-1/3 -right-16 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl animate-blob animation-delay-2000"
+      ></div>
+      <div
+        class="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-blob animation-delay-4000"
+      ></div>
+    </div>
 
-  <!-- Blobs animados de fondo -->
-  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-sky-500/25 blur-3xl animate-blob"></div>
-    <div class="absolute top-1/3 -right-16 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-blob animation-delay-4000"></div>
-  </div>
+    <!-- Header igual estilo que el index -->
+    <header
+      class="sticky top-0 z-50 border-b border-white/5 bg-background/95 backdrop-blur"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <!-- Logo / nombre -->
+        <a href="index.html#inicio" class="flex items-center gap-2">
+          <span class="font-semibold text-sm sm:text-base text-slate-100">
+            Angel Ezequiel • Certificados
+          </span>
+        </a>
 
-  <!-- Header igual estilo que el index -->
-  <header class="sticky top-0 z-50 border-b border-white/5 bg-background/95 backdrop-blur">
-    <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <!-- Logo / nombre -->
-      <a href="index.html#inicio" class="flex items-center gap-2">
-        <span class="font-semibold text-sm sm:text-base text-slate-100">
-          Angel Ezequiel • Portafolio
-        </span>
-      </a>
+        <!-- Links desktop -->
+        <ul class="hidden md:flex items-center gap-5 text-sm text-slate-200">
+          <li>
+            <a
+              href="index.html#inicio"
+              class="hover:text-primary transition-colors"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#about"
+              class="hover:text-primary transition-colors"
+              >Sobre mí</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#projects"
+              class="hover:text-primary transition-colors"
+              >Proyectos</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#skills"
+              class="hover:text-primary transition-colors"
+              >Habilidades</a
+            >
+          </li>
+          <li>
+            <a
+              href="certificados.html"
+              class="hover:text-primary transition-colors"
+              >Certificados</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#contact"
+              class="hover:text-primary transition-colors"
+              >Contacto</a
+            >
+          </li>
+          <li>
+            <a
+              href="BarbosaLomeliAngelEzequiel-CV.pdf"
+              class="inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/60 px-4 py-1.5 text-xs font-semibold shadow hover:border-primary/60 hover:text-primary transition-colors"
+              download
+            >
+              Currículum
+            </a>
+          </li>
+        </ul>
 
-      <!-- Links desktop -->
-      <ul class="hidden md:flex items-center gap-5 text-sm text-slate-200">
-        <li><a href="index.html#about" class="hover:text-primary transition-colors">Sobre mí</a></li>
-        <li><a href="index.html#projects" class="hover:text-primary transition-colors">Proyectos</a></li>
-        <li><a href="index.html#skills" class="hover:text-primary transition-colors">Habilidades</a></li>
-        <li>
-          <a href="certificados.html"
-             class="rounded-full bg-slate-900/80 px-4 py-1.5 font-semibold text-primary border border-primary/60">
-            Certificados
-          </a>
-        </li>
-        <li><a href="index.html#contact" class="hover:text-primary transition-colors">Contacto</a></li>
-        <li>
-          <a href="BarbosaLomeliAngelEzequiel-CV.pdf"
-             class="inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/60 px-4 py-1.5 text-xs font-semibold shadow hover:border-primary/60 hover:text-primary transition-colors"
-             download>
-            Currículum
-          </a>
-        </li>
-      </ul>
+        <!-- Botón menú móvil -->
+        <button
+          id="mobileMenuButton"
+          class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-700 bg-slate-900/80 text-slate-100"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </nav>
 
-      <!-- Botón menú móvil (solo visual) -->
-      <button class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-700 bg-slate-900/80 text-slate-100">
-        <span class="sr-only">Abrir menú</span>
-        ☰
-      </button>
-    </nav>
-  </header>
-
-  <main class="bg-background/60 min-h-screen">
-    <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-4 pt-10 pb-4">
-      <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-8 sm:py-10 shadow-xl">
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
-          Certificados y Educación
-        </h1>
-        <p id="cert-count" class="mt-2 text-sm sm:text-base text-slate-300">
-          Cargando certificados…
-        </p>
+      <!-- Menú móvil -->
+      <div
+        id="mobileMenu"
+        class="md:hidden border-t border-slate-800/70 bg-slate-950/95 backdrop-blur px-4 pb-4 space-y-2 hidden"
+      >
+        <a
+          href="index.html#inicio"
+          class="block pt-3 text-sm text-slate-100 hover:text-primary"
+          >Inicio</a
+        >
+        <a
+          href="index.html#about"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Sobre mí</a
+        >
+        <a
+          href="index.html#projects"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Proyectos</a
+        >
+        <a
+          href="index.html#skills"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Habilidades</a
+        >
+        <a
+          href="certificados.html"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Certificados</a
+        >
+        <a
+          href="index.html#contact"
+          class="block text-sm text-slate-100 hover:text-primary"
+          >Contacto</a
+        >
+        <a
+          href="BarbosaLomeliAngelEzequiel-CV.pdf"
+          class="mt-2 inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-100 hover:border-primary hover:text-primary"
+          download
+        >
+          Currículum
+        </a>
       </div>
-    </section>
+    </header>
 
-    <!-- Toolbar filtros + búsqueda -->
-    <section class="max-w-6xl mx-auto px-4 pb-4">
-      <div class="flex flex-wrap items-center gap-3 rounded-3xl bg-slate-900/70 border border-slate-700/80 px-4 sm:px-6 py-4 shadow-lg">
-        <div class="flex flex-wrap gap-2">
-          <!-- dejamos la clase .chip porque la usa tu JS -->
-          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
-                  data-filter="all" aria-pressed="true">
-            Todos
-          </button>
-          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
-                  data-filter="dev">
-            Desarrollo
-          </button>
-          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
-                  data-filter="cloud">
-            Cloud
-          </button>
-          <button class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
-                  data-filter="design">
-            Diseño
-          </button>
+    <main class="bg-background/60 min-h-screen">
+      <!-- Hero -->
+      <section class="max-w-6xl mx-auto px-4 pt-10 pb-4">
+        <div
+          class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-8 sm:py-10 shadow-xl"
+        >
+          <h1
+            class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white"
+          >
+            Certificados y Educación
+          </h1>
+          <p id="cert-count" class="mt-2 text-sm sm:text-base text-slate-300">
+            Cargando certificados…
+          </p>
         </div>
+      </section>
 
-        <div class="ml-auto flex-1 min-w-[200px] max-w-sm">
-          <input id="searchBox"
-                 type="search"
-                 placeholder="Buscar por título, emisor, habilidad…"
-                 class="w-full rounded-2xl border border-slate-600 bg-slate-950/70 px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40" />
-        </div>
-      </div>
-    </section>
+      <!-- Toolbar filtros + búsqueda -->
+      <section class="max-w-6xl mx-auto px-4 pb-4">
+        <div
+          class="flex flex-wrap items-center gap-3 rounded-3xl bg-slate-900/70 border border-slate-700/80 px-4 sm:px-6 py-4 shadow-lg"
+        >
+          <div class="flex flex-wrap gap-2">
+            <!-- dejamos la clase .chip porque la usa tu JS -->
+            <button
+              class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              Todos
+            </button>
+            <button
+              class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+              data-filter="dev"
+            >
+              Desarrollo
+            </button>
+            <button
+              class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+              data-filter="cloud"
+            >
+              Cloud
+            </button>
+            <button
+              class="chip inline-flex items-center rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1.5 text-xs sm:text-sm text-slate-100 hover:border-primary hover:text-primary transition"
+              data-filter="design"
+            >
+              Diseño
+            </button>
+          </div>
 
-    <!-- Educación + Experiencia (movido arriba, después de filtros) -->
-    <section class="max-w-6xl mx-auto px-4 pb-8">
-      <div class="grid gap-6 lg:grid-cols-2">
-        <!-- Educación -->
-        <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-7 shadow-xl">
-          <h2 class="text-xl sm:text-2xl font-bold mb-4">Educación</h2>
-          <div class="tl space-y-5 border-l border-dashed border-slate-600 pl-4">
-            <div class="item relative">
-              <div class="absolute -left-[9px] top-2 h-3 w-3 rounded-full bg-primary shadow-[0_0_0_3px_rgba(56,189,248,0.35)]"></div>
-              <div class="head flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3">
-                <div>
-                  <div class="role text-sm sm:text-base font-semibold text-white">
-                    Técnologo en Desarrollo de Software
-                  </div>
-                  <div class="where text-xs sm:text-sm text-slate-300">
-                    CETI Tonalá · Tonalá, Jalisco
-                  </div>
-                </div>
-                <div class="when text-xs sm:text-sm text-slate-400">
-                  2022 — 2026
-                </div>
-              </div>
-              <p class="desc mt-1 text-xs sm:text-sm text-slate-300">
-                Desarrollo de software, redes, electrónica y proyectos integradores.
-              </p>
-            </div>
+          <div class="ml-auto flex-1 min-w-[200px] max-w-sm">
+            <input
+              id="searchBox"
+              type="search"
+              placeholder="Buscar por título, emisor, habilidad…"
+              class="w-full rounded-2xl border border-slate-600 bg-slate-950/70 px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+            />
           </div>
         </div>
+      </section>
 
-        <!-- Experiencia laboral -->
-        <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-7 shadow-xl">
-          <h2 class="text-xl sm:text-2xl font-bold mb-3">Experiencia laboral</h2>
-          <p class="text-sm sm:text-base text-slate-300 mb-3">
-            Actualmente no cuento con experiencia laboral formal, pero he trabajado en proyectos académicos y personales que
-            simulan entornos reales de desarrollo de software.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li>• Desarrollo de aplicaciones de escritorio con C#/.NET y patrones como MVVM.</li>
-            <li>• Implementación de apps Android con Kotlin/Java y backend en la nube (Firestore, Firebase).</li>
-            <li>• Proyectos con microcontroladores (Arduino, ESP32) y comunicación con aplicaciones móviles.</li>
-            <li>• Videojuego educativo en Roblox con enfoque en sistemas de información y experiencia de usuario.</li>
-          </ul>
-          <p class="mt-4 text-xs text-slate-400">
-            Abierto a oportunidades de prácticas profesionales, residencias o posiciones junior.
-          </p>
+      <!-- Educación + Experiencia (movido arriba, después de filtros) -->
+      <section class="max-w-6xl mx-auto px-4 pb-8">
+        <div class="grid gap-6 lg:grid-cols-2">
+          <!-- Educación -->
+          <div
+            class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-7 shadow-xl"
+          >
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Educación</h2>
+            <div
+              class="tl space-y-5 border-l border-dashed border-slate-600 pl-4"
+            >
+              <div class="item relative">
+                <div
+                  class="absolute -left-[9px] top-2 h-3 w-3 rounded-full bg-primary shadow-[0_0_0_3px_rgba(56,189,248,0.35)]"
+                ></div>
+                <div
+                  class="head flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3"
+                >
+                  <div>
+                    <div
+                      class="role text-sm sm:text-base font-semibold text-white"
+                    >
+                      Técnologo en Desarrollo de Software
+                    </div>
+                    <div class="where text-xs sm:text-sm text-slate-300">
+                      CETI Tonalá · Tonalá, Jalisco
+                    </div>
+                  </div>
+                  <div class="when text-xs sm:text-sm text-slate-400">
+                    2022 — 2026
+                  </div>
+                </div>
+                <p class="desc mt-1 text-xs sm:text-sm text-slate-300">
+                  Desarrollo de software, redes, electrónica y proyectos
+                  integradores.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiencia laboral -->
+          <div
+            class="rounded-3xl bg-slate-900/80 border border-slate-700/80 px-6 sm:px-8 py-7 shadow-xl"
+          >
+            <h2 class="text-xl sm:text-2xl font-bold mb-3">
+              Experiencia laboral
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 mb-3">
+              Actualmente no cuento con experiencia laboral formal, pero he
+              trabajado en proyectos académicos y personales que simulan
+              entornos reales de desarrollo de software.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>
+                • Desarrollo de aplicaciones de escritorio con C#/.NET y
+                patrones como MVVM.
+              </li>
+              <li>
+                • Implementación de apps Android con Kotlin/Java y backend en la
+                nube (Firestore, Firebase).
+              </li>
+              <li>
+                • Proyectos con microcontroladores (Arduino, ESP32) y
+                comunicación con aplicaciones móviles.
+              </li>
+              <li>
+                • Videojuego educativo en Roblox con enfoque en sistemas de
+                información y experiencia de usuario.
+              </li>
+            </ul>
+            <p class="mt-4 text-xs text-slate-400">
+              Abierto a oportunidades de prácticas profesionales, residencias o
+              posiciones junior.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <!-- Grid de certificados (rellenado por JS) -->
+      <section class="max-w-6xl mx-auto px-4 pb-16">
+        <div
+          id="certGrid"
+          class="cert-grid grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3"
+        >
+          <!-- JS inyecta aquí .cert-card -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal para ver PDF (IDs iguales para que tu JS siga funcionando) -->
+    <dialog id="pdfModal" class="pdf-modal">
+      <div class="pdf-modal__bar">
+        <span id="pdfTitle" class="pdf-modal__title">Ver certificado</span>
+        <button id="pdfClose" class="pdf-modal__close" aria-label="Cerrar">
+          ✕
+        </button>
       </div>
-    </section>
-
-    <!-- Grid de certificados (rellenado por JS) -->
-    <section class="max-w-6xl mx-auto px-4 pb-16">
-      <div id="certGrid"
-           class="cert-grid grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <!-- JS inyecta aquí .cert-card -->
+      <div class="pdf-modal__viewport">
+        <embed id="pdfViewer" type="application/pdf" src="" />
       </div>
-    </section>
-  </main>
+    </dialog>
 
-  <!-- Modal para ver PDF (IDs iguales para que tu JS siga funcionando) -->
-  <dialog id="pdfModal" class="pdf-modal">
-    <div class="pdf-modal__bar">
-      <span id="pdfTitle" class="pdf-modal__title">Ver certificado</span>
-      <button id="pdfClose" class="pdf-modal__close" aria-label="Cerrar">✕</button>
-    </div>
-    <div class="pdf-modal__viewport">
-      <embed id="pdfViewer" type="application/pdf" src="" />
-    </div>
-  </dialog>
+    <footer class="border-t border-slate-800/80 bg-slate-950/90">
+      <div
+        class="max-w-6xl mx-auto px-4 py-6 text-center text-xs sm:text-sm text-slate-500"
+      >
+        © 2025 Angel Ezequiel Barbosa Lomeli
+      </div>
+    </footer>
 
-  <footer class="border-t border-slate-800/80 bg-slate-950/90">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-xs sm:text-sm text-slate-500">
-      © 2025 Angel Ezequiel Barbosa Lomeli
-    </div>
-  </footer>
+    <script defer src="scripts/certificados.js"></script>
+    <script>
+      const mobileBtn = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-  <script defer src="scripts/certificados.js"></script>
-</body>
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+          const isHidden = mobileMenu.classList.contains("hidden");
+          mobileMenu.classList.toggle("hidden", !isHidden);
+          mobileBtn.setAttribute("aria-expanded", String(isHidden));
+        });
+      }
+    </script>
+  </body>
 </html>
