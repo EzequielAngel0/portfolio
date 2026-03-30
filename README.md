@@ -1,51 +1,77 @@
-# 🌐 Portafolio Web — Angel Ezequiel Barbosa Lomelí
+# 🌐 Portfolio — Angel Ezequiel Barbosa Lomelí
 
-Este proyecto es un **portafolio web personal** diseñado y desarrollado para presentar mis proyectos, habilidades y currículum profesional.  
-Está construido con **HTML, CSS y JavaScript**, manteniendo un diseño moderno, limpio y completamente adaptable a distintos dispositivos.
-
----
+Portfolio web personal construido con **Astro** y **Tailwind CSS**, desplegado en GitHub Pages.
 
 ## 🧠 Descripción general
 
-El portafolio tiene como objetivo mostrar mi trayectoria como **Desarrollador Back-End, Android y Desktop**, incluyendo proyectos destacados realizados con tecnologías como:
+Portafolio profesional que presenta mis proyectos, habilidades, certificaciones y trayectoria como **Desarrollador Back-End, Android y Desktop**.
 
+### Tecnologías destacadas
 - **C# (.NET / WPF / MVVM)**
 - **Kotlin (Android Studio / Firestore)**
 - **Lua (Roblox Studio)**
 - **Arduino / ESP32**
 - **SQL / Firebase**
-- **Diseño UI/UX con Figma**
-
-Incluye también una sección de contacto con enlaces a mis redes profesionales y un botón de descarga directa para mi currículum.
+- **UI/UX · Figma**
 
 ---
 
-## 💻 Tecnologías utilizadas
+## 💻 Stack del proyecto
 
-- **HTML5** — estructura del sitio  
-- **CSS3** — estilos modulares, responsive y paleta personalizada  
-- **JavaScript (ES6)** — interacción mínima y estructura dinámica  
-- **Figma / Illustrator** — diseño visual y prototipado  
+- **[Astro](https://astro.build)** — Framework web estático (Zero JS by default)
+- **[Tailwind CSS](https://tailwindcss.com)** — Utility-first CSS framework
+- **TypeScript** — Tipado estricto en datos y lógica
+- **GitHub Pages** — Hosting estático con CI/CD automático
+
+---
+
+## 🚀 Desarrollo local
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Previsualizar build local
+npm run preview
+```
 
 ---
 
-## 🚀 Características principales
+## 📁 Estructura del proyecto
 
-✅ Diseño adaptable (responsive)  
-✅ Secciones dinámicas: Inicio, Proyectos, Habilidades y Contacto  
-✅ Descarga de CV en formato PDF  
-✅ Enlaces directos a LinkedIn, GitHub, Discord, Email y X (Twitter)  
-✅ Código limpio y modular con separación de responsabilidades  
+```text
+src/
+├── components/     # Componentes reutilizables (Header, Hero, About, etc.)
+├── data/           # Datos de certificados en TypeScript
+├── layouts/        # Layout base con fondo animado y meta tags
+├── pages/          # Páginas: index.astro y certificados.astro
+└── styles/         # CSS global con animaciones personalizadas
+public/
+├── hero-setup.jpg  # Imagen del hero
+├── favicon.svg     # Favicon
+└── *.pdf           # Currículum
+```
 
 ---
-## ⚙️ Instalación y uso
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/EzequielAngel0/portfolio-master.git
-   ```
-2. Abre la carpeta:
-   ```bash
-   cd portfolio-master
-   ```
-3. Ejecuta el archivo `index.html` en tu navegador preferido.
+## 🔗 Deploy
+
+El deploy a GitHub Pages se ejecuta automáticamente al hacer push a la rama `main` mediante GitHub Actions (`.github/workflows/deploy.yml`).
+
+---
+
+## ✅ Características
+
+- ✅ Diseño responsive con dark mode nativo
+- ✅ Animaciones fluidas (blobs, fade-in, gradient shift)
+- ✅ Componentes modulares en Astro
+- ✅ Certificaciones con enlaces externos (sin archivos locales)
+- ✅ SEO optimizado con meta tags
+- ✅ Deploy automático a GitHub Pages
+- ✅ TypeScript estricto

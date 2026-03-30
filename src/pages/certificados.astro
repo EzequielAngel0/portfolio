@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import certData from '../data/certificados.json';
+
+const certificados = certData.certificados;
+const certCount = certificados.length;
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout
+  title="Historial de Certificaciones | Angel Ezequiel"
+  description="Registro de certificaciones, hitos educativos y credenciales en Ingeniería y Back-End."
+>
+  <Header currentPage="certificados" />
+
+  <main class="min-h-screen relative z-10 pt-28">
+
+    <!-- Header / Hero -> Colorful Bento -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="bento-card p-8 sm:p-12 relative overflow-hidden group shadow-2xl">
+        <div class="absolute -top-10 -right-10 w-96 h-96 bg-brand-cyan/20 rounded-full blur-[80px] pointer-events-none mix-blend-screen group-hover:bg-brand-cyan/30 transition-all"></div>
+        <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-brand-purple/20 rounded-full blur-[80px] pointer-events-none mix-blend-screen group-hover:bg-brand-purple/30 transition-all"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div class="max-w-3xl">
+            <span class="inline-flex items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3 py-1 text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan shadow-[0_0_15px_rgba(6,182,212,0.2)] mb-4">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-cyan"></span>
+              Cualificaciones Formales
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white mb-4 drop-shadow-lg">
+              Registro <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Educativo</span>
+            </h1>
+            <p class="text-lg text-zinc-300 font-medium">
+              Auditoría pública de mis competencias. Explora una base de <strong class="text-white bg-white/10 px-2 py-0.5 border border-white/20 rounded-md mx-1 shadow-inner">{certCount}</strong> credenciales verificadas.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <div class="h-20 w-20 rounded-2xl bg-gradient-to-br from-brand-blue/30 to-brand-purple/30 border border-white/10 flex items-center justify-center text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] backdrop-blur-xl">
+               <svg class="w-10 h-10 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar filtros + búsqueda -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-20">
+      <div class="bg-surface-50/80 backdrop-blur-xl border border-white/10 py-4 px-2 sm:px-6 flex flex-col sm:flex-row flex-wrap items-center gap-4 justify-between -mx-4 sm:mx-0 sm:rounded-2xl shadow-xl">
+        
+        <div class="flex flex-wrap gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 hide-scrollbar">
+          {
+            [
+              { label: 'Todos', value: 'all' },
+              { label: 'Desarrollo', value: 'dev' },
+              { label: 'Cloud', value: 'cloud' },
+              { label: 'Diseño', value: 'design' },
+            ].map((filter) => (
+              <button
+                class="chip active:scale-95 shrink-0 inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white hover:bg-white/5 transition-all outline-none border border-transparent cursor-pointer relative"
+                data-filter={filter.value}
+                aria-pressed="false"
+              >
+                {filter.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="w-full sm:w-auto flex-1 max-w-sm relative group">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500 group-focus-within:text-brand-cyan transition-colors">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="searchBox"
+            type="search"
+            placeholder="Filtrar registro..."
+            class="block w-full rounded-xl border border-white/10 bg-black/50 pl-11 pr-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-cyan focus:bg-black/80 focus:ring-1 focus:ring-brand-cyan transition-all outline-none shadow-inner"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Educación + ONE (Especial) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="grid gap-6 lg:grid-cols-2">
+        
+        <!-- Educación Formal -->
+        <div class="bento-card bento-card-hover flex flex-col p-8" style="--hover-color: rgba(99, 102, 241, 0.3)">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="p-3 bg-brand-blue/20 text-brand-blue rounded-xl shadow-inner">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Formación Reglada</h2>
+          </div>
+          <div class="relative pl-6 border-l-2 border-zinc-800 space-y-6">
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full bg-brand-blue ring-4 ring-background shadow-[0_0_10px_#3b82f6]"></div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                <div class="text-lg font-bold text-white">Desarrollo de Software</div>
+                <div class="text-[11px] font-mono font-bold text-zinc-500 bg-white/5 px-2 py-0.5 rounded">2022 — 2026</div>
+              </div>
+              <div class="text-sm font-bold text-brand-blue mb-3">CETI Tonalá</div>
+              <p class="text-zinc-400 text-sm leading-relaxed font-medium">
+                Fundamentos en desarrollo, arquitectura de red, IoT, matrices lógicas y ensamblado de soluciones escalables a nivel local.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oracle Next Education -->
+        <div class="bento-card bento-card-hover flex flex-col p-8 relative overflow-hidden group" style="--hover-color: rgba(244, 63, 94, 0.4)">
+          <!-- Background accent for Oracle -->
+          <div class="absolute inset-0 bg-brand-rose/5 blur-[40px] pointer-events-none group-hover:bg-brand-rose/10 transition-colors"></div>
+          <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-rose/20 rounded-full blur-[80px] pointer-events-none transition-transform group-hover:scale-110 group-hover:bg-brand-rose/30"></div>
+          
+          <div class="flex items-center gap-4 mb-8 relative z-10">
+            <div class="p-3 bg-brand-rose/20 text-brand-rose rounded-xl shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.516 11.336A4.524 4.524 0 0012 6.805a4.524 4.524 0 00-4.516 4.531A4.524 4.524 0 0012 15.867A4.524 4.524 0 0016.516 11.336zM12 9.07c1.25 0 2.258 1.016 2.258 2.266 0 1.25-1.008 2.266-2.258 2.266-1.25 0-2.258-1.016-2.258-2.266C9.742 10.086 10.75 9.07 12 9.07zM18.773 11.336h3.047c-.015-5.383-4.32-9.742-9.82-9.742C6.492 1.594 2.18 5.953 2.18 11.336c0 5.375 4.312 9.742 9.82 9.742 5.5 0 9.805-4.367 9.82-9.742h-3.047A6.784 6.784 0 0112 18.11c-3.719 0-6.773-3.047-6.773-6.774 0-3.719 3.054-6.773 6.773-6.773a6.784 6.784 0 016.773 6.773z"/></svg>
+            </div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Oracle Next Education (ONE)</h2>
+          </div>
+          <p class="text-zinc-300 font-medium text-sm leading-relaxed mb-6 relative z-10 w-4/5">
+            Finalización exitosa de la ruta hiperespecializada en <strong class="text-brand-rose">Tech Foundation (Back-End)</strong> con formación avanzada en ecosistemas empresariales.
+          </p>
+          <ul class="space-y-3 text-sm font-bold text-zinc-400 relative z-10">
+            <li class="flex items-center gap-3">
+              <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-rose/20 text-brand-rose shadow-inner"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+              <span>Java POO y Spring Framework completo.</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-rose/20 text-brand-rose shadow-inner"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+              <span>Bases de datos SQL con MySQL / OCI.</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="flex items-center justify-center w-5 h-5 rounded-full bg-brand-rose/20 text-brand-rose shadow-inner"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+              <span>Creación e integración de APIs y seguridad.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Grid de certificados -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+      <div id="certGrid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {
+          certificados.map((cert) => (
+            <article
+              class="cert-card bento-card bento-card-hover flex flex-col p-6 group"
+              data-tags={cert.tags.join(' ')}
+              style="--hover-color: rgba(6, 182, 212, 0.3)"
+            >
+              <div class="flex items-start justify-between mb-4 relative z-10">
+                <div class="flex items-center gap-2">
+                   <div class="bg-white/5 p-1.5 rounded-lg border border-white/10 group-hover:bg-brand-cyan/20 group-hover:text-brand-cyan transition-colors shadow-inner">
+                     <svg class="w-4 h-4 text-zinc-400 group-hover:text-current transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+                   </div>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-white transition-colors truncate max-w-[120px]" title={cert.issuer}>{cert.issuer}</span>
+                </div>
+                {cert.date && (
+                  <span class="text-[10px] font-mono font-bold text-zinc-500 bg-black/40 border border-white/5 px-2 py-1 rounded shadow-inner">{cert.date}</span>
+                )}
+              </div>
+              
+              <h3 class="font-bold text-white text-[16px] leading-snug mb-4 flex-grow relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-brand-cyan transition-all">
+                {cert.title}
+              </h3>
+              
+              <div class="flex flex-wrap gap-1.5 mb-6 content-start relative z-10">
+                {cert.skills.slice(0, 3).map((skill) => (
+                  <span class="bg-white/5 border border-white/5 px-2 py-0.5 rounded text-[10px] font-mono font-bold text-zinc-400 group-hover:border-brand-cyan/30 group-hover:text-zinc-200 transition-colors">
+                    {skill}
+                  </span>
+                ))}
+                {cert.skills.length > 3 && (
+                  <span class="text-[10px] font-mono font-bold text-zinc-600 flex items-center bg-black/40 px-2 py-0.5 rounded shadow-inner">
+                    +{cert.skills.length - 3}
+                  </span>
+                )}
+              </div>
+              
+              <div class="mt-auto border-t border-white/10 pt-5 relative z-10">
+                {cert.url ? (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-glass flex w-full items-center justify-between text-sm font-bold text-zinc-200 px-4 py-2"
+                  >
+                    Verificación Segura
+                    <svg class="w-4 h-4" transform="rotate(-45)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </a>
+                ) : (
+                  <div class="flex w-full items-center justify-between text-sm font-bold text-zinc-600 bg-black/20 px-4 py-2 rounded-xl border border-white/5 cursor-not-allowed">
+                    Emisión en cola
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  /* Selected Tab State */
+  .chip[aria-pressed="true"] {
+    background: rgba(6, 182, 212, 0.15);
+    color: #fff;
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+  }
+</style>
+
+<script>
+  // ===== Filtros V4 =====
+  const state = { tag: 'all', q: '' };
+
+  function applyFilters() {
+    const cards = document.querySelectorAll<HTMLElement>('.cert-card');
+    const q = state.q.toLowerCase().trim();
+    cards.forEach((card) => {
+      const tags = (card.dataset.tags || '').split(/\s+/);
+      const matchesTag = state.tag === 'all' || tags.includes(state.tag);
+      const text = card.innerText.toLowerCase();
+      const matchesSearch = !q || text.includes(q);
+      
+      if (matchesTag && matchesSearch) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function setTag(tag: string) {
+    state.tag = tag;
+    const chips = document.querySelectorAll<HTMLElement>('.chip');
+    chips.forEach((c) => {
+      c.setAttribute('aria-pressed', 'false');
+    });
+    
+    const active = Array.from(chips).find((c) => c.dataset.filter === tag) || chips[0];
+    active?.setAttribute('aria-pressed', 'true');
+    applyFilters();
+  }
+
+  // Eventos
+  document.querySelectorAll<HTMLElement>('.chip').forEach((ch) => {
+    ch.addEventListener('click', () => {
+      setTag(ch.dataset.filter || 'all');
+    });
+  });
+
+  const searchBox = document.getElementById('searchBox') as HTMLInputElement;
+  if (searchBox) {
+    searchBox.addEventListener('input', (e) => {
+      state.q = (e.target as HTMLInputElement).value || '';
+      applyFilters();
+    });
+  }
+
+  const sp = new URLSearchParams(location.search);
+  const initialTag = (sp.get('tag') || 'all').toLowerCase();
+  const initialQ = sp.get('q') || '';
+  state.q = initialQ;
+  if (initialQ && searchBox) searchBox.value = initialQ;
+  setTag(initialTag);
+</script>

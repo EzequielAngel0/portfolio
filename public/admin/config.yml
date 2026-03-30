@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: EzequielAngel0/portafolio
+  branch: master
+
+locale: "es"
+site_url: https://ezequielangel0.github.io/portfolio
+display_url: https://ezequielangel0.github.io/portfolio
+media_folder: "public/uploads"
+public_folder: "/portfolio/uploads"
+
+collections:
+  - name: "base_de_datos"
+    label: "Base de Datos"
+    files:
+      - label: "Certificados"
+        name: "certificados"
+        file: "src/data/certificados.json"
+        description: "Panel para agregar, editar y eliminar certificados del portafolio"
+        fields:
+          - name: certificados
+            label: Lista de Certificados
+            widget: list
+            collapsed: true
+            summary: '{{fields.title}} - {{fields.issuer}}'
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Institución o Emisor", name: "issuer", widget: "string" }
+              - { label: "Fecha", name: "date", widget: "string", hint: "Ejemplo: 2025-07 o 2026-01" }
+              - { label: "URL de Verificación", name: "url", widget: "string", required: false, hint: "Deja vacío si aún no tienes el enlace." }
+              - { label: "Filtros (Tags)", name: "tags", widget: "list", hint: "Usa: dev, design o cloud" }
+              - { label: "Habilidades (Skills)", name: "skills", widget: "list", hint: "Etiquetas breves, ej: Lógica, Java, CSS" }

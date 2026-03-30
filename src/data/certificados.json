@@ -1,0 +1,180 @@
+{
+  "certificados": [
+    {
+      "title": "Lógica de programación: Sumérgete con JavaScript",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Lógica", "Algoritmos", "JavaScript"]
+    },
+    {
+      "title": "Lógica de programación: Explorar funciones y listas",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Lógica", "Algoritmos", "JavaScript"]
+    },
+    {
+      "title": "Practicando lógica de programación: Challenge Amigo Secreto",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Lógica", "Algoritmos", "JavaScript"]
+    },
+    {
+      "title": "IA: Explorando el potencial de la IA generativa",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["IA", "Prompts"]
+    },
+    {
+      "title": "Creando prompts eficaces para la IA generativa",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["IA", "Prompts"]
+    },
+    {
+      "title": "Ambientes de desarrollo, estructura de archivos y tags",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Frontend", "HTML", "CSS"]
+    },
+    {
+      "title": "HTML y CSS: Clases, posicionamiento y Flexbox",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["design"],
+      "skills": ["HTML", "CSS", "Layout", "Responsive"]
+    },
+    {
+      "title": "HTML y CSS: Header, footer y variables CSS",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["design"],
+      "skills": ["HTML", "CSS", "Layout", "Responsive"]
+    },
+    {
+      "title": "HTML y CSS: Trabajando responsividad y publicación de proyectos",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["design"],
+      "skills": ["HTML", "CSS", "Responsive"]
+    },
+    {
+      "title": "Lógica de programación con JavaScript",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Lógica", "Programación", "Básicos"]
+    },
+    {
+      "title": "Principiante en programación",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Programación", "Básicos"]
+    },
+    {
+      "title": "Git y GitHub: Repositorio, commit y versiones",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-08",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Git", "GitHub", "Versionado"]
+    },
+    {
+      "title": "Conceptos Básicos de Redes",
+      "issuer": "Cisco Networking Academy",
+      "date": "2025-10",
+      "url": "",
+      "tags": ["cloud"],
+      "skills": ["Networking", "Cisco"]
+    },
+    {
+      "title": "Certificado de completación de curso",
+      "issuer": "Cisco Networking Academy",
+      "date": "2025-10",
+      "url": "",
+      "tags": ["cloud"],
+      "skills": ["IPv4", "IPv6", "Subnetting"]
+    },
+    {
+      "title": "Desarrollo personal",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    },
+    {
+      "title": "Aprender a Aprender: Técnicas para el autodesarrollo",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    },
+    {
+      "title": "Aprendizaje con IA: Personaliza tu rutina con ChatGPT",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["IA", "Prompts"]
+    },
+    {
+      "title": "Foco: Enfocarse trae más resultados día a día",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    },
+    {
+      "title": "Hábitos: Ser productivo para cumplir tus metas personales",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    },
+    {
+      "title": "LinkedIn para profesionales: Construye tu marca y genera oportunidades",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad", "Networking"]
+    },
+    {
+      "title": "Certificado de formación de Desarrollo Personal",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-07",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    },
+    {
+      "title": "Desarrollo de carrera: Demanda del mercado",
+      "issuer": "Alura (Oracle ONE)",
+      "date": "2025-10",
+      "url": "",
+      "tags": ["dev"],
+      "skills": ["Productividad"]
+    }
+  ]
+}

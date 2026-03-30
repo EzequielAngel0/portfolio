@@ -1,0 +1,105 @@
+---
+// Hero section - V4 Colorful Bento
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-16 px-4">
+  <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    
+    <!-- Text Content -->
+    <div class="lg:col-span-7 flex flex-col items-start text-left">
+      
+      <!-- Status Badge -->
+      <div class="mb-8 animate-fade-up">
+        <div class="inline-flex items-center gap-3 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-4 py-1.5 text-xs font-mono font-bold text-brand-cyan shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-80"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-cyan shadow-[0_0_8px_#06b6d4]"></span>
+          </span>
+          DISPONIBLE PARA COLABORAR
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-[4.5rem] font-black tracking-tight text-white mb-6 animate-fade-up-delay-1 leading-[1.05]">
+        Desarrollador <br class="hidden sm:block" /> Full Stack <br />
+        <span class="text-shimmer drop-shadow-lg">& Multiplataforma</span>
+      </h1>
+
+      <!-- Positioning Subtitle -->
+      <p class="max-w-2xl text-lg sm:text-xl text-zinc-400 mb-10 animate-fade-up-delay-2 leading-relaxed font-medium">
+        Arquitecto Backend <span class="text-brand-purple mx-1 font-bold">•</span> Entusiasta de la Ciberseguridad <br/>
+        <span class="text-zinc-200">Construyendo ecosistemas tecnológicos integrales, seguros y altamente escalables.</span>
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center gap-5 animate-fade-up-delay-3 w-full sm:w-auto">
+        <a
+          href="#projects"
+          class="relative inline-flex h-12 w-full sm:w-auto min-w-[180px] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan px-8 font-bold text-white shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-transform hover:scale-105"
+        >
+          Explorar Portafolio
+        </a>
+
+        <a
+          href="/portfolio/BarbosaLomeliAngelEzequiel-CV.pdf"
+          class="btn-glass flex h-12 w-full sm:w-auto min-w-[160px] items-center justify-center gap-2 px-8 shadow-lg"
+          download
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Descargar CV
+        </a>
+      </div>
+      
+    </div>
+
+    <!-- Animated Floating 3D Stack / UI Elements -->
+    <div class="lg:col-span-5 w-full h-[500px] flex items-center justify-center relative mt-10 lg:mt-0 perspective-1000">
+      
+      <!-- Intense center glow -->
+      <div class="absolute inset-x-0 bottom-1/4 h-64 bg-gradient-to-tr from-brand-purple to-brand-cyan rounded-full blur-[100px] opacity-40 animate-pulse-glow pointer-events-none"></div>
+      
+      <!-- Card 1 (Top / Float) -->
+      <div class="absolute top-[10%] left-[10%] w-64 bento-card p-5 border border-brand-cyan/30 shadow-[0_20px_40px_rgba(6,182,212,0.2)] animate-float rotate-[-5deg] z-20 backdrop-blur-3xl bg-surface-100/60">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="p-1.5 bg-brand-cyan/20 rounded-lg text-brand-cyan"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></span>
+            <span class="text-xs font-mono font-bold text-white">System.Architecture</span>
+          </div>
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+        </div>
+        <div class="space-y-2">
+          <div class="h-2 bg-zinc-700/50 rounded w-full"></div>
+          <div class="h-2 bg-brand-cyan/40 rounded w-3/4"></div>
+          <div class="h-2 bg-zinc-700/50 rounded w-5/6"></div>
+        </div>
+      </div>
+
+      <!-- Card 2 (Middle Right / Float Reverse) -->
+      <div class="absolute top-[35%] right-[0%] w-56 bento-card p-5 border border-brand-purple/30 shadow-[0_20px_40px_rgba(139,92,246,0.2)] animate-float-reverse rotate-[5deg] z-30 backdrop-blur-3xl bg-surface-100/60" style="animation-delay: 1s;">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-purple to-brand-rose flex items-center justify-center text-white shadow-inner">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" /></svg>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">Security Auth</p>
+            <p class="text-[10px] text-brand-purple uppercase tracking-widest">Enabling</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 (Bottom Left / Fast Pulse) -->
+      <div class="absolute bottom-[20%] left-[20%] w-72 bento-card p-6 border border-brand-emerald/30 shadow-[0_20px_40px_rgba(16,185,129,0.2)] animate-float rotate-[-2deg] z-10 backdrop-blur-3xl bg-surface-100/60" style="animation-delay: 2s;">
+        <p class="text-[10px] uppercase font-mono tracking-widest text-brand-emerald mb-3 font-bold">Data Pipeline</p>
+        <div class="flex flex-wrap gap-2 text-xs font-mono font-bold text-white">
+          <span class="bg-brand-blue/20 border border-brand-blue/30 text-blue-300 px-3 py-1.5 rounded-md">Spring_Boot</span>
+          <span class="bg-brand-emerald/20 border border-brand-emerald/30 text-emerald-300 px-3 py-1.5 rounded-md">Flutter_Native</span>
+          <span class="bg-brand-rose/20 border border-brand-rose/30 text-rose-300 px-3 py-1.5 rounded-md">Python_Scapy</span>
+          <span class="bg-brand-purple/20 border border-brand-purple/30 text-purple-300 px-3 py-1.5 rounded-md">PostgreSQL</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

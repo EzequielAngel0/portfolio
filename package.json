@@ -1,21 +1,16 @@
 {
-  "name": "portafolio",
-  "version": "1.0.0",
-  "description": "Este proyecto es un **portafolio web personal** diseñado y desarrollado para presentar mis proyectos, habilidades y currículum profesional.  \r Está construido con **HTML, CSS y JavaScript**, manteniendo un diseño moderno, limpio y completamente adaptable a distintos dispositivos.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "name": "portfolio",
+  "type": "module",
+  "version": "2.0.0",
   "scripts": {
-    "build:css": "tailwindcss -i ./styles/tailwind-input.css -o ./styles/tailwind.css --minify",
-    "watch:css": "tailwindcss -i ./styles/tailwind-input.css -o ./styles/tailwind.css --watch"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.22",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17"
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.0"
   }
 }

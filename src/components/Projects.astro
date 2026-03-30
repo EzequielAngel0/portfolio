@@ -1,0 +1,100 @@
+---
+// Projects section V4 - Colorful Bento
+const proyectos = [
+  {
+    title: 'ACP Suite',
+    subtitle: 'ECOSISTEMA MULTIPLATAFORMA',
+    description: 'Sistema integral offline-first para registro de pasajeros. Consolidó una app nativa, backend y sincronización en tiempo real.',
+    tags: ['Flutter', 'Spring', 'Supabase'],
+    repo: 'https://github.com/EzequielAngel0/ACP-Suite',
+    color: 'rgba(6, 182, 212, 0.3)', // cyan
+    iconClass: 'text-brand-cyan',
+    icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+  },
+  {
+    title: 'IDEn Desktop',
+    subtitle: 'ARQUITECTURA DE ESCRITORIO',
+    description: 'Software multicapa aplicando arquitectura limpia estricta y MVVM para análisis de métricas energéticas IoT.',
+    tags: ['C# .NET', 'WPF', 'SQL Server'],
+    repo: 'https://github.com/EzequielAngel0/IDEn-Desktop',
+    color: 'rgba(5b, 130, 246, 0.3)', // blue
+    iconClass: 'text-brand-blue',
+    icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M12 11v10'
+  },
+  {
+    title: 'Network Analyzer',
+    subtitle: 'CIBERSEGURIDAD PRÁCTICA',
+    description: 'Herramienta desarrollada para sniffing y monitorización de tráfico sospechoso. Scripts para seguridad perimetral.',
+    tags: ['Python', 'Scapy', 'Networking'],
+    repo: 'https://github.com/EzequielAngel0/PythonSecure-Net',
+    color: 'rgba(139, 92, 246, 0.3)', // purple
+    iconClass: 'text-brand-purple',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+  },
+];
+---
+
+<section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 relative z-10">
+  
+  <div class="mb-16">
+    <h2 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+      Portafolio <span class="text-brand-cyan">Técnico</span>
+    </h2>
+    <p class="text-zinc-400 mt-4 max-w-2xl text-lg font-medium">
+      Evidencia arquitectónica: desde aplicaciones de escritorio puras hasta ecosistemas móviles sincronizados.
+    </p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {proyectos.map((p) => (
+      <div 
+        class="bento-card bento-card-hover flex flex-col p-8 group relative overflow-hidden"
+        style={`--hover-color: ${p.color}`}
+      >
+        <!-- Background subtle glow -->
+        <div class={`absolute -bottom-20 -right-20 w-40 h-40 bg-current blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity ${p.iconClass} pointer-events-none`}></div>
+        
+        <!-- Header: Icon & Subtitle -->
+        <div class="flex flex-col mb-6 relative z-10">
+          <div class={`h-14 w-14 rounded-[1.25rem] bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center border border-white/10 mb-6 group-hover:scale-110 transition-transform ${p.iconClass} shadow-inner`}>
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={p.icon} />
+            </svg>
+          </div>
+          <span class="text-[10px] font-mono font-bold tracking-widest text-zinc-500 uppercase">{p.subtitle}</span>
+        </div>
+
+        <!-- Content -->
+        <div class="flex-grow relative z-10">
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+            {p.title}
+          </h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+            {p.description}
+          </p>
+        </div>
+
+        <!-- Meta Footer -->
+        <div class="pt-6 border-t border-white/5 mt-auto flex flex-col gap-6 relative z-10">
+          <div class="flex flex-wrap gap-2">
+            {p.tags.map(t => (
+              <span class="tag-v4 text-zinc-300">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={p.repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-cyan transition-colors mt-2"
+          >
+            Ver código fuente
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0a0a0c;
+    color: #a1a1aa; /* zinc-400 */
+  }
+  body {
+    background-color: #0a0a0c;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: rgba(6, 182, 212, 0.4);
+    color: #fff;
+  }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0a0c; }
+  ::-webkit-scrollbar-thumb { 
+    background: #27272a; 
+    border-radius: 5px; 
+    border: 2px solid #0a0a0c;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+}
+
+@layer components {
+  /* Colorful Bento Card */
+  .bento-card {
+    background: rgba(21, 21, 24, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+                0 4px 20px -5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+                0 20px 40px -10px rgba(0, 0, 0, 0.6),
+                0 0 40px -10px var(--hover-color, rgba(6, 182, 212, 0.2));
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Text Shimmer for Titles */
+  .text-shimmer {
+    background: linear-gradient(
+      to right,
+      #fff 20%,
+      var(--shimmer-color, #06b6d4) 40%,
+      #fff 60%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Floating UI Button */
+  .btn-glass {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    color: #e4e4e7;
+    font-weight: 500;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .btn-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px -5px var(--glow-color, rgba(255,255,255,0.2));
+  }
+  .btn-glass:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Tag Pill */
+  .tag-v4 {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+}
