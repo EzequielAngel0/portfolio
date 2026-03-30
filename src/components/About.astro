@@ -1,5 +1,7 @@
 ---
 // About section V4 - Colorful Bento
+import certData from '../data/certificados.json';
+const certCount = certData.certificados.length;
 ---
 
 <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
@@ -38,7 +40,7 @@
     <div class="bento-card bento-card-hover p-6 flex flex-col items-center justify-center text-center relative" style="--hover-color: rgba(16, 185, 129, 0.2)">
       <div class="absolute inset-0 bg-brand-emerald/5 blur-[40px] pointer-events-none"></div>
       <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-brand-emerald to-emerald-800 mb-2 drop-shadow-lg">
-        +22
+        +{certCount}
       </span>
       <span class="text-sm font-bold text-zinc-300 uppercase tracking-widest">
         Certificaciones

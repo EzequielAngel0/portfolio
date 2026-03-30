@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import certData from '../data/certificados.json';
 
 const certificados = certData.certificados;
-const certCount = "50+";
+const certCount = certificados.length;
 const base = import.meta.env.BASE_URL;
 
 // Generate unique tags dynamically for the filter
