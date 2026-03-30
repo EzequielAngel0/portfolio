@@ -175,6 +175,18 @@
       "url": "",
       "tags": ["dev"],
       "skills": ["Productividad"]
+    },
+    {
+      "title": "Inmersión DEV AGENTES DE AI",
+      "issuer": "Alura Latam",
+      "date": "2026-03",
+      "url": "https://credsverse.com/credentials/c8653350-e7b0-4e5d-ade0-12e75a611889",
+      "tags": [
+        "AI"
+      ],
+      "skills": [
+        "Desarrollo de AI Agentic"
+      ]
     }
   ]
 }

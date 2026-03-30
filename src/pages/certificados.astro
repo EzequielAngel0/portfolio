@@ -5,8 +5,19 @@ import Footer from '../components/Footer.astro';
 import certData from '../data/certificados.json';
 
 const certificados = certData.certificados;
-const certCount = certificados.length;
+const certCount = "50+";
 const base = import.meta.env.BASE_URL;
+
+// Generate unique tags dynamically for the filter
+const rawTags = certificados.flatMap(c => c.tags || []);
+const uniqueTags = [...new Set(rawTags.map(t => t.toLowerCase()))].filter(Boolean);
+const filterOptions = [
+  { label: 'Todos', value: 'all' },
+  ...uniqueTags.map(tag => ({
+    label: tag.charAt(0).toUpperCase() + tag.slice(1),
+    value: tag
+  }))
+];
 ---
 
 <Layout
@@ -51,12 +62,7 @@ const base = import.meta.env.BASE_URL;
         
         <div class="flex flex-wrap gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 hide-scrollbar">
           {
-            [
-              { label: 'Todos', value: 'all' },
-              { label: 'Desarrollo', value: 'dev' },
-              { label: 'Cloud', value: 'cloud' },
-              { label: 'Diseño', value: 'design' },
-            ].map((filter) => (
+            filterOptions.map((filter) => (
               <button
                 class="chip active:scale-95 shrink-0 inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-white hover:bg-white/5 transition-all outline-none border border-transparent cursor-pointer relative"
                 data-filter={filter.value}
