@@ -1,0 +1,24 @@
+{
+  "tags": [
+    {
+      "id": "dev",
+      "name": "Desarrollo",
+      "color": "brand-cyan"
+    },
+    {
+      "id": "design",
+      "name": "Diseño",
+      "color": "brand-purple"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud & Redes",
+      "color": "brand-blue"
+    },
+    {
+      "id": "AI",
+      "name": "Inteligencia Artificial",
+      "color": "brand-rose"
+    }
+  ]
+}

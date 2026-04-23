@@ -2,7 +2,7 @@
   "certificados": [
     {
       "title": "Lógica de programación: Sumérgete con JavaScript",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -10,7 +10,7 @@
     },
     {
       "title": "Lógica de programación: Explorar funciones y listas",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -18,7 +18,7 @@
     },
     {
       "title": "Practicando lógica de programación: Challenge Amigo Secreto",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -26,7 +26,7 @@
     },
     {
       "title": "IA: Explorando el potencial de la IA generativa",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -34,7 +34,7 @@
     },
     {
       "title": "Creando prompts eficaces para la IA generativa",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -42,7 +42,7 @@
     },
     {
       "title": "Ambientes de desarrollo, estructura de archivos y tags",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -50,7 +50,7 @@
     },
     {
       "title": "HTML y CSS: Clases, posicionamiento y Flexbox",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["design"],
@@ -58,7 +58,7 @@
     },
     {
       "title": "HTML y CSS: Header, footer y variables CSS",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["design"],
@@ -66,7 +66,7 @@
     },
     {
       "title": "HTML y CSS: Trabajando responsividad y publicación de proyectos",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["design"],
@@ -74,7 +74,7 @@
     },
     {
       "title": "Lógica de programación con JavaScript",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -82,7 +82,7 @@
     },
     {
       "title": "Principiante en programación",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -90,7 +90,7 @@
     },
     {
       "title": "Git y GitHub: Repositorio, commit y versiones",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-08",
       "url": "",
       "tags": ["dev"],
@@ -98,7 +98,7 @@
     },
     {
       "title": "Conceptos Básicos de Redes",
-      "issuer": "Cisco Networking Academy",
+      "issuer": "cisco",
       "date": "2025-10",
       "url": "",
       "tags": ["cloud"],
@@ -106,7 +106,7 @@
     },
     {
       "title": "Certificado de completación de curso",
-      "issuer": "Cisco Networking Academy",
+      "issuer": "cisco",
       "date": "2025-10",
       "url": "",
       "tags": ["cloud"],
@@ -114,7 +114,7 @@
     },
     {
       "title": "Desarrollo personal",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -122,7 +122,7 @@
     },
     {
       "title": "Aprender a Aprender: Técnicas para el autodesarrollo",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -130,7 +130,7 @@
     },
     {
       "title": "Aprendizaje con IA: Personaliza tu rutina con ChatGPT",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -138,7 +138,7 @@
     },
     {
       "title": "Foco: Enfocarse trae más resultados día a día",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -146,7 +146,7 @@
     },
     {
       "title": "Hábitos: Ser productivo para cumplir tus metas personales",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -154,7 +154,7 @@
     },
     {
       "title": "LinkedIn para profesionales: Construye tu marca y genera oportunidades",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -162,7 +162,7 @@
     },
     {
       "title": "Certificado de formación de Desarrollo Personal",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-07",
       "url": "",
       "tags": ["dev"],
@@ -170,7 +170,7 @@
     },
     {
       "title": "Desarrollo de carrera: Demanda del mercado",
-      "issuer": "Alura (Oracle ONE)",
+      "issuer": "alura-oracle",
       "date": "2025-10",
       "url": "",
       "tags": ["dev"],
@@ -178,7 +178,7 @@
     },
     {
       "title": "Inmersión DEV AGENTES DE AI",
-      "issuer": "Alura Latam",
+      "issuer": "alura-latam",
       "date": "2026-03",
       "url": "https://credsverse.com/credentials/c8653350-e7b0-4e5d-ade0-12e75a611889",
       "tags": [

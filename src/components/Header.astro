@@ -4,11 +4,11 @@ const base = import.meta.env.BASE_URL;
 const { currentPage } = Astro.props;
 
 const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#about', label: 'Sobre Mí' },
-  { href: '#projects', label: 'Proyectos' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contacto' },
+  { href: currentPage === 'home' ? '#inicio' : `${base}/#inicio`.replace('//', '/'), label: 'Inicio' },
+  { href: currentPage === 'home' ? '#about' : `${base}/#about`.replace('//', '/'), label: 'Sobre Mí' },
+  { href: currentPage === 'home' ? '#projects' : `${base}/#projects`.replace('//', '/'), label: 'Proyectos' },
+  { href: currentPage === 'home' ? '#skills' : `${base}/#skills`.replace('//', '/'), label: 'Skills' },
+  { href: currentPage === 'home' ? '#contact' : `${base}/#contact`.replace('//', '/'), label: 'Contacto' },
 ];
 ---
 

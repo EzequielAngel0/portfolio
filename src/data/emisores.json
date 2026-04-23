@@ -1,0 +1,16 @@
+{
+  "emisores": [
+    {
+      "id": "alura-oracle",
+      "name": "Alura (Oracle ONE)"
+    },
+    {
+      "id": "cisco",
+      "name": "Cisco Networking Academy"
+    },
+    {
+      "id": "alura-latam",
+      "name": "Alura Latam"
+    }
+  ]
+}

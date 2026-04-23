@@ -13,6 +13,35 @@ collections:
   - name: "base_de_datos"
     label: "Base de Datos"
     files:
+      - label: "Etiquetas (Tags)"
+        name: "tags"
+        file: "src/data/tags.json"
+        description: "Panel para administrar etiquetas y categorías"
+        fields:
+          - name: tags
+            label: Lista de Etiquetas
+            widget: list
+            collapsed: true
+            summary: '{{fields.name}} ({{fields.id}})'
+            fields:
+              - { label: "ID (Identificador único, minúsculas, sin espacios)", name: "id", widget: "string" }
+              - { label: "Nombre a mostrar", name: "name", widget: "string" }
+              - { label: "Color (Clase CSS, ej: brand-cyan)", name: "color", widget: "string" }
+
+      - label: "Emisores"
+        name: "emisores"
+        file: "src/data/emisores.json"
+        description: "Panel para administrar instituciones emisoras"
+        fields:
+          - name: emisores
+            label: Lista de Emisores
+            widget: list
+            collapsed: true
+            summary: '{{fields.name}}'
+            fields:
+              - { label: "ID (Identificador único, minúsculas)", name: "id", widget: "string" }
+              - { label: "Nombre de Institución", name: "name", widget: "string" }
+
       - label: "Certificados"
         name: "certificados"
         file: "src/data/certificados.json"
@@ -25,10 +54,10 @@ collections:
             summary: '{{fields.title}} - {{fields.issuer}}'
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Institución o Emisor", name: "issuer", widget: "string" }
+              - { label: "Institución o Emisor", name: "issuer", widget: "relation", collection: "base_de_datos", file: "emisores", search_fields: ["emisores.*.name"], display_fields: ["emisores.*.name"], value_field: "emisores.*.id" }
               - { label: "Fecha", name: "date", widget: "string", hint: "Ejemplo: 2025-07 o 2026-01" }
               - { label: "URL de Verificación", name: "url", widget: "string", required: false, hint: "Deja vacío si aún no tienes el enlace." }
-              - { label: "Filtros (Tags)", name: "tags", widget: "list", hint: "Usa: dev, design o cloud" }
+              - { label: "Filtros (Tags)", name: "tags", widget: "relation", collection: "base_de_datos", file: "tags", search_fields: ["tags.*.name"], display_fields: ["tags.*.name"], value_field: "tags.*.id", multiple: true }
               - { label: "Habilidades (Skills)", name: "skills", widget: "list", hint: "Etiquetas breves, ej: Lógica, Java, CSS" }
 
       - label: "Proyectos"
