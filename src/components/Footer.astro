@@ -1,28 +1,29 @@
 ---
-// Footer V4 - Colorful Base
+// Footer — Vibrant Minimalist Technical
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-white/5 bg-background relative z-10 text-xs font-mono font-bold text-zinc-500 overflow-hidden">
-  <!-- Subtle top glow -->
-  <div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/20 to-transparent"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-    <!-- Center text -->
-    <p class="text-zinc-500 max-w-sm text-center tracking-widest uppercase relative z-10">
-      Arquitectura <span class="text-brand-purple mx-1">/</span> Backend <span class="text-brand-cyan mx-1">/</span> Seguridad
+<footer class="relative z-10">
+  <div class="divider-gradient mx-auto max-w-5xl mb-0"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+    
+    <p class="text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
+      Arquitectura <span class="text-brand-purple/40 mx-1">·</span> 
+      Backend <span class="text-brand-cyan/40 mx-1">·</span> 
+      Seguridad
     </p>
 
-    <!-- Astro credits -->
-    <div class="flex items-center gap-2 relative z-10">
+    <div class="flex items-center gap-2 text-[10px] font-mono text-zinc-600">
+      <span>© {currentYear}</span>
+      <span class="text-zinc-700">·</span>
       <span>Powered by</span>
       <a 
         href="https://astro.build" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="text-brand-emerald hover:text-emerald-400 transition-colors bg-brand-emerald/10 px-2 py-0.5 rounded-md border border-brand-emerald/20"
+        class="text-brand-purple/60 hover:text-brand-purple transition-colors cursor-pointer"
       >
-        Astro Engine
+        Astro
       </a>
     </div>
 

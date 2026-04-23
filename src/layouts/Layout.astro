@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -9,48 +11,164 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth" style="background-color:#07070d;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Angel Ezequiel Barbosa Lomelí" />
+    <meta name="author" content="Angel Ezequiel Barbosa Lomeli" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
-    <!-- Preload fonts to avoid flash -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <title>{title}</title>
+    <style>
+      /* ── Orb pulse ── */
+      @keyframes orbPulse {
+        0%, 100% { opacity: 0.75; transform: scale(1); }
+        50%       { opacity: 1;   transform: scale(1.1); }
+      }
+      .orb   { animation: orbPulse 8s ease-in-out infinite; }
+      .orb-2 { animation-delay: -3s; }
+      .orb-3 { animation-delay: -5s; }
+      .orb-4 { animation-delay: -7s; }
+
+      /* ── Hero card float ── */
+      @keyframes floatCard {
+        0%, 100% { transform: translateY(0px); }
+        50%       { transform: translateY(-12px); }
+      }
+      .fc1 { animation: floatCard 6s ease-in-out infinite; }
+      .fc2 { animation: floatCard 8s ease-in-out infinite 2s; }
+      .fc3 { animation: floatCard 7s ease-in-out infinite 4s; }
+
+      /* ── Background grid ── */
+      .bg-grid {
+        background-image:
+          linear-gradient(rgba(124,58,237,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6,182,212,0.07) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+    </style>
   </head>
-  <body class="bg-background text-zinc-400 font-sans antialiased selection:bg-brand-cyan/40 selection:text-white relative">
-    
-    <!-- Ultra Vibrant Animated Background -->
-    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden flex items-center justify-center">
-      <!-- Deep base layer -->
-      <div class="absolute inset-0 bg-background opacity-90"></div>
-      
-      <!-- Cyan Blob -->
-      <div class="absolute top-[0%] left-[0%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-brand-cyan/20 rounded-full blur-[120px] mix-blend-screen animate-blob"></div>
-      
-      <!-- Purple Blob -->
-      <div class="absolute top-[20%] right-[0%] w-[45vw] h-[45vw] max-w-[700px] max-h-[700px] bg-brand-purple/20 rounded-full blur-[140px] mix-blend-screen animate-blob" style="animation-delay: 3s;"></div>
-      
-      <!-- Emerald Blob -->
-      <div class="absolute bottom-[0%] left-[20%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] bg-brand-emerald/15 rounded-full blur-[150px] mix-blend-screen animate-blob" style="animation-delay: 6s;"></div>
+  <body style="background:transparent;color:#a1a1aa;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;">
 
-      <!-- Rose Blob -->
-      <div class="absolute bottom-[20%] right-[20%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-brand-rose/15 rounded-full blur-[130px] mix-blend-screen animate-blob" style="animation-delay: 9s;"></div>
+    <!-- ═══ Animated Background ═══ -->
+    <div style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;">
 
-      <!-- Noise Texture -->
-      <div class="absolute inset-0 opacity-[0.04] mix-blend-overlay bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMSIgZmlsbD0id2hpdGUiLz4KPC9zdmc+')] background-repeat"></div>
+      <!-- Grid -->
+      <div class="bg-grid" style="position:absolute;inset:0;"></div>
+
+      <!-- Purple orb -->
+      <div class="orb" style="position:absolute;top:-10%;left:-8%;width:75vw;height:75vw;max-width:1000px;max-height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,0.45) 0%,transparent 55%);"></div>
+      <!-- Cyan orb -->
+      <div class="orb orb-2" style="position:absolute;top:15%;right:-10%;width:65vw;height:65vw;max-width:850px;max-height:850px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,0.30) 0%,transparent 55%);"></div>
+      <!-- Emerald orb -->
+      <div class="orb orb-3" style="position:absolute;bottom:-10%;left:0%;width:60vw;height:60vw;max-width:750px;max-height:750px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.22) 0%,transparent 55%);"></div>
+      <!-- Rose orb -->
+      <div class="orb orb-4" style="position:absolute;top:45%;right:15%;width:50vw;height:50vw;max-width:600px;max-height:600px;border-radius:50%;background:radial-gradient(circle,rgba(244,63,94,0.16) 0%,transparent 55%);"></div>
+
+      <!-- Particles canvas -->
+      <canvas id="bg-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;"></canvas>
     </div>
 
     <slot />
 
-    <!-- Navigation Script -->
+    <script is:inline>
+      // ── Particles (is:inline runs synchronously, DOM is ready) ──
+      (function initParticles() {
+        var canvas = document.getElementById('bg-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        function resize() {
+          canvas.width  = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        var COLORS = [
+          [124, 58, 237],
+          [6, 182, 212],
+          [16, 185, 129],
+          [244, 63, 94],
+          [245, 158, 11],
+        ];
+
+        var count = Math.min(100, Math.floor(canvas.width * canvas.height / 9000));
+        var pts = [];
+        for (var i = 0; i < count; i++) {
+          var c = COLORS[Math.floor(Math.random() * COLORS.length)];
+          pts.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 2 + 1.2,
+            cr: c[0], cg: c[1], cb: c[2],
+            a: Math.random() * 0.55 + 0.3,
+          });
+        }
+
+        var DIST = 130;
+
+        function draw() {
+          var W = canvas.width, H = canvas.height;
+          ctx.clearRect(0, 0, W, H);
+
+          for (var i = 0; i < pts.length; i++) {
+            for (var j = i + 1; j < pts.length; j++) {
+              var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+              var d = Math.sqrt(dx*dx + dy*dy);
+              if (d < DIST) {
+                ctx.beginPath();
+                ctx.moveTo(pts[i].x, pts[i].y);
+                ctx.lineTo(pts[j].x, pts[j].y);
+                ctx.strokeStyle = 'rgba('+pts[i].cr+','+pts[i].cg+','+pts[i].cb+','+(0.14*(1-d/DIST))+')';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            }
+          }
+
+          for (var k = 0; k < pts.length; k++) {
+            var p = pts[k];
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = W; else if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba('+p.cr+','+p.cg+','+p.cb+','+p.a+')';
+            ctx.fill();
+          }
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+    </script>
+
     <script>
+      // ── Scroll reveal (ES module, runs after DOM parse) ──
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.style.transitionDelay = (el.dataset.delay ?? '0') + 's';
+            el.classList.add('visible');
+            revealObs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => revealObs.observe(el));
+
+      // ── Mobile menu ──
       const mobileBtn = document.getElementById('mobileMenuButton');
       const mobileMenu = document.getElementById('mobileMenu');
-
       if (mobileBtn && mobileMenu) {
         mobileBtn.addEventListener('click', () => {
           const isOpen = !mobileMenu.classList.contains('hidden');
@@ -58,7 +176,6 @@ const base = import.meta.env.BASE_URL;
           mobileMenu.classList.toggle('flex', !isOpen);
           mobileBtn.setAttribute('aria-expanded', String(!isOpen));
         });
-
         mobileMenu.querySelectorAll('a').forEach((link) => {
           link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');

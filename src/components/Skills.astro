@@ -1,97 +1,105 @@
 ---
-// Skills section - V4 Bento Grid Colorful
+// Skills — Compact with color
 const categories = [
   {
     title: 'Backend & Lógica',
-    desc: 'Java, Spring Boot, Node.js, C#',
+    desc: 'Java · Spring Boot · Node.js · C#',
     icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01',
-    color: 'rgba(5b, 130, 246, 0.2)', // brand-blue
-    bgClass: 'bg-brand-blue/10 text-brand-blue',
+    color: 'text-brand-blue',
+    bg: 'bg-brand-blue/10',
+    ring: 'ring-brand-blue/20',
+    glow: 'rgba(59, 130, 246, 0.3)',
     skills: ['Java', 'Spring MVC', 'Spring Security', 'TypeScript', 'POO', 'APIs'],
-    colSpan: 'md:col-span-2'
+    span: 'md:col-span-2',
   },
   {
     title: 'Ciberseguridad & Red',
-    desc: 'Paket Sniffing, Python, Nmap',
+    desc: 'Packet Sniffing · Python · Nmap',
     icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-    color: 'rgba(139, 92, 246, 0.2)', // brand-purple
-    bgClass: 'bg-brand-purple/10 text-brand-purple',
+    color: 'text-brand-purple',
+    bg: 'bg-brand-purple/10',
+    ring: 'ring-brand-purple/20',
+    glow: 'rgba(139, 92, 246, 0.3)',
     skills: ['Scapy', 'Nmap', 'Kali Linux', 'TCP/IP', 'IIS'],
-    colSpan: 'md:col-span-1'
+    span: '',
   },
   {
     title: 'Bases de Datos',
-    desc: 'PostgreSQL, Supabase, JPA',
+    desc: 'PostgreSQL · Supabase · JPA',
     icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4',
-    color: 'rgba(245, 158, 11, 0.2)', // brand-amber
-    bgClass: 'bg-brand-amber/10 text-brand-amber',
+    color: 'text-brand-amber',
+    bg: 'bg-brand-amber/10',
+    ring: 'ring-brand-amber/20',
+    glow: 'rgba(245, 158, 11, 0.3)',
     skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Supabase', 'Prisma', 'EF Core'],
-    colSpan: 'md:col-span-1'
+    span: '',
   },
   {
     title: 'Multiplataforma',
     desc: 'Apps nativas offline-first',
     icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
-    color: 'rgba(6, 182, 212, 0.2)', // brand-cyan
-    bgClass: 'bg-brand-cyan/10 text-brand-cyan',
+    color: 'text-brand-cyan',
+    bg: 'bg-brand-cyan/10',
+    ring: 'ring-brand-cyan/20',
+    glow: 'rgba(6, 182, 212, 0.3)',
     skills: ['Flutter', 'React Native', 'Android SDK', 'Kotlin'],
-    colSpan: 'md:col-span-1'
+    span: '',
   },
   {
     title: 'Cloud & Web',
-    desc: 'Angular, OCI, GenAI Agentic',
-    icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
-    color: 'rgba(244, 63, 94, 0.2)', // brand-rose
-    bgClass: 'bg-brand-rose/10 text-brand-rose',
-    skills: ['Oracle Cloud', 'Docker', 'RAG / Prompt Eng.', 'Angular', 'Next.js'],
-    colSpan: 'md:col-span-1'
+    desc: 'Angular · OCI · GenAI Agentic',
+    icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z',
+    color: 'text-brand-rose',
+    bg: 'bg-brand-rose/10',
+    ring: 'ring-brand-rose/20',
+    glow: 'rgba(244, 63, 94, 0.3)',
+    skills: ['Oracle Cloud', 'Docker', 'RAG', 'Angular', 'Next.js'],
+    span: '',
   },
 ];
 ---
 
-<section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 relative z-10">
+<section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10">
   
-  <div class="mb-16">
-    <h2 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
-      Ecosistema <span class="text-brand-purple">Tecnológico</span>
+  <div class="reveal mb-10">
+    <span class="section-label">Habilidades</span>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+      Ecosistema <span class="text-gradient">Tecnológico</span>
     </h2>
-    <p class="text-zinc-400 mt-4 max-w-2xl text-lg font-medium">
+    <p class="text-zinc-400 max-w-2xl text-base sm:text-lg leading-relaxed">
       Soluciones reales creadas con el stack correcto.
     </p>
   </div>
 
-  <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
-    {categories.map((cat) => (
+  <div class="grid gap-3 grid-cols-1 md:grid-cols-3">
+    {categories.map((cat, i) => (
       <div 
-        class={`bento-card bento-card-hover p-6 sm:p-8 flex flex-col justify-between group ${cat.colSpan} border-white/5 relative`}
-        style={`--hover-color: ${cat.color}`}
+        class={`reveal card p-5 flex flex-col justify-between group cursor-default ${cat.span}`}
+        data-delay={`${i * 0.08}`}
+        style={`--card-glow: ${cat.glow}`}
       >
-        <!-- Background inner glow -->
-        <div class={`absolute inset-0 ${cat.bgClass.split(' ')[0]} blur-[80px] opacity-0 group-hover:opacity-[0.15] transition-opacity duration-500 rounded-[24px] pointer-events-none`}></div>
-        
-        <div class="flex items-start gap-4 mb-8 relative z-10">
-          <div class={`p-3 rounded-2xl ${cat.bgClass} shadow-inner`}>
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={cat.icon} />
+        <div class="flex items-start gap-2.5 mb-5 relative z-10">
+          <div class={`p-2 rounded-lg bg-gradient-to-br ${cat.bg} flex items-center justify-center ${cat.color} ring-1 ${cat.ring} group-hover:scale-110 transition-transform`}>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={cat.icon} />
             </svg>
           </div>
-          <div class="pt-1">
-            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">{cat.title}</h3>
-            <p class="text-[11px] font-mono tracking-wider uppercase text-zinc-500 mt-1">{cat.desc}</p>
+          <div class="pt-0.5">
+            <h3 class="text-base font-bold text-white tracking-tight">{cat.title}</h3>
+            <p class={`text-[11px] font-mono tracking-wide ${cat.color} opacity-60 mt-0.5`}>{cat.desc}</p>
           </div>
         </div>
 
         <div class="mt-auto relative z-10">
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-1.5">
             {cat.skills.map((skill) => (
-              <span class="tag-v4 hover:text-white transition-colors">
-                {skill}
-              </span>
+              <span class={`tag hover:${cat.color} hover:border-current/20 transition-all`}>{skill}</span>
             ))}
           </div>
         </div>
-
       </div>
     ))}
   </div>
 </section>
+
+<div class="divider-gradient mx-auto max-w-5xl"></div>

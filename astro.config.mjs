@@ -5,5 +5,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://EzequielAngel0.github.io',
   base: '/portfolio',
-  integrations: [tailwind()],
+  integrations: [
+    tailwind({ applyBaseStyles: false }),
+  ],
 });

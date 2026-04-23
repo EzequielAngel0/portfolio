@@ -1,61 +1,90 @@
 ---
-// About section V4 - Colorful Bento
+// About section — Rich with color
 import certData from '../data/certificados.json';
 const certCount = certData.certificados.length;
 ---
 
-<section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-  <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-    <div class="max-w-3xl">
-      <h2 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
-        Sobre la <span class="text-brand-purple">Visión</span>
-      </h2>
-      <p class="text-zinc-400 text-lg sm:text-xl font-medium leading-relaxed">
-        Construir software es como armar un rompecabezas donde cada pieza debe encajar perfectamente: desde la capa de datos hasta la interfaz del usuario. Mi enfoque es transformar problemas complejos en <strong class="text-white">soluciones eficientes y seguras.</strong>
-      </p>
-    </div>
+<section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+  
+  <div class="reveal mb-10">
+    <span class="section-label">Sobre Mí</span>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+      Construir soluciones que <span class="text-gradient">escalan</span>.
+    </h2>
+    <p class="text-zinc-400 max-w-2xl text-base sm:text-lg leading-relaxed">
+      Transformo problemas complejos en <strong class="text-zinc-200 font-semibold">arquitecturas eficientes y seguras</strong>.
+    </p>
   </div>
 
-  <!-- Bento Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+  <!-- Bento grid — 3 cols -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
     
-    <!-- Big Architect Card -->
-    <div class="bento-card bento-card-hover md:col-span-2 md:row-span-2 p-8 sm:p-10 flex flex-col justify-end relative shadow-2xl" style="--hover-color: rgba(99, 102, 241, 0.3)">
-      <!-- Background pattern/color block -->
-      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-brand-purple/20 via-brand-blue/10 to-transparent blur-[80px] pointer-events-none"></div>
+    <!-- Main card — spans 2 cols + 2 rows -->
+    <div class="reveal card md:col-span-2 md:row-span-2 p-6 sm:p-8 flex flex-col justify-between group cursor-default" style="--card-glow: rgba(139, 92, 246, 0.3); min-height: 260px;">
+      <div class="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-brand-purple/[0.07] to-transparent rounded-bl-full pointer-events-none"></div>
       
-      <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-purple shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center justify-center text-white mb-auto relative z-10">
-         <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+      <div class="flex items-center gap-2.5 relative z-10">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-brand-purple/20 to-brand-blue/10 flex items-center justify-center text-brand-purple ring-1 ring-brand-purple/20">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        </div>
+        <span class="text-[11px] font-mono text-brand-purple/70 uppercase tracking-widest">Arquitectura de Ecosistemas</span>
       </div>
 
-      <div class="relative z-10 mt-8">
-        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Orquestación de Ecosistemas</h3>
-        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl">
-          No creo en escribir código aislado. He diseñado arquitecturas completas: desde un backend robusto en Java y Spring Boot, pasando por apps móviles offline-first en Flutter, hasta utilidades perimetrales en Python.
+      <div class="mt-auto relative z-10">
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Orquestación Full Stack</h3>
+        <p class="text-zinc-400 text-base leading-relaxed max-w-lg">
+          Backend robusto en <span class="text-brand-blue font-medium">Java y Spring Boot</span>, apps offline-first en <span class="text-brand-cyan font-medium">Flutter</span>, seguridad perimetral con <span class="text-brand-amber font-medium">Python y Scapy</span>.
         </p>
+        <!-- Mini tech badges -->
+        <div class="flex flex-wrap gap-2 mt-5">
+          {['Java', 'Spring', 'Flutter', 'C# .NET', 'Python', 'PostgreSQL'].map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
       </div>
     </div>
 
-    <!-- Small Stats Card 1 -->
-    <div class="bento-card bento-card-hover p-6 flex flex-col items-center justify-center text-center relative" style="--hover-color: rgba(16, 185, 129, 0.2)">
-      <div class="absolute inset-0 bg-brand-emerald/5 blur-[40px] pointer-events-none"></div>
-      <span class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-brand-emerald to-emerald-800 mb-2 drop-shadow-lg">
+    <!-- Stats: Certifications -->
+    <div class="reveal card p-6 flex flex-col items-center justify-center text-center group cursor-default" data-delay="0.1" style="--card-glow: rgba(16, 185, 129, 0.3);">
+      <span class="text-5xl font-black bg-gradient-to-b from-brand-emerald to-emerald-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
         +{certCount}
       </span>
-      <span class="text-sm font-bold text-zinc-300 uppercase tracking-widest">
-        Certificaciones
-      </span>
+      <span class="text-sm font-semibold text-zinc-300 mb-1">Certificaciones</span>
+      <span class="text-xs font-mono text-zinc-600">Oracle · ONE</span>
+      <div class="mt-3 w-12 h-0.5 bg-gradient-to-r from-brand-emerald/60 to-transparent rounded-full"></div>
     </div>
 
-    <!-- Small Stats Card 2 -->
-    <div class="bento-card bento-card-hover p-6 flex flex-col items-center justify-center text-center relative" style="--hover-color: rgba(6, 182, 212, 0.2)">
-      <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-cyan/20 blur-[40px] pointer-events-none"></div>
-      <div class="mb-4 text-brand-cyan">
-        <svg class="w-12 h-12 inline-block filter drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+    <!-- Experience years -->
+    <div class="reveal card p-6 flex flex-col items-center justify-center text-center group cursor-default" data-delay="0.15" style="--card-glow: rgba(59, 130, 246, 0.3);">
+      <span class="text-5xl font-black bg-gradient-to-b from-brand-blue to-blue-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
+        3+
+      </span>
+      <span class="text-sm font-semibold text-zinc-300 mb-1">Años activo</span>
+      <span class="text-xs font-mono text-zinc-600">Proyectos reales</span>
+      <div class="mt-3 w-12 h-0.5 bg-gradient-to-r from-brand-blue/60 to-transparent rounded-full"></div>
+    </div>
+
+    <!-- Ciberseguridad highlight -->
+    <div class="reveal card md:col-span-2 p-6 flex items-center gap-5 group cursor-default" data-delay="0.2" style="--card-glow: rgba(6, 182, 212, 0.3);">
+      <div class="shrink-0 text-brand-cyan animate-float-slow">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
-      <span class="text-lg font-bold text-white mb-1">Ciberseguridad Práctica</span>
-      <span class="text-xs font-mono text-zinc-400">Scapy / Sniffing / Python</span>
+      <div>
+        <h4 class="text-base font-bold text-white mb-1">Ciberseguridad Práctica</h4>
+        <p class="text-zinc-500 text-sm leading-relaxed">Sniffing con Scapy · Análisis de tráfico · Kali Linux · Nmap · Seguridad perimetral en redes LAN/WAN</p>
+      </div>
+    </div>
+
+    <!-- Multiplataforma -->
+    <div class="reveal card p-6 flex flex-col justify-center group cursor-default" data-delay="0.25" style="--card-glow: rgba(244, 63, 94, 0.3);">
+      <div class="w-10 h-10 rounded-xl bg-brand-rose/10 ring-1 ring-brand-rose/20 flex items-center justify-center text-brand-rose mb-4">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+      </div>
+      <h4 class="text-base font-bold text-white mb-1">Multiplataforma</h4>
+      <p class="text-zinc-500 text-sm">Flutter · Android · iOS · Desktop</p>
     </div>
 
   </div>
 </section>
+
+<div class="divider-gradient mx-auto max-w-5xl"></div>

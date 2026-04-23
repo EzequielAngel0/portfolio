@@ -1,100 +1,153 @@
 ---
-interface Props {
-  currentPage?: 'home' | 'certificados';
-}
-
-const { currentPage = 'home' } = Astro.props;
-// Force absolute paths based on root base URL for correct navigation
+// Header — Sleek floating pill nav
 const base = import.meta.env.BASE_URL;
+const { currentPage } = Astro.props;
 
 const navLinks = [
-  { label: 'Inicio', href: currentPage === 'home' ? '#inicio' : `${base}` },
-  { label: 'Sobre mí', href: currentPage === 'home' ? '#about' : `${base}#about` },
-  { label: 'Proyectos', href: currentPage === 'home' ? '#projects' : `${base}#projects` },
-  { label: 'Habilidades', href: currentPage === 'home' ? '#skills' : `${base}#skills` },
-  { label: 'Certificados', href: `${base}/certificados`.replace('//', '/') }, // Fixed missing slash
-  { label: 'Contacto', href: currentPage === 'home' ? '#contact' : `${base}#contact` },
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#about', label: 'Sobre Mí' },
+  { href: '#projects', label: 'Proyectos' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contacto' },
 ];
 ---
 
-<header
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-300 backdrop-blur-3xl bg-surface-50/50 border-b border-white/5"
-  id="main-header"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="flex h-16 items-center justify-between">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav
+      id="navbar"
+      class="flex items-center justify-between h-14 mt-4 px-5 rounded-2xl border border-white/[0.07] bg-[#0a0a0f]/80 shadow-[0_4px_30px_rgba(0,0,0,0.4)] transition-all duration-500"
+      style="backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);"
+      aria-label="Navegación principal"
+    >
+      
       <!-- Logo -->
-      <a href={base} class="flex items-center gap-3 group outline-none">
-        <span class="font-bold text-sm text-zinc-200 tracking-tight group-hover:text-white transition-colors hidden sm:block">
-          Angel <span class="text-brand-cyan">Ezequiel</span>
+      <a href={currentPage === 'home' ? '#inicio' : `${base}/`.replace('//', '/')} class="flex items-center gap-2.5 group shrink-0">
+        <div class="h-7 w-7 rounded-lg bg-gradient-to-br from-[#7c3aed] to-[#06b6d4] flex items-center justify-center shadow-[0_0_12px_rgba(124,58,237,0.4)] transition-all group-hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] group-hover:scale-105">
+          <span class="text-[10px] font-black text-white leading-none tracking-tight">AB</span>
+        </div>
+        <span class="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors tracking-tight hidden sm:block">
+          Angel <span class="text-[#7c3aed]">Barbosa</span>
         </span>
       </a>
 
-      <!-- Links desktop -->
-      <ul class="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5">
-        {
-          navLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="hover:bg-white/10 hover:text-white text-zinc-300 transition-colors px-4 py-1.5 rounded-full text-sm font-medium outline-none"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <div class="hidden md:flex items-center">
-        <!-- Fixed CV Download Link - Uses Root Context -->
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-0.5">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-3.5 py-1.5 text-[13px] font-medium text-zinc-500 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.06] relative group/link"
+          >
+            {link.label}
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] transition-all duration-300 group-hover/link:w-4/5 rounded-full"></span>
+          </a>
+        ))}
         <a
-          href="/portfolio/Angel_Ezequiel_Barbosa_Resume.pdf"
-          class="btn-glass flex items-center gap-2 px-5 py-2 text-sm font-semibold shadow-[0_0_15px_rgba(6,182,212,0.15)] group"
-          download
+          href={`${base}/certificados`.replace('//', '/')}
+          class="px-3.5 py-1.5 text-[13px] font-semibold text-[#06b6d4] hover:text-white transition-all duration-200 rounded-lg hover:bg-[#06b6d4]/[0.08] flex items-center gap-1.5"
         >
-          <svg class="w-4 h-4 text-brand-cyan group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-          <span class="relative z-10">Currículum</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          Certificados
         </a>
       </div>
 
-      <!-- Botón menú móvil -->
-      <button
-        id="mobileMenuButton"
-        class="md:hidden flex items-center justify-center h-10 w-10 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
-        aria-label="Abrir menú"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+      <!-- CV Button + Mobile Toggle -->
+      <div class="flex items-center gap-2.5">
+        <a 
+          href={`${base}/Angel_Ezequiel_Barbosa_Resume.pdf`.replace('//', '/')}
+          download
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-[13px] font-semibold text-white bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          Descargar CV
+        </a>
+
+        <button
+          id="mobileMenuButton"
+          class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/[0.06] transition-all cursor-pointer"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <svg id="menuIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg id="menuIconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
     </nav>
   </div>
 
-  <!-- Menú móvil -->
-  <div
-    id="mobileMenu"
-    class="md:hidden absolute top-full left-0 right-0 bg-surface-50/95 backdrop-blur-2xl border-b border-white/5 px-4 pb-6 pt-2 space-y-2 hidden transform origin-top transition-all"
-  >
-    {
-      navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
-        >
-          {link.label}
-        </a>
-      ))
-    }
-    <div class="pt-4 mt-2 border-t border-white/5">
-      <a
-        href="/portfolio/Angel_Ezequiel_Barbosa_Resume.pdf"
-        class="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-cyan/20"
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden flex-col md:hidden mx-4 mt-2 p-3 rounded-2xl border border-white/[0.08] bg-[#0a0a0f]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+    {navLinks.map((link) => (
+      <a href={link.href} class="py-3 px-4 text-sm text-zinc-400 hover:text-white hover:bg-white/[0.04] rounded-lg transition-colors">
+        {link.label}
+      </a>
+    ))}
+    <a href={`${base}/certificados`.replace('//', '/')} class="py-3 px-4 text-sm text-[#06b6d4] hover:text-white hover:bg-[#06b6d4]/[0.06] rounded-lg transition-colors flex items-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+      Certificados
+    </a>
+    <div class="mt-2 pt-2 border-t border-white/[0.06]">
+      <a 
+        href={`${base}/Angel_Ezequiel_Barbosa_Resume.pdf`.replace('//', '/')}
         download
+        class="flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-semibold text-white bg-gradient-to-r from-[#7c3aed] to-[#06b6d4] rounded-lg hover:opacity-90 transition-all cursor-pointer"
       >
-        <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
         Descargar CV
       </a>
     </div>
   </div>
 </header>
+
+<script>
+  // ── Scroll-based navbar shrink (inline style, no Tailwind dynamic classes) ──
+  var navbar = document.getElementById('navbar');
+  var scrolled = false;
+
+  function applyScrolled(yes) {
+    if (!navbar) return;
+    if (yes && !scrolled) {
+      navbar.style.marginTop = '8px';
+      navbar.style.height = '48px';
+      scrolled = true;
+    } else if (!yes && scrolled) {
+      navbar.style.marginTop = '';
+      navbar.style.height = '';
+      scrolled = false;
+    }
+  }
+
+  function onScroll() {
+    applyScrolled(window.scrollY > 60);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // run once on load
+
+  // ── Mobile Menu Toggle ──
+  const btn = document.getElementById('mobileMenuButton');
+  const menu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    menu?.classList.toggle('flex', !isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

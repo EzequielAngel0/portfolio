@@ -1,0 +1,31 @@
+{
+  "proyectos": [
+    {
+      "title": "ACP Suite",
+      "subtitle": "ECOSISTEMA MULTIPLATAFORMA",
+      "description": "Sistema integral offline-first para registro de pasajeros. Consolidó una app nativa, backend y sincronización en tiempo real.",
+      "tags": ["Flutter", "Spring", "Supabase"],
+      "repo": "https://github.com/EzequielAngel0/ACP-Suite",
+      "color": "cyan",
+      "icon": "briefcase"
+    },
+    {
+      "title": "IDEn Desktop",
+      "subtitle": "ARQUITECTURA DE ESCRITORIO",
+      "description": "Software multicapa aplicando arquitectura limpia estricta y MVVM para análisis de métricas energéticas IoT.",
+      "tags": ["C# .NET", "WPF", "SQL Server"],
+      "repo": "https://github.com/EzequielAngel0/IDEn-Desktop",
+      "color": "blue",
+      "icon": "database"
+    },
+    {
+      "title": "Network Analyzer",
+      "subtitle": "CIBERSEGURIDAD PRÁCTICA",
+      "description": "Herramienta desarrollada para sniffing y monitorización de tráfico sospechoso. Scripts para seguridad perimetral.",
+      "tags": ["Python", "Scapy", "Networking"],
+      "repo": "https://github.com/EzequielAngel0/PythonSecure-Net",
+      "color": "purple",
+      "icon": "shield"
+    }
+  ]
+}
