@@ -33,3 +33,10 @@ yarn-error.log*
 
 .agents/
 CLAUDE.md
+skills-lock.json
+
+# Material fuente personal (no versionar; el contenido final vive en src/content/)
+perfil-mejorado/
+
+# Kit plantilla de arranque de proyectos (personal, reutilizable; no es de este repo)
+plantilla-proyecto/
