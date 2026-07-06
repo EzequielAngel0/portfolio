@@ -60,7 +60,7 @@ const tocItems = [
     <ul
       data-boot
       aria-label={t('caseStudy.keyNumbers')}
-      class="mt-9 flex flex-wrap gap-x-3 gap-y-2.5 rounded-md border border-line bg-surface px-5 py-4 font-mono text-sm"
+      class="mt-9 flex flex-wrap gap-x-3 gap-y-2.5 rounded-md bg-surface px-5 py-4 font-mono text-sm shadow-card"
     >
       {
         acp.data.keyNumbers.map((figure, index) => (
@@ -175,7 +175,8 @@ const tocItems = [
     font-size: var(--text-label);
     line-height: 1.4;
     font-weight: 500;
-    letter-spacing: 0.03em;
+    /* Igual que tracking-wide: mismo eyebrow que Section.astro y el resto */
+    letter-spacing: 0.025em;
     text-transform: uppercase;
     color: var(--color-ink-soft);
   }

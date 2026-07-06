@@ -7,11 +7,6 @@ export const defaultLocale = 'es';
 export const locales = ['es', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
-export const localeNames: Record<Locale, string> = {
-  es: 'Espanol',
-  en: 'English',
-};
-
 // og:locale y <html lang> por idioma
 export const ogLocale: Record<Locale, string> = {
   es: 'es_MX',
@@ -29,6 +24,7 @@ export const ui = {
     'a11y.themeToDark': 'Cambiar a tema oscuro',
     'a11y.themeToLight': 'Cambiar a tema claro',
     'a11y.switchLang': 'Switch to English',
+    'a11y.newTab': 'se abre en una pestaña nueva',
 
     // Hero
     'hero.status': 'en producción · v2026.07',
@@ -67,7 +63,6 @@ export const ui = {
     'contact.anchor': 'contacto',
     'contact.lead':
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
-    'contact.email': 'Enviar correo',
 
     // 404 (pagina unica bilingue: GitHub Pages sirve un solo 404.html, doc 04)
     'notFound.eyebrow': '404 · ruta no encontrada',
@@ -89,6 +84,7 @@ export const ui = {
     'a11y.themeToDark': 'Switch to dark theme',
     'a11y.themeToLight': 'Switch to light theme',
     'a11y.switchLang': 'Cambiar a espanol',
+    'a11y.newTab': 'opens in a new tab',
 
     // Hero
     'hero.status': 'in production · v2026.07',
@@ -126,8 +122,7 @@ export const ui = {
     'contact.title': 'Contact',
     'contact.anchor': 'contact',
     'contact.lead':
-      "If you're looking for someone who can own a problem end-to-end and leave it running in production, get in touch.",
-    'contact.email': 'Send email',
+      'If you’re looking for someone who can own a problem end-to-end and leave it running in production, get in touch.',
 
     // 404 (single bilingual page: GitHub Pages serves one 404.html, doc 04)
     'notFound.eyebrow': '404 · route not found',

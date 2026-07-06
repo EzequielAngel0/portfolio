@@ -27,7 +27,7 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 | F3 | Home: componentes ui/ y secciones en orden | home ES/EN responsive, ambos temas | `[hecho]` 2026-07-06 |
 | F4 | Case study + SVG del diagrama tematizado | páginas `/acp-suite` ES/EN | `[hecho]` 2026-07-06 |
 | F5 | SEO: Seo.astro, OG, JSON-LD, sitemap, robots, 404, favicon | JSON-LD y OG en dist verificados (validadores externos en F6) | `[hecho]` 2026-07-06 · beacon `[bloqueado]` por D7 |
-| F6 | Pulido + QA (a11y, Lighthouse, animaciones, code review) | gates del doc 06 en verde | `[ ]` siguiente |
+| F6 | Pulido + QA (a11y, Lighthouse, animaciones, code review) | gates del doc 06 en verde | `[hecho]` 2026-07-06 (pase NVDA y validadores externos: dueño, guiones en el tracker) |
 | F7 | Merge de `develop` a `master` + README nuevo | deploy verificado en la URL real | `[bloqueado]` merge a master lo hace el dueño |
 
 ## Reglas continuas
@@ -35,3 +35,8 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 - Cada ítem en rama corta desde `develop`; a `master` solo el dueño.
 - Pase de reglas duras (doc 02) antes de cerrar F2 y de nuevo en F6: grep de "microservicio", "Redis", "Supabase", "OAuth2", em dash y emojis sobre `src/`.
 - Al cerrar cada fase: actualizar este doc + el doc del área + tracker de ronda si aplica.
+
+## Chores opcionales post-lanzamiento (del code review de F6, no bloquean)
+
+- [ ] Refactors de reutilización diferidos: `KeyNumbers.astro`, `ExternalLink.astro`, utilidad `eyebrow`, helper `getCaseStudy`, tokens/fuentes compartidos en `scripts/`, cache de geometría del carrusel. Detalle en `docs/rondas/2026-07-06_f6.md`.
+- [ ] Regla de mantenimiento: si cambia el copy de `ui.ts` (hero) o el frontmatter del case study, regenerar las imágenes OG con `scripts/og-images.mjs` (espejan ese copy a mano).

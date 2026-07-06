@@ -37,6 +37,7 @@ const t = useTranslations(locale);
           >
             <Icon name={social.icon} size={16} />
             {social.label}
+            <span class="sr-only">({t('a11y.newTab')})</span>
           </a>
         </li>
       ))

@@ -14,6 +14,10 @@
   --accent: #1e6e4e;
   --signal: #b86e00;
   --line: rgb(23 24 26 / 0.14);
+  /* Profundidad por sombras en capas con transparencia (doc 05): anillo de 1px
+     que hace de borde + dos capas suaves de elevacion. */
+  --card-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07), 0 2px 4px 0 rgb(0 0 0 / 0.05);
 }
 
 /* Tema oscuro (neutro, sin morados ni orbes) */
@@ -25,6 +29,8 @@
   --accent: #4cc38a;
   --signal: #e0a63e;
   --line: rgb(237 235 230 / 0.14);
+  /* En oscuro las capas de elevacion no se ven: solo el anillo (blanco puro) */
+  --card-shadow: 0 0 0 1px rgb(255 255 255 / 0.1);
 }
 
 /* Utilidades dark:* atadas al atributo data-theme (no a prefers-color-scheme) */
@@ -41,6 +47,9 @@
   --color-accent: var(--accent);
   --color-signal: var(--signal);
   --color-line: var(--line);
+
+  /* Sombra de tarjeta (utilidad shadow-card), conmutable por tema */
+  --shadow-card: var(--card-shadow);
 
   /* Escala fluida (doc 05) */
   --text-display: clamp(2.6rem, 1.75rem + 4.2vw, 4.5rem);

@@ -27,7 +27,7 @@ const projects = (await getLocalized('projects', locale)).sort(
     {
       projects.map((project) => (
         <li>
-          <article class="flex h-full flex-col rounded-md border border-line bg-surface p-6">
+          <article class="flex h-full flex-col rounded-md bg-surface p-6 shadow-card">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <h3 class="text-xl font-semibold">{project.data.title}</h3>
               <Badge status={project.data.status} locale={locale} />
@@ -52,10 +52,11 @@ const projects = (await getLocalized('projects', locale)).sort(
                 class="group mt-auto inline-flex min-h-10 items-center gap-2 self-start pt-5 font-mono text-label font-medium text-accent hover:underline"
               >
                 {t('projects.viewRepo')}
+                <span class="sr-only">({t('a11y.newTab')})</span>
                 <Icon
                   name="external"
                   size={14}
-                  class="transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  class="transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 />
               </a>
             )}

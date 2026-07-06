@@ -59,6 +59,8 @@ const lastName = restName.join(' ');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* La UI del navegador acompana al tema; los hex espejan --paper (tokens.css) */}
+    <meta name="theme-color" content="#f6f5f1" />
 
     {/* Anti-FOUC de tema: corre antes del primer pintado. Claro por defecto (doc 04). */}
     <script is:inline>
@@ -72,6 +74,10 @@ const lastName = restName.join(' ');
                 ? 'dark'
                 : 'light';
           document.documentElement.dataset.theme = theme;
+          if (theme === 'dark') {
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#121417');
+          }
         } catch (e) {
           document.documentElement.dataset.theme = 'light';
         }
@@ -86,7 +92,11 @@ const lastName = restName.join(' ');
             var lang = (navigator.language || 'es').toLowerCase();
             if (lang.indexOf('es') !== 0) {
               localStorage.setItem('lang-pref', 'en');
-              location.replace(('/en' + location.pathname).replace(/\/{2,}/g, '/'));
+              location.replace(
+                ('/en' + location.pathname).replace(/\/{2,}/g, '/') +
+                  location.search +
+                  location.hash,
+              );
             }
           }
         } catch (e) {
@@ -124,7 +134,7 @@ const lastName = restName.join(' ');
       <div class="mx-auto flex h-14 max-w-page items-center justify-between px-4 sm:px-6">
         <a
           href={homePath}
-          class="inline-flex min-h-10 items-center font-mono text-label font-medium tracking-wide uppercase"
+          class="inline-flex min-h-10 items-center font-mono text-label font-medium tracking-wide uppercase hover:underline hover:underline-offset-[0.35em]"
         >
           <span class="max-[25rem]:hidden">{firstName}&nbsp;</span>{lastName}
         </a>
@@ -154,18 +164,23 @@ const lastName = restName.join(' ');
             <button
               id="theme-toggle"
               type="button"
-              class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96]"
+              class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96]"
               aria-label={t('a11y.themeToDark')}
               data-label-dark={t('a11y.themeToDark')}
               data-label-light={t('a11y.themeToLight')}
             >
-              <span aria-hidden="true" class="font-mono text-label">[ ]</span>
+              {/* Estado visual con el vocabulario del sitio: [ ] claro, [*] oscuro */}
+              <span aria-hidden="true" class="font-mono text-label"
+                >[<span class="hidden dark:inline">*</span><span class="dark:hidden">&nbsp;</span
+                >]</span
+              >
             </button>
 
             <a
               href={otherHref}
               hreflang={otherLocale}
-              class="grid h-10 min-w-10 place-items-center rounded-sm border border-line px-2 font-mono text-label font-medium uppercase transition-transform active:scale-[0.96]"
+              lang={otherLocale}
+              class="grid h-10 min-w-10 place-items-center rounded-sm border border-line px-2 font-mono text-label font-medium uppercase transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96]"
               aria-label={t('a11y.switchLang')}
             >
               {otherLocale}
@@ -189,6 +204,8 @@ const lastName = restName.join(' ');
     <script>
       const btn = document.getElementById('theme-toggle');
       const root = document.documentElement;
+      // Espeja --paper por tema (tokens.css) para la UI del navegador.
+      const themeColors: Record<string, string> = { light: '#f6f5f1', dark: '#121417' };
       const syncLabel = (theme: string) => {
         if (!btn) return;
         const next = theme === 'dark' ? 'light' : 'dark';
@@ -199,6 +216,9 @@ const lastName = restName.join(' ');
       btn?.addEventListener('click', () => {
         const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
         root.dataset.theme = next;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', themeColors[next] ?? themeColors.light!);
         try {
           localStorage.setItem('theme', next);
         } catch (e) {
@@ -208,9 +228,16 @@ const lastName = restName.join(' ');
       });
     </script>
 
-    {/* Motion GSAP como mejora progresiva; se apaga con reduced motion (doc 05) */}
+    {/* Motion GSAP como mejora progresiva (doc 05). El gate evita descargar
+        GSAP donde no hay nada que animar (404) o con reduced motion; el import
+        dinamico deja motion.ts en su propio chunk. */}
     <script>
-      import '../scripts/motion';
+      if (
+        document.querySelector('[data-boot], [data-reveal]') &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        import('../scripts/motion');
+      }
     </script>
   </body>
 </html>
