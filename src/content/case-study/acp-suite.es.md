@@ -50,7 +50,7 @@ Las cuatro apps Flutter comparten paquetes propios de design system, cliente de 
 
 ## Arquitectura
 
-<!-- diagrama de arquitectura: SVG artesanal tematizado, se inserta en F4 (doc 04) -->
+<!-- acp-architecture-svg -->
 
 Decisiones de diseño que definieron el proyecto:
 
