@@ -1,6 +1,12 @@
 # Prompt para la ronda de mejoras post-lanzamiento (copiar y pegar en un chat nuevo)
 
-Pega TODO lo que está debajo de la línea como primer mensaje en una sesión de Claude Code abierta en este repo (`c:\Proyectos\portfolio`). Redactado el 2026-07-06 a partir de los pedidos del dueño tras ver el sitio en producción.
+Redactado el 2026-07-06 a partir de los pedidos del dueño tras ver el sitio en producción.
+
+## Versión corta (recomendada): pega SOLO esto en un chat nuevo abierto en el repo
+
+> Chat nuevo en este repo (portfolio ya lanzado en angelezequiel.dev, F0-F7 hechas). Vas a hacer una ronda de mejoras post-lanzamiento. La lista de tareas (T1-T11), sus restricciones y el inventario de certificados están en `docs/PROMPT_MEJORAS_POST_LANZAMIENTO.md`: léelo completo y sigue lo que dice, incluyendo los docs que referencia (05, 06, 08 y los ADR). Respeta las reglas duras del doc 02 (sin em dash, sin emojis, sin glassmorphism, precisión técnica, solo métricas autorizadas) y las de proceso del doc 08 (commits de una línea sin acentos ni firma de IA; rama corta desde `develop`; a `master` NUNCA haces merge, lo hace el dueño). Antes de codificar, proponme el plan de la ronda y espera mi OK; T9 (motion) requiere redactar y aprobar el ADR 0009 antes de tocar código, y T3 (certificados) requiere mi curación. Verifica con `npm run build` + `preview` o `podman compose up --build`.
+
+La versión larga de abajo es la fuente de verdad que ese chat leerá del disco; no hace falta pegarla.
 
 ---
 
