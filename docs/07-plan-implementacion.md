@@ -31,12 +31,12 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [x] Dejar el contenido listo SIN capturas (son opcionales, se agregan a futuro con D8): esquemas con `screenshots?`/`image?` opcionales.
 - [x] **Pase de reglas duras (doc 02)**: grep sobre `src/`, cero de "Redis", "Supabase", "OAuth2", em dash y emojis. "microservic" solo aparece como la negación deliberada del case study ("no microservicios" / "not microservices"), que es el encuadre que pide la regla 2, no una violación (detalle en `docs/rondas/2026-07-06_f2.md`).
 
-## Fase 3 · Home (docs 04 y 05)
+## Fase 3 · Home (docs 04 y 05) · [hecho] 2026-07-06
 
-- [ ] Componentes `ui/` (Button, Tag, Icon, ThemeToggle, LangToggle, Ticket, CredentialLink).
-- [ ] Secciones en orden: Hero (con la línea de estado firma), CaseStudyTeaser, Projects (con badges de estado real), Skills, Certifications, Contact, Footer (metadata del sitio).
-- [ ] Header sticky con nav, toggles y estados `aria-current`.
-- Verificación: home ES/EN completa y responsive (360px+), ambos temas, sin JS de framework.
+- [x] Componentes `ui/` (Button, Tag, Badge, Icon, CredentialLink, Section). ThemeToggle/LangToggle viven en `Base.astro` desde F1 (un solo uso); "Ticket" descartado, el motivo boleto se retiro en doc 05 y su rol lo cubren Badge y la linea de estado.
+- [x] Secciones en orden: Hero (con la línea de estado firma), CaseStudyTeaser, Projects (con badges de estado real), Skills, Certifications, Contact. Footer (estado del sistema) ya estaba en `Base.astro` desde F1.
+- [x] Header sticky con nav, toggles y estados `aria-current` (a 360px se oculta "Inicio" y se comprime el logo; sin menú móvil con solo 3 links).
+- Verificación [hecha]: home ES/EN completa (build + preview 200, contenido íntegro sin JS), presupuesto JS/CSS en verde, reglas duras por grep. Detalle: `docs/rondas/2026-07-06_f3.md`. El QA visual profundo (Lighthouse, teclado, NVDA, fps) es F6.
 
 ## Fase 4 · Case study
 
