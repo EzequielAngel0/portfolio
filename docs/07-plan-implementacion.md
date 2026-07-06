@@ -54,14 +54,15 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [bloqueado] Integrar el beacon de Cloudflare Web Analytics (ADR 0006) async/defer; ajustar CSP (se define junto con el beacon, ver doc 06). Requiere activarlo en Cloudflare (D7 del dueño).
 - Verificación [hecha]: `check`/`build`/`preview` en verde (5 páginas: 4 + `404.html`, todas 200 y la ruta inexistente 404), OG y JSON-LD presentes en `dist/`, reglas duras por grep, presupuesto intacto (sin JS nuevo al cliente, lockfile intacta). Validación externa de JSON-LD/OG queda en F6 (auditorías). Detalle: `docs/rondas/2026-07-06_f5.md`.
 
-## Fase 6 · Pulido y QA (gate de merge)
+## Fase 6 · Pulido y QA (gate de merge) · [hecho] 2026-07-06 (pase NVDA y validadores externos quedan al dueño)
 
-- [ ] Pase de polish con `make-interfaces-feel-better` (radios concéntricos, tabular-nums, hit areas, sombras, staggers) reportado en tablas antes/después.
-- [ ] Auditoría con `web-design-guidelines` y con `review-animations`; corregir hallazgos.
-- [ ] Lighthouse móvil/desktop ≥ objetivos del doc 06; presupuesto de peso revisado sobre `dist/`.
-- [ ] Prueba manual de teclado + NVDA; validación de JSON-LD y OG.
-- [ ] `frontend-code-review` sobre los archivos nuevos y `/code-review` del diff de la rama.
-- [ ] Verificación end-to-end (skill `verify` / `run`): flujo real detección de idioma → toggle tema → case study → credenciales → descarga de CV, con `astro preview` (el `base` cambia rutas; probar ahí, no solo en dev).
+- [x] Pase de polish con `make-interfaces-feel-better` (radios concéntricos, tabular-nums, hit areas, sombras, staggers) reportado en tablas antes/después (skills cargadas desde `.agents/skills/`).
+- [x] Auditoría con `web-design-guidelines` (guías frescas de Vercel) y con `review-animations` (veredicto Approve); hallazgos corregidos (meta theme-color, hovers, sr-only pestaña nueva, skip link sin animación, estado visual del toggle).
+- [x] Lighthouse móvil/desktop ≥ objetivos del doc 06 (99-100 en todo; LCP móvil 1.7-1.8 s, CLS ~0, TBT 0 ms); presupuesto sobre `dist/` en verde (JS 44.7 KB gzip en páginas animadas, ~1 KB en 404/reduced motion tras el gate; CSS 5.3 KB; 3 woff2).
+- [x] Teclado verificado (e2e automatizado); guion NVDA y validadores externos de JSON-LD/OG documentados para el dueño en el tracker; validación estructural local de JSON-LD/OG/hreflang/sitemap en verde (56 checks).
+- [x] `frontend-code-review` sobre `src/` (sin hallazgos) y `/code-review` del diff `master..develop` (10 ángulos; 6 hallazgos corregidos, refactors de reutilización diferidos a chore post-lanzamiento; detalle en el tracker).
+- [x] Verificación end-to-end con Playwright sobre `astro preview` (34 checks): detección de idioma con guarda, toggle de tema (persistencia + anti-FOUC), case study (TOC, diagrama), credenciales, descarga de CV, 404 real, sin JS íntegro, reduced motion.
+- Verificación [hecha]: `check`/`build`/`preview` en verde; reglas duras por grep en verde; lockfile intacta (playwright/lighthouse via `--no-save`/`npx`). Detalle: `docs/rondas/2026-07-06_f6.md`. Rama `feat/pulido-qa`.
 
 ## Fase 7 · Lanzamiento y perfil
 
