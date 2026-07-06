@@ -59,6 +59,20 @@ const lastName = restName.join(' ');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* CSP (doc 06): origenes restringidos a self + el beacon de Cloudflare
+        (ADR 0006), unica pieza de terceros. 'unsafe-inline' porque los scripts
+        anti-FOUC son inline por diseno y Astro inlinea scripts/estilos pequenos:
+        hashes serian fragiles (doc 06, decision F5). Solo en produccion: en dev,
+        Vite inyecta scripts propios. */}
+    {
+      import.meta.env.PROD && (
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; base-uri 'self'; form-action 'self'"
+        />
+      )
+    }
     {/* La UI del navegador acompana al tema; los hex espejan --paper (tokens.css) */}
     <meta name="theme-color" content="#f6f5f1" />
 
@@ -239,5 +253,19 @@ const lastName = restName.join(' ');
         import('../scripts/motion');
       }
     </script>
+
+    {/* Beacon de Cloudflare Web Analytics (ADR 0006, D7): unica pieza de
+        terceros, defer y no bloqueante; el sitio funciona igual sin el. Solo en
+        produccion para no registrar visitas de desarrollo. */}
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={'{"token": "6c62f432341546c2b7e12b9ec22453b7"}'}
+        />
+      )
+    }
   </body>
 </html>
