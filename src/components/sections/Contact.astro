@@ -1,0 +1,47 @@
+---
+// Contacto (doc 02): mailto grande, sin formulario (sitio estatico, cero
+// backend); redes con link directo y ubicacion. El id ancla el nav del header.
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import { site } from '../../data/site';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<Section id={t('contact.anchor')} label={t('contact.title')}>
+  <p class="max-w-2xl text-ink-soft">{t('contact.lead')}</p>
+
+  <a
+    href={`mailto:${site.email}`}
+    class="mt-6 inline-block text-[clamp(1.2rem,3.5vw,2rem)] font-semibold break-all text-accent hover:underline"
+  >
+    {site.email}
+  </a>
+
+  <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+    {
+      site.socials.map((social) => (
+        <li>
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium transition-colors duration-150 hover:text-accent"
+          >
+            <Icon name={social.icon} size={16} />
+            {social.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-6 font-mono text-label text-ink-soft">{site.location}</p>
+</Section>

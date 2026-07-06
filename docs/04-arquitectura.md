@@ -51,7 +51,8 @@ src/
 │   └── projects/      # solokey.es.md · solokey.en.md · (futuros)
 ├── data/
 │   ├── certifications.json   # nombre, emisor, año, url de credencial, ids i18n
-│   └── skills.json           # grupos y items (doc 02)
+│   ├── skills.json           # grupos y items (doc 02)
+│   └── site.ts               # contacto canónico locale-neutral: email, redes, ubicación (doc 02)
 ├── i18n/
 │   ├── ui.ts          # diccionario tipado de microtextos ES/EN
 │   └── utils.ts       # helpers: getLocale, localizePath, alternates

@@ -1,0 +1,40 @@
+---
+// Boton del sistema (doc 05): primario en verde operativo, secundario delineado.
+// Renderiza <a> si recibe href, <button> si no. Los estados interactivos van por
+// CSS (interrumpibles, doc 05); hit area >= 44px de alto (doc 06).
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, variant = 'primary', class: className, ...rest } = Astro.props;
+
+// El hover del primario oscurece el acento mezclandolo con la tinta del tema:
+// funciona en claro y oscuro sin tokens extra.
+const styles = {
+  primary:
+    'bg-accent text-paper hover:bg-[color-mix(in_oklab,var(--color-accent),var(--color-ink)_14%)]',
+  secondary: 'border border-line bg-surface text-ink hover:border-ink/35',
+};
+
+const classes = [
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-5 font-mono text-label font-medium',
+  'transition-[transform,background-color,border-color] duration-150 active:scale-[0.96]',
+  styles[variant],
+  className,
+];
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type="button" class:list={classes} {...rest}>
+      <slot />
+    </button>
+  )
+}

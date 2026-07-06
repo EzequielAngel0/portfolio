@@ -1,0 +1,28 @@
+---
+// Badge de estado real (doc 05): codifica algo verdadero del modelo de datos,
+// no decora. Solo "en produccion" lleva el punto verde (verde = operativo);
+// el pulso queda reservado al punto del hero para no repetir el acento.
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  status: 'production' | 'public-repo';
+  locale: Locale;
+}
+
+const { status, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const isProduction = status === 'production';
+const label = isProduction ? t('badge.production') : t('badge.publicRepo');
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-1.5 rounded-xs border px-2 py-1 font-mono text-label',
+    isProduction ? 'border-accent/30 text-accent' : 'border-line text-ink-soft',
+  ]}
+>
+  {isProduction && <span class="size-1.5 rounded-full bg-accent" aria-hidden="true" />}
+  {label}
+</span>

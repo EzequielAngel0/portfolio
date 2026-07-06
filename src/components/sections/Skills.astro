@@ -1,0 +1,33 @@
+---
+// Skills agrupadas (doc 02): lista tipografica con los 5 grupos, no nube de
+// logos. Los items van unidos con punto medio, en el cuerpo del texto.
+import skillsData from '../../data/skills.json';
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import Section from '../ui/Section.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+type SkillGroup = { id: string; name: Record<Locale, string>; items: string[] };
+const groups: SkillGroup[] = skillsData;
+---
+
+<Section label={t('skills.title')}>
+  <dl class="grid gap-x-10 gap-y-7 sm:grid-cols-2">
+    {
+      groups.map((group) => (
+        <div>
+          <dt class="font-mono text-label font-medium tracking-wide uppercase">
+            {group.name[locale]}
+          </dt>
+          <dd class="mt-2 text-ink-soft">{group.items.join(' · ')}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>

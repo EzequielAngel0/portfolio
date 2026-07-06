@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
-import { getLocaleFromUrl, getAlternates, useTranslations } from '../i18n/utils';
+import { getLocaleFromUrl, getAlternates, useTranslations, localizePath } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -17,6 +17,26 @@ const alternates = getAlternates(Astro.url);
 const base = import.meta.env.BASE_URL;
 const otherLocale = locale === 'es' ? 'en' : 'es';
 const otherHref = alternates[otherLocale];
+
+// Nav del header (doc 04): aria-current por coincidencia exacta de ruta.
+// "Inicio" se oculta en xs (el logo cumple ese rol) para caber en 360px.
+const homePath = localizePath('', locale);
+const casePath = localizePath('acp-suite', locale);
+const navItems = [
+  { href: homePath, label: t('nav.home'), path: homePath, mobileHidden: true },
+  { href: casePath, label: t('nav.caseStudy'), path: casePath, mobileHidden: false },
+  {
+    href: `${homePath}#${t('contact.anchor')}`,
+    label: t('nav.contact'),
+    path: null,
+    mobileHidden: false,
+  },
+];
+const currentPath = Astro.url.pathname;
+
+// El nombre se parte para poder ocultar "Angel" solo en pantallas muy angostas.
+const [firstName, ...restName] = t('site.title').split(' ');
+const lastName = restName.join(' ');
 ---
 
 <!doctype html>
@@ -77,30 +97,55 @@ const otherHref = alternates[otherLocale];
 
     <header class="sticky top-0 z-50 border-b border-line bg-paper">
       <div class="mx-auto flex h-14 max-w-page items-center justify-between px-4 sm:px-6">
-        <a href={base} class="font-mono text-label font-medium tracking-wide uppercase">
-          {t('site.title')}
+        <a
+          href={homePath}
+          class="inline-flex min-h-10 items-center font-mono text-label font-medium tracking-wide uppercase"
+        >
+          <span class="max-[25rem]:hidden">{firstName}&nbsp;</span>{lastName}
         </a>
 
-        <div class="flex items-center gap-2">
-          <button
-            id="theme-toggle"
-            type="button"
-            class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96]"
-            aria-label={t('a11y.themeToDark')}
-            data-label-dark={t('a11y.themeToDark')}
-            data-label-light={t('a11y.themeToLight')}
-          >
-            <span aria-hidden="true" class="font-mono text-label">[ ]</span>
-          </button>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <nav aria-label={t('a11y.nav')} class="flex items-center gap-1">
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  aria-current={item.path === currentPath ? 'page' : undefined}
+                  class:list={[
+                    'inline-flex min-h-10 items-center rounded-xs px-2 font-mono text-label transition-colors duration-150',
+                    item.mobileHidden && 'max-sm:hidden',
+                    item.path === currentPath
+                      ? 'text-ink underline underline-offset-[0.35em]'
+                      : 'text-ink-soft hover:text-ink',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
 
-          <a
-            href={otherHref}
-            hreflang={otherLocale}
-            class="grid h-10 min-w-10 place-items-center rounded-sm border border-line px-2 font-mono text-label font-medium uppercase transition-transform active:scale-[0.96]"
-            aria-label={t('a11y.switchLang')}
-          >
-            {otherLocale}
-          </a>
+          <div class="flex items-center gap-2 sm:border-l sm:border-line sm:pl-4">
+            <button
+              id="theme-toggle"
+              type="button"
+              class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96]"
+              aria-label={t('a11y.themeToDark')}
+              data-label-dark={t('a11y.themeToDark')}
+              data-label-light={t('a11y.themeToLight')}
+            >
+              <span aria-hidden="true" class="font-mono text-label">[ ]</span>
+            </button>
+
+            <a
+              href={otherHref}
+              hreflang={otherLocale}
+              class="grid h-10 min-w-10 place-items-center rounded-sm border border-line px-2 font-mono text-label font-medium uppercase transition-transform active:scale-[0.96]"
+              aria-label={t('a11y.switchLang')}
+            >
+              {otherLocale}
+            </a>
+          </div>
         </div>
       </div>
     </header>

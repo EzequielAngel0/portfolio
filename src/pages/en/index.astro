@@ -1,25 +1,24 @@
 ---
+// Home EN (doc 04): mismas secciones que el home ES, contenido por locale.
 import Base from '../../layouts/Base.astro';
+import Hero from '../../components/sections/Hero.astro';
+import CaseStudyTeaser from '../../components/sections/CaseStudyTeaser.astro';
+import Projects from '../../components/sections/Projects.astro';
+import Skills from '../../components/sections/Skills.astro';
+import Certifications from '../../components/sections/Certifications.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+const locale = 'en';
 ---
 
 <Base
   title="Angel Barbosa · Full-Stack Developer (Go, Flutter, React, OCI)"
   description="Portfolio of Angel Ezequiel Barbosa Lomeli. I take complete systems from idea to production."
 >
-  <section class="py-16 sm:py-24">
-    <p data-boot class="font-mono text-label font-medium tracking-wide text-accent uppercase">
-      <span
-        class="mr-1.5 inline-block size-2 rounded-full bg-accent align-middle"
-        aria-hidden="true"></span>
-      in production · v2026.07
-    </p>
-    <h1 data-boot class="mt-4 max-w-3xl text-display">
-      I take complete systems from idea to production.
-    </h1>
-    <p data-boot class="mt-4 font-mono text-ink-soft">Go · Flutter · React · Cloud (OCI)</p>
-    <p data-boot class="mt-8 max-w-2xl text-ink-soft">
-      Redesign bootstrap (phase 1): stack, tokens, theme and language. The real content (hero, ACP
-      Suite case study, projects and certifications) lands in the next phases.
-    </p>
-  </section>
+  <Hero locale={locale} />
+  <CaseStudyTeaser locale={locale} />
+  <Projects locale={locale} />
+  <Skills locale={locale} />
+  <Certifications locale={locale} />
+  <Contact locale={locale} />
 </Base>

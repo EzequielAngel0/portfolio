@@ -57,4 +57,8 @@
   --radius-md: 10px;
 
   --container-page: 72rem;
+
+  /* Respiracion vertical de seccion (doc 05): el clamp del doc es el hueco
+     total entre secciones; cada una aporta la mitad arriba y abajo. */
+  --spacing-section: clamp(2rem, 5vh, 3.75rem);
 }

@@ -1,0 +1,20 @@
+---
+// Envoltura de seccion del home (doc 05): regla superior como separador de
+// "papel y tinta", etiqueta mono en mayusculas (el marcador del wireframe) y
+// revelado por scroll via data-reveal (mejora progresiva, motion.ts).
+interface Props {
+  id?: string;
+  label: string;
+}
+
+const { id, label } = Astro.props;
+---
+
+<section {id} data-reveal class="border-t border-line py-section">
+  <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+    {label}
+  </h2>
+  <div class="mt-8">
+    <slot />
+  </div>
+</section>

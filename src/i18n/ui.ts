@@ -24,6 +24,7 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.caseStudy': 'Case study',
     'nav.contact': 'Contacto',
+    'a11y.nav': 'Navegación principal',
     'a11y.skip': 'Saltar al contenido',
     'a11y.themeToDark': 'Cambiar a tema oscuro',
     'a11y.themeToLight': 'Cambiar a tema claro',
@@ -55,6 +56,7 @@ export const ui = {
 
     // Contacto
     'contact.title': 'Contacto',
+    'contact.anchor': 'contacto',
     'contact.lead':
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
     'contact.email': 'Enviar correo',
@@ -66,6 +68,7 @@ export const ui = {
     'nav.home': 'Home',
     'nav.caseStudy': 'Case study',
     'nav.contact': 'Contact',
+    'a11y.nav': 'Main navigation',
     'a11y.skip': 'Skip to content',
     'a11y.themeToDark': 'Switch to dark theme',
     'a11y.themeToLight': 'Switch to light theme',
@@ -97,6 +100,7 @@ export const ui = {
 
     // Contact
     'contact.title': 'Contact',
+    'contact.anchor': 'contact',
     'contact.lead':
       "If you're looking for someone who can own a problem end-to-end and leave it running in production, get in touch.",
     'contact.email': 'Send email',
