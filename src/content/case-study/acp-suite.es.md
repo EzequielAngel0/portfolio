@@ -1,5 +1,5 @@
 ---
-title: ACP Suite
+title: ACP
 slug: acp-suite
 locale: es
 tagline: Plataforma completa de boletaje y paquetería para una empresa de transporte foráneo de pasajeros, construida por una sola persona y en producción en Oracle Cloud.

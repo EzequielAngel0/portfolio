@@ -41,7 +41,7 @@ export const ui = {
     'certifications.title': 'Certificaciones',
     'certifications.view': 'Ver credencial',
 
-    // Case study (home y pagina /acp-suite)
+    // Case study (home y pagina /acp)
     'caseStudy.eyebrow': 'Case study · Repo privado (proyecto de cliente)',
     'caseStudy.keyNumbers': 'Cifras clave',
     'caseStudy.stack': 'Stack',
@@ -72,7 +72,7 @@ export const ui = {
     'notFound.body':
       'La ruta que buscas no está en este sitio. Puede venir de un enlace viejo del portfolio anterior.',
     'notFound.home': 'Ir al inicio',
-    'notFound.case': 'Ver el case study de ACP Suite',
+    'notFound.case': 'Ver el case study de ACP',
 
     'footer.status': 'ultima actualizacion 2026-07',
   },
@@ -103,7 +103,7 @@ export const ui = {
     'certifications.title': 'Certifications',
     'certifications.view': 'View credential',
 
-    // Case study (home and /acp-suite page)
+    // Case study (home and /acp page)
     'caseStudy.eyebrow': 'Case study · Private repo (client project)',
     'caseStudy.keyNumbers': 'Key numbers',
     'caseStudy.stack': 'Stack',
@@ -134,7 +134,7 @@ export const ui = {
     'notFound.body':
       'The path you are looking for is not on this site. It may come from an old link to the previous portfolio.',
     'notFound.home': 'Go to the home page',
-    'notFound.case': 'View the ACP Suite case study',
+    'notFound.case': 'View the ACP case study',
 
     'footer.status': 'last updated 2026-07',
   },

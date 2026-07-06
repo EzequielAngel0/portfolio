@@ -1,5 +1,5 @@
 ---
-// Case study de ACP Suite en ES (doc 04): pagina propia, es EL link que se
+// Case study de ACP en ES (doc 04): pagina propia (/acp/), es EL link que se
 // comparte con reclutadores. getLocalized mantiene el gate de pares ES/EN.
 // SEO (F5, doc 06): og:type article, OG del idioma y JSON-LD SoftwareSourceCode.
 import Base from '../layouts/Base.astro';
@@ -18,7 +18,7 @@ const jsonLd = [caseStudyJsonLd(acp, pageUrl, siteUrl)];
 ---
 
 <Base
-  title="Case study de ACP Suite · Angel Barbosa"
+  title="Case study de ACP · Angel Barbosa"
   description={acp.data.tagline}
   ogType="article"
   ogImage={ogImage}

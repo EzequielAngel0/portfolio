@@ -162,7 +162,7 @@ const cards = [
     tree: caseCard({
       status: 'en producción',
       eyebrow: 'CASE STUDY',
-      title: 'ACP Suite',
+      title: 'ACP',
       tagline:
         'Plataforma completa de boletaje y paquetería para una empresa de transporte foráneo de pasajeros, construida por una sola persona y en producción en Oracle Cloud.',
       numbers: '6 interfaces + 2 APIs · 1 desarrollador · 150+ pruebas · p95 < 100 ms',
@@ -173,7 +173,7 @@ const cards = [
     tree: caseCard({
       status: 'in production',
       eyebrow: 'CASE STUDY',
-      title: 'ACP Suite',
+      title: 'ACP',
       tagline:
         'End-to-end ticketing and parcel platform for an intercity passenger transport company, built by one person and live in production on Oracle Cloud.',
       numbers: '6 interfaces + 2 APIs · 1 developer · 150+ tests · p95 < 100 ms',
