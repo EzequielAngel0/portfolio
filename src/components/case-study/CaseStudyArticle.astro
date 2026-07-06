@@ -100,10 +100,15 @@ const tocItems = [
       </nav>
     </aside>
 
-    <div class="cs-prose mt-10 lg:mt-0">
-      <Fragment set:html={beforeDiagram} />
-      <AcpArchitecture locale={locale} />
-      <Fragment set:html={afterDiagram} />
+    <div class="mt-10 lg:mt-0">
+      {/* Solo el cuerpo markdown + diagrama lleva estilos de prosa: las secciones
+          de abajo (stack, capturas) son propias y no deben heredar list-style ni
+          el borde de h2 de la prosa (si no, pills con vinetas y doble separador). */}
+      <div class="cs-prose">
+        <Fragment set:html={beforeDiagram} />
+        <AcpArchitecture locale={locale} />
+        <Fragment set:html={afterDiagram} />
+      </div>
 
       <section id="stack" class="cs-section">
         <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
