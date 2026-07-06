@@ -38,12 +38,13 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [x] Header sticky con nav, toggles y estados `aria-current` (a 360px se oculta "Inicio" y se comprime el logo; sin menú móvil con solo 3 links).
 - Verificación [hecha]: home ES/EN completa (build + preview 200, contenido íntegro sin JS), presupuesto JS/CSS en verde, reglas duras por grep. Detalle: `docs/rondas/2026-07-06_f3.md`. El QA visual profundo (Lighthouse, teclado, NVDA, fps) es F6.
 
-## Fase 4 · Case study
+## Fase 4 · Case study · [hecho] 2026-07-06
 
-- [ ] Página `/acp-suite` y `/en/acp-suite` con TOC sticky en desktop.
-- [ ] SVG del diagrama de arquitectura (uno por idioma, tematizado, accesible) a partir del Mermaid.
-- [ ] Franja "corte de caja" con las cifras autorizadas.
-- [ ] Componente carrusel accesible (GSAP Draggable) que aparece solo si hay capturas; sin ellas no se renderiza. Degrada a scroll-snap sin JS (docs 05 y 06).
+- [x] Página `/acp-suite` y `/en/acp-suite` con TOC sticky en desktop (lineal en móvil), renderizando la colección `case-study`.
+- [x] SVG del diagrama de arquitectura a partir del Mermaid: componente único con geometría compartida y etiquetas por idioma (mismos trazos garantizados; ver doc 04 actualizado), tematizado por tokens, `role="img"` + `<title>`/`<desc>`.
+- [x] Franja "corte de caja" con las cifras autorizadas del frontmatter.
+- [x] Componente carrusel accesible (GSAP Draggable vía proxy, sin InertiaPlugin: tween de snap al soltar) que aparece solo si hay capturas; sin ellas no se renderiza y Draggable no entra al bundle. Degrada a scroll-snap sin JS (docs 05 y 06).
+- Verificación [hecha]: `check`/`build`/`preview` en verde (4 páginas + sitemap, todas 200), anclas del TOC = ids reales, presupuesto JS 44.5 KB gzip / CSS 5.0 KB, reglas duras por grep. Detalle: `docs/rondas/2026-07-06_f4.md`.
 
 ## Fase 5 · SEO, assets y analítica (doc 06)
 

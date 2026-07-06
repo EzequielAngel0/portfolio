@@ -25,8 +25,8 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 | F1 | Bootstrap Astro 7 + Node 24 + Tailwind 4 + tokens + fuentes + GSAP + Base.astro + CI + Podman | `build` + `preview` sirven `/` y `/en/` tematizables; contenedor sirve igual | `[hecho]` 2026-07-06 (CI se valida al primer push) |
 | F2 | Contenido: esquemas Zod, case study ES/EN, SoloKey, skills, certs, i18n | pase de reglas duras en verde (grep) | `[hecho]` 2026-07-06 |
 | F3 | Home: componentes ui/ y secciones en orden | home ES/EN responsive, ambos temas | `[hecho]` 2026-07-06 |
-| F4 | Case study + SVG del diagrama tematizado | páginas `/acp-suite` ES/EN | `[ ]` siguiente |
-| F5 | SEO: Seo.astro, OG, JSON-LD, sitemap, robots, 404 | JSON-LD y OG validados | `[ ]` |
+| F4 | Case study + SVG del diagrama tematizado | páginas `/acp-suite` ES/EN | `[hecho]` 2026-07-06 |
+| F5 | SEO: Seo.astro, OG, JSON-LD, sitemap, robots, 404 | JSON-LD y OG validados | `[ ]` siguiente |
 | F6 | Pulido + QA (a11y, Lighthouse, animaciones, code review) | gates del doc 06 en verde | `[ ]` |
 | F7 | Merge de `develop` a `master` + README nuevo | deploy verificado en la URL real | `[bloqueado]` merge a master lo hace el dueño |
 
