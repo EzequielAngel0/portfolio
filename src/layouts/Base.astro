@@ -92,7 +92,11 @@ const lastName = restName.join(' ');
             var lang = (navigator.language || 'es').toLowerCase();
             if (lang.indexOf('es') !== 0) {
               localStorage.setItem('lang-pref', 'en');
-              location.replace(('/en' + location.pathname).replace(/\/{2,}/g, '/'));
+              location.replace(
+                ('/en' + location.pathname).replace(/\/{2,}/g, '/') +
+                  location.search +
+                  location.hash,
+              );
             }
           }
         } catch (e) {
@@ -224,9 +228,16 @@ const lastName = restName.join(' ');
       });
     </script>
 
-    {/* Motion GSAP como mejora progresiva; se apaga con reduced motion (doc 05) */}
+    {/* Motion GSAP como mejora progresiva (doc 05). El gate evita descargar
+        GSAP donde no hay nada que animar (404) o con reduced motion; el import
+        dinamico deja motion.ts en su propio chunk. */}
     <script>
-      import '../scripts/motion';
+      if (
+        document.querySelector('[data-boot], [data-reveal]') &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        import('../scripts/motion');
+      }
     </script>
   </body>
 </html>

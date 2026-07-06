@@ -86,6 +86,9 @@ const statusFor = (index: number) =>
 
 <style>
   .carousel-track {
+    /* Posicionado para que offsetLeft de los slides se mida contra el track
+       (sin esto se mide contra body y el snap apunta a coordenadas de pagina) */
+    position: relative;
     display: flex;
     gap: 1rem;
     overflow-x: auto;
@@ -138,12 +141,18 @@ const statusFor = (index: number) =>
 </style>
 
 <script>
-  import gsap from 'gsap';
-  import { Draggable } from 'gsap/Draggable';
-
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const carousels = document.querySelectorAll<HTMLElement>('[data-carousel]');
-  if (carousels.length > 0 && !reduceMotion.matches) gsap.registerPlugin(Draggable);
+
+  // gsap y Draggable solo se descargan si hay carrusel y sin reduced motion:
+  // los controles y el scroll-snap de abajo no los necesitan.
+  const loadGsap =
+    carousels.length > 0 && !reduceMotion.matches
+      ? Promise.all([import('gsap'), import('gsap/Draggable')]).then(([core, plugin]) => {
+          core.default.registerPlugin(plugin.Draggable);
+          return { gsap: core.default, Draggable: plugin.Draggable };
+        })
+      : null;
 
   for (const root of carousels) {
     const track = root.querySelector<HTMLElement>('[data-carousel-track]');
@@ -209,29 +218,30 @@ const statusFor = (index: number) =>
     // Arrastre con Draggable sobre un proxy: el scroll real lo lleva la tira
     // (el DOM de la lista queda intacto) y al soltar se hace tween al slide
     // mas cercano. Con reduced motion no se crea: queda el scroll nativo.
-    if (reduceMotion.matches) continue;
-    root.dataset.enhanced = '';
-
-    const proxy = document.createElement('div');
-    Draggable.create(proxy, {
-      type: 'x',
-      trigger: track,
-      allowNativeTouchScrolling: true,
-      onPress() {
-        gsap.killTweensOf(track);
-        track.classList.add('is-dragging');
-      },
-      onDrag() {
-        track.scrollLeft -= this.deltaX;
-      },
-      onRelease() {
-        gsap.to(track, {
-          scrollLeft: scrollTargetFor(nearestIndex()),
-          duration: 0.45,
-          ease: 'power2.out',
-          onComplete: () => track.classList.remove('is-dragging'),
-        });
-      },
+    if (!loadGsap) continue;
+    loadGsap.then(({ gsap, Draggable }) => {
+      root.dataset.enhanced = '';
+      const proxy = document.createElement('div');
+      Draggable.create(proxy, {
+        type: 'x',
+        trigger: track,
+        allowNativeTouchScrolling: true,
+        onPress() {
+          gsap.killTweensOf(track);
+          track.classList.add('is-dragging');
+        },
+        onDrag() {
+          track.scrollLeft -= this.deltaX;
+        },
+        onRelease() {
+          gsap.to(track, {
+            scrollLeft: scrollTargetFor(nearestIndex()),
+            duration: 0.45,
+            ease: 'power2.out',
+            onComplete: () => track.classList.remove('is-dragging'),
+          });
+        },
+      });
     });
   }
 </script>

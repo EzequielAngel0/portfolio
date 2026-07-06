@@ -7,11 +7,6 @@ export const defaultLocale = 'es';
 export const locales = ['es', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
-export const localeNames: Record<Locale, string> = {
-  es: 'Espanol',
-  en: 'English',
-};
-
 // og:locale y <html lang> por idioma
 export const ogLocale: Record<Locale, string> = {
   es: 'es_MX',
@@ -68,7 +63,6 @@ export const ui = {
     'contact.anchor': 'contacto',
     'contact.lead':
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
-    'contact.email': 'Enviar correo',
 
     // 404 (pagina unica bilingue: GitHub Pages sirve un solo 404.html, doc 04)
     'notFound.eyebrow': '404 · ruta no encontrada',
@@ -129,7 +123,6 @@ export const ui = {
     'contact.anchor': 'contact',
     'contact.lead':
       'If you’re looking for someone who can own a problem end-to-end and leave it running in production, get in touch.',
-    'contact.email': 'Send email',
 
     // 404 (single bilingual page: GitHub Pages serves one 404.html, doc 04)
     'notFound.eyebrow': '404 · route not found',
