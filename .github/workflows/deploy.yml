@@ -10,14 +10,21 @@ permissions:
   pages: write
   id-token: write
 
+# Un despliegue a la vez; no cancela el que este en curso.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Build with Astro
+        uses: withastro/action@v6
+        with:
+          node-version: 24
 
   deploy:
     needs: build
