@@ -63,9 +63,9 @@ Lighthouse mide la carga; esto cubre la fluidez una vez cargado, que es donde el
 
 ## Privacidad y analítica
 
-- **Cloudflare Web Analytics** (ADR 0006): sin cookies, sin datos personales, sin banner de consentimiento. Elegida porque el dominio vive en Cloudflare (ADR 0007). Requiere activarla en el panel de Cloudflare y colocar su beacon (pendiente del dueño, D7).
-- Es la única pieza de terceros del sitio. Carga async/defer y el sitio funciona igual sin ella (mejora progresiva).
-- **CSP:** si se define política de seguridad de contenido (vía `<meta http-equiv>`), debe permitir el beacon de Cloudflare (`static.cloudflareinsights.com`) y nada más; el resto es `self`. Decisión F5 (2026-07-06): la meta CSP se agrega junto con el beacon cuando D7 entregue el token; hoy no hay requests de terceros que restringir y los scripts inline anti-FOUC exigirían hashes frágiles sin beneficio.
+- **Cloudflare Web Analytics** (ADR 0006): sin cookies, sin datos personales, sin banner de consentimiento. Elegida porque el dominio vive en Cloudflare (ADR 0007). D7 resuelto el 2026-07-06: beacon integrado en `Base.astro` (`defer`, al final del `<body>`), solo en build de producción para no registrar visitas de desarrollo. El sitio usa modo "JS Snippet installation" en el panel (con DNS only no hay auto-inyección).
+- Es la única pieza de terceros del sitio. Carga defer y el sitio funciona igual sin ella (mejora progresiva).
+- **CSP** (implementada 2026-07-06 junto con el beacon, D7): `<meta http-equiv="Content-Security-Policy">` en `Base.astro`, solo en producción (en dev, Vite inyecta scripts propios). Política: `default-src 'self'`; `script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com`; `style-src 'self' 'unsafe-inline'`; `connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com` (el beacon hace POST a `cloudflareinsights.com/cdn-cgi/rum`); `img-src`, `font-src`, `base-uri` y `form-action` en `self`. El `'unsafe-inline'` es deliberado: los scripts anti-FOUC son inline por diseño y Astro inlinea scripts y estilos pequeños, así que los hashes serían frágiles (razonamiento de la decisión F5); el valor real de esta CSP en un sitio estático sin inputs es restringir los orígenes externos al beacon y nada más. Nota: el POST del beacon falla por CORS en `localhost` con puerto (Cloudflare responde `Allow-Origin: http://localhost` sin puerto); es del lado de Cloudflare, no de la CSP, y de paso evita que el preview local ensucie métricas.
 
 ## Auditorías programadas (fase 6, doc 07)
 
