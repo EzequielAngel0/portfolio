@@ -1,5 +1,5 @@
 ---
-title: ACP Suite
+title: ACP
 slug: acp-suite
 locale: en
 tagline: End-to-end ticketing and parcel platform for an intercity passenger transport company, built by one person and live in production on Oracle Cloud.

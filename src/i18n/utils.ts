@@ -15,7 +15,7 @@ export function useTranslations(locale: Locale) {
 
 // Ruta interna construida con BASE_URL (nunca hardcodear dominio ni base; ADR 0007).
 // path se pasa sin prefijo de idioma; siempre devuelve con barra final (trailingSlash: 'always').
-// localizePath('acp-suite', 'en') -> '/en/acp-suite/'; localizePath('', 'en') -> '/en/'.
+// localizePath('acp', 'en') -> '/en/acp/'; localizePath('', 'en') -> '/en/'.
 export function localizePath(path: string, locale: Locale): string {
   const base = import.meta.env.BASE_URL; // '/' con base en raiz
   const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');

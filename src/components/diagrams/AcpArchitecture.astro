@@ -127,11 +127,11 @@ const edgeLabels: Record<Locale, EdgeLabel[]> = {
 
 const a11y: Record<Locale, { title: string; desc: string }> = {
   es: {
-    title: 'Diagrama de arquitectura de ACP Suite',
+    title: 'Diagrama de arquitectura de la plataforma de ACP',
     desc: 'El tráfico de usuarios entra por Cloudflare y un túnel saliente de cloudflared (sin puertos de entrada) hacia un load balancer privado de OCI y un gateway nginx en dos VMs de aplicación. El gateway sirve la API pública en Go de solo lectura, la API interna en Go con JWT y RBAC, y los estáticos de Next.js y React. Ambas APIs consultan una PostgreSQL primaria a través de PgBouncer, con réplica por replicación streaming. Las apps de campo offline-first (taquilla, chofer y paquetería) sincronizan con el gateway mediante una cola cifrada.',
   },
   en: {
-    title: 'ACP Suite architecture diagram',
+    title: 'ACP platform architecture diagram',
     desc: 'User traffic enters through Cloudflare and an outbound cloudflared tunnel (no inbound ports) to a private OCI load balancer and an nginx gateway on two app VMs. The gateway serves the read-only public Go API, the internal Go API with JWT and RBAC, and the Next.js and React static assets. Both APIs reach a primary PostgreSQL through PgBouncer, with a streaming replica. The offline-first field apps (POS, driver, and parcels) sync with the gateway through an encrypted queue.',
   },
 };
