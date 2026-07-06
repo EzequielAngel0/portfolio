@@ -1,0 +1,76 @@
+---
+// Resumen del case study en el home (doc 05): eyebrow, titulo con badge de
+// estado real, tagline, franja de cifras autorizadas (mono, entre reglas) y
+// tira de stack. Los datos salen de la coleccion; getLocalized valida los
+// pares ES/EN en build (doc 04).
+import type { Locale } from '../../i18n/ui';
+import { useTranslations, localizePath } from '../../i18n/utils';
+import { getLocalized } from '../../lib/content';
+import Badge from '../ui/Badge.astro';
+import Tag from '../ui/Tag.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const entries = await getLocalized('case-study', locale);
+const acp = entries.find((entry) => entry.data.slug === 'acp-suite');
+if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)');
+---
+
+<section data-reveal class="border-t border-line py-section">
+  <p class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+    {t('caseStudy.eyebrow')}
+  </p>
+
+  <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+    <h2 class="text-h2 font-semibold">{acp.data.title}</h2>
+    <Badge status="production" locale={locale} />
+  </div>
+
+  <p class="mt-4 max-w-2xl text-ink-soft">{acp.data.tagline}</p>
+
+  <ul
+    aria-label={t('caseStudy.keyNumbers')}
+    class="mt-8 flex flex-wrap gap-x-3 gap-y-2 border-y border-line py-4 font-mono text-label"
+  >
+    {
+      acp.data.keyNumbers.map((figure, index) => (
+        <li class="flex items-center gap-3">
+          {index > 0 && (
+            <span aria-hidden="true" class="text-ink-soft">
+              ·
+            </span>
+          )}
+          {figure}
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul aria-label={t('caseStudy.stack')} class="mt-6 flex flex-wrap gap-2">
+    {
+      acp.data.stack.map((item) => (
+        <li>
+          <Tag>{item}</Tag>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={localizePath('acp-suite', locale)}
+    class="group mt-8 inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
+  >
+    {t('caseStudy.readFull')}
+    <Icon
+      name="arrow-right"
+      size={16}
+      class="transition-transform duration-150 group-hover:translate-x-0.5"
+    />
+  </a>
+</section>
