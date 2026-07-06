@@ -43,6 +43,8 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     color-scheme: light;
+    /* El feedback tactil lo da active:scale (doc 05); sin highlight del UA */
+    -webkit-tap-highlight-color: transparent;
   }
   html[data-theme='dark'] {
     color-scheme: dark;
@@ -63,8 +65,17 @@
   h3 {
     text-wrap: balance;
   }
-  p {
+  p,
+  li,
+  figcaption,
+  blockquote {
     text-wrap: pretty;
+  }
+
+  /* Sin retardo de double-tap en interactivos (tactil) */
+  a,
+  button {
+    touch-action: manipulation;
   }
 
   /* Cifras siempre tabulares en la monoespaciada (doc 05) */
@@ -119,7 +130,7 @@
     color: var(--color-ink);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-sm);
-    transition: top 0.15s ease;
+    /* Sin transicion: es una accion de teclado y debe aparecer al instante */
   }
   .skip-link:focus {
     top: 0.5rem;
