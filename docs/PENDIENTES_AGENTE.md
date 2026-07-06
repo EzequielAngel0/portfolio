@@ -36,6 +36,10 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 - Pase de reglas duras (doc 02) antes de cerrar F2 y de nuevo en F6: grep de "microservicio", "Redis", "Supabase", "OAuth2", em dash y emojis sobre `src/`.
 - Al cerrar cada fase: actualizar este doc + el doc del área + tracker de ronda si aplica.
 
+## Ronda de mejoras post-lanzamiento (pedidos del dueño 2026-07-06)
+
+Redactadas como prompt listo para otro chat en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md): 2 bugs del case study (pills del stack, espacio en blanco), más certificaciones, teléfono en contacto, recorte del footer, más iconos SVG, renombrar "ACP Suite" a "ACP" (sitio + CV), botón de descarga de CV en el header, fondo interactivo + intro con el nombre (requiere ADR 0009 y OK del dueño) y CV bilingüe ES/EN. No arrancadas.
+
 ## Chores opcionales post-lanzamiento (del code review de F6, no bloquean)
 
 - [ ] Refactors de reutilización diferidos: `KeyNumbers.astro`, `ExternalLink.astro`, utilidad `eyebrow`, helper `getCaseStudy`, tokens/fuentes compartidos en `scripts/`, cache de geometría del carrusel. Detalle en `docs/rondas/2026-07-06_f6.md`.
