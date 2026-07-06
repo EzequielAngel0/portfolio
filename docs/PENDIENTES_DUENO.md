@@ -13,7 +13,7 @@ Cosas que el asistente no puede hacer: respaldos externos, decisiones, publicar 
 - [ ] **D4 · Verificar el deploy** en <https://angelezequiel.dev> tras el merge: idioma, tema, descarga de CV, links de credenciales.
 - [ ] **D5 · Publicar el README de perfil de GitHub** (`GITHUB_PROFILE_README.md`) en el repo `EzequielAngel0/EzequielAngel0`.
 - [ ] **D6 · Actualizar LinkedIn** con el titular y "Acerca de" de `LinkedIn_ES_EN.md`.
-- [ ] **D7 · Activar Cloudflare Web Analytics** para `angelezequiel.dev` en el panel de Cloudflare y pasarme el token del beacon (ADR 0006). Necesario antes de cerrar F5.
+- [ ] **D7 · Activar Cloudflare Web Analytics** para `angelezequiel.dev` en el panel de Cloudflare y pasarme el token del beacon (ADR 0006). El resto de F5 cerró el 2026-07-06; este punto quedó `[bloqueado]` y se integra (beacon + CSP, doc 06) en cuanto llegue el token.
 - [ ] **D8 · Pasar las capturas de pantalla** (a futuro, opcional, no bloquea el lanzamiento): ACP (panel admin y apps) **anonimizadas** (sin datos personales, hosts, IPs ni tokens visibles; usar demo o difuminar) y SoloKey. Al agregarlas aparece el carrusel (doc 05, doc 02 regla 3).
 - [ ] **D9 · Configurar el dominio** `angelezequiel.dev` (ADR 0007): en GitHub repo Settings, Pages, custom domain = `angelezequiel.dev`; en Cloudflare DNS, registros a GitHub Pages (apex A/AAAA o CNAME flattening a `ezequielangel0.github.io`, y `www` CNAME). Recomendado DNS-only + Enforce HTTPS en GitHub. Necesario para F7 (deploy final).
 

@@ -46,12 +46,13 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [x] Componente carrusel accesible (GSAP Draggable vía proxy, sin InertiaPlugin: tween de snap al soltar) que aparece solo si hay capturas; sin ellas no se renderiza y Draggable no entra al bundle. Degrada a scroll-snap sin JS (docs 05 y 06).
 - Verificación [hecha]: `check`/`build`/`preview` en verde (4 páginas + sitemap, todas 200), anclas del TOC = ids reales, presupuesto JS 44.5 KB gzip / CSS 5.0 KB, reglas duras por grep. Detalle: `docs/rondas/2026-07-06_f4.md`.
 
-## Fase 5 · SEO, assets y analítica (doc 06)
+## Fase 5 · SEO, assets y analítica (doc 06) · [hecho] 2026-07-06 (beacon [bloqueado] por D7)
 
-- [ ] `Seo.astro` completo: canonical/OG/JSON-LD con `angelezequiel.dev` (ADR 0007), hreflang, imágenes OG 1200×630, JSON-LD por página.
-- [ ] `robots.txt`, sitemap con alternates, 404 útil bilingüe.
-- [ ] Favicon nuevo acorde a la identidad (monograma o punto de estado en verde), más `favicon.ico` y `apple-touch-icon.png`.
-- [ ] Integrar el beacon de Cloudflare Web Analytics (ADR 0006) async/defer; ajustar CSP. Requiere activarlo en Cloudflare (D7 del dueño).
+- [x] `Seo.astro` completo: canonical/OG/JSON-LD con `angelezequiel.dev` (ADR 0007), hreflang revisado, imágenes OG 1200×630 por página/idioma en `src/assets/og/` (generadas con `scripts/og-images.mjs`, one-off sin tocar dependencias), JSON-LD por página (Person + SoloKey en home, SoftwareSourceCode de ACP en el case study), og:type `article` en el case study.
+- [x] `robots.txt` apuntando al sitemap, sitemap con alternates (sin la 404), 404 útil bilingüe (página única: GitHub Pages sirve un solo `404.html`; bloques ES/EN con `lang`, sin canonical/hreflang).
+- [x] Favicon nuevo acorde a la identidad: monograma "A" + punto de estado en verde (`favicon.svg` tematizado con `prefers-color-scheme`), más `favicon.ico` (16/32/48) y `apple-touch-icon.png` (`scripts/favicons.mjs`).
+- [bloqueado] Integrar el beacon de Cloudflare Web Analytics (ADR 0006) async/defer; ajustar CSP (se define junto con el beacon, ver doc 06). Requiere activarlo en Cloudflare (D7 del dueño).
+- Verificación [hecha]: `check`/`build`/`preview` en verde (5 páginas: 4 + `404.html`, todas 200 y la ruta inexistente 404), OG y JSON-LD presentes en `dist/`, reglas duras por grep, presupuesto intacto (sin JS nuevo al cliente, lockfile intacta). Validación externa de JSON-LD/OG queda en F6 (auditorías). Detalle: `docs/rondas/2026-07-06_f5.md`.
 
 ## Fase 6 · Pulido y QA (gate de merge)
 

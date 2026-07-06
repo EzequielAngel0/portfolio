@@ -65,7 +65,7 @@ Lighthouse mide la carga; esto cubre la fluidez una vez cargado, que es donde el
 
 - **Cloudflare Web Analytics** (ADR 0006): sin cookies, sin datos personales, sin banner de consentimiento. Elegida porque el dominio vive en Cloudflare (ADR 0007). Requiere activarla en el panel de Cloudflare y colocar su beacon (pendiente del dueño, D7).
 - Es la única pieza de terceros del sitio. Carga async/defer y el sitio funciona igual sin ella (mejora progresiva).
-- **CSP:** si se define política de seguridad de contenido (vía `<meta http-equiv>`), debe permitir el beacon de Cloudflare (`static.cloudflareinsights.com`) y nada más; el resto es `self`.
+- **CSP:** si se define política de seguridad de contenido (vía `<meta http-equiv>`), debe permitir el beacon de Cloudflare (`static.cloudflareinsights.com`) y nada más; el resto es `self`. Decisión F5 (2026-07-06): la meta CSP se agrega junto con el beacon cuando D7 entregue el token; hoy no hay requests de terceros que restringir y los scripts inline anti-FOUC exigirían hashes frágiles sin beneficio.
 
 ## Auditorías programadas (fase 6, doc 07)
 
