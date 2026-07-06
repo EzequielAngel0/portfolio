@@ -25,6 +25,18 @@ const t = useTranslations(locale);
     {site.email}
   </a>
 
+  <a
+    href={site.whatsapp.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${t('contact.whatsapp')}: ${site.whatsapp.display}`}
+    class="mt-5 flex min-h-10 w-fit items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
+  >
+    <Icon name="whatsapp" size={18} />
+    <span>{site.whatsapp.display}</span>
+    <span class="sr-only">({t('a11y.newTab')})</span>
+  </a>
+
   <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3">
     {
       site.socials.map((social) => (

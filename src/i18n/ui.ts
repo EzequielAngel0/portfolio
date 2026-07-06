@@ -19,6 +19,7 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.caseStudy': 'Case study',
     'nav.contact': 'Contacto',
+    'nav.downloadCv': 'Descargar CV (PDF)',
     'a11y.nav': 'Navegación principal',
     'a11y.skip': 'Saltar al contenido',
     'a11y.themeToDark': 'Cambiar a tema oscuro',
@@ -63,6 +64,7 @@ export const ui = {
     'contact.anchor': 'contacto',
     'contact.lead':
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
+    'contact.whatsapp': 'Escríbeme por WhatsApp',
 
     // 404 (pagina unica bilingue: GitHub Pages sirve un solo 404.html, doc 04)
     'notFound.eyebrow': '404 · ruta no encontrada',
@@ -72,13 +74,14 @@ export const ui = {
     'notFound.home': 'Ir al inicio',
     'notFound.case': 'Ver el case study de ACP Suite',
 
-    'footer.status': 'ultima actualizacion 2026-07 · sitio estatico · build ok',
+    'footer.status': 'ultima actualizacion 2026-07',
   },
   en: {
     'site.title': 'Angel Barbosa',
     'nav.home': 'Home',
     'nav.caseStudy': 'Case study',
     'nav.contact': 'Contact',
+    'nav.downloadCv': 'Download CV (PDF)',
     'a11y.nav': 'Main navigation',
     'a11y.skip': 'Skip to content',
     'a11y.themeToDark': 'Switch to dark theme',
@@ -123,6 +126,7 @@ export const ui = {
     'contact.anchor': 'contact',
     'contact.lead':
       'If you’re looking for someone who can own a problem end-to-end and leave it running in production, get in touch.',
+    'contact.whatsapp': 'Message me on WhatsApp',
 
     // 404 (single bilingual page: GitHub Pages serves one 404.html, doc 04)
     'notFound.eyebrow': '404 · route not found',
@@ -132,7 +136,7 @@ export const ui = {
     'notFound.home': 'Go to the home page',
     'notFound.case': 'View the ACP Suite case study',
 
-    'footer.status': 'last updated 2026-07 · static site · build ok',
+    'footer.status': 'last updated 2026-07',
   },
 } as const;
 

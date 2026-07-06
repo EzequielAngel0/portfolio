@@ -2,7 +2,8 @@
 import type { ImageMetadata } from 'astro';
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
-import { getLocaleFromUrl, getAlternates, useTranslations, localizePath } from '../i18n/utils';
+import Icon from '../components/ui/Icon.astro';
+import { getLocaleFromUrl, getAlternates, useTranslations, localizePath, cvPath } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -34,7 +35,8 @@ const otherLocale = locale === 'es' ? 'en' : 'es';
 const otherHref = alternates[otherLocale];
 
 // Nav del header (doc 04): aria-current por coincidencia exacta de ruta.
-// "Inicio" se oculta en xs (el logo cumple ese rol) para caber en 360px.
+// "Inicio" y "Contacto" se ocultan en movil (el logo cubre el inicio y contacto
+// es un anchor de scroll) para dejar sitio al boton de CV sin romper los 360px.
 const homePath = localizePath('', locale);
 const casePath = localizePath('acp-suite', locale);
 const navItems = [
@@ -44,7 +46,7 @@ const navItems = [
     href: `${homePath}#${t('contact.anchor')}`,
     label: t('nav.contact'),
     path: null,
-    mobileHidden: false,
+    mobileHidden: true,
   },
 ];
 const currentPath = Astro.url.pathname;
@@ -175,6 +177,21 @@ const lastName = restName.join(' ');
           </nav>
 
           <div class="flex items-center gap-2 sm:border-l sm:border-line sm:pl-4">
+            {/* Descarga directa del CV (T8, doc 06): declara formato y descarga.
+                Icono solo hasta lg (aria-label lo nombra), texto en pantallas
+                anchas; mismo lenguaje visual que los toggles, hit area 40x40. */}
+            <a
+              href={cvPath(locale)}
+              download
+              aria-label={t('nav.downloadCv')}
+              class="inline-flex h-10 min-w-10 items-center justify-center gap-2 rounded-sm border border-line px-2 text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96]"
+            >
+              <Icon name="download" size={16} />
+              <span class="hidden font-mono text-label font-medium lg:inline">
+                {t('nav.downloadCv')}
+              </span>
+            </a>
+
             <button
               id="theme-toggle"
               type="button"

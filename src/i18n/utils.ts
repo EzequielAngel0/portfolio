@@ -33,6 +33,15 @@ export function stripLocale(url: URL): string {
   return url.pathname || '/';
 }
 
+// Ruta del CV por idioma (T10): ES en paginas ES, EN en paginas EN. El nombre
+// del EN se mantiene estable (Angel_Barbosa_CV.pdf) para no romper links ya
+// impresos/compartidos; el ES es un archivo aparte. Via BASE_URL (ADR 0007).
+export function cvPath(locale: Locale): string {
+  const base = import.meta.env.BASE_URL;
+  const file = locale === 'en' ? 'Angel_Barbosa_CV.pdf' : 'Angel_Barbosa_CV_ES.pdf';
+  return `${base}cv/${file}`.replace(/\/{2,}/g, '/');
+}
+
 // Pares de URL por idioma para el toggle (enlace al equivalente exacto) y hreflang.
 export function getAlternates(url: URL): Record<Locale, string> {
   const rest = stripLocale(url);
