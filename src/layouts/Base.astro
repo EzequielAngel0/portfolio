@@ -1,0 +1,146 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import { getLocaleFromUrl, getAlternates, useTranslations } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  // Solo el home ES lo activa: detecta idioma del navegador una vez (ADR 0002).
+  detectLanguage?: boolean;
+}
+
+const { title, description, detectLanguage = false } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const alternates = getAlternates(Astro.url);
+const base = import.meta.env.BASE_URL;
+const otherLocale = locale === 'es' ? 'en' : 'es';
+const otherHref = alternates[otherLocale];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Anti-FOUC de tema: corre antes del primer pintado. Claro por defecto (doc 04). */}
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+
+    {/* Deteccion de idioma: solo home ES, una vez, con guarda anti ping-pong (ADR 0002). */}
+    <script is:inline define:vars={{ detectLanguage }}>
+      if (detectLanguage) {
+        try {
+          if (!localStorage.getItem('lang-pref')) {
+            var lang = (navigator.language || 'es').toLowerCase();
+            if (lang.indexOf('es') !== 0) {
+              localStorage.setItem('lang-pref', 'en');
+              location.replace(('/en' + location.pathname).replace(/\/{2,}/g, '/'));
+            }
+          }
+        } catch (e) {
+          /* sin localStorage: se queda en ES */
+        }
+      }
+    </script>
+
+    <Seo title={title} description={description} />
+
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link
+      rel="preload"
+      href={`${base}fonts/archivo-latin-wght-normal.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+
+  <body>
+    <a class="skip-link font-mono" href="#main">{t('a11y.skip')}</a>
+
+    <header class="sticky top-0 z-50 border-b border-line bg-paper">
+      <div class="mx-auto flex h-14 max-w-page items-center justify-between px-4 sm:px-6">
+        <a href={base} class="font-mono text-label font-medium tracking-wide uppercase">
+          {t('site.title')}
+        </a>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96]"
+            aria-label={t('a11y.themeToDark')}
+            data-label-dark={t('a11y.themeToDark')}
+            data-label-light={t('a11y.themeToLight')}
+          >
+            <span aria-hidden="true" class="font-mono text-label">[ ]</span>
+          </button>
+
+          <a
+            href={otherHref}
+            hreflang={otherLocale}
+            class="grid h-10 min-w-10 place-items-center rounded-sm border border-line px-2 font-mono text-label font-medium uppercase transition-transform active:scale-[0.96]"
+            aria-label={t('a11y.switchLang')}
+          >
+            {otherLocale}
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto max-w-page px-4 sm:px-6">
+      <slot />
+    </main>
+
+    <footer class="mx-auto mt-24 max-w-page px-4 pb-10 sm:px-6">
+      <p class="border-t border-line pt-4 font-mono text-label text-ink-soft">
+        {t('footer.status')}
+      </p>
+    </footer>
+
+    {/* Toggle de tema: interruptible, persiste en localStorage, sin FOUC */}
+    <script>
+      const btn = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+      const syncLabel = (theme: string) => {
+        if (!btn) return;
+        const next = theme === 'dark' ? 'light' : 'dark';
+        const label = next === 'dark' ? btn.dataset.labelDark : btn.dataset.labelLight;
+        if (label) btn.setAttribute('aria-label', label);
+      };
+      syncLabel(root.dataset.theme ?? 'light');
+      btn?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem('theme', next);
+        } catch (e) {
+          /* almacenamiento no disponible: el tema aun cambia en esta sesion */
+        }
+        syncLabel(next);
+      });
+    </script>
+
+    {/* Motion GSAP como mejora progresiva; se apaga con reduced motion (doc 05) */}
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>
