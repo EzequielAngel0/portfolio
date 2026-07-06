@@ -38,7 +38,7 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 ## Ronda de mejoras post-lanzamiento (pedidos del dueño 2026-07-06)
 
-Redactadas como prompt listo para otro chat en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md): 2 bugs del case study (pills del stack, espacio en blanco), más certificaciones, teléfono en contacto, recorte del footer, más iconos SVG, renombrar "ACP Suite" a "ACP" (sitio + CV), botón de descarga de CV en el header, fondo interactivo + intro con el nombre (requiere ADR 0009 y OK del dueño) y CV bilingüe ES/EN. No arrancadas.
+Redactadas como prompt listo para otro chat en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md) (T1-T11, con inventario de certificados extraído de la carpeta del dueño): 2 bugs del case study (pills del stack, espacio en blanco), página propia de certificaciones en el nav, teléfono en contacto, recorte del footer, más iconos SVG, renombrar "ACP Suite" a "ACP" y cambiar rutas `/acp-suite/` -> `/acp/` (sitio + CV), botón de descarga de CV en el header, más motion con GSAP (fondo interactivo + intro con el nombre, requiere ADR 0009 y OK del dueño, 60fps) y CV bilingüe ES/EN (la versión ES ya está redactada en `perfil-mejorado/CV_Angel_Barbosa_ES.html`). Ver el sitio en contenedor Podman ya quedó verificado. No arrancadas.
 
 ## Chores opcionales post-lanzamiento (del code review de F6, no bloquean)
 
