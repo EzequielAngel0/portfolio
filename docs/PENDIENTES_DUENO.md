@@ -9,8 +9,8 @@ Cosas que el asistente no puede hacer: respaldos externos, decisiones, publicar 
 
 ## Durante / al final
 
-- [ ] **D3 · Merge de `develop` a `master`** cuando la fase 6 esté en verde (el push a `master` dispara el deploy a Pages).
-- [ ] **D4 · Verificar el deploy** en <https://angelezequiel.dev> tras el merge: idioma, tema, descarga de CV, links de credenciales.
+- [hecho] **D3 · Merge de `develop` a `master`**. Resuelto el 2026-07-06: el dueño autorizó y el agente ejecutó el fast-forward `20dbf85..9390c0e`; el workflow de deploy terminó en verde.
+- [ ] **D4 · Verificar el deploy** en <https://angelezequiel.dev>: la parte automatizable ya pasó el 2026-07-06 (título e H1 nuevos, `/en/` y `/acp-suite/` en 200, 404 real, CSS y CV en 200, beacon presente). Queda el pase visual del dueño: idioma, tema, descarga de CV, links de credenciales, y en unos días confirmar visitas en Web Analytics.
 - [ ] **D5 · Publicar el README de perfil de GitHub** (`GITHUB_PROFILE_README.md`) en el repo `EzequielAngel0/EzequielAngel0`.
 - [ ] **D6 · Actualizar LinkedIn** con el titular y "Acerca de" de `LinkedIn_ES_EN.md`.
 - [hecho] **D7 · Activar Cloudflare Web Analytics** para `angelezequiel.dev` y pasar el token del beacon (ADR 0006). Resuelto el 2026-07-06: el sitio ya existía en Web Analytics, se cambió a modo "JS Snippet installation" (con DNS only no hay auto-inyección) y el token se entregó; beacon + CSP integrados en `Base.astro` (doc 06, `docs/rondas/2026-07-06_d7-beacon.md`). Verificar visitas en el panel unos días después del deploy.

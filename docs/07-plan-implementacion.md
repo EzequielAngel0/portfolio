@@ -64,9 +64,9 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [x] Verificación end-to-end con Playwright sobre `astro preview` (34 checks): detección de idioma con guarda, toggle de tema (persistencia + anti-FOUC), case study (TOC, diagrama), credenciales, descarga de CV, 404 real, sin JS íntegro, reduced motion.
 - Verificación [hecha]: `check`/`build`/`preview` en verde; reglas duras por grep en verde; lockfile intacta (playwright/lighthouse via `--no-save`/`npx`). Detalle: `docs/rondas/2026-07-06_f6.md`. Rama `feat/pulido-qa`.
 
-## Fase 7 · Lanzamiento y perfil
+## Fase 7 · Lanzamiento y perfil · [hecho] 2026-07-06 (perfil D5/D6 y pase visual D4 quedan al dueño)
 
-- [ ] Merge a `master`, verificar el deploy de Pages en la URL real.
+- [x] Merge a `master` (autorizado por el dueño el 2026-07-06, ejecutado como fast-forward `20dbf85..9390c0e`), deploy de Pages en verde y verificado en la URL real: título e H1 nuevos en `/`, `/en/` y `/acp-suite/` en 200, 404 real, CSS y CV en 200, beacon presente.
 - [x] Reescribir `README.md` del repo: hecho el 2026-07-06 (describe el sitio nuevo: stack real, características, desarrollo, estructura y puntero a `docs/`).
 - [ ] Publicar `GITHUB_PROFILE_README.md` en el repo de perfil y actualizar LinkedIn con `LinkedIn_ES_EN.md` (fuera de este repo).
 
