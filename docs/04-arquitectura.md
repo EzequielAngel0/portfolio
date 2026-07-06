@@ -44,8 +44,10 @@ i18n: {
 ```text
 src/
 ├── components/
-│   ├── ui/            # Piezas: Button, Tag, Icon, ThemeToggle, LangToggle, CredentialLink
-│   └── sections/      # Secciones del home: Hero, CaseStudyTeaser, Projects, Skills, Certifications, Contact
+│   ├── ui/            # Piezas: Button, Tag, Badge, Icon, Section, CredentialLink, Carousel (solo con capturas, D8)
+│   ├── sections/      # Secciones del home: Hero, CaseStudyTeaser, Projects, Skills, Certifications, Contact
+│   ├── case-study/    # CaseStudyArticle.astro: cabecera, corte de caja, TOC y prosa
+│   └── diagrams/      # AcpArchitecture.astro: SVG artesanal del diagrama (geometria unica, etiquetas por locale)
 ├── content/
 │   ├── case-study/    # acp-suite.es.md · acp-suite.en.md (frontmatter tipado + cuerpo markdown)
 │   └── projects/      # solokey.es.md · solokey.en.md · (futuros)
@@ -69,7 +71,6 @@ src/
 │   ├── tokens.css     # @theme: colores, tipografía, espaciado, radios (doc 05)
 │   └── global.css     # reset ligero, focus visible, reduced motion, utilidades propias
 └── assets/
-    ├── diagrams/      # arquitectura ACP: acp-architecture.es.svg · .en.svg
     └── og/            # imágenes OG 1200x630 por página e idioma
 public/
 ├── cv/Angel_Barbosa_CV.pdf    # desde perfil-mejorado/Angel_Barbosa_Resume.pdf
@@ -107,11 +108,12 @@ Regla: el emparejamiento ES/EN se hace por `slug`, y el build falla (validación
 
 ## Diagrama de arquitectura (case study)
 
-El Mermaid de `CASE_STUDY_ACP_ES_EN.md` se traduce UNA vez a un SVG artesanal (uno por idioma, mismos trazos, distintas etiquetas):
+El Mermaid de `CASE_STUDY_ACP_ES_EN.md` se traduce UNA vez a un SVG artesanal. Implementación (F4): un solo componente `components/diagrams/AcpArchitecture.astro` con la geometría compartida (nodos y flechas como datos) y un diccionario de etiquetas por locale; así "mismos trazos, distintas etiquetas" queda garantizado por construcción, y el SVG va inline, que es lo que permite heredar los tokens del tema. Sustituye a los dos archivos `.svg` estáticos del plan original (un `.svg` externo no hereda variables CSS).
 
 - Colores por variables CSS (hereda tema claro/oscuro), texto real `<text>` (seleccionable, accesible), `role="img"` + `<title>`/`<desc>`.
 - Sin librería Mermaid en cliente ni en build: el diagrama es estable, no cambia con frecuencia, y el SVG manual da mejor tipografía y layout que el auto-generado.
 - Respetar la regla 3 del doc 02: el diagrama nombra piezas (Cloudflare, nginx, PgBouncer, PostgreSQL), nunca hosts, IPs ni versiones.
+- Inserción a mitad del cuerpo: los `.md` del case study llevan el marcador `<!-- acp-architecture-svg -->` bajo "Arquitectura"; la página parte el HTML renderizado en ese marcador e intercala el componente. Si el marcador falta en un idioma, el build falla con error explícito.
 
 ## Flujo de contenido desde `perfil-mejorado/`
 

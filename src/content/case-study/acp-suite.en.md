@@ -50,7 +50,7 @@ The four Flutter apps share in-house packages: a design system, an API client, a
 
 ## Architecture
 
-<!-- architecture diagram: hand-crafted themed SVG, inserted in F4 (doc 04) -->
+<!-- acp-architecture-svg -->
 
 Design decisions that shaped the project:
 

@@ -1,0 +1,224 @@
+---
+// Carrusel de capturas (docs 05 y 06). Solo se monta cuando hay capturas (D8):
+// la pagina lo renderiza condicionalmente, asi Draggable no entra al bundle
+// mientras no exista. Mejora progresiva: la base es una tira con scroll-snap
+// nativo (usable sin JS); el JS habilita los controles, anuncia el estado y
+// agrega arrastre con GSAP Draggable (via proxy, sin tocar el DOM de la lista).
+// Reduced motion: sin arrastre ni tweens, queda el scroll nativo instantaneo.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import Icon from './Icon.astro';
+
+interface Props {
+  items: { src: ImageMetadata; alt: string }[];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const statusTemplate = t('carousel.status');
+const statusFor = (index: number) =>
+  statusTemplate.replace('{current}', String(index + 1)).replace('{total}', String(items.length));
+---
+
+<div
+  class="carousel"
+  data-carousel
+  data-status-template={statusTemplate}
+  role="group"
+  aria-roledescription="carousel"
+  aria-label={t('screenshots.title')}
+>
+  <div class="mb-3 flex items-center gap-2" data-carousel-controls hidden>
+    <button
+      type="button"
+      data-carousel-prev
+      aria-label={t('carousel.prev')}
+      aria-disabled="true"
+      class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96] aria-disabled:opacity-40"
+    >
+      <Icon name="arrow-left" size={18} />
+    </button>
+    <button
+      type="button"
+      data-carousel-next
+      aria-label={t('carousel.next')}
+      aria-disabled={items.length < 2 ? 'true' : 'false'}
+      class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-transform active:scale-[0.96] aria-disabled:opacity-40"
+    >
+      <Icon name="arrow-right" size={18} />
+    </button>
+    <p class="ml-2 font-mono text-label text-ink-soft" data-carousel-status aria-live="polite">
+      {statusFor(0)}
+    </p>
+  </div>
+
+  <ul class="carousel-track" data-carousel-track tabindex="0">
+    {
+      items.map((item, index) => (
+        <li
+          class="carousel-slide"
+          role="group"
+          aria-roledescription="slide"
+          aria-label={statusFor(index)}
+        >
+          <Image
+            src={item.src}
+            alt={item.alt}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 64rem) 38rem, 85vw"
+            loading="lazy"
+            class="slide-image"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Mientras GSAP arrastra o hace el tween de snap, el snap nativo se apaga
+     para no pelear con el tween; se restituye al terminar. */
+  .carousel-track.is-dragging {
+    scroll-snap-type: none;
+  }
+
+  .carousel[data-enhanced] .carousel-track {
+    cursor: grab;
+  }
+
+  .carousel[data-enhanced] .carousel-track:active {
+    cursor: grabbing;
+  }
+
+  .carousel-slide {
+    flex: none;
+    width: min(85%, 38rem);
+    scroll-snap-align: center;
+    /* Marco limpio (doc 05): outline de 1px con token, radio del sistema */
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    padding: 0.5rem;
+  }
+
+  /* Altura fija del marco: capturas de escritorio y movil conviven sin CLS */
+  .slide-image {
+    display: block;
+    width: 100%;
+    height: clamp(16rem, 50vh, 28rem);
+    object-fit: contain;
+    border-radius: var(--radius-xs);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { Draggable } from 'gsap/Draggable';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const carousels = document.querySelectorAll<HTMLElement>('[data-carousel]');
+  if (carousels.length > 0 && !reduceMotion.matches) gsap.registerPlugin(Draggable);
+
+  for (const root of carousels) {
+    const track = root.querySelector<HTMLElement>('[data-carousel-track]');
+    const slides = Array.from(track?.children ?? []) as HTMLElement[];
+    if (!track || slides.length === 0) continue;
+
+    const controls = root.querySelector<HTMLElement>('[data-carousel-controls]');
+    const status = root.querySelector<HTMLElement>('[data-carousel-status]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    const template = root.dataset.statusTemplate ?? '{current} / {total}';
+
+    // Desplazamiento que centra un slide en el viewport de la tira.
+    const scrollTargetFor = (index: number) => {
+      const slide = slides[index]!;
+      return slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
+    };
+
+    const nearestIndex = () => {
+      let best = 0;
+      let bestDistance = Number.POSITIVE_INFINITY;
+      slides.forEach((_, index) => {
+        const distance = Math.abs(track.scrollLeft - scrollTargetFor(index));
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = index;
+        }
+      });
+      return best;
+    };
+
+    let current = 0;
+    const sync = () => {
+      const index = nearestIndex();
+      if (index === current) return;
+      current = index;
+      if (status) {
+        status.textContent = template
+          .replace('{current}', String(current + 1))
+          .replace('{total}', String(slides.length));
+      }
+      prev?.setAttribute('aria-disabled', String(current === 0));
+      next?.setAttribute('aria-disabled', String(current === slides.length - 1));
+    };
+
+    let scrollTimer = 0;
+    track.addEventListener('scroll', () => {
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(sync, 120);
+    });
+
+    const goTo = (index: number) => {
+      const clamped = Math.max(0, Math.min(slides.length - 1, index));
+      track.scrollTo({
+        left: scrollTargetFor(clamped),
+        behavior: reduceMotion.matches ? 'auto' : 'smooth',
+      });
+    };
+    prev?.addEventListener('click', () => goTo(nearestIndex() - 1));
+    next?.addEventListener('click', () => goTo(nearestIndex() + 1));
+    controls?.removeAttribute('hidden');
+
+    // Arrastre con Draggable sobre un proxy: el scroll real lo lleva la tira
+    // (el DOM de la lista queda intacto) y al soltar se hace tween al slide
+    // mas cercano. Con reduced motion no se crea: queda el scroll nativo.
+    if (reduceMotion.matches) continue;
+    root.dataset.enhanced = '';
+
+    const proxy = document.createElement('div');
+    Draggable.create(proxy, {
+      type: 'x',
+      trigger: track,
+      allowNativeTouchScrolling: true,
+      onPress() {
+        gsap.killTweensOf(track);
+        track.classList.add('is-dragging');
+      },
+      onDrag() {
+        track.scrollLeft -= this.deltaX;
+      },
+      onRelease() {
+        gsap.to(track, {
+          scrollLeft: scrollTargetFor(nearestIndex()),
+          duration: 0.45,
+          ease: 'power2.out',
+          onComplete: () => track.classList.remove('is-dragging'),
+        });
+      },
+    });
+  }
+</script>

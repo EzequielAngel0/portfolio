@@ -1,0 +1,15 @@
+---
+// Case study de ACP Suite en ES (doc 04): pagina propia, es EL link que se
+// comparte con reclutadores. getLocalized mantiene el gate de pares ES/EN.
+import Base from '../layouts/Base.astro';
+import CaseStudyArticle from '../components/case-study/CaseStudyArticle.astro';
+import { getLocalized } from '../lib/content';
+
+const entries = await getLocalized('case-study', 'es');
+const acp = entries.find((entry) => entry.data.slug === 'acp-suite');
+if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)');
+---
+
+<Base title="Case study de ACP Suite · Angel Barbosa" description={acp.data.tagline}>
+  <CaseStudyArticle entry={acp} />
+</Base>

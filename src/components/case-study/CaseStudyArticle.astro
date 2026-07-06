@@ -1,0 +1,225 @@
+---
+// Pagina del case study de ACP Suite (doc 07, F4): cabecera con badge de
+// estado real y franja "corte de caja" (cifras autorizadas del frontmatter),
+// TOC sticky en desktop y lineal en movil, cuerpo markdown con el diagrama
+// artesanal intercalado, seccion de stack y carrusel solo si hay capturas (D8).
+// El diagrama se inserta partiendo el HTML renderizado en el marcador que dejo
+// F2 en el .md; si el marcador falta, el build falla aqui con error explicito.
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { useTranslations } from '../../i18n/utils';
+import Badge from '../ui/Badge.astro';
+import Tag from '../ui/Tag.astro';
+import Carousel from '../ui/Carousel.astro';
+import AcpArchitecture from '../diagrams/AcpArchitecture.astro';
+
+interface Props {
+  entry: CollectionEntry<'case-study'>;
+}
+
+const { entry: acp } = Astro.props;
+const locale = acp.data.locale;
+const t = useTranslations(locale);
+
+const { headings } = await render(acp);
+
+const DIAGRAM_MARKER = '<!-- acp-architecture-svg -->';
+const html = acp.rendered?.html;
+if (!html) throw new Error(`acp-suite.${locale}.md no tiene HTML renderizado (loader glob)`);
+const parts = html.split(DIAGRAM_MARKER);
+if (parts.length !== 2) {
+  throw new Error(`Falta el marcador ${DIAGRAM_MARKER} en acp-suite.${locale}.md (F4, doc 04)`);
+}
+const [beforeDiagram, afterDiagram] = parts;
+
+const screenshots = acp.data.screenshots ?? [];
+const hasScreenshots = screenshots.length > 0;
+
+// TOC: los h2 reales del cuerpo mas las secciones que construye la pagina.
+const tocItems = [
+  ...headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text })),
+  { slug: 'stack', text: t('caseStudy.stack') },
+  ...(hasScreenshots ? [{ slug: t('screenshots.anchor'), text: t('screenshots.title') }] : []),
+];
+---
+
+<article class="py-section">
+  <header>
+    <p data-boot class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('caseStudy.eyebrow')}
+    </p>
+
+    <div data-boot class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <h1 class="text-display">{acp.data.title}</h1>
+      <Badge status="production" locale={locale} />
+    </div>
+
+    <p data-boot class="mt-5 max-w-2xl text-lg text-ink-soft">{acp.data.tagline}</p>
+
+    {/* Corte de caja: solo las cifras autorizadas del frontmatter (doc 02) */}
+    <ul
+      data-boot
+      aria-label={t('caseStudy.keyNumbers')}
+      class="mt-9 flex flex-wrap gap-x-3 gap-y-2.5 rounded-md border border-line bg-surface px-5 py-4 font-mono text-sm"
+    >
+      {
+        acp.data.keyNumbers.map((figure, index) => (
+          <li class="flex items-center gap-3">
+            {index > 0 && (
+              <span aria-hidden="true" class="text-ink-soft">
+                ·
+              </span>
+            )}
+            {figure}
+          </li>
+        ))
+      }
+    </ul>
+  </header>
+
+  <div class="mt-12 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-14">
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <nav aria-label={t('caseStudy.toc')}>
+        <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+          {t('caseStudy.toc')}
+        </h2>
+        <ul class="mt-3 border-l border-line">
+          {
+            tocItems.map((item) => (
+              <li>
+                <a
+                  href={`#${item.slug}`}
+                  class="flex min-h-10 items-center pl-4 font-mono text-label text-ink-soft transition-colors duration-150 hover:text-ink"
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="cs-prose mt-10 lg:mt-0">
+      <Fragment set:html={beforeDiagram} />
+      <AcpArchitecture locale={locale} />
+      <Fragment set:html={afterDiagram} />
+
+      <section id="stack" class="cs-section">
+        <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+          {t('caseStudy.stack')}
+        </h2>
+        <ul class="mt-6 flex flex-wrap gap-2">
+          {
+            acp.data.stack.map((item) => (
+              <li>
+                <Tag>{item}</Tag>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      {
+        hasScreenshots && (
+          <section id={t('screenshots.anchor')} class="cs-section">
+            <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+              {t('screenshots.title')}
+            </h2>
+            <div class="mt-6">
+              <Carousel items={screenshots} locale={locale} />
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  /* Prosa del case study. El cuerpo llega via set:html (sin scope de Astro),
+     por eso los selectores van con :global bajo el contenedor .cs-prose.
+     Los h2 replican el lenguaje de seccion del home (regla superior + etiqueta
+     mono en mayusculas, Section.astro) para que el sitio lea como un sistema. */
+
+  .cs-prose :global(p),
+  .cs-prose :global(ul),
+  .cs-prose :global(ol) {
+    max-width: 65ch;
+  }
+
+  .cs-prose :global(p) {
+    margin-top: 1.25rem;
+  }
+
+  /* La primera linea del cuerpo es la metadata del proyecto (rol, fechas,
+     repo privado): se pinta como tira mono, igual que las lineas de estado. */
+  .cs-prose > :global(p:first-child) {
+    margin-top: 0;
+    max-width: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+  }
+
+  .cs-prose :global(h2),
+  .cs-section {
+    margin-top: 3.75rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .cs-prose :global(h2) {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .cs-prose :global(h2 + p),
+  .cs-prose :global(h2 + ul),
+  .cs-prose :global(h2 + ol) {
+    margin-top: 1.5rem;
+  }
+
+  .cs-prose :global(ul),
+  .cs-prose :global(ol) {
+    margin-top: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .cs-prose :global(ul) {
+    list-style: disc outside;
+  }
+
+  .cs-prose :global(ol) {
+    list-style: decimal outside;
+  }
+
+  .cs-prose :global(li) {
+    margin-top: 0.625rem;
+    padding-left: 0.25rem;
+  }
+
+  .cs-prose :global(li::marker) {
+    color: var(--color-ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cs-prose :global(strong) {
+    font-weight: 600;
+  }
+
+  .cs-prose :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .cs-prose :global(.diagram) {
+    margin-block: 2.25rem 0;
+  }
+</style>

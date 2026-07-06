@@ -49,6 +49,14 @@ export const ui = {
     'caseStudy.keyNumbers': 'Cifras clave',
     'caseStudy.stack': 'Stack',
     'caseStudy.readFull': 'Leer case study completo',
+    'caseStudy.toc': 'Contenido',
+
+    // Capturas y carrusel (aparecen solo cuando hay capturas, D8)
+    'screenshots.title': 'Capturas',
+    'screenshots.anchor': 'capturas',
+    'carousel.prev': 'Captura anterior',
+    'carousel.next': 'Captura siguiente',
+    'carousel.status': 'Captura {current} de {total}',
 
     // Badges de estado real (doc 05)
     'badge.production': 'en producción',
@@ -93,6 +101,14 @@ export const ui = {
     'caseStudy.keyNumbers': 'Key numbers',
     'caseStudy.stack': 'Stack',
     'caseStudy.readFull': 'Read the full case study',
+    'caseStudy.toc': 'Contents',
+
+    // Screenshots and carousel (rendered only when screenshots exist, D8)
+    'screenshots.title': 'Screenshots',
+    'screenshots.anchor': 'screenshots',
+    'carousel.prev': 'Previous screenshot',
+    'carousel.next': 'Next screenshot',
+    'carousel.status': 'Screenshot {current} of {total}',
 
     // Real status badges (doc 05)
     'badge.production': 'in production',
