@@ -11,3 +11,4 @@ Una decisión estructural por archivo. Formato: `NNNN-titulo.md` (contexto, deci
 | [0005](0005-direccion-visual.md) | Dirección visual "Sistema en producción" (sin motivo boleto) | Aceptada |
 | [0006](0006-analitica.md) | Analítica de visitas sin cookies (Cloudflare Web Analytics) | Aceptada |
 | [0007](0007-dominio-y-base.md) | Dominio propio angelezequiel.dev y base en raíz | Aceptada |
+| [0008](0008-astro7-node24-y-verificacion-podman.md) | Astro 7 + Node 24 LTS y verificación en contenedor (Podman) | Aceptada (actualiza 0001) |

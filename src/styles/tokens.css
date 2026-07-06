@@ -1,0 +1,60 @@
+/*
+ * Tokens del sistema de diseno (doc 05).
+ * Los valores por tema viven como variables crudas en :root / [data-theme="dark"]
+ * (conmutables en runtime sin FOUC); @theme las cablea a las utilidades de Tailwind 4.
+ * Verde = "operativo": links, CTAs, punto de estado, badge "en produccion".
+ */
+
+/* Tema claro ("papel"), por defecto */
+:root {
+  --paper: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #17181a;
+  --ink-soft: #4a4d52;
+  --accent: #1e6e4e;
+  --signal: #b86e00;
+  --line: rgb(23 24 26 / 0.14);
+}
+
+/* Tema oscuro (neutro, sin morados ni orbes) */
+[data-theme='dark'] {
+  --paper: #121417;
+  --surface: #1a1d21;
+  --ink: #edebe6;
+  --ink-soft: #a7a9ac;
+  --accent: #4cc38a;
+  --signal: #e0a63e;
+  --line: rgb(237 235 230 / 0.14);
+}
+
+/* Utilidades dark:* atadas al atributo data-theme (no a prefers-color-scheme) */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --color-signal: var(--signal);
+  --color-line: var(--line);
+
+  /* Escala fluida (doc 05) */
+  --text-display: clamp(2.6rem, 1.75rem + 4.2vw, 4.5rem);
+  --text-display--line-height: 1.04;
+  --text-display--font-weight: 700;
+  --text-h2: clamp(1.6rem, 1.3rem + 1.5vw, 2.2rem);
+  --text-h2--line-height: 1.15;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+
+  /* Radios pequenos y serios; radios concentricos en anidados */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  --container-page: 72rem;
+}

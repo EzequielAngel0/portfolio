@@ -1,0 +1,38 @@
+---
+// Esqueleto de SEO (F1): title, description, canonical, hreflang y OG basico.
+// og:image y JSON-LD por pagina se completan en F5 (doc 06).
+import { getLocaleFromUrl, getAlternates } from '../i18n/utils';
+import { ogLocale } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const site = Astro.site!; // 'https://angelezequiel.dev' (astro.config)
+const locale = getLocaleFromUrl(Astro.url);
+const alternates = getAlternates(Astro.url);
+// canonical desde la misma fuente que los hreflang: el self-referencing hreflang
+// queda identico al canonical (misma forma de barra final).
+const canonical = new URL(alternates[locale], site).href;
+const abs = (path: string) => new URL(path, site).href;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="generator" content={Astro.generator} />
+
+{/* hreflang: es, en y x-default -> ES (doc 06) */}
+<link rel="alternate" hreflang="es" href={abs(alternates.es)} />
+<link rel="alternate" hreflang="en" href={abs(alternates.en)} />
+<link rel="alternate" hreflang="x-default" href={abs(alternates.es)} />
+
+{/* Open Graph basico (og:image y JSON-LD completos en F5) */}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogLocale[locale]} />
+<meta name="twitter:card" content="summary_large_image" />

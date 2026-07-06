@@ -1,0 +1,17 @@
+# Verificacion contenedorizada del portfolio (se pidio Podman).
+#
+#   podman compose up --build      construye (corre check + build) y sirve
+#                                   el sitio en http://localhost:4321
+#   podman compose down            detiene y limpia
+#
+# El gate (astro check + astro build) corre DENTRO de la construccion de la
+# imagen, asi que si algo se rompe el `up` falla antes de servir. Aislado del
+# Node local: solo necesita Podman.
+services:
+  site:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: portfolio-verify
+    ports:
+      - '4321:4321'

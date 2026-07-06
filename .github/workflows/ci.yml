@@ -1,0 +1,35 @@
+name: CI
+
+# Gate automatico de integracion (doc 08): valida cada push/PR a develop.
+# No despliega; solo revienta si el build o el type-check se rompen.
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check (astro check)
+        run: npm run check
+
+      - name: Build
+        run: npm run build
