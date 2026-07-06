@@ -1,5 +1,7 @@
 # 03 · Decisión de stack
 
+> **Actualización (ADR 0008, 2026-07-06):** las versiones de este doc se movieron por seguridad. Astro pasa de 5 a **7.0.6** (Astro 5 quedó sin parche para 5 advisories `high`, con fix solo en 6.x/7.x) y Node de 22 a **24 LTS** (LTS activo; piso real de Astro 7 es 22.12). La elección de framework (Astro + Tailwind 4) no cambia. Se añade verificación en contenedor con **Podman**.
+
 ## Requisitos que el stack debe cumplir (del brief)
 
 - Sitio 100% estático, desplegado en GitHub Pages con dominio propio `angelezequiel.dev` y base en raíz (ADR 0007).
@@ -35,19 +37,20 @@ Descartada. Se pagaría el costo del rediseño sin llevarse las mejoras estructu
 
 | Capa | Elección | Nota |
 | --- | --- | --- |
-| Framework | **Astro 5** (`astro@^5`) | `site: 'https://angelezequiel.dev'`, base en raíz (sin `base` o `base: '/'`); ADR 0007 |
+| Framework | **Astro 7** (`astro@^7.0.6`; ADR 0008) | `site: 'https://angelezequiel.dev'`, base en raíz (sin `base` o `base: '/'`); ADR 0007. `trailingSlash: 'always'` por consistencia de canonical/hreflang en Pages |
 | Estilos | **Tailwind CSS 4** vía `@tailwindcss/vite` | Tokens en CSS con `@theme`; NO usar `@astrojs/tailwind` (deprecada) |
 | Lenguaje | **TypeScript estricto** (`astro/tsconfigs/strict`) | Colecciones tipadas con Zod |
 | Contenido | **Content collections** (markdown + JSON) | Ver modelo de datos en doc 04 |
-| Fuentes | **Self-hosted** vía `@fontsource-variable/*` | 2 familias máximo (ver doc 05); nada de CDN de Google |
+| Fuentes | **Self-hosted**, subset latin | 2 familias (doc 05); nada de CDN de Google. Los `.woff2` se copian de `@fontsource-variable/archivo` y `@fontsource/ibm-plex-mono` a `public/fonts/` (3 archivos: Archivo variable + Plex Mono 400/500) y se declaran a mano en `global.css` para poder precargar el display (doc 06). Re-copiar al subir esas versiones |
 | Iconos | SVG inline propios (componente `Icon.astro`) | Sin librería de iconos como dependencia de runtime |
 | Diagrama de arquitectura | SVG estático artesanal, derivado del Mermaid del case study | Control total de estilo, tematizable con `currentColor`/variables; sin JS de Mermaid en el cliente |
 | SEO | `@astrojs/sitemap` + componente `Seo.astro` propio | OG, JSON-LD, canonical, hreflang (doc 06) |
 | Animación | **GSAP 3** (core + ScrollTrigger + Draggable para el carrusel de capturas; SplitText/DrawSVG quedan fuera) | Instalado por npm y empaquetado en el build (nunca por CDN); un solo entry deferred; mejora progresiva (docs 05 y 06) |
 | Interactividad | Vanilla JS inline mínimo (tema, idioma, menú móvil) | Sin islas de framework: no hay estado que lo justifique |
 | Formato | Prettier + `prettier-plugin-astro` | |
-| CI/CD | GitHub Actions actual (`withastro/action@v3` → `deploy-pages@v4`) | Fijar Node 22 LTS en el action |
-| Node / gestor | Node 22 LTS · npm | Ya es lo que usa el repo |
+| CI/CD | `withastro/action@v6` → `deploy-pages@v4` (deploy en `master`); `ci.yml` en `develop` (`setup-node` + `npm ci` + `astro check` + `astro build`) | `node-version: 24` en el action (ADR 0008) |
+| Node / gestor | **Node 24 LTS** · npm (`.nvmrc` = 24) | LTS activo a 2026-07; piso real de Astro 7 es 22.12 (ADR 0008) |
+| Verificación | Nativa (`astro build` + `preview`) y **contenedor Podman** (`Containerfile` + `compose.yaml`) | El contenedor corre `npm ci` + `check` + `build` en Node 24 y sirve el preview, aislado del equipo local (ADR 0008) |
 
 ## Dependencias de runtime esperadas (presupuesto)
 
@@ -62,6 +65,7 @@ El JS del cliente queda dominado por GSAP (core + ScrollTrigger + Draggable ≈ 
 3. El build no puede leer nada de `perfil-mejorado/` (no existe en CI). El contenido vive en `src/content/`.
 4. Cualquier dependencia nueva se anota aquí con su justificación antes de instalarla.
 5. **Soporte de navegadores: evergreen** (últimas 2 versiones de Chrome, Edge, Firefox, Safari). Se puede usar CSS moderno sin polyfills: container queries, `:has()`, nesting nativo, `text-wrap: balance/pretty`. No se soportan navegadores legacy.
+6. **Lockfile multiplataforma.** El deploy y el CI corren en Linux y el dev es en Windows. `package-lock.json` debe incluir los binarios opcionales de todas las plataformas (`@tailwindcss/oxide`, `lightningcss`, `sharp` para linux/win32/darwin) o `npm ci` falla en Linux. Al agregar o subir dependencias con binarios nativos, regenerar la lockfile en Linux (dentro del contenedor Podman) y commitearla; así `npm ci` funciona en local y en CI (ADR 0008).
 
 ## Nota sobre revisar el stack
 

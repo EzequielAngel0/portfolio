@@ -58,6 +58,7 @@ Las decisiones estructurales se registran una por archivo en `docs/adr/`, con la
 La plantilla exige "verificar en contenedor". Aquí el equivalente:
 
 - **El build real es `astro build` + `astro preview`**, no `astro dev`. Aunque la base ahora es raíz (dominio propio, ADR 0007), `preview` sigue siendo la verificación fiel; las rutas se construyen con `BASE_URL`, nunca hardcodeadas.
+- **Verificación en contenedor (Podman, ADR 0008):** además de la nativa, `podman compose up --build` construye la imagen (Node 24, `npm ci` + `astro check` + `astro build`) y sirve el `preview` en `:4321`. Es la verificación aislada del equipo local e idéntica al CI; el "verificar en contenedor" de la plantilla se cumple aquí de verdad. Recordatorio: la lockfile es multiplataforma (doc 03, regla 6); al tocar dependencias con binarios nativos, regenerarla en Linux (contenedor) y commitearla.
 - **CI en `develop`** (`ci.yml`): cada push corre `astro check` + `astro build` (y Lighthouse CI cuando haya páginas). Es el gate automático antes de integrar; atrapa builds rotos y regresiones sin llegar a `master`.
 - **Prueba sin JS:** cargar el sitio con JavaScript deshabilitado; todo el contenido debe leerse (mejora progresiva de GSAP, doc 06).
 - **Prueba de fluidez:** verificar ~60fps en scroll y carga (panel Rendimiento de DevTools); es donde falla el sitio actual (doc 06).

@@ -1,7 +1,7 @@
 # 0001 · Astro 5 + Tailwind 4 como stack
 
 - **Fecha:** 2026-07-05
-- **Estado:** Aceptada (reevaluada el 2026-07-05 contra Next.js y SvelteKit, reafirmada). Revisable: cualquier ADR posterior puede reemplazarla.
+- **Estado:** Aceptada en lo esencial (Astro + Tailwind 4). **Actualizada por [0008](0008-astro7-node24-y-verificacion-podman.md):** la version de Astro pasa de 5 a 7 y la de Node de 22 a 24 LTS por seguridad. La eleccion de framework (Astro + Tailwind 4 sobre Next/Svelte) sigue vigente; solo cambian las versiones.
 
 ## Contexto
 

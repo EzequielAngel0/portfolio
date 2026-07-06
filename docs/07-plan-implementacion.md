@@ -2,24 +2,25 @@
 
 Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté completo. El trabajo se integra en `develop` (ya creada) y se hace merge a `master` solo al final de la fase 6 (el workflow despliega `master`).
 
-## Fase 0 · Limpieza y respaldo
+## Fase 0 · Limpieza y respaldo · [hecho] 2026-07-06
 
-- [ ] Respaldar `perfil-mejorado/` y `plantilla-proyecto/` fuera del repo (están fuera de git: única copia local). **Hecho antes de todo lo demás** (D1 del dueño).
+- [x] Respaldar `perfil-mejorado/` y `plantilla-proyecto/` fuera del repo (D1 del dueño, confirmado).
 - [x] `.gitignore`: ignorar `perfil-mejorado/` y `plantilla-proyecto/`.
 - [x] Rama `develop` creada (integración).
-- [ ] Borrar: `downloaded.html`, `remote_cert.json`, `public/admin/`, `src/pages/admin.astro`, `src/pages/certificados.astro` (H6/H7 del doc 01), y `public/hero-setup.jpg` (hero sin foto, T2).
+- [x] Borrar: `downloaded.html`, `remote_cert.json`, `public/admin/`, `src/pages/admin.astro`, `src/pages/certificados.astro` (H6/H7 del doc 01), y `public/hero-setup.jpg` (hero sin foto, T2).
 
-## Fase 1 · Bootstrap del stack (doc 03)
+## Fase 1 · Bootstrap del stack (doc 03) · [hecho] 2026-07-06
 
-- [ ] Migrar a Astro 5 + Tailwind 4 (`@tailwindcss/vite`), TypeScript strict, prettier + plugin.
-- [ ] `astro.config.mjs`: `site: 'https://angelezequiel.dev'`, base en raíz (sin `base`), `i18n` (doc 04), `@astrojs/sitemap`.
-- [ ] `public/CNAME` con `angelezequiel.dev` (dominio propio de Pages, ADR 0007).
-- [ ] `styles/tokens.css` con los tokens del doc 05 (ambos temas) y `global.css` (reset, focus, reduced motion).
-- [ ] Fuentes self-hosted (`@fontsource-variable/archivo`, IBM Plex Mono) con preload del display.
-- [ ] `Base.astro` con scripts anti-FOUC de tema e idioma + `Seo.astro` esqueleto.
-- [ ] Workflow deploy: fijar Node 22 en `withastro/action`.
-- [ ] **Workflow CI en `develop`** (`ci.yml`): en cada push a `develop`, `npm ci` + `astro check` + `astro build` (y, cuando haya páginas, Lighthouse CI). No despliega; solo valida.
-- Verificación: `npm run build` + `npm run preview` sirven un "hola" tematizable en `/` y `/en/` con el `base` correcto; el CI de `develop` pasa en verde.
+- [x] Migrar a **Astro 7 + Node 24 LTS** (ADR 0008; el plan original decía Astro 5 + Node 22) + Tailwind 4 (`@tailwindcss/vite`), TypeScript strict, prettier + plugin.
+- [x] `astro.config.mjs`: `site: 'https://angelezequiel.dev'`, base en raíz (sin `base`), `trailingSlash: 'always'`, `i18n` (doc 04), `@astrojs/sitemap` con alternates.
+- [x] `public/CNAME` con `angelezequiel.dev` (dominio propio de Pages, ADR 0007).
+- [x] `styles/tokens.css` con los tokens del doc 05 (ambos temas) y `global.css` (reset, focus, reduced motion, skip link).
+- [x] Fuentes self-hosted subset latin: 3 `.woff2` en `public/fonts/` (Archivo variable + Plex Mono 400/500), `@font-face` a mano y preload del display (doc 03/06).
+- [x] `Base.astro` con scripts anti-FOUC de tema (claro por defecto) e idioma (detección solo home ES, guarda anti ping-pong) + `Seo.astro` esqueleto (title, description, canonical, hreflang, OG básico) + i18n tipado (`ui.ts`, `utils.ts`) + entry GSAP diferido (`scripts/motion.ts`, mejora progresiva).
+- [x] Workflow deploy: `withastro/action@v6` con `node-version: 24`.
+- [x] **Workflow CI en `develop`** (`ci.yml`): en cada push/PR a `develop`, `setup-node` (`.nvmrc`) + `npm ci` + `astro check` + `astro build`. No despliega; solo valida. (Lighthouse CI se suma cuando haya páginas reales, F3+.)
+- [x] **Verificación en contenedor Podman** (ADR 0008): `Containerfile` + `compose.yaml` corren el gate (`npm ci` + `check` + `build`) y sirven el preview en Node 24, aislados del equipo local.
+- Verificación [hecha]: `npm run build` + `preview` sirven el "hola" tematizable en `/` y `/en/` (HTTP 200, contenido visible sin JS); canonical/hreflang consistentes; `podman compose up --build` replica el gate y sirve igual. CI de `develop`: se valida al primer push de la rama.
 
 ## Fase 2 · Contenido (docs 02 y 04)
 

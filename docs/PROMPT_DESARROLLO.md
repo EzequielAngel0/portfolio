@@ -2,6 +2,15 @@
 
 Pega TODO lo que está debajo de la línea como primer mensaje en una sesión de Claude Code abierta en este repo (`c:\Proyectos\portfolio`).
 
+## Estado del desarrollo (bitácora viva, actualizar al cerrar cada fase)
+
+> **Última actualización: 2026-07-06.** Un chat nuevo debe leer `docs/`, ver este estado y continuar en la fase pendiente **sin rehacer lo hecho**.
+
+- **F0 · Limpieza:** [hecho] 2026-07-06. CMS Decap y basura de raíz borrados; integrado en `develop`.
+- **F1 · Bootstrap:** [hecho] 2026-07-06. Astro 7 + Node 24 + Tailwind 4 + tokens (ambos temas) + fuentes latin self-hosted + GSAP diferido + `Base.astro` (anti-FOUC tema/idioma) + `Seo.astro` esqueleto + i18n tipado + páginas `/` y `/en/` + `ci.yml`/`deploy.yml` (Node 24) + verificación Podman. `build`/`preview` en verde, contenido visible sin JS. Detalle: `docs/rondas/2026-07-06_f0-f1.md`.
+- **Cambios de stack (ADR 0008):** Astro 5→**7**, Node 22→**24 LTS** por seguridad (Astro 5 sin parche para 5 advisories high). 0 vulnerabilidades. Lockfile multiplataforma (regenerar en Linux al tocar deps nativas). Verificación en contenedor **Podman**.
+- **Siguiente: F2 · Contenido** (doc 07): `content.config.ts` con Zod (`projects`, `case-study`), transcribir case study ES/EN desde `perfil-mejorado/CASE_STUDY_ACP_ES_EN.md`, SoloKey, `certifications.json`, `skills.json`, `ui.ts`; copiar el CV nuevo; pase de reglas duras por grep. Trabajar en rama `feat/...` desde `develop`.
+
 ---
 
 Vas a continuar el rediseño completo de mi portfolio. TODO está planeado y documentado en `docs/` de este repo. Antes de tocar código, lee la documentación y síguela; no re-decidas lo ya decidido (si algo te parece mejorable, propón un ADR nuevo, no cambies en silencio).
@@ -10,13 +19,13 @@ Vas a continuar el rediseño completo de mi portfolio. TODO está planeado y doc
 
 1. `docs/README.md` (índice)
 2. `docs/01-diagnostico.md` a `docs/08-convenciones-y-proceso.md`
-3. `docs/adr/` (0001 a 0007: decisiones y su porqué)
+3. `docs/adr/` (0001 a 0008: decisiones y su porqué)
 4. `docs/PENDIENTES_AGENTE.md` (tu checklist vivo) y `docs/PENDIENTES_DUENO.md`
 
 ## Contexto
 
 - Portfolio de Angel Ezequiel Barbosa Lomeli. Objetivo: que un reclutador técnico entienda en 30 segundos quién es y qué ha llevado a producción, verificable con un clic. Pieza central: el case study de ACP Suite.
-- Stack (ADR 0001): Astro 5 + Tailwind 4 (`@tailwindcss/vite`, tokens con `@theme`) + TypeScript strict + GSAP 3 (core + ScrollTrigger + Draggable para el carrusel) + fuentes self-hosted (Archivo + IBM Plex Mono) + `@astrojs/sitemap`. Sin islas de framework. Sin CMS.
+- Stack (ADR 0001 + **0008**): **Astro 7 + Node 24 LTS** + Tailwind 4 (`@tailwindcss/vite`, tokens con `@theme`) + TypeScript strict + GSAP 3 (core + ScrollTrigger + Draggable para el carrusel) + fuentes self-hosted subset latin (Archivo + IBM Plex Mono) + `@astrojs/sitemap`. Sin islas de framework. Sin CMS. Verificación nativa y en contenedor Podman.
 - Deploy: GitHub Pages con dominio propio `angelezequiel.dev` y base en raíz (ADR 0007): `site: 'https://angelezequiel.dev'`, sin `base`, y `public/CNAME`. Rutas internas vía `import.meta.env.BASE_URL` (nunca hardcodear dominio ni `/portfolio`).
 - Bilingüe ES/EN (rutas `/` y `/en/`), tema claro/oscuro sin FOUC (claro por defecto), navegadores evergreen.
 - Analítica: Cloudflare Web Analytics (ADR 0006), única pieza de terceros, async y no bloqueante.
@@ -41,10 +50,9 @@ Vas a continuar el rediseño completo de mi portfolio. TODO está planeado y doc
 
 ## Tarea de esta sesión
 
-Ejecuta el plan de `docs/07-plan-implementacion.md` desde el inicio:
+Continúa el plan de `docs/07-plan-implementacion.md` **desde la fase pendiente** que marca "Estado del desarrollo" arriba (F0 y F1 ya están hechas; ahora toca **F2 · Contenido**). No rehagas fases cerradas.
 
-- **Fase 0 (limpieza):** el respaldo de `perfil-mejorado/` y `plantilla-proyecto/` ya está hecho (D1 confirmado). Borra lo listado en F0: CMS Decap (`public/admin/`, `src/pages/admin.astro`), `downloaded.html`, `remote_cert.json`, `src/pages/certificados.astro` y `public/hero-setup.jpg`.
-- **Fase 1 (bootstrap):** Astro 5 (`site: 'https://angelezequiel.dev'`, base raíz, `public/CNAME`) + Tailwind 4 + tokens del doc 05 (ambos temas) + fuentes self-hosted + GSAP + `Base.astro` con scripts anti-FOUC de tema e idioma + `Seo.astro` esqueleto + workflow de CI en `develop`.
-- Al cerrar cada fase: `astro build` + `preview` en verde, y actualiza `PENDIENTES_AGENTE.md` y el doc del área.
+- **F2 (contenido):** `content.config.ts` con esquemas Zod (`projects`, `case-study`) y validación de pares ES/EN por slug; transcribir el case study ES/EN desde `perfil-mejorado/CASE_STUDY_ACP_ES_EN.md` (tal cual, sin cambiar datos); `solokey.es/en.md`, `certifications.json`, `skills.json`, diccionario `ui.ts`; copiar el CV nuevo a `public/cv/`; dejar el contenido bien sin capturas (opcionales, D8); pase de reglas duras por grep (em dash, "microservicio", "Redis", "Supabase", "OAuth2", emojis) sobre `src/`.
+- Rama corta `feat/...` desde `develop`. Al cerrar la fase: `astro build` + `preview` en verde (o `podman compose up --build`), y actualiza `PENDIENTES_AGENTE.md`, el doc del área, el tracker en `docs/rondas/` y el "Estado del desarrollo" de arriba.
 
-Empieza leyendo `docs/` y luego proponme los pasos concretos de F0 y F1 antes de ejecutarlos. No generes código sin mi OK del plan de arranque.
+Empieza leyendo `docs/` y luego proponme los pasos concretos de la fase pendiente antes de ejecutarlos. No generes código sin mi OK del plan.
