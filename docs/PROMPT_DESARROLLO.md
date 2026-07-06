@@ -8,8 +8,9 @@ Pega TODO lo que está debajo de la línea como primer mensaje en una sesión de
 
 - **F0 · Limpieza:** [hecho] 2026-07-06. CMS Decap y basura de raíz borrados; integrado en `develop`.
 - **F1 · Bootstrap:** [hecho] 2026-07-06. Astro 7 + Node 24 + Tailwind 4 + tokens (ambos temas) + fuentes latin self-hosted + GSAP diferido + `Base.astro` (anti-FOUC tema/idioma) + `Seo.astro` esqueleto + i18n tipado + páginas `/` y `/en/` + `ci.yml`/`deploy.yml` (Node 24) + verificación Podman. `build`/`preview` en verde, contenido visible sin JS. Detalle: `docs/rondas/2026-07-06_f0-f1.md`.
+- **F2 · Contenido:** [hecho] 2026-07-06. `content.config.ts` (Zod: `case-study`, `projects`, con `generateId` por locale); case study ACP ES/EN y SoloKey ES/EN transcritos tal cual; `certifications.json` + `skills.json` nuevos y borrados los 4 JSON viejos; `ui.ts` ampliado; `src/lib/content.ts` (pares ES/EN); CV nuevo en `public/cv/`. Reglas duras en verde por grep. `check`/`build`/`preview` en verde. Detalle: `docs/rondas/2026-07-06_f2.md`. Rama `feat/contenido`.
 - **Cambios de stack (ADR 0008):** Astro 5→**7**, Node 22→**24 LTS** por seguridad (Astro 5 sin parche para 5 advisories high). 0 vulnerabilidades. Lockfile multiplataforma (regenerar en Linux al tocar deps nativas). Verificación en contenedor **Podman**.
-- **Siguiente: F2 · Contenido** (doc 07): `content.config.ts` con Zod (`projects`, `case-study`), transcribir case study ES/EN desde `perfil-mejorado/CASE_STUDY_ACP_ES_EN.md`, SoloKey, `certifications.json`, `skills.json`, `ui.ts`; copiar el CV nuevo; pase de reglas duras por grep. Trabajar en rama `feat/...` desde `develop`.
+- **Siguiente: F3 · Home** (doc 07): componentes `ui/` y secciones en orden (Hero, CaseStudyTeaser, Projects, Skills, Certifications, Contact, Footer) consumiendo `src/content/`, `src/data/` y `ui.ts`; cablear `getLocalized`/`assertLocalePairs` en `getStaticPaths`. Home ES/EN responsive, ambos temas, sin islas de framework. Rama `feat/...` desde `develop`.
 
 ---
 

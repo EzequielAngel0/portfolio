@@ -14,6 +14,8 @@ Inventario del material fuente, mapeo hacia el sitio y las reglas duras que gobi
 | `GITHUB_PROFILE_README.md` | README del perfil de GitHub | Post-lanzamiento, fuera del sitio (fase 7) |
 | `CV_Angel_Barbosa.html` | CV en HTML | Solo referencia, no se publica |
 
+> **Estado de transcripción (F2, 2026-07-06):** el case study (`src/content/case-study/acp-suite.es/en.md`), SoloKey (`src/content/projects/solokey.es/en.md`), certificaciones y skills (`src/data/`), el diccionario `ui.ts` y el CV (`public/cv/Angel_Barbosa_CV.pdf`) ya están transcritos y validados. El build no lee de `perfil-mejorado/`. Detalle: `docs/rondas/2026-07-06_f2.md`.
+
 ## Identidad y narrativa (datos canónicos)
 
 - **Nombre:** Angel Ezequiel Barbosa Lomeli

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "backend",
+    "name": { "es": "Backend", "en": "Backend" },
+    "items": ["Go (pgx, sqlc)", "Java / Spring Boot", "REST APIs", "PostgreSQL", "JWT / RBAC", "Clean Architecture"]
+  },
+  {
+    "id": "mobile",
+    "name": { "es": "Mobile", "en": "Mobile" },
+    "items": ["Flutter / Dart", "Kotlin", "Android"]
+  },
+  {
+    "id": "web",
+    "name": { "es": "Web", "en": "Web" },
+    "items": ["React", "Next.js", "TypeScript", "Vite", "Tailwind CSS", "Angular"]
+  },
+  {
+    "id": "cloud",
+    "name": { "es": "Cloud y DevOps", "en": "Cloud and DevOps" },
+    "items": ["OCI", "Terraform", "Ansible", "Podman / Docker", "GitHub Actions", "nginx", "Cloudflare", "Linux"]
+  },
+  {
+    "id": "testing",
+    "name": { "es": "Testing", "en": "Testing" },
+    "items": ["Playwright", "k6", "vitest", "Integration testing (Go)", "Trivy"]
+  }
+]

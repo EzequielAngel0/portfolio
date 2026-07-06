@@ -22,14 +22,14 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 - [x] **Verificación en contenedor Podman** (ADR 0008): `Containerfile` + `compose.yaml` corren el gate (`npm ci` + `check` + `build`) y sirven el preview en Node 24, aislados del equipo local.
 - Verificación [hecha]: `npm run build` + `preview` sirven el "hola" tematizable en `/` y `/en/` (HTTP 200, contenido visible sin JS); canonical/hreflang consistentes; `podman compose up --build` replica el gate y sirve igual. CI de `develop`: se valida al primer push de la rama.
 
-## Fase 2 · Contenido (docs 02 y 04)
+## Fase 2 · Contenido (docs 02 y 04) · [hecho] 2026-07-06
 
-- [ ] `content.config.ts` con esquemas Zod (`projects`, `case-study`) y validación de pares ES/EN por slug.
-- [ ] Transcribir el case study ES/EN desde `perfil-mejorado/CASE_STUDY_ACP_ES_EN.md` (tal cual, sin cambiar datos).
-- [ ] Redactar `solokey.es.md` / `solokey.en.md`, `certifications.json`, `skills.json`, diccionario `ui.ts`.
-- [ ] Copiar el CV nuevo a `public/cv/Angel_Barbosa_CV.pdf`.
-- [ ] Dejar el contenido listo SIN capturas (son opcionales, se agregan a futuro con D8): tarjetas y case study deben verse bien sin imágenes.
-- [ ] **Pase de reglas duras (doc 02)**: grep de "microservicio", "Redis", "Supabase", "OAuth2" y del carácter em dash sobre `src/`; cero resultados.
+- [x] `content.config.ts` con esquemas Zod (`projects`, `case-study`) y validación de pares ES/EN por slug (helper `src/lib/content.ts`; gate de build al cablearlo en los `getStaticPaths` de F3/F4).
+- [x] Transcribir el case study ES/EN desde `perfil-mejorado/CASE_STUDY_ACP_ES_EN.md` (tal cual, sin cambiar datos). El Mermaid queda como marcador; el SVG artesanal es F4.
+- [x] Redactar `solokey.es.md` / `solokey.en.md`, `certifications.json`, `skills.json`, diccionario `ui.ts`. Borrados los 4 JSON viejos huérfanos de `src/data/`.
+- [x] Copiar el CV nuevo a `public/cv/Angel_Barbosa_CV.pdf` (y borrar el viejo `public/Angel_Ezequiel_Barbosa_Resume.pdf`).
+- [x] Dejar el contenido listo SIN capturas (son opcionales, se agregan a futuro con D8): esquemas con `screenshots?`/`image?` opcionales.
+- [x] **Pase de reglas duras (doc 02)**: grep sobre `src/`, cero de "Redis", "Supabase", "OAuth2", em dash y emojis. "microservic" solo aparece como la negación deliberada del case study ("no microservicios" / "not microservices"), que es el encuadre que pide la regla 2, no una violación (detalle en `docs/rondas/2026-07-06_f2.md`).
 
 ## Fase 3 · Home (docs 04 y 05)
 

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "oci-foundations-2025",
+    "name": "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+    "issuer": "Oracle",
+    "year": 2025,
+    "credentialUrl": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=9E6AA54792091B7F8EAD1C3D4C0E00B4640759558EA9319193256E348344778E"
+  },
+  {
+    "id": "google-cloud-cybersecurity",
+    "name": "Google Cloud Cybersecurity Certificate",
+    "issuer": "Google",
+    "year": 2026,
+    "credentialUrl": "https://www.credly.com/badges/6b602da5-95ea-4328-a5dd-03ba538dfbf9/linked_in_profile"
+  },
+  {
+    "id": "one-tech-advanced-backend",
+    "name": "Programa ONE Tech Advanced G9, Back End",
+    "issuer": "Alura Latam / Oracle",
+    "year": 2026,
+    "credentialUrl": "https://app.aluracursos.com/program/certificate/8a039e9d-447c-4d64-9a32-40a020f15bf5?lang"
+  }
+]
