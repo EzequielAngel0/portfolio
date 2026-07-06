@@ -49,6 +49,14 @@ Regla continua: al cerrar cada bloque de trabajo, actualizar el tracker de la ro
 
 Cada sesión de trabajo con volumen (una fase del doc 07, una auditoría) deja un tracker en `docs/rondas/` con nombre `YYYY-MM-DD_TEMA.md`: orden de trabajo, hallazgos y estado punto por punto (`[ ]` / `[wip]` / `[hecho]`). Al cerrar, los pendientes que sobren se mueven a los `PENDIENTES_*` y el tracker se archiva. Para cambios pequeños no hace falta tracker: basta el commit.
 
+## Handoff a un chat nuevo: prompt corto que apunta al doc, no pegar el contenido
+
+Regla (2026-07-06): cuando una ronda de trabajo se prepara para ejecutarse en otra sesión, la instrucción para el chat nuevo se guarda como documento versionado en `docs/` (p. ej. `PROMPT_MEJORAS_POST_LANZAMIENTO.md`) y lo que el dueño pega en el chat nuevo es SOLO un prompt corto que le dice "lee ese archivo y sigue lo que dice", nunca el contenido completo del archivo.
+
+- **Por qué, no por tokens:** el costo en tokens es casi idéntico en ambos casos (el contenido entra al contexto igual, se pegue o lo lea el modelo del disco; leerlo cuesta apenas una llamada de herramienta más). La razón real es operativa: el chat lee SIEMPRE la versión vigente del disco (no una copia pegada que envejece), se evita truncar o romper formato al pegar, y el dueño no carga con un pegado enorme.
+- **El prompt corto (<= ~10 líneas)** debe incluir: contexto mínimo (repo, estado del proyecto), el nombre del archivo a leer y seguir, y los guardarraíles críticos por si el chat no lee con cuidado (reglas duras del doc 02, commits/ramas del doc 08, y sobre todo "a `master` NUNCA hace merge el asistente"). Puede vivir al inicio del propio archivo de prompt como "versión corta para pegar".
+- **El archivo largo** es la fuente de verdad: tareas, restricciones, datos e inventarios. Se mantiene actualizado; el prompt corto solo lo referencia.
+
 ## ADR (Architecture Decision Records)
 
 Las decisiones estructurales se registran una por archivo en `docs/adr/`, con la plantilla `NNNN-titulo.md` (contexto, decisión, alternativas, consecuencias). Sirven para que dentro de seis meses se sepa POR QUÉ, no solo QUÉ. Los ADR iniciales ya derivados de 01-07 están en esa carpeta.
