@@ -1,0 +1,5 @@
+# Portfolio de Angel Barbosa (doc 06): todo indexable, sitemap del build.
+User-agent: *
+Allow: /
+
+Sitemap: https://angelezequiel.dev/sitemap-index.xml
