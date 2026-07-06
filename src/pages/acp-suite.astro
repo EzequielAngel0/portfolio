@@ -1,15 +1,28 @@
 ---
 // Case study de ACP Suite en ES (doc 04): pagina propia, es EL link que se
 // comparte con reclutadores. getLocalized mantiene el gate de pares ES/EN.
+// SEO (F5, doc 06): og:type article, OG del idioma y JSON-LD SoftwareSourceCode.
 import Base from '../layouts/Base.astro';
 import CaseStudyArticle from '../components/case-study/CaseStudyArticle.astro';
 import { getLocalized } from '../lib/content';
+import { caseStudyJsonLd } from '../lib/jsonld';
+import ogImage from '../assets/og/acp-suite.es.png';
 
 const entries = await getLocalized('case-study', 'es');
 const acp = entries.find((entry) => entry.data.slug === 'acp-suite');
 if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)');
+
+const siteUrl = Astro.site!.href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = [caseStudyJsonLd(acp, pageUrl, siteUrl)];
 ---
 
-<Base title="Case study de ACP Suite · Angel Barbosa" description={acp.data.tagline}>
+<Base
+  title="Case study de ACP Suite · Angel Barbosa"
+  description={acp.data.tagline}
+  ogType="article"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
   <CaseStudyArticle entry={acp} />
 </Base>

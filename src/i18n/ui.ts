@@ -69,6 +69,14 @@ export const ui = {
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
     'contact.email': 'Enviar correo',
 
+    // 404 (pagina unica bilingue: GitHub Pages sirve un solo 404.html, doc 04)
+    'notFound.eyebrow': '404 · ruta no encontrada',
+    'notFound.title': 'Esta página no existe.',
+    'notFound.body':
+      'La ruta que buscas no está en este sitio. Puede venir de un enlace viejo del portfolio anterior.',
+    'notFound.home': 'Ir al inicio',
+    'notFound.case': 'Ver el case study de ACP Suite',
+
     'footer.status': 'ultima actualizacion 2026-07 · sitio estatico · build ok',
   },
   en: {
@@ -120,6 +128,14 @@ export const ui = {
     'contact.lead':
       "If you're looking for someone who can own a problem end-to-end and leave it running in production, get in touch.",
     'contact.email': 'Send email',
+
+    // 404 (single bilingual page: GitHub Pages serves one 404.html, doc 04)
+    'notFound.eyebrow': '404 · route not found',
+    'notFound.title': 'This page does not exist.',
+    'notFound.body':
+      'The path you are looking for is not on this site. It may come from an old link to the previous portfolio.',
+    'notFound.home': 'Go to the home page',
+    'notFound.case': 'View the ACP Suite case study',
 
     'footer.status': 'last updated 2026-07 · static site · build ok',
   },

@@ -1,0 +1,50 @@
+---
+// 404 util bilingue (docs 04 y 06): GitHub Pages sirve dist/404.html para
+// CUALQUIER ruta inexistente (ES o EN), asi que es una sola pagina con ambos
+// idiomas (el bloque EN lleva lang="en"). Da direccion, no ambiente (doc 02):
+// links al home y al case study de cada idioma. Sin canonical ni hreflang
+// (withAlternates: no hay par ES/EN de esta pagina) y fuera del sitemap.
+import Base from '../layouts/Base.astro';
+import Button from '../components/ui/Button.astro';
+import { ui, locales, type Locale } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+const blocks = locales.map((locale: Locale) => ({
+  locale,
+  eyebrow: ui[locale]['notFound.eyebrow'],
+  title: ui[locale]['notFound.title'],
+  body: ui[locale]['notFound.body'],
+  home: { label: ui[locale]['notFound.home'], href: localizePath('', locale) },
+  caseStudy: { label: ui[locale]['notFound.case'], href: localizePath('acp-suite', locale) },
+}));
+---
+
+<Base
+  title="404 · Página no encontrada · Page not found"
+  description="Esta ruta no existe en el sitio. This route does not exist on this site."
+  withAlternates={false}
+>
+  <div class="flex flex-col gap-16 pt-16 pb-section sm:pt-24">
+    {
+      blocks.map((block, index) => (
+        <section lang={block.locale}>
+          <p class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+            {block.eyebrow}
+          </p>
+          {index === 0 ? (
+            <h1 class="mt-5 max-w-3xl text-display">{block.title}</h1>
+          ) : (
+            <h2 class="mt-5 max-w-3xl text-display">{block.title}</h2>
+          )}
+          <p class="mt-5 max-w-xl text-ink-soft">{block.body}</p>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <Button href={block.home.href}>{block.home.label}</Button>
+            <Button href={block.caseStudy.href} variant="secondary">
+              {block.caseStudy.label}
+            </Button>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>

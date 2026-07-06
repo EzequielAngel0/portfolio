@@ -1,14 +1,27 @@
 ---
 // ACP Suite case study in EN (doc 04). getLocalized keeps the ES/EN pair gate.
+// SEO (F5, doc 06): og:type article, locale OG image and SoftwareSourceCode JSON-LD.
 import Base from '../../layouts/Base.astro';
 import CaseStudyArticle from '../../components/case-study/CaseStudyArticle.astro';
 import { getLocalized } from '../../lib/content';
+import { caseStudyJsonLd } from '../../lib/jsonld';
+import ogImage from '../../assets/og/acp-suite.en.png';
 
 const entries = await getLocalized('case-study', 'en');
 const acp = entries.find((entry) => entry.data.slug === 'acp-suite');
 if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)');
+
+const siteUrl = Astro.site!.href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = [caseStudyJsonLd(acp, pageUrl, siteUrl)];
 ---
 
-<Base title="ACP Suite case study · Angel Barbosa" description={acp.data.tagline}>
+<Base
+  title="ACP Suite case study · Angel Barbosa"
+  description={acp.data.tagline}
+  ogType="article"
+  ogImage={ogImage}
+  jsonLd={jsonLd}
+>
   <CaseStudyArticle entry={acp} />
 </Base>

@@ -1,38 +1,77 @@
 ---
-// Esqueleto de SEO (F1): title, description, canonical, hreflang y OG basico.
-// og:image y JSON-LD por pagina se completan en F5 (doc 06).
-import { getLocaleFromUrl, getAlternates } from '../i18n/utils';
+// SEO completo (F5, doc 06): title y description por pagina, canonical + hreflang
+// desde la misma fuente (self-referencing identico al canonical), OG con imagen
+// 1200x630 por pagina/idioma y JSON-LD. La 404 (pagina unica bilingue, sin par
+// ES/EN real) apaga canonical/hreflang con withAlternates.
+import type { ImageMetadata } from 'astro';
+import { getLocaleFromUrl, getAlternates, useTranslations } from '../i18n/utils';
 import { ogLocale } from '../i18n/ui';
 
 interface Props {
   title: string;
   description: string;
+  ogImage?: ImageMetadata;
+  ogType?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>[];
+  withAlternates?: boolean;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  ogType = 'website',
+  jsonLd = [],
+  withAlternates = true,
+} = Astro.props;
 const site = Astro.site!; // 'https://angelezequiel.dev' (astro.config)
 const locale = getLocaleFromUrl(Astro.url);
+const otherLocale = locale === 'es' ? 'en' : 'es';
+const t = useTranslations(locale);
 const alternates = getAlternates(Astro.url);
-// canonical desde la misma fuente que los hreflang: el self-referencing hreflang
-// queda identico al canonical (misma forma de barra final).
 const canonical = new URL(alternates[locale], site).href;
 const abs = (path: string) => new URL(path, site).href;
+// El '<' se escapa para que el JSON no pueda cerrar el <script> inline.
+const jsonLdSerialized = jsonLd.length
+  ? JSON.stringify(jsonLd.length === 1 ? jsonLd[0] : jsonLd).replace(/</g, '\\u003c')
+  : null;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
 <meta name="generator" content={Astro.generator} />
 
+{withAlternates && <link rel="canonical" href={canonical} />}
 {/* hreflang: es, en y x-default -> ES (doc 06) */}
-<link rel="alternate" hreflang="es" href={abs(alternates.es)} />
-<link rel="alternate" hreflang="en" href={abs(alternates.en)} />
-<link rel="alternate" hreflang="x-default" href={abs(alternates.es)} />
+{
+  withAlternates && (
+    <>
+      <link rel="alternate" hreflang="es" href={abs(alternates.es)} />
+      <link rel="alternate" hreflang="en" href={abs(alternates.en)} />
+      <link rel="alternate" hreflang="x-default" href={abs(alternates.es)} />
+    </>
+  )
+}
 
-{/* Open Graph basico (og:image y JSON-LD completos en F5) */}
-<meta property="og:type" content="website" />
+{/* Open Graph + Twitter card (doc 06) */}
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={t('site.title')} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={ogLocale[locale]} />
-<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:locale:alternate" content={ogLocale[otherLocale]} />
+{
+  ogImage && (
+    <>
+      <meta property="og:image" content={abs(ogImage.src)} />
+      <meta property="og:image:width" content={String(ogImage.width)} />
+      <meta property="og:image:height" content={String(ogImage.height)} />
+      <meta property="og:image:alt" content={title} />
+      <meta name="twitter:card" content="summary_large_image" />
+    </>
+  )
+}
+
+{/* JSON-LD por pagina (Person en home, SoftwareSourceCode en case study) */}
+{jsonLdSerialized && <script is:inline type="application/ld+json" set:html={jsonLdSerialized} />}

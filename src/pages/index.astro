@@ -1,6 +1,7 @@
 ---
 // Home ES (doc 04): hero, resumen ACP, proyectos, skills, certificaciones y
 // contacto, en el orden del wireframe (doc 05). detectLanguage solo aqui.
+// SEO (F5, doc 06): OG del idioma y JSON-LD Person + proyectos con repo publico.
 import Base from '../layouts/Base.astro';
 import Hero from '../components/sections/Hero.astro';
 import CaseStudyTeaser from '../components/sections/CaseStudyTeaser.astro';
@@ -8,14 +9,22 @@ import Projects from '../components/sections/Projects.astro';
 import Skills from '../components/sections/Skills.astro';
 import Certifications from '../components/sections/Certifications.astro';
 import Contact from '../components/sections/Contact.astro';
+import { getLocalized } from '../lib/content';
+import { personJsonLd, projectJsonLd } from '../lib/jsonld';
+import ogImage from '../assets/og/home.es.png';
 
 const locale = 'es';
+const siteUrl = Astro.site!.href;
+const projects = await getLocalized('projects', locale);
+const jsonLd = [personJsonLd(siteUrl), ...projects.map((entry) => projectJsonLd(entry, siteUrl))];
 ---
 
 <Base
   title="Angel Barbosa · Full-Stack Developer (Go, Flutter, React, OCI)"
   description="Portafolio de Angel Ezequiel Barbosa Lomeli. Llevo sistemas completos de la idea a produccion."
   detectLanguage
+  ogImage={ogImage}
+  jsonLd={jsonLd}
 >
   <Hero locale={locale} />
   <CaseStudyTeaser locale={locale} />
