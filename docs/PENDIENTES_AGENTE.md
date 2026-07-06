@@ -28,7 +28,7 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 | F4 | Case study + SVG del diagrama tematizado | páginas `/acp-suite` ES/EN | `[hecho]` 2026-07-06 |
 | F5 | SEO: Seo.astro, OG, JSON-LD, sitemap, robots, 404, favicon | JSON-LD y OG en dist verificados (validadores externos en F6) | `[hecho]` 2026-07-06 · beacon + CSP integrados 2026-07-06 (D7 resuelto) |
 | F6 | Pulido + QA (a11y, Lighthouse, animaciones, code review) | gates del doc 06 en verde | `[hecho]` 2026-07-06 (pase NVDA y validadores externos: dueño, guiones en el tracker) |
-| F7 | Merge de `develop` a `master` + README nuevo | deploy verificado en la URL real | `[bloqueado]` merge a master lo hace el dueño |
+| F7 | Merge de `develop` a `master` + README nuevo | deploy verificado en la URL real | README `[hecho]` 2026-07-06 · merge a `master` `[bloqueado]`: lo hace el dueño |
 
 ## Reglas continuas
 

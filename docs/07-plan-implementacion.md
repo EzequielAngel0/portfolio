@@ -67,7 +67,7 @@ Fases pensadas para que el sitio viejo siga en línea hasta que el nuevo esté c
 ## Fase 7 · Lanzamiento y perfil
 
 - [ ] Merge a `master`, verificar el deploy de Pages en la URL real.
-- [ ] Reescribir `README.md` del repo (el actual describe el sitio viejo).
+- [x] Reescribir `README.md` del repo: hecho el 2026-07-06 (describe el sitio nuevo: stack real, características, desarrollo, estructura y puntero a `docs/`).
 - [ ] Publicar `GITHUB_PROFILE_README.md` en el repo de perfil y actualizar LinkedIn con `LinkedIn_ES_EN.md` (fuera de este repo).
 
 ## Qué skill usar en cada fase
