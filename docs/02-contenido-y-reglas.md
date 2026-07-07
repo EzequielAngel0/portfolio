@@ -38,11 +38,13 @@ Orden del home (según el brief):
    - Web: React, Next.js, TypeScript, Vite, Tailwind CSS, Angular
    - Cloud y DevOps: OCI, Terraform, Ansible, Podman/Docker, GitHub Actions, nginx, Cloudflare, Linux
    - Testing: Playwright, k6, vitest, integration testing en Go, Trivy
-5. **Certificaciones** (cada una con botón "ver credencial"):
+5. **Certificaciones** (cada una con botón "ver credencial"). Las 3 destacadas del home:
    - Oracle Cloud Infrastructure 2025 Certified Foundations Associate → [credencial](https://catalog-education.oracle.com/ords/certview/sharebadge?id=9E6AA54792091B7F8EAD1C3D4C0E00B4640759558EA9319193256E348344778E)
    - Google Cloud Cybersecurity Certificate → [credencial](https://www.credly.com/badges/6b602da5-95ea-4328-a5dd-03ba538dfbf9/linked_in_profile)
    - Programa ONE Tech Advanced G9, Back End (Alura Latam / Oracle) → [credencial](https://app.aluracursos.com/program/certificate/8a039e9d-447c-4d64-9a32-40a020f15bf5?lang)
-6. **Contacto**: mailto grande + links a LinkedIn, GitHub y X. Sin formulario. GitHub Pages es estático (sin backend); un formulario solo sería posible delegando a un servicio externo (Formspree/Web3Forms), lo que añade dependencia y un request externo, así que se descarta. Correo público: `barbosalomeliangelezequiel@gmail.com`. Queda como opción futura el formulario-vía-servicio si se decide más adelante.
+
+   Desde la ronda post-lanzamiento (2026-07-06, T3) el catálogo COMPLETO (77 credenciales: certificaciones, programas, formaciones y cursos) vive en la página `/certificaciones/` y `/en/certifications/`, cargado en `src/data/certifications.json` con la URL de verificación de cada una tomada del perfil público de Alura (`app.aluracursos.com/user/angelezequiel`). Regla 5 intacta: solo se publica lo verificable con un clic (doc 04 para las rutas, tracker de la ronda para el detalle).
+6. **Contacto**: mailto grande + links a LinkedIn, GitHub y X, y el WhatsApp `+52 33 2019 1633` (link directo `wa.me`, agregado en la ronda post-lanzamiento, T4). Sin formulario. GitHub Pages es estático (sin backend); un formulario solo sería posible delegando a un servicio externo (Formspree/Web3Forms), lo que añade dependencia y un request externo, así que se descarta. Correo público: `barbosalomeliangelezequiel@gmail.com`. Queda como opción futura el formulario-vía-servicio si se decide más adelante.
 
 ## Reglas duras (no negociables, aplican a TODO el texto del sitio)
 
