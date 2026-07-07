@@ -56,8 +56,6 @@ for (const root of carousels) {
         .replace('{current}', String(current + 1))
         .replace('{total}', String(slides.length));
     }
-    prev?.setAttribute('aria-disabled', String(current === 0));
-    next?.setAttribute('aria-disabled', String(current === slides.length - 1));
   };
 
   let scrollTimer = 0;
@@ -66,10 +64,12 @@ for (const root of carousels) {
     scrollTimer = window.setTimeout(sync, 120);
   });
 
+  // Circular (pedido del dueno): en el ultimo slide, "siguiente" vuelve al
+  // primero y viceversa; por eso los controles nunca se deshabilitan.
   const goTo = (index: number) => {
-    const clamped = Math.max(0, Math.min(slides.length - 1, index));
+    const wrapped = (index + slides.length) % slides.length;
     track.scrollTo({
-      left: scrollTargetFor(clamped),
+      left: scrollTargetFor(wrapped),
       behavior: reduceMotion.matches ? 'auto' : 'smooth',
     });
   };

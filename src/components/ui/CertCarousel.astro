@@ -37,7 +37,7 @@ const statusFor = (index: number) =>
       type="button"
       data-carousel-prev
       aria-label={t('certifications.prev')}
-      aria-disabled="true"
+      aria-disabled={items.length < 2 ? 'true' : 'false'}
       class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96] aria-disabled:opacity-40"
     >
       <Icon name="arrow-left" size={18} />
