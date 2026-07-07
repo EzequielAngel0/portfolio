@@ -19,7 +19,7 @@ const homeCerts = certifications.featured.filter((cert) => cert.home);
 ---
 
 <Section label={t('certifications.title')}>
-  <ul class="grid gap-5 md:grid-cols-3">
+  <ul data-stagger class="grid gap-5 md:grid-cols-3">
     {
       homeCerts.map((cert) => (
         <li>

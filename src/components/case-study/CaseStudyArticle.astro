@@ -110,7 +110,7 @@ const tocItems = [
         <Fragment set:html={afterDiagram} />
       </div>
 
-      <section id="stack" class="cs-section">
+      <section id="stack" data-reveal class="cs-section">
         <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
           {t('caseStudy.stack')}
         </h2>
@@ -127,7 +127,7 @@ const tocItems = [
 
       {
         hasScreenshots && (
-          <section id={t('screenshots.anchor')} class="cs-section">
+          <section id={t('screenshots.anchor')} data-reveal class="cs-section">
             <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
               {t('screenshots.title')}
             </h2>
