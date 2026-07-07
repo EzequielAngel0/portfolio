@@ -24,7 +24,7 @@ Objetivo Lighthouse (móvil, throttling por defecto): **Performance ≥ 95 · Ac
 
 | Recurso | Presupuesto | Cómo se cumple |
 | --- | --- | --- |
-| JS enviado al cliente | < 60 KB gzip total | GSAP core + ScrollTrigger + Draggable (~45 KB gzip, este último para el carrusel) + scripts propios de tema/idioma/menú (~10 KB); sin islas de framework. Sin SplitText ni DrawSVG (doc 05) |
+| JS enviado al cliente | < 60 KB gzip total | GSAP core + ScrollTrigger + Draggable (~45 KB gzip, este último para los carruseles) + scripts propios de tema/idioma/motion; sin islas de framework. Sin SplitText ni DrawSVG (doc 05). **Medido tras el ADR 0009 (2026-07-06): home ~45.7 KB, peor página (/certificaciones/, con Draggable) ~59.4 KB: dentro del techo pero AL LIMITE; cualquier JS nuevo exige recortar antes** |
 | CSS | < 50 KB | Tailwind 4 purga por defecto; sin frameworks de componentes |
 | Fuentes | ≤ 3 archivos woff2, subset latin | `@fontsource-variable/archivo` + IBM Plex Mono 400/500; `font-display: swap`; preload solo la variable del display |
 | Imágenes | AVIF/WebP vía `astro:assets`, `width`/`height` explícitos, lazy bajo el fold | El hero es tipográfico (sin bitmap crítico) y el diagrama es SVG, pero SÍ hay capturas de ACP y SoloKey (case study y tarjetas de proyecto): se optimizan con `astro:assets`, se sirven responsive y perezosas, y llevan dimensiones para no generar CLS |

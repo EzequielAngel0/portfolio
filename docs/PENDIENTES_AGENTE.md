@@ -38,7 +38,13 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 ## Ronda de mejoras post-lanzamiento (pedidos del dueño 2026-07-06)
 
-Redactadas como prompt listo para otro chat en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md) (T1-T11, con inventario de certificados extraído de la carpeta del dueño): 2 bugs del case study (pills del stack, espacio en blanco), página propia de certificaciones en el nav, teléfono en contacto, recorte del footer, más iconos SVG, renombrar "ACP Suite" a "ACP" y cambiar rutas `/acp-suite/` -> `/acp/` (sitio + CV), botón de descarga de CV en el header, más motion con GSAP (fondo interactivo + intro con el nombre, requiere ADR 0009 y OK del dueño, 60fps) y CV bilingüe ES/EN (la versión ES ya está redactada en `perfil-mejorado/CV_Angel_Barbosa_ES.html`). Ver el sitio en contenedor Podman ya quedó verificado. No arrancadas.
+`[hecho]` 2026-07-06 en `develop` (T1-T11 completas; merge a `master` lo decide el dueño). Detalle punto por punto y decisiones del dueño en [rondas/2026-07-06_mejoras-post-lanzamiento.md](rondas/2026-07-06_mejoras-post-lanzamiento.md); el prompt fuente queda marcado en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md). Piezas mayores: página de certificaciones bilingüe con catálogo completo verificable, renombrado a "ACP" con rutas `/acp/`, CV bilingüe por idioma, y motion ampliado (ADR 0009: intro con el nombre, trazo de tinta tras el cursor, GSAP por sección; ~61 fps medidos).
+
+## Reglas de mantenimiento
+
+- Si cambia el copy de `ui.ts` (hero) o el frontmatter del case study, regenerar las imágenes OG con `scripts/og-images.mjs` (espejan ese copy a mano). La página de certificaciones también tiene OG propia en ese script.
+- **El CV vive en DOS idiomas y DOS formatos** (T10): fuente HTML en `perfil-mejorado/CV_Angel_Barbosa.html` (EN) y `..._ES.html` (ES), servidos como `public/cv/Angel_Barbosa_CV.pdf` (EN, nombre estable) y `..._CV_ES.pdf` (ES). Al actualizar un idioma, actualizar el otro y REGENERAR ambos PDF (Edge/Chrome headless, `page.pdf` con `preferCSSPageSize` + `printBackground`); verificar 1 página y los links internos (`/acp/`, `/en/acp/`).
+- El catálogo de certificaciones (`src/data/certifications.json`) se cura contra el perfil público de Alura (`app.aluracursos.com/user/angelezequiel`): al terminar una formación nueva, agregarla con su URL de verificación (regla 5 del doc 02: solo credenciales verificables).
 
 ## Chores opcionales post-lanzamiento (del code review de F6, no bloquean)
 

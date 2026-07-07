@@ -2,6 +2,8 @@
 
 Redactado el 2026-07-06 a partir de los pedidos del dueño tras ver el sitio en producción.
 
+> **RONDA EJECUTADA el 2026-07-06**: T1-T11 hechas en `develop` (merge a `master` lo decide el dueño). Estado y decisiones en `docs/rondas/2026-07-06_mejoras-post-lanzamiento.md`; la tabla de abajo queda marcada. Este archivo se conserva como registro de la orden original.
+
 ## Versión corta (recomendada): pega SOLO esto en un chat nuevo abierto en el repo
 
 > Chat nuevo en este repo (portfolio ya lanzado en angelezequiel.dev, F0-F7 hechas). Vas a hacer una ronda de mejoras post-lanzamiento. La lista de tareas (T1-T11), sus restricciones y el inventario de certificados están en `docs/PROMPT_MEJORAS_POST_LANZAMIENTO.md`: léelo completo y sigue lo que dice, incluyendo los docs que referencia (05, 06, 08 y los ADR). Respeta las reglas duras del doc 02 (sin em dash, sin emojis, sin glassmorphism, precisión técnica, solo métricas autorizadas) y las de proceso del doc 08 (commits de una línea sin acentos ni firma de IA; rama corta desde `develop`; a `master` NUNCA haces merge, lo hace el dueño). Antes de codificar, proponme el plan de la ronda y espera mi OK; T9 (motion) requiere redactar y aprobar el ADR 0009 antes de tocar código, y T3 (certificados) requiere mi curación. Verifica con `npm run build` + `preview` o `podman compose up --build`.
@@ -117,19 +119,19 @@ Verificado el 2026-07-06: construye y sirve el sitio en `http://localhost:4321`.
 
 ## Resumen de tareas
 
-| ID | Tarea | Tipo | Bloqueo |
+| ID | Tarea | Tipo | Estado |
 | --- | --- | --- | --- |
-| T1 | Puntos sueltos en pills del stack | bug | no |
-| T2 | Espacio en blanco antes de Stack | bug | no |
-| T3 | Página propia de certificaciones en el nav + cargar el inventario | contenido | curación del dueño |
-| T4 | Teléfono en contacto | contenido | no |
-| T5 | Recortar footer (quitar "sitio estatico"/"build ok") | contenido | copy del dueño |
-| T6 | Más iconos SVG | ui | no |
-| T7 | Renombrar "ACP Suite" a "ACP" y rutas `/acp-suite/` -> `/acp/` (sitio + CV) | contenido/rutas | no |
-| T8 | Botón de descarga de CV en el header | ui | no |
-| T9 | Más motion (fondo interactivo + intro con el nombre + GSAP ampliado, 60fps) | visual | ADR 0009 + OK dueño |
-| T10 | CV bilingüe ES/EN por idioma de página (ES ya redactado) | contenido | OK dueño |
-| T11 | Ver el sitio en contenedor (ya disponible) | infra | hecho |
+| T1 | Puntos sueltos en pills del stack | bug | [hecho] 2026-07-06 |
+| T2 | Espacio en blanco antes de Stack | bug | [hecho] 2026-07-06 |
+| T3 | Página propia de certificaciones en el nav + cargar el inventario | contenido | [hecho] 2026-07-06 (catálogo completo de 77 credenciales del perfil de Alura, carrusel + filas) |
+| T4 | Teléfono en contacto | contenido | [hecho] 2026-07-06 (como WhatsApp wa.me, decisión del dueño) |
+| T5 | Recortar footer (quitar "sitio estatico"/"build ok") | contenido | [hecho] 2026-07-06 |
+| T6 | Más iconos SVG | ui | [hecho] 2026-07-06 (download, whatsapp) |
+| T7 | Renombrar "ACP Suite" a "ACP" y rutas `/acp-suite/` -> `/acp/` (sitio + CV) | contenido/rutas | [hecho] 2026-07-06 (sin página puente; ruta vieja en 404) |
+| T8 | Botón de descarga de CV en el header | ui | [hecho] 2026-07-06 |
+| T9 | Más motion (fondo interactivo + intro con el nombre + GSAP ampliado, 60fps) | visual | [hecho] 2026-07-06 (ADR 0009 aceptado; fondo = trazo de tinta tras el cursor; ~61 fps medidos) |
+| T10 | CV bilingüe ES/EN por idioma de página (ES ya redactado) | contenido | [hecho] 2026-07-06 |
+| T11 | Ver el sitio en contenedor (ya disponible) | infra | [hecho] (el dueño lo consulta en `http://portfolio:4321` con entrada de hosts) |
 
 ## Inventario de certificaciones (extraído de `C:\Users\Angel Ezequiel\Downloads\Oracle ONE` el 2026-07-06)
 

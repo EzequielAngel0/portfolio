@@ -170,7 +170,8 @@ const cards = [
     tree: homeCard({
       status: 'in production · v2026.07',
       title: 'Certifications',
-      subtitle: 'Verifiable continuous learning: every credential links to its official verification.',
+      subtitle:
+        'Verifiable continuous learning: every credential links to its official verification.',
     }),
   },
   {

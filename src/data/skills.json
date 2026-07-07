@@ -2,7 +2,14 @@
   {
     "id": "backend",
     "name": { "es": "Backend", "en": "Backend" },
-    "items": ["Go (pgx, sqlc)", "Java / Spring Boot", "REST APIs", "PostgreSQL", "JWT / RBAC", "Clean Architecture"]
+    "items": [
+      "Go (pgx, sqlc)",
+      "Java / Spring Boot",
+      "REST APIs",
+      "PostgreSQL",
+      "JWT / RBAC",
+      "Clean Architecture"
+    ]
   },
   {
     "id": "mobile",
@@ -17,7 +24,16 @@
   {
     "id": "cloud",
     "name": { "es": "Cloud y DevOps", "en": "Cloud and DevOps" },
-    "items": ["OCI", "Terraform", "Ansible", "Podman / Docker", "GitHub Actions", "nginx", "Cloudflare", "Linux"]
+    "items": [
+      "OCI",
+      "Terraform",
+      "Ansible",
+      "Podman / Docker",
+      "GitHub Actions",
+      "nginx",
+      "Cloudflare",
+      "Linux"
+    ]
   },
   {
     "id": "testing",

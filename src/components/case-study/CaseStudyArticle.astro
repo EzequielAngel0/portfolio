@@ -101,9 +101,11 @@ const tocItems = [
     </aside>
 
     <div class="mt-10 lg:mt-0">
-      {/* Solo el cuerpo markdown + diagrama lleva estilos de prosa: las secciones
+      {
+        /* Solo el cuerpo markdown + diagrama lleva estilos de prosa: las secciones
           de abajo (stack, capturas) son propias y no deben heredar list-style ni
-          el borde de h2 de la prosa (si no, pills con vinetas y doble separador). */}
+          el borde de h2 de la prosa (si no, pills con vinetas y doble separador). */
+      }
       <div class="cs-prose">
         <Fragment set:html={beforeDiagram} />
         <AcpArchitecture locale={locale} />

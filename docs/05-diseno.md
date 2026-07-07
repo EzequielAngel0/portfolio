@@ -22,7 +22,7 @@ El sitio lleva señales discretas de "sistema vivo", con datos REALES (nunca inv
 
 1. **Hero:** una línea de estado en monoespaciada sobre el titular, tipo `[●] en producción · v2026.07`, con un punto verde. Es lo primero que fija el tono.
 2. **Tarjetas de proyecto:** cada proyecto muestra su estado real como badge, tomado del modelo de datos (doc 04): `en producción` (ACP) o `repo público` (SoloKey). El label codifica algo verdadero, no decora (principio de `frontend-design`).
-3. **Footer como "estado del sistema":** una tira en mono con metadata real del propio sitio: `última actualización 2026-07 · sitio estático · build ok`.
+3. **Footer como "estado del sistema":** una tira en mono con metadata real del propio sitio: `ultima actualizacion 2026-07` (recortada en la ronda post-lanzamiento a pedido del dueño; antes llevaba "sitio estático · build ok").
 
 Las cifras clave del case study (las 7 autorizadas del doc 02) se muestran como una franja de métricas en mono/tabular, en la línea del mismo lenguaje (un "panel" de números), pero eso vive en la página del case study, no cuenta como cuarta aparición del motivo.
 
@@ -145,6 +145,8 @@ Habrá capturas reales de ACP (panel admin, apps Flutter) y de SoloKey. **Son op
 GSAP 3 es el motor de animación del sitio (decisión del doc 03). Poco y con intención: nada de partículas, orbes ni loops infinitos. GSAP se usa para lo orquestado, CSS para lo interactivo. La dirección "sistema en producción" sugiere un motivo natural: **la carga del hero como un arranque/boot** (los elementos aparecen en secuencia, como un sistema que entra en línea), sin caricaturizarlo.
 
 **Nivel elegido: sobrio, con un momento rico.** El alcance base es: entrada escalonada del hero (boot), revelado suave por sección al scroll, micro-interacciones en botones/links y el pulso sutil del punto de estado. **El único momento de motion rico es el carrusel de capturas** (GSAP Draggable con inercia): ahí se concentra la boldness. **Quedan fuera:** split del titular por letras (SplitText), trazado del diagrama (DrawSVG) y parallax. GSAP queda en core + ScrollTrigger + Draggable.
+
+> **Ampliación post-lanzamiento (ADR 0009, 2026-07-06):** a pedido del dueño el motion se amplió con tres capas: (1) intro "arranque del sistema" con el nombre por caracteres, una vez por sesión, saltable, insertada por JS (sin JS no existe); (2) trazo de tinta que sigue el cursor y se desvanece (un solo `<path>` en capa fija, solo puntero fino); (3) GSAP por sección: staggers internos (`[data-stagger]`, con `ScrollTrigger.batch` en listas largas), el diagrama entra por bloques y los separadores se trazan (`.rule-draw`). Los gates del doc 06 siguen intactos (60fps medidos, reduced motion, sin JS, LCP); el detalle vive en el ADR 0009 y en `docs/rondas/2026-07-06_mejoras-post-lanzamiento.md`. Los carruseles ahora son dos (capturas y certificaciones destacadas) y comparten lógica en `src/scripts/carousel.ts`.
 
 **División de trabajo GSAP vs CSS:**
 

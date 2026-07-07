@@ -4,15 +4,17 @@
 
 | Ruta | Página | Idioma |
 | --- | --- | --- |
-| `/` | Home: hero, resumen ACP, proyectos, skills, certificaciones, contacto | ES (idioma por defecto, sin prefijo) |
-| `/acp-suite/` | Case study completo de ACP Suite | ES |
+| `/` | Home: hero, resumen ACP, proyectos, skills, certificaciones destacadas, contacto | ES (idioma por defecto, sin prefijo) |
+| `/acp/` | Case study completo de ACP (hasta 2026-07-06 fue `/acp-suite/`; la ruta vieja quedó en 404, sin puente, decisión del dueño) | ES |
+| `/certificaciones/` | Catálogo completo de certificaciones (carrusel de destacadas + grupos), agregada en la ronda post-lanzamiento | ES |
 | `/en/` | Home | EN |
-| `/en/acp-suite/` | Case study | EN |
+| `/en/acp/` | Case study | EN |
+| `/en/certifications/` | Certifications (slug localizado; el par ES/EN se mapea explícito en `i18n/utils.ts` y en el `serialize` del sitemap) | EN |
 | `/404` | Error con dirección (link al home en ambos idiomas) | ES/EN |
 
 Decisiones:
 
-- **Las certificaciones son sección del home, no página propia.** La página `certificados.astro` actual desaparece; con 3 certificaciones no hay masa para una página, y el objetivo "verificar con un clic" se cumple mejor a un scroll del hero. Si algún día crece, se promueve a página.
+- **Las certificaciones fueron sección del home hasta la ronda post-lanzamiento (2026-07-06): al crecer el inventario (77 credenciales verificables) se promovieron a página propia**, tal como preveía esta nota. El home conserva las 3 destacadas con un enlace "Ver todas".
 - **El case study sí es página propia**: tiene profundidad (problema, solución, arquitectura, seguridad, operación, calidad, lecciones), necesita su propio SEO (JSON-LD, OG específico) y es EL link que se comparte con reclutadores.
 - Redirect de GitHub Pages para rutas viejas (`/certificados`): no hay redirects de servidor; se deja una página mínima con `<meta http-equiv="refresh">` al home solo si preocupan links externos existentes. Por defecto, no.
 

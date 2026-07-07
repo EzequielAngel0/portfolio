@@ -71,11 +71,13 @@ const lastName = restName.join(' ');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {/* CSP (doc 06): origenes restringidos a self + el beacon de Cloudflare
+    {
+      /* CSP (doc 06): origenes restringidos a self + el beacon de Cloudflare
         (ADR 0006), unica pieza de terceros. 'unsafe-inline' porque los scripts
         anti-FOUC son inline por diseno y Astro inlinea scripts/estilos pequenos:
         hashes serian fragiles (doc 06, decision F5). Solo en produccion: en dev,
-        Vite inyecta scripts propios. */}
+        Vite inyecta scripts propios. */
+    }
     {
       import.meta.env.PROD && (
         <meta
@@ -186,9 +188,11 @@ const lastName = restName.join(' ');
           </nav>
 
           <div class="flex items-center gap-2 sm:border-l sm:border-line sm:pl-4">
-            {/* Descarga directa del CV (T8, doc 06): declara formato y descarga.
+            {
+              /* Descarga directa del CV (T8, doc 06): declara formato y descarga.
                 Icono solo hasta lg (aria-label lo nombra), texto en pantallas
-                anchas; mismo lenguaje visual que los toggles, hit area 40x40. */}
+                anchas; mismo lenguaje visual que los toggles, hit area 40x40. */
+            }
             <a
               href={cvPath(locale)}
               download
@@ -268,9 +272,11 @@ const lastName = restName.join(' ');
       });
     </script>
 
-    {/* Motion GSAP como mejora progresiva (doc 05). El gate evita descargar
+    {
+      /* Motion GSAP como mejora progresiva (doc 05). El gate evita descargar
         GSAP donde no hay nada que animar (404) o con reduced motion; el import
-        dinamico deja motion.ts en su propio chunk. */}
+        dinamico deja motion.ts en su propio chunk. */
+    }
     <script>
       if (
         document.querySelector('[data-boot], [data-reveal]') &&
@@ -280,9 +286,11 @@ const lastName = restName.join(' ');
       }
     </script>
 
-    {/* Beacon de Cloudflare Web Analytics (ADR 0006, D7): unica pieza de
+    {
+      /* Beacon de Cloudflare Web Analytics (ADR 0006, D7): unica pieza de
         terceros, defer y no bloqueante; el sitio funciona igual sin el. Solo en
-        produccion para no registrar visitas de desarrollo. */}
+        produccion para no registrar visitas de desarrollo. */
+    }
     {
       import.meta.env.PROD && (
         <script
