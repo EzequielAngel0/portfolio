@@ -40,5 +40,11 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    // El dueno consulta el preview del contenedor como http://portfolio:4321
+    // (entrada en su archivo hosts); el server de preview valida el header
+    // Host y sin esto responde "Blocked request". Solo afecta a preview.
+    preview: {
+      allowedHosts: ['portfolio'],
+    },
   },
 });
