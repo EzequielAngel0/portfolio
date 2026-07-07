@@ -1,0 +1,121 @@
+---
+// Carrusel de credenciales destacadas (T3): mismo contrato [data-carousel] y
+// misma logica compartida (scripts/carousel.ts) que el carrusel de capturas.
+// Mejora progresiva: sin JS es una tira con scroll-snap nativo; el JS habilita
+// controles con estado anunciado y arrastre con GSAP Draggable; reduced motion
+// deja el scroll nativo instantaneo. A11y del doc 06: controles reales de
+// teclado, aria-roledescription, foco visible; nunca es la unica via (el
+// catalogo completo esta debajo en la misma pagina).
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import CertCard from './CertCard.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  items: { name: string; issuer?: string; year?: number; url: string }[];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const statusTemplate = t('certifications.status');
+const statusFor = (index: number) =>
+  statusTemplate.replace('{current}', String(index + 1)).replace('{total}', String(items.length));
+---
+
+<div
+  class="cert-carousel"
+  data-carousel
+  data-status-template={statusTemplate}
+  role="group"
+  aria-roledescription="carousel"
+  aria-label={t('certifications.carouselLabel')}
+>
+  <div class="mb-3 flex items-center gap-2" data-carousel-controls hidden>
+    <button
+      type="button"
+      data-carousel-prev
+      aria-label={t('certifications.prev')}
+      aria-disabled="true"
+      class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96] aria-disabled:opacity-40"
+    >
+      <Icon name="arrow-left" size={18} />
+    </button>
+    <button
+      type="button"
+      data-carousel-next
+      aria-label={t('certifications.next')}
+      aria-disabled={items.length < 2 ? 'true' : 'false'}
+      class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96] aria-disabled:opacity-40"
+    >
+      <Icon name="arrow-right" size={18} />
+    </button>
+    <p class="ml-2 font-mono text-label text-ink-soft" data-carousel-status aria-live="polite">
+      {statusFor(0)}
+    </p>
+  </div>
+
+  <ul
+    class="cert-track"
+    data-carousel-track
+    tabindex="0"
+    aria-label={t('certifications.carouselLabel')}
+  >
+    {
+      items.map((item, index) => (
+        <li
+          class="cert-slide"
+          role="group"
+          aria-roledescription="slide"
+          aria-label={statusFor(index)}
+        >
+          <CertCard
+            name={item.name}
+            issuer={item.issuer}
+            year={item.year}
+            url={item.url}
+            locale={locale}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .cert-track {
+    /* offsetLeft de los slides medido contra el track (ver Carousel.astro) */
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    padding-bottom: 0.5rem;
+  }
+
+  .cert-track.is-dragging {
+    scroll-snap-type: none;
+  }
+
+  .cert-carousel[data-enhanced] .cert-track {
+    cursor: grab;
+  }
+
+  .cert-carousel[data-enhanced] .cert-track:active {
+    cursor: grabbing;
+  }
+
+  .cert-slide {
+    flex: none;
+    display: flex;
+    width: min(85%, 22rem);
+    scroll-snap-align: center;
+  }
+</style>
+
+<script>
+  // Logica compartida con el carrusel de capturas.
+  import '../../scripts/carousel';
+</script>

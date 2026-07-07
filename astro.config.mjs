@@ -20,6 +20,22 @@ export default defineConfig({
         defaultLocale: 'es',
         locales: { es: 'es-MX', en: 'en-US' },
       },
+      // La pagina de certificaciones usa slug localizado (/certificaciones/ y
+      // /en/certifications/), asi que su par no lo arma el i18n por prefijo:
+      // se corrige a mano el alternate de esas dos URLs (T3).
+      serialize(item) {
+        const certs = {
+          es: 'https://angelezequiel.dev/certificaciones/',
+          en: 'https://angelezequiel.dev/en/certifications/',
+        };
+        if (item.url === certs.es || item.url === certs.en) {
+          item.links = [
+            { lang: 'es-MX', url: certs.es },
+            { lang: 'en-US', url: certs.en },
+          ];
+        }
+        return item;
+      },
     }),
   ],
   vite: {

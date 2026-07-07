@@ -1,0 +1,16 @@
+---
+// Pagina de certificaciones en ES (T3): catalogo completo verificable con
+// carrusel de destacadas. Su par EN vive en /en/certifications/ (slug
+// localizado, mapeado en i18n/utils.ts para hreflang y toggle).
+import Base from '../layouts/Base.astro';
+import CertificationsCatalog from '../components/certs/CertificationsCatalog.astro';
+import ogImage from '../assets/og/certificaciones.es.png';
+---
+
+<Base
+  title="Certificaciones · Angel Barbosa"
+  description="Certificaciones de Angel Barbosa: Oracle Cloud Infrastructure Foundations Associate, Google Cloud Cybersecurity y el programa Oracle Next Education (Alura), verificables con un clic."
+  ogImage={ogImage}
+>
+  <CertificationsCatalog locale="es" />
+</Base>
