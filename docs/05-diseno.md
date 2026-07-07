@@ -30,7 +30,7 @@ Todo lo demás se mantiene quieto y disciplinado.
 
 ## Tokens
 
-### Color
+### Color (paleta revisada en el ADR 0010, 2026-07-06)
 
 Tema claro ("papel"):
 
@@ -40,21 +40,23 @@ Tema claro ("papel"):
 | `--color-surface` | `#FFFFFF` | Tarjetas |
 | `--color-ink` | `#17181A` | Texto principal, titulares |
 | `--color-ink-soft` | `#4A4D52` | Texto secundario |
-| `--color-accent` | `#1E6E4E` | Verde operativo: links, CTAs, punto de estado, badges "en producción". Contraste ~5.2:1 sobre paper, AA texto normal |
+| `--color-accent` | `#33618F` | Azul tinta interactivo: links, CTAs, credenciales, anillo de foco. ~6:1 sobre paper, AA texto normal (ADR 0010; antes verde `#1E6E4E`) |
+| `--color-status` | `#1E6E4E` | Verde operativo RESERVADO al estado: punto del hero, badge "en producción", línea de estado de la intro |
 | `--color-signal` | `#B86E00` | Ámbar para marcas puntuales. ~3.5:1 sobre paper: **solo texto grande o elementos gráficos, nunca texto normal** |
-| `--color-line` | `rgba(23,24,26,.14)` | Reglas, bordes de tabla, separadores |
+| `--color-line` | `rgba(23,24,26,.22)` | Reglas, bordes de tabla, separadores (subida de .14 por legibilidad, ADR 0010) |
 
 Tema oscuro (oscuro neutro, sin morados ni orbes):
 
 | Token | Hex |
 | --- | --- |
 | `--color-paper` | `#121417` |
-| `--color-surface` | `#1A1D21` |
+| `--color-surface` | `#1F242B` (más separada del papel, ADR 0010) |
 | `--color-ink` | `#EDEBE6` |
 | `--color-ink-soft` | `#A7A9AC` |
-| `--color-accent` | `#4CC38A` (~8:1 sobre fondo) |
+| `--color-accent` | `#7FA9D4` (azul tinta, ~7.5:1 sobre fondo) |
+| `--color-status` | `#4CC38A` |
 | `--color-signal` | `#E0A63E` |
-| `--color-line` | `rgba(237,235,230,.14)` |
+| `--color-line` | `rgba(237,235,230,.22)` |
 
 Implementación: Tailwind 4 `@theme` + override de variables bajo `[data-theme="dark"]`. Verificar cada par texto/fondo nuevo con un checker de contraste antes de usarlo (el doc 06 fija AA como gate).
 

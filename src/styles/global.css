@@ -151,7 +151,8 @@
     font-size: var(--text-label);
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    /* Linea de estado: verde operativo (ADR 0010), no el acento interactivo */
+    color: var(--color-status);
   }
 
   /* Trazo de tinta tras el cursor (ADR 0009): capa fija insertada por JS solo

@@ -20,9 +20,9 @@ const label = isProduction ? t('badge.production') : t('badge.publicRepo');
 <span
   class:list={[
     'inline-flex items-center gap-1.5 rounded-xs border px-2 py-1 font-mono text-label',
-    isProduction ? 'border-accent/30 text-accent' : 'border-line text-ink-soft',
+    isProduction ? 'border-status/30 text-status' : 'border-line text-ink-soft',
   ]}
 >
-  {isProduction && <span class="size-1.5 rounded-full bg-accent" aria-hidden="true" />}
+  {isProduction && <span class="size-1.5 rounded-full bg-status" aria-hidden="true" />}
   {label}
 </span>

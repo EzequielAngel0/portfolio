@@ -1,8 +1,9 @@
 /*
- * Tokens del sistema de diseno (doc 05).
+ * Tokens del sistema de diseno (doc 05, paleta revisada en ADR 0010).
  * Los valores por tema viven como variables crudas en :root / [data-theme="dark"]
  * (conmutables en runtime sin FOUC); @theme las cablea a las utilidades de Tailwind 4.
- * Verde = "operativo": links, CTAs, punto de estado, badge "en produccion".
+ * Acento interactivo = azul tinta (links, CTAs, credenciales); el verde queda
+ * RESERVADO al estado operativo (punto del hero, badge "en produccion"): token status.
  */
 
 /* Tema claro ("papel"), por defecto */
@@ -11,26 +12,28 @@
   --surface: #ffffff;
   --ink: #17181a;
   --ink-soft: #4a4d52;
-  --accent: #1e6e4e;
+  --accent: #33618f; /* azul tinta, ~6:1 sobre paper (AA texto normal) */
+  --status: #1e6e4e; /* verde operativo, solo estado */
   --signal: #b86e00;
-  --line: rgb(23 24 26 / 0.14);
+  --line: rgb(23 24 26 / 0.22);
   /* Profundidad por sombras en capas con transparencia (doc 05): anillo de 1px
-     que hace de borde + dos capas suaves de elevacion. */
+     que hace de borde + dos capas suaves de elevacion (ADR 0010: reforzadas). */
   --card-shadow:
-    0 0 0 1px rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07), 0 2px 4px 0 rgb(0 0 0 / 0.05);
+    0 0 0 1px rgb(0 0 0 / 0.1), 0 1px 3px -1px rgb(0 0 0 / 0.1), 0 3px 6px 0 rgb(0 0 0 / 0.07);
 }
 
 /* Tema oscuro (neutro, sin morados ni orbes) */
 [data-theme='dark'] {
   --paper: #121417;
-  --surface: #1a1d21;
+  --surface: #1f242b; /* mas separada del paper (ADR 0010) */
   --ink: #edebe6;
   --ink-soft: #a7a9ac;
-  --accent: #4cc38a;
+  --accent: #7fa9d4; /* azul tinta claro, ~7.5:1 sobre paper */
+  --status: #4cc38a;
   --signal: #e0a63e;
-  --line: rgb(237 235 230 / 0.14);
+  --line: rgb(237 235 230 / 0.22);
   /* En oscuro las capas de elevacion no se ven: solo el anillo (blanco puro) */
-  --card-shadow: 0 0 0 1px rgb(255 255 255 / 0.1);
+  --card-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
 }
 
 /* Utilidades dark:* atadas al atributo data-theme (no a prefers-color-scheme) */
@@ -45,6 +48,7 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-accent: var(--accent);
+  --color-status: var(--status);
   --color-signal: var(--signal);
   --color-line: var(--line);
 
