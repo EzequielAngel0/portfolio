@@ -37,7 +37,7 @@ const statusFor = (index: number) =>
       type="button"
       data-carousel-prev
       aria-label={t('carousel.prev')}
-      aria-disabled="true"
+      aria-disabled={items.length < 2 ? 'true' : 'false'}
       class="grid size-10 place-items-center rounded-sm border border-line text-ink transition-[transform,border-color] duration-150 ease-out hover:border-ink/35 active:scale-[0.96] aria-disabled:opacity-40"
     >
       <Icon name="arrow-left" size={18} />
@@ -109,7 +109,7 @@ const statusFor = (index: number) =>
   .carousel-slide {
     flex: none;
     width: min(85%, 38rem);
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     /* Marco limpio (doc 05): sombra en capas y radios concentricos,
        exterior (10) = interior (4) + padding (6). */
     border-radius: var(--radius-md);

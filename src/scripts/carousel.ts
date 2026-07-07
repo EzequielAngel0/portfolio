@@ -27,11 +27,16 @@ for (const root of carousels) {
   const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]');
   const template = root.dataset.statusTemplate ?? '{current} / {total}';
 
-  // Desplazamiento que centra un slide en el viewport de la tira.
-  const scrollTargetFor = (index: number) => {
-    const slide = slides[index]!;
-    return slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
-  };
+  // Alineacion al INICIO de la tira (snap-align start en el CSS). El modelo
+  // centrado anterior fallaba con tracks anchos (varias tarjetas visibles):
+  // los targets de los primeros slides daban scroll negativo y "anterior"
+  // nunca se movia. offsetLeft relativo al primer slide = target de cada uno;
+  // el navegador clampa el scrollTo en los extremos.
+  const firstOffset = () => slides[0]!.offsetLeft;
+  const scrollTargetFor = (index: number) => slides[index]!.offsetLeft - firstOffset();
+  const maxScroll = () => track.scrollWidth - track.clientWidth;
+  const atStart = () => track.scrollLeft <= 2;
+  const atEnd = () => track.scrollLeft >= maxScroll() - 2;
 
   const nearestIndex = () => {
     let best = 0;
@@ -46,9 +51,13 @@ for (const root of carousels) {
     return best;
   };
 
+  // Indice anunciado: en los extremos se fija a primero/ultimo (con varias
+  // tarjetas visibles el "mas cercano" nunca llegaria al ultimo).
+  const currentIndex = () => (atEnd() ? slides.length - 1 : atStart() ? 0 : nearestIndex());
+
   let current = 0;
   const sync = () => {
-    const index = nearestIndex();
+    const index = currentIndex();
     if (index === current) return;
     current = index;
     if (status) {
@@ -56,8 +65,6 @@ for (const root of carousels) {
         .replace('{current}', String(current + 1))
         .replace('{total}', String(slides.length));
     }
-    prev?.setAttribute('aria-disabled', String(current === 0));
-    next?.setAttribute('aria-disabled', String(current === slides.length - 1));
   };
 
   let scrollTimer = 0;
@@ -67,14 +74,16 @@ for (const root of carousels) {
   });
 
   const goTo = (index: number) => {
-    const clamped = Math.max(0, Math.min(slides.length - 1, index));
     track.scrollTo({
-      left: scrollTargetFor(clamped),
+      left: scrollTargetFor(Math.max(0, Math.min(slides.length - 1, index))),
       behavior: reduceMotion.matches ? 'auto' : 'smooth',
     });
   };
-  prev?.addEventListener('click', () => goTo(nearestIndex() - 1));
-  next?.addEventListener('click', () => goTo(nearestIndex() + 1));
+  // Circular (pedido del dueno): al no haber mas a la derecha, "siguiente"
+  // vuelve al primero; al estar al inicio, "anterior" salta al ultimo. Por eso
+  // los controles nunca se deshabilitan.
+  prev?.addEventListener('click', () => (atStart() ? goTo(slides.length - 1) : goTo(nearestIndex() - 1)));
+  next?.addEventListener('click', () => (atEnd() ? goTo(0) : goTo(nearestIndex() + 1)));
   controls?.removeAttribute('hidden');
 
   // Arrastre con Draggable sobre un proxy: el scroll real lo lleva la tira

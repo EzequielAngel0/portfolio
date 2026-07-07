@@ -31,14 +31,17 @@ Overlay a pantalla completa en el color del papel con el nombre en el centro: lo
 - El overlay es CSS puro presente en el HTML solo en la primera carga logica: para no violar mejora progresiva ni LCP, el overlay se INSERTA por JS (si no hay JS, no hay overlay y el sitio es el actual); el hero sigue siendo el LCP porque el overlay usa el mismo fondo papel y el titular nace pintado debajo.
 - Reduced motion: no se inserta.
 
-### Capa 2 · Trazo de tinta tras el cursor (eleccion del dueno)
+### Capa 2 · Fondo "circuito del sistema" (v2, 2026-07-06)
 
-Una linea caligrafica fina de tinta sigue el movimiento del puntero y se desvanece, como pluma sobre papel. El fondo papel queda completamente limpio: el unico elemento nuevo es el rastro efimero del cursor.
+> Historial: la v1 de esta capa fue el "trazo de tinta tras el cursor". El dueno la probo en el build real y la descarto (el fondo seguia sintiendose vacio); pidio "algo en movimiento constante, con algo del cursor pero que no lo persiga". La v2 lo resuelve asi:
 
-- Implementacion: UNA capa SVG `position: fixed; inset: 0; pointer-events: none` con UN `<path>` (trazo ~1.5px, `var(--color-ink)` a opacidad baja, mismo valor relativo en ambos temas). Los puntos del puntero expiran por edad (~0.8 s), asi la cola se contrae sola hacia la cabeza; el path se suaviza con puntos medios cuadraticos. La actualizacion corre en `gsap.ticker` (el rAF que GSAP ya tiene activo), trabajo por frame minimo: decenas de puntos y un solo atributo `d`.
-- Solo existe con puntero fino (`(pointer: fine)`): en tactil no se crea. Sin JS no existe (capa insertada por JS). Reduced motion: no se crea.
-- NO es glassmorphism: no hay blur, ni orbes de color, ni particulas; es un trazo monocromo de tinta, la metafora literal de la direccion visual.
-- Riesgo de fps: el repintado del path es local y pequeno; se mide en DevTools y si costara (movil hibrido con mouse), se reduce la vida de los puntos o se retira.
+Una capa fija DETRAS del contenido con rutas ortogonales tenues de tinta (el mismo lenguaje del diagrama de arquitectura del case study): el fondo queda lleno SIEMPRE, no depende del cursor.
+
+- **Movimiento propio constante:** senales cortas de tinta (en el acento azul) recorren 5 de las 11 rutas en bucle lento y desfasado (`stroke-dashoffset` con GSAP, 14-34 s por ciclo). Es el unico bucle nuevo; se mide su costo de fps explicitamente.
+- **Reaccion suave al cursor (sin perseguirlo):** toda la capa deriva un maximo de ~12 px hacia la posicion del puntero con `gsap.quickTo` y easing largo (1.8 s): responde a la presencia del usuario sin ser un seguidor. Solo con `(pointer: fine)`.
+- **Scroll:** parallax minimo (yPercent -2.5 con scrub) para profundidad, tambien en tactil.
+- Implementacion: `div.bg-circuit` fijo con `z-index: -1` (pinta sobre el canvas del body y bajo TODO el contenido; tarjetas y header opacos la tapan y la legibilidad del texto no se compromete), SVG 1440x900 con `slice` y `vector-effect: non-scaling-stroke`. Insertada por JS: sin JS no existe. Reduced motion: no se crea.
+- NO es glassmorphism: sin blur, sin orbes de color, sin particulas (las senales viajan por rutas fijas de un esquema, no flotan aleatorias); todo es tinta monocroma + el acento.
 
 ### Capa 3 · GSAP ampliado por seccion
 
