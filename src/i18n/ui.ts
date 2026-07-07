@@ -18,6 +18,7 @@ export const ui = {
     'site.title': 'Angel Barbosa',
     'nav.home': 'Inicio',
     'nav.caseStudy': 'Case study',
+    'nav.certs': 'Certificaciones',
     'nav.contact': 'Contacto',
     'nav.downloadCv': 'Descargar CV (PDF)',
     'a11y.nav': 'Navegación principal',
@@ -40,6 +41,18 @@ export const ui = {
     'skills.title': 'Skills',
     'certifications.title': 'Certificaciones',
     'certifications.view': 'Ver credencial',
+    'certifications.viewAll': 'Ver todas las certificaciones',
+    'certifications.lead':
+      'Formación continua verificable: cada credencial enlaza a su verificación oficial.',
+    'certifications.featured': 'Destacadas',
+    'certifications.groupCertificaciones': 'Certificaciones',
+    'certifications.groupProgramas': 'Programas',
+    'certifications.groupFormaciones': 'Formaciones',
+    'certifications.groupCursos': 'Cursos',
+    'certifications.carouselLabel': 'Certificaciones destacadas',
+    'certifications.prev': 'Anterior',
+    'certifications.next': 'Siguiente',
+    'certifications.status': '{current} de {total}',
 
     // Case study (home y pagina /acp)
     'caseStudy.eyebrow': 'Case study · Repo privado (proyecto de cliente)',
@@ -80,6 +93,7 @@ export const ui = {
     'site.title': 'Angel Barbosa',
     'nav.home': 'Home',
     'nav.caseStudy': 'Case study',
+    'nav.certs': 'Certifications',
     'nav.contact': 'Contact',
     'nav.downloadCv': 'Download CV (PDF)',
     'a11y.nav': 'Main navigation',
@@ -102,6 +116,18 @@ export const ui = {
     'skills.title': 'Skills',
     'certifications.title': 'Certifications',
     'certifications.view': 'View credential',
+    'certifications.viewAll': 'View all certifications',
+    'certifications.lead':
+      'Verifiable continuous learning: every credential links to its official verification.',
+    'certifications.featured': 'Highlights',
+    'certifications.groupCertificaciones': 'Certifications',
+    'certifications.groupProgramas': 'Programs',
+    'certifications.groupFormaciones': 'Learning tracks',
+    'certifications.groupCursos': 'Courses',
+    'certifications.carouselLabel': 'Featured certifications',
+    'certifications.prev': 'Previous',
+    'certifications.next': 'Next',
+    'certifications.status': '{current} of {total}',
 
     // Case study (home and /acp page)
     'caseStudy.eyebrow': 'Case study · Private repo (client project)',

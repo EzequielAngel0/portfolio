@@ -158,6 +158,22 @@ const cards = [
     }),
   },
   {
+    file: 'certificaciones.es.png',
+    tree: homeCard({
+      status: 'en producción · v2026.07',
+      title: 'Certificaciones',
+      subtitle: 'Formación continua verificable: cada credencial enlaza a su verificación oficial.',
+    }),
+  },
+  {
+    file: 'certificaciones.en.png',
+    tree: homeCard({
+      status: 'in production · v2026.07',
+      title: 'Certifications',
+      subtitle: 'Verifiable continuous learning: every credential links to its official verification.',
+    }),
+  },
+  {
     file: 'acp-suite.es.png',
     tree: caseCard({
       status: 'en producción',

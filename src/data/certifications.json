@@ -1,23 +1,411 @@
-[
-  {
-    "id": "oci-foundations-2025",
-    "name": "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
-    "issuer": "Oracle",
-    "year": 2025,
-    "credentialUrl": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=9E6AA54792091B7F8EAD1C3D4C0E00B4640759558EA9319193256E348344778E"
-  },
-  {
-    "id": "google-cloud-cybersecurity",
-    "name": "Google Cloud Cybersecurity Certificate",
-    "issuer": "Google",
-    "year": 2026,
-    "credentialUrl": "https://www.credly.com/badges/6b602da5-95ea-4328-a5dd-03ba538dfbf9/linked_in_profile"
-  },
-  {
-    "id": "one-tech-advanced-backend",
-    "name": "Programa ONE Tech Advanced G9, Back End",
-    "issuer": "Alura Latam / Oracle",
-    "year": 2026,
-    "credentialUrl": "https://app.aluracursos.com/program/certificate/8a039e9d-447c-4d64-9a32-40a020f15bf5?lang"
-  }
-]
+{
+  "featured": [
+    {
+      "id": "oci-foundations-2025",
+      "name": "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+      "issuer": "Oracle",
+      "year": 2025,
+      "category": "certificacion",
+      "url": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=9E6AA54792091B7F8EAD1C3D4C0E00B4640759558EA9319193256E348344778E",
+      "home": true
+    },
+    {
+      "id": "google-cybersecurity",
+      "name": "Google Cloud Cybersecurity Certificate",
+      "issuer": "Google",
+      "year": 2026,
+      "category": "certificacion",
+      "url": "https://www.credly.com/badges/6b602da5-95ea-4328-a5dd-03ba538dfbf9/linked_in_profile",
+      "home": true
+    },
+    {
+      "id": "one-tech-advanced",
+      "name": "Programa ONE Tech Advanced G9, Back End",
+      "issuer": "Oracle Next Education (Alura)",
+      "year": 2026,
+      "category": "programa",
+      "url": "https://app.aluracursos.com/user/angelezequiel/program/29/certificate",
+      "home": true
+    },
+    {
+      "id": "one-tech-foundation",
+      "name": "Programa ONE Tech Foundation G9, Back End",
+      "issuer": "Oracle Next Education (Alura)",
+      "year": 2026,
+      "category": "programa",
+      "url": "https://app.aluracursos.com/user/angelezequiel/program/31/certificate",
+      "home": false
+    },
+    {
+      "id": "rag-avanzado",
+      "name": "Formacion Inteligencia de Datos y RAG Avanzado - ONE AI FOR TECH",
+      "issuer": "Oracle Next Education (Alura)",
+      "year": 2026,
+      "category": "formacion",
+      "url": "https://app.aluracursos.com/user/angelezequiel/degree-inteligencia-de-datos-y-rag-avanzado-one-16191/certificate",
+      "home": false
+    },
+    {
+      "id": "agentes-ia",
+      "name": "Formacion Ingenieria de Agentes y Automatizacion con IA - ONE AI FOR TECH",
+      "issuer": "Oracle Next Education (Alura)",
+      "year": 2026,
+      "category": "formacion",
+      "url": "https://app.aluracursos.com/user/angelezequiel/degree-ingenieria-de-agentes-y-automatizacion-con-ia-one-16190/certificate",
+      "home": false
+    }
+  ],
+  "groups": [
+    {
+      "id": "certificaciones",
+      "items": [
+        {
+          "name": "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+          "issuer": "Oracle",
+          "year": 2025,
+          "url": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=9E6AA54792091B7F8EAD1C3D4C0E00B4640759558EA9319193256E348344778E"
+        },
+        {
+          "name": "Google Cloud Cybersecurity Certificate",
+          "issuer": "Google",
+          "year": 2026,
+          "url": "https://www.credly.com/badges/6b602da5-95ea-4328-a5dd-03ba538dfbf9/linked_in_profile"
+        }
+      ]
+    },
+    {
+      "id": "programas",
+      "items": [
+        {
+          "name": "Programa ONE Tech Advanced G9, Back End",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/program/29/certificate"
+        },
+        {
+          "name": "Programa ONE Tech Foundation G9, Back End",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/program/31/certificate"
+        }
+      ]
+    },
+    {
+      "id": "formaciones",
+      "items": [
+        {
+          "name": "Formación Desarrollo Personal G9 - ONE",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-desarrollo-personal-grupo9-one-16020/certificate"
+        },
+        {
+          "name": "Formación Lógica de programación con JavaScript",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-programacion-primeros-pasos-15697/certificate"
+        },
+        {
+          "name": "Formación Principiante en Programación G9 - ONE",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-programacion-primeros-pasos-grupo9-one-16017/certificate"
+        },
+        {
+          "name": "Formación Emprendimiento, Agilidad y Protagonismo Profesional G9 - ONE",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-emprendimiento-agilidad-y-protagonismo-profesional-grupo9-one-16075/certificate"
+        },
+        {
+          "name": "Formación Aprende a programar en Java con Orientación a Objetos",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-javaoo-15704/certificate"
+        },
+        {
+          "name": "Formación Java Orientado a Objetos G9 - ONE",
+          "year": 2025,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-java-grupo9-one-16071/certificate"
+        },
+        {
+          "name": "Formación Java Web: crea aplicaciones utilizando Spring Boot",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-java-web-spring-boot-15781/certificate"
+        },
+        {
+          "name": "Formación Java y Spring Boot",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-java-spring-boot-15636/certificate"
+        },
+        {
+          "name": "Formación Inteligencia Artificial y Java G9 - ONE",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-ia-java-grupo9-one-16076/certificate"
+        },
+        {
+          "name": "Formación Java y Spring Framework G9 - ONE",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-spring-framework-grupo9-one-16074/certificate"
+        },
+        {
+          "name": "Formación Ruta hacia la certificación OCI Foundations Associate",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-certificacion-oci-one-copy-16011/certificate"
+        },
+        {
+          "name": "Formación Oracle en la Práctica: Autonomous Database y APEX - ONE",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-oracle-autonomous-database-apex-one-16083/certificate"
+        },
+        {
+          "name": "Formación Oracle Cloud Infrastructure (OCI)",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-oracle-cloud-infraestructure-15495/certificate"
+        },
+        {
+          "name": "Formación Oracle Cloud Infrastructure - ONE",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-oracle-cloud-infraestructure-one-15469/certificate"
+        },
+        {
+          "name": "Formación Ruta hacia la certificación OCI Foundations Associate - ONE",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-certificacion-oci-one-16006/certificate"
+        },
+        {
+          "name": "Formación Inteligencia de Datos y RAG Avanzado - ONE AI FOR TECH",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-inteligencia-de-datos-y-rag-avanzado-one-16191/certificate"
+        },
+        {
+          "name": "Formación Ingeniería de Agentes y Automatización con IA - ONE AI FOR TECH",
+          "year": 2026,
+          "url": "https://app.aluracursos.com/user/angelezequiel/degree-ingenieria-de-agentes-y-automatizacion-con-ia-one-16190/certificate"
+        }
+      ]
+    },
+    {
+      "id": "cursos",
+      "items": [
+        {
+          "name": "Agentes de IA con LangGraph",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/agentes-de-ia-con-langgraph/certificate"
+        },
+        {
+          "name": "Aprender a aprender: tecnicas para tu autodesarrollo",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/aprender-a-aprender-tecnicas-autodesarrollo/certificate"
+        },
+        {
+          "name": "Aprendizaje con IA: personalizando tu rutina con ChatGPT",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/aprendizaje-ia-personalizando-rutina-chatgpt/certificate"
+        },
+        {
+          "name": "Automatización de Flujos: integrando n8n e IA",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/n8n-trabajando-con-flujos-de-trabajo-avanzados/certificate"
+        },
+        {
+          "name": "Certificación Oracle Cloud Infrastructure: fundamentos clave y servicios esenciales",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/certificacion-oracle-cloud-infrastructure-fundamentos-clave-servicios-esenciales/certificate"
+        },
+        {
+          "name": "Certificación Oracle Cloud Infrastructure: gestión de datos, seguridad y gobernanza",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/certificacion-oracle-cloud-infrastructure-gestion-datos-seguridad-gobernanza/certificate"
+        },
+        {
+          "name": "ChatGPT y programación: aumenta tu productividad",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/chatgpt-programacion-aumenta-productividad/certificate"
+        },
+        {
+          "name": "Desarrollo de carrera: demanda del mercado",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/desarrollo-carrera-demanda-mercado/certificate"
+        },
+        {
+          "name": "Emprendimiento: De la idea al plan de negocios",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/emprendimiento-idea-plan-negocios/certificate"
+        },
+        {
+          "name": "Entrega Certificación OCI Foundations Associate",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/entrega-certificacion-oci-foundation/certificate"
+        },
+        {
+          "name": "Foco: Enfocarse trae más resultados para el día a día",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/foco-habito-dia-a-dia/certificate"
+        },
+        {
+          "name": "Fundamentos de Agilidad: Primeros pasos para la transformación ágil",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/fundamentos-agilidad-primeros-pasos-transformacion-agil/certificate"
+        },
+        {
+          "name": "Git y GitHub: repositorio, commit y versiones",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/git-github-repositorio-commit-versiones/certificate"
+        },
+        {
+          "name": "Hábitos: Ser productivo para cumplir sus metas personales",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/habitos-productivo-metas-personales/certificate"
+        },
+        {
+          "name": "HTML y CSS: ambientes de desarrollo, estructura de archivos y tags",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/html-css-desarrollo-estructura-archivos-tags/certificate"
+        },
+        {
+          "name": "HTML y CSS: Clases, Posicionamiento y Flexbox",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/html-css-clases-posicionamiento-flexbox/certificate"
+        },
+        {
+          "name": "HTML y CSS: header, footer y variables CSS",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/html-css-header-footer-variables-css/certificate"
+        },
+        {
+          "name": "HTML y CSS: trabajando con responsividad y publicación de proyectos",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/html-css-trabajando-responsividad-publicacion-proyectos/certificate"
+        },
+        {
+          "name": "IA: explorando el potencial de la Inteligencia Artificial Generativa",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/ia-explorando-potencial-inteligencia-artificial-generativa/certificate"
+        },
+        {
+          "name": "Ingeniería de Prompt: creando prompts eficaces para la IA generativa",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/ingenieria-prompt-creando-prompts-eficaces-ia-generativa/certificate"
+        },
+        {
+          "name": "Inteligencia Artificial: Preparación para el mercado",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/inteligencia-artificial-preparacion-para-el-mercado/certificate"
+        },
+        {
+          "name": "Introducción a SQL con MySQL: Manipule y consulte datos",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/introduccion-sql-mysql-manipule-consulte-datos/certificate"
+        },
+        {
+          "name": "Java: aplicando la Orientación a Objetos",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-aplicando-orientacion-objetos/certificate"
+        },
+        {
+          "name": "Java: consumir API, escribir archivos y manejar errores",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-consumir-api-escribir-archivos-manejar-errores/certificate"
+        },
+        {
+          "name": "Java: creando tu primera API y conectándola al Front End",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-api-conectandola-front-end/certificate"
+        },
+        {
+          "name": "Java: creando tu primera aplicación",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-creando-primera-aplicacion/certificate"
+        },
+        {
+          "name": "Java: persistencia de datos y consultas con Spring Data JPA",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-persistencia-datos-consultas-spring-data-jpa/certificate"
+        },
+        {
+          "name": "Java: trabajando con lambdas, streams y Spring Framework",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-trabajando-lambdas-streams-spring-framework/certificate"
+        },
+        {
+          "name": "Java: trabajar con listas y colecciones de datos",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/java-trabajar-listas-colecciones-datos/certificate"
+        },
+        {
+          "name": "LangChain: Automatizando el análisis de datos con agentes",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/langchain-automatizando-el-analisis-de-datos-con-agentes/certificate"
+        },
+        {
+          "name": "LangChain: tecnicas avanzadas de RAG",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/langchain-tecnicas-avanzadas-de-rag/certificate"
+        },
+        {
+          "name": "LangGraph: Orquestación de agentes y multiagentes",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/langgraph-orquestacion-agentes-multiagentes/certificate"
+        },
+        {
+          "name": "LinkedIn para profesionales: construye tu marca y genera oportunidades",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/linkedIn-profesionales-construye-marca-genera-oportunidades/certificate"
+        },
+        {
+          "name": "Lógica de programación: explorar funciones y listas",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/logica-programacion-explorar-funciones-listas/certificate"
+        },
+        {
+          "name": "Lógica de programación: sumérgete en la programación con JavaScript",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/logica-programacion-sumergete-programacion-javascript/certificate"
+        },
+        {
+          "name": "Low Code e IA con Oracle Apex",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/low-code-ia-oracle-apex/certificate"
+        },
+        {
+          "name": "n8n para desarrolladores: Construyendo workflows inteligentes",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/n8n-desarrolladores-construyendo-workflows-inteligentes/certificate"
+        },
+        {
+          "name": "N8N: Crea automatizaciones inteligentes",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/n8n-crea-automatizaciones-inteligentes/certificate"
+        },
+        {
+          "name": "Oracle Autonomous Database",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/oracle-autonomous-database/certificate"
+        },
+        {
+          "name": "Oracle Cloud Infrastructure: base de datos e infraestructura como código",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/oracle-cloud-infrastructure-base-de-datos-e-infraestructura-como-codigo/certificate"
+        },
+        {
+          "name": "Oracle Cloud Infrastructure: implementación de una aplicación en la nube",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/oracle-cloud-infrastructure-implementacion-de-una-aplicacion-en-la-nube/certificate"
+        },
+        {
+          "name": "Practicando con Java: Challenge Conversor de Monedas",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/practicando-java-con-conversor-de-moneda/certificate"
+        },
+        {
+          "name": "Practicando Java: Colecciones y Streams",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/practicando-java-colecciones-streams/certificate"
+        },
+        {
+          "name": "Practicando Lógica de Programación: Challenge Amigo secreto",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/logica-programacion-challenge-amigo-secreto/certificate"
+        },
+        {
+          "name": "Practicando Spring Boot: Challenge Literalura",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/challenge-spring-boot-literalura/certificate"
+        },
+        {
+          "name": "Practicando Spring Framework: Challenge Foro Hub",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/spring-framework-challenge-foro-hub/certificate"
+        },
+        {
+          "name": "Propósito profesional: ser el protagonista de tu carrera",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/proposito-profesional-protagonista-carrera/certificate"
+        },
+        {
+          "name": "RAG y Agentes de IA",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/rag-agentes-ia/certificate"
+        },
+        {
+          "name": "Redes y Protocolos: Fundamentos de la web",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/redes-protocolos-fundamentos-web/certificate"
+        },
+        {
+          "name": "Spring AI: Integra una aplicación con OpenAI",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/gpt-java-integra-aplicacion-openai/certificate"
+        },
+        {
+          "name": "Spring Boot 3: aplique las mejores prácticas y proteja una API Rest",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/spring-boot-3-aplique-mejores-practicas-proteja-api-rest/certificate"
+        },
+        {
+          "name": "Spring Boot 3: desarrolla una API REST en Java",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/spring-boot-3-dessarrola-api-rest-java/certificate"
+        },
+        {
+          "name": "Spring Boot 3: documentar, probar y preparar una API para su implementación",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/spring-boot-3-documentar-probar-preparar-api-implementacion/certificate"
+        },
+        {
+          "name": "Terminal: aprenda comandos para ejecutar tareas",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/terminal-aprenda-comandos-ejecutar-tareas/certificate"
+        },
+        {
+          "name": "Transición de carrera: una guía al campo de tecnología",
+          "url": "https://app.aluracursos.com/user/angelezequiel/course/transicion-carrera-guia-campo-tecnologia/certificate"
+        },
+        {
+          "name": "Inmersion Agentes de IA - ONE",
+          "url": "https://app.aluracursos.com/user/angelezequiel/immersion/certificate/705"
+        }
+      ]
+    }
+  ]
+}

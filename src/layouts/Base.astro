@@ -3,7 +3,14 @@ import type { ImageMetadata } from 'astro';
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
 import Icon from '../components/ui/Icon.astro';
-import { getLocaleFromUrl, getAlternates, useTranslations, localizePath, cvPath } from '../i18n/utils';
+import {
+  getLocaleFromUrl,
+  getAlternates,
+  useTranslations,
+  localizePath,
+  cvPath,
+  certsPath,
+} from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -39,9 +46,11 @@ const otherHref = alternates[otherLocale];
 // es un anchor de scroll) para dejar sitio al boton de CV sin romper los 360px.
 const homePath = localizePath('', locale);
 const casePath = localizePath('acp', locale);
+const certsHref = certsPath(locale);
 const navItems = [
   { href: homePath, label: t('nav.home'), path: homePath, mobileHidden: true },
   { href: casePath, label: t('nav.caseStudy'), path: casePath, mobileHidden: false },
+  { href: certsHref, label: t('nav.certs'), path: certsHref, mobileHidden: true },
   {
     href: `${homePath}#${t('contact.anchor')}`,
     label: t('nav.contact'),

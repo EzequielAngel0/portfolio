@@ -1,11 +1,13 @@
 ---
-// Certificaciones (docs 01 y 02): tarjetas sobrias con credencial verificable
-// a un clic. Los datos viven en src/data/certifications.json.
+// Certificaciones en el home (docs 01 y 02, T3): solo las destacadas con
+// home: true (OCI, Google Cybersecurity, ONE Tech Advanced) y un enlace al
+// catalogo completo en /certificaciones/ (par EN: /en/certifications/).
 import certifications from '../../data/certifications.json';
 import type { Locale } from '../../i18n/ui';
-import { useTranslations } from '../../i18n/utils';
+import { useTranslations, certsPath } from '../../i18n/utils';
 import Section from '../ui/Section.astro';
-import CredentialLink from '../ui/CredentialLink.astro';
+import CertCard from '../ui/CertCard.astro';
+import Icon from '../ui/Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -13,24 +15,35 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const homeCerts = certifications.featured.filter((cert) => cert.home);
 ---
 
 <Section label={t('certifications.title')}>
   <ul class="grid gap-5 md:grid-cols-3">
     {
-      certifications.map((cert) => (
+      homeCerts.map((cert) => (
         <li>
-          <article class="flex h-full flex-col rounded-md bg-surface p-6 shadow-card">
-            <h3 class="leading-snug font-medium">{cert.name}</h3>
-            <p class="mt-2 font-mono text-label text-ink-soft">
-              {cert.issuer} · {cert.year}
-            </p>
-            <div class="mt-auto pt-5">
-              <CredentialLink href={cert.credentialUrl} locale={locale} />
-            </div>
-          </article>
+          <CertCard
+            name={cert.name}
+            issuer={cert.issuer}
+            year={cert.year}
+            url={cert.url}
+            locale={locale}
+          />
         </li>
       ))
     }
   </ul>
+
+  <a
+    href={certsPath(locale)}
+    class="group mt-8 inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
+  >
+    {t('certifications.viewAll')}
+    <Icon
+      name="arrow-right"
+      size={16}
+      class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+    />
+  </a>
 </Section>

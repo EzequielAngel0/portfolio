@@ -1,0 +1,72 @@
+---
+// Pagina de certificaciones (T3): carrusel de destacadas + catalogo COMPLETO
+// verificable (decision del dueno 2026-07-06: listar todo). Jerarquia para leer
+// en 30 s (doc 01): las 6 destacadas como tarjetas en el carrusel; el catalogo
+// agrupado (certificaciones, programas, formaciones, cursos) en filas densas.
+// Cada item enlaza a su verificacion oficial (regla 5 del doc 02): Oracle
+// CertView, Credly o el certificado publico de Alura.
+import certifications from '../../data/certifications.json';
+import type { Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import CertCarousel from '../ui/CertCarousel.astro';
+import CredentialLink from '../ui/CredentialLink.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+type CatalogItem = { name: string; issuer?: string; year?: number; url: string };
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const featured = certifications.featured as CatalogItem[];
+const groups = certifications.groups as { id: string; items: CatalogItem[] }[];
+
+const groupLabels: Record<string, string> = {
+  certificaciones: t('certifications.groupCertificaciones'),
+  programas: t('certifications.groupProgramas'),
+  formaciones: t('certifications.groupFormaciones'),
+  cursos: t('certifications.groupCursos'),
+};
+---
+
+<article class="py-section">
+  <header>
+    <p data-boot class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('certifications.featured')}
+    </p>
+    <h1 data-boot class="mt-5 text-display">{t('certifications.title')}</h1>
+    <p data-boot class="mt-5 max-w-2xl text-lg text-ink-soft">{t('certifications.lead')}</p>
+  </header>
+
+  <div data-boot class="mt-10">
+    <CertCarousel items={featured} locale={locale} />
+  </div>
+
+  {
+    groups.map((group) => (
+      <section data-reveal class="mt-14 border-t border-line pt-8">
+        <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+          {groupLabels[group.id] ?? group.id}
+          <span class="ml-2 text-ink-soft/70">· {group.items.length}</span>
+        </h2>
+        <ul class="mt-4 divide-y divide-line">
+          {group.items.map((item) => (
+            <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3">
+              <p class="min-w-0 flex-1 basis-64 leading-snug font-medium text-pretty">
+                {item.name}
+                {(item.issuer || item.year) && (
+                  <span class="ml-2 font-mono text-label font-normal whitespace-nowrap text-ink-soft">
+                    {[item.issuer, item.year].filter(Boolean).join(' · ')}
+                  </span>
+                )}
+              </p>
+              <CredentialLink href={item.url} locale={locale} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</article>

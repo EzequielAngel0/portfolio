@@ -1,0 +1,15 @@
+---
+// Certifications page in EN (T3). Its ES pair lives at /certificaciones/
+// (localized slug, mapped in i18n/utils.ts for hreflang and the toggle).
+import Base from '../../layouts/Base.astro';
+import CertificationsCatalog from '../../components/certs/CertificationsCatalog.astro';
+import ogImage from '../../assets/og/certificaciones.en.png';
+---
+
+<Base
+  title="Certifications · Angel Barbosa"
+  description="Angel Barbosa's certifications: Oracle Cloud Infrastructure Foundations Associate, Google Cloud Cybersecurity and the Oracle Next Education (Alura) program, verifiable in one click."
+  ogImage={ogImage}
+>
+  <CertificationsCatalog locale="en" />
+</Base>

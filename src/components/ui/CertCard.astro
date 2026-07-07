@@ -1,0 +1,26 @@
+---
+// Tarjeta sobria de credencial (docs 01/02): nombre, emisor y ano, con link a
+// la verificacion (objetivo del sitio: verificable con un clic). Se reutiliza en
+// el carrusel de destacadas y en las rejillas del catalogo de la pagina T3.
+import type { Locale } from '../../i18n/ui';
+import CredentialLink from './CredentialLink.astro';
+
+interface Props {
+  name: string;
+  issuer?: string;
+  year?: number;
+  url: string;
+  locale: Locale;
+}
+
+const { name, issuer, year, url, locale } = Astro.props;
+const meta = [issuer, typeof year === 'number' ? String(year) : null].filter(Boolean).join(' · ');
+---
+
+<article class="flex h-full flex-col rounded-md bg-surface p-6 shadow-card">
+  <h3 class="leading-snug font-medium text-balance">{name}</h3>
+  {meta && <p class="mt-2 font-mono text-label text-ink-soft">{meta}</p>}
+  <div class="mt-auto pt-5">
+    <CredentialLink href={url} locale={locale} />
+  </div>
+</article>

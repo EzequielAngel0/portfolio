@@ -42,9 +42,27 @@ export function cvPath(locale: Locale): string {
   return `${base}cv/${file}`.replace(/\/{2,}/g, '/');
 }
 
+// Rutas con slug DISTINTO por idioma (T3): su par ES/EN no se obtiene con el
+// prefijo /en, hay que mapearlo explicitamente (si no, hreflang y el toggle
+// apuntarian a una ruta inexistente como /en/certificaciones/).
+const localizedRoutes: { es: string; en: string }[] = [
+  { es: 'certificaciones', en: 'certifications' },
+];
+
+// Ruta de la pagina de certificaciones por idioma (slug localizado).
+export function certsPath(locale: Locale): string {
+  return localizePath(locale === 'en' ? 'certifications' : 'certificaciones', locale);
+}
+
 // Pares de URL por idioma para el toggle (enlace al equivalente exacto) y hreflang.
 export function getAlternates(url: URL): Record<Locale, string> {
+  const locale = getLocaleFromUrl(url);
   const rest = stripLocale(url);
+  const seg = rest.split('/').filter(Boolean)[0] ?? '';
+  const route = localizedRoutes.find((r) => r[locale] === seg);
+  if (route) {
+    return { es: localizePath(route.es, 'es'), en: localizePath(route.en, 'en') };
+  }
   return {
     es: localizePath(rest, 'es'),
     en: localizePath(rest, 'en'),
