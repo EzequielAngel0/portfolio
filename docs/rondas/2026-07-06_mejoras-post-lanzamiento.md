@@ -37,6 +37,15 @@ Ejecuta `docs/PROMPT_MEJORAS_POST_LANZAMIENTO.md`. Ramas cortas desde `develop` 
 - ADR 0009 aceptado con fondo "trazo de tinta tras el cursor" (rejilla descartada).
 - Contenedor: acceso via `http://portfolio:4321`.
 
+## Iteracion 2 (pase visual del dueno sobre el build real, misma fecha)
+
+Feedback del dueno probando `http://portfolio:4321` y cambios aplicados (rama `feat/pase-visual-dueno`):
+
+- [hecho] **Fondo v2 del ADR 0009 descartado por el dueno** (el trazo de tinta dejaba el fondo vacio). Nuevo pedido: "movimiento constante + algo del cursor pero que no lo persiga". **v3 implementada: fondo "circuito del sistema"**: capa fija detras del contenido con 11 rutas ortogonales tenues (lenguaje del diagrama de arquitectura) + nodos; senales de tinta azul recorren 5 rutas en bucle lento (stroke-dashoffset, 14-34 s, desfasadas); la capa deriva max ~12 px hacia el cursor con quickTo de 1.8 s (solo pointer fine); parallax minimo al scroll. Insertada por JS; reduced motion no la crea; sin overflow en 360/768. ADR 0009 actualizado (capa 2 v2 con historial).
+- [hecho] **Carrusel circular** (pedido): en el ultimo, "siguiente" vuelve al primero; en el primero, "anterior" salta al ultimo; controles nunca deshabilitados. De paso se corrigio un bug real del modelo: los targets centrados daban scroll negativo con tracks anchos (3 tarjetas visibles) y "anterior" no respondia; ahora el modelo alinea al INICIO (snap start) con deteccion de extremos por posicion real de scroll. Verificado: ciclo 1 -> 2 -> 3 -> 6 -> 1 -> 2 y prev en el inicio -> "6 de 6" con scroll en el maximo.
+- [hecho] **Paleta revisada (ADR 0010, eleccion del dueno: azul tinta)**: `--accent` #33618F/#7FA9D4 para todo lo interactivo; token nuevo `--status` (verde #1E6E4E/#4CC38A) RESERVADO al estado (punto del hero, badge "en produccion", linea de la intro); `--line` a 0.22, superficie oscura #1F242B, sombras reforzadas. Doc 05 (tabla de tokens) actualizado. OG sin cambio (su linea de estado usa el verde operativo).
+- Verificacion de la iteracion: build + preview, fondo presente y animando (dashoffset avanza), deriva al cursor activa, **~61 fps con fondo + cursor + scroll simultaneos**, sin JS y reduced motion sin capas nuevas y contenido visible, overflow 0 en 360/768, capturas de ambos temas revisadas.
+
 ## Deuda / seguimiento
 
 - Presupuesto JS al limite en `/certificaciones/` (~59.4 KB gzip): vigilar en la proxima pieza.
