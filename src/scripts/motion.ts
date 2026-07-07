@@ -1,11 +1,11 @@
-// Motor de motion (GSAP) como mejora progresiva (doc 05 + ADR 0009).
-// Capas: intro "arranque" con el nombre (una vez por sesion), trazo de tinta
-// tras el cursor (solo puntero fino), boot del hero, revelado por seccion con
-// stagger interno ([data-stagger]), bloques del diagrama y separadores trazados.
-// El contenido nace visible en el HTML; GSAP anima DESDE ese estado (from +
-// autoAlpha + clearProps), asi que si el JS no corre todo sigue legible. La
-// intro y el trazo se INSERTAN por JS: sin JS no existen. Reduced motion ->
-// sin tweens ni capas nuevas (el pulso de estado es CSS y lo apaga global.css).
+// Motor de motion (GSAP) como mejora progresiva (doc 05 + ADR 0009 v2).
+// Capas: intro "arranque" con el nombre (una vez por sesion), fondo de
+// circuito con senales en movimiento y deriva suave hacia el cursor, boot del
+// hero, revelado por seccion con stagger interno ([data-stagger]), bloques del
+// diagrama y separadores trazados. El contenido nace visible en el HTML; GSAP
+// anima DESDE ese estado (from + autoAlpha + clearProps), asi que si el JS no
+// corre todo sigue legible. La intro y el fondo se INSERTAN por JS: sin JS no
+// existen. Reduced motion -> sin tweens ni capas nuevas.
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,7 +23,7 @@ mm.add(
     if (!animate) return; // reduced motion: estado final instantaneo, sin animacion
 
     runIntro();
-    inkTrail(context);
+    circuitBackground(context);
 
     // Boot del hero: los elementos entran en secuencia, como un sistema en linea.
     const bootTargets = gsap.utils.toArray<HTMLElement>('[data-boot]');
@@ -176,60 +176,118 @@ function runIntro(): void {
   window.addEventListener('touchstart', skip, options);
 }
 
-// Capa 2 (ADR 0009): trazo de tinta tras el cursor. Un solo <path> en una capa
-// fija; los puntos expiran (~0.7 s) y la cola se contrae hacia la cabeza. Corre
-// en gsap.ticker (el rAF que GSAP ya usa); si no hay puntos, no hace nada.
-function inkTrail(context: gsap.Context): void {
-  if (!window.matchMedia('(pointer: fine)').matches) return;
-
+// Capa 2 (ADR 0009 v2, eleccion del dueno tras probar y descartar el trazo):
+// fondo "circuito del sistema". Una capa fija DETRAS del contenido con rutas
+// ortogonales tenues (el lenguaje del diagrama de arquitectura) que siempre
+// llenan el fondo; senales de tinta recorren algunas rutas en bucle lento
+// (movimiento propio constante) y toda la capa deriva unos pocos px hacia el
+// cursor con easing largo (reacciona sin perseguir). Insertada por JS: sin JS
+// no existe; con reduced motion no se crea.
+function circuitBackground(context: gsap.Context): void {
   const svgNS = 'http://www.w3.org/2000/svg';
+  const layer = document.createElement('div');
+  layer.className = 'bg-circuit';
+  layer.setAttribute('aria-hidden', 'true');
+
   const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('class', 'ink-trail');
-  svg.setAttribute('aria-hidden', 'true');
-  const path = document.createElementNS(svgNS, 'path');
-  svg.appendChild(path);
-  document.body.appendChild(svg);
+  svg.setAttribute('viewBox', '0 0 1440 900');
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
 
-  const LIFE = 700; // ms de vida de cada punto
-  let points: { x: number; y: number; t: number }[] = [];
-  let lastD = '';
+  // Rutas ortogonales fijas (disenadas para 1440x900, con sangrado en bordes).
+  const routes = [
+    'M -60 140 H 260 V 300 H 520',
+    'M 1500 180 H 1150 V 80 H 900',
+    'M 200 -60 V 180 H 60 V 420',
+    'M 1500 520 H 1240 V 700 H 980 V 960',
+    'M -60 620 H 180 V 780 H 430',
+    'M 700 960 V 760 H 940 V 560 H 1180',
+    'M 520 -60 V 120 H 780 V 260',
+    'M -60 420 H 320 V 560 H 640 V 640',
+    'M 1100 -60 V 200 H 1330 V 360',
+    'M 860 380 H 1080 V 480',
+    'M 380 960 V 720 H 160',
+  ];
+  // Indices de rutas que llevan senal viajera (movimiento propio constante).
+  const signalRoutes = [0, 3, 5, 7, 8];
+  // Nodos en los extremos interiores de las rutas.
+  const nodes: [number, number][] = [
+    [520, 300],
+    [900, 80],
+    [60, 420],
+    [430, 780],
+    [1180, 560],
+    [780, 260],
+    [640, 640],
+    [1330, 360],
+    [1080, 480],
+    [160, 720],
+  ];
 
-  const onMove = (event: PointerEvent) => {
-    points.push({ x: event.clientX, y: event.clientY, t: performance.now() });
-  };
-  window.addEventListener('pointermove', onMove, { passive: true });
-
-  const update = () => {
-    const now = performance.now();
-    points = points.filter((p) => now - p.t < LIFE);
-    if (points.length < 2) {
-      if (lastD !== '') {
-        lastD = '';
-        path.setAttribute('d', '');
-      }
-      return;
+  const signalPaths: SVGPathElement[] = [];
+  routes.forEach((d, index) => {
+    const base = document.createElementNS(svgNS, 'path');
+    base.setAttribute('d', d);
+    base.setAttribute('class', 'circuit-base');
+    base.setAttribute('vector-effect', 'non-scaling-stroke');
+    svg.appendChild(base);
+    if (signalRoutes.includes(index)) {
+      const signal = document.createElementNS(svgNS, 'path');
+      signal.setAttribute('d', d);
+      signal.setAttribute('class', 'circuit-signal');
+      signal.setAttribute('vector-effect', 'non-scaling-stroke');
+      svg.appendChild(signal);
+      signalPaths.push(signal);
     }
-    // Suavizado con puntos medios cuadraticos: pluma, no poligono.
-    const first = points[0]!;
-    let d = `M${first.x.toFixed(1)} ${first.y.toFixed(1)}`;
-    for (let i = 1; i < points.length - 1; i++) {
-      const p = points[i]!;
-      const nextPoint = points[i + 1]!;
-      const mx = (p.x + nextPoint.x) / 2;
-      const my = (p.y + nextPoint.y) / 2;
-      d += ` Q${p.x.toFixed(1)} ${p.y.toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)}`;
-    }
-    if (d !== lastD) {
-      lastD = d;
-      path.setAttribute('d', d);
-    }
-  };
-
-  gsap.ticker.add(update);
-  // Si el contexto se revierte (cambia la media query), limpiar capa y ticker.
-  context.add(() => () => {
-    gsap.ticker.remove(update);
-    window.removeEventListener('pointermove', onMove);
-    svg.remove();
   });
+  for (const [cx, cy] of nodes) {
+    const node = document.createElementNS(svgNS, 'circle');
+    node.setAttribute('cx', String(cx));
+    node.setAttribute('cy', String(cy));
+    node.setAttribute('r', '3');
+    node.setAttribute('class', 'circuit-node');
+    svg.appendChild(node);
+  }
+
+  layer.appendChild(svg);
+  document.body.appendChild(layer);
+
+  // Senales: un guion corto recorre cada ruta en bucle lento y desfasado.
+  signalPaths.forEach((path, index) => {
+    const length = path.getTotalLength();
+    const dash = 90;
+    path.style.strokeDasharray = `${dash} ${length}`;
+    gsap.fromTo(
+      path,
+      { strokeDashoffset: dash },
+      {
+        strokeDashoffset: -length,
+        duration: 14 + index * 5,
+        ease: 'none',
+        repeat: -1,
+        delay: index * 2.2,
+      },
+    );
+  });
+
+  // Deriva suave hacia el cursor (solo puntero fino): maximo ~12 px con easing
+  // largo, reacciona sin perseguir (pedido del dueno).
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const xTo = gsap.quickTo(layer, 'x', { duration: 1.8, ease: 'power3' });
+    const yTo = gsap.quickTo(layer, 'y', { duration: 1.8, ease: 'power3' });
+    const onMove = (event: PointerEvent) => {
+      xTo((event.clientX / window.innerWidth - 0.5) * 24);
+      yTo((event.clientY / window.innerHeight - 0.5) * 18);
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    context.add(() => () => window.removeEventListener('pointermove', onMove));
+  }
+
+  // Parallax minimo al scroll: profundidad sin marear (tambien en tactil).
+  gsap.to(svg, {
+    yPercent: -2.5,
+    ease: 'none',
+    scrollTrigger: { start: 0, end: 'max', scrub: 0.8 },
+  });
+
+  context.add(() => () => layer.remove());
 }
