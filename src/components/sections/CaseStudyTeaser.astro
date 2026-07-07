@@ -35,6 +35,7 @@ if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)')
   <p class="mt-4 max-w-2xl text-ink-soft">{acp.data.tagline}</p>
 
   <ul
+    data-stagger
     aria-label={t('caseStudy.keyNumbers')}
     class="mt-8 flex flex-wrap gap-x-3 gap-y-2 border-y border-line py-4 font-mono text-label"
   >
@@ -52,7 +53,7 @@ if (!acp) throw new Error('Falta acp-suite en la coleccion case-study (doc 04)')
     }
   </ul>
 
-  <ul aria-label={t('caseStudy.stack')} class="mt-6 flex flex-wrap gap-2">
+  <ul data-stagger aria-label={t('caseStudy.stack')} class="mt-6 flex flex-wrap gap-2">
     {
       acp.data.stack.map((item) => (
         <li>

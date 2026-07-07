@@ -18,7 +18,7 @@ const groups: SkillGroup[] = skillsData;
 ---
 
 <Section label={t('skills.title')}>
-  <dl class="grid gap-x-10 gap-y-7 sm:grid-cols-2">
+  <dl data-stagger class="grid gap-x-10 gap-y-7 sm:grid-cols-2">
     {
       groups.map((group) => (
         <div>

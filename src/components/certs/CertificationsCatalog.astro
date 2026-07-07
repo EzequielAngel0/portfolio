@@ -51,7 +51,7 @@ const groupLabels: Record<string, string> = {
           {groupLabels[group.id] ?? group.id}
           <span class="ml-2 text-ink-soft/70">· {group.items.length}</span>
         </h2>
-        <ul class="mt-4 divide-y divide-line">
+        <ul data-stagger class="mt-4 divide-y divide-line">
           {group.items.map((item) => (
             <li class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3">
               <p class="min-w-0 flex-1 basis-64 leading-snug font-medium text-pretty">
