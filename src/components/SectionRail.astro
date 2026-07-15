@@ -1,0 +1,41 @@
+---
+// Riel lateral de secciones (ADR 0011): indice tecnico fijo en el margen
+// izquierdo, visible SOLO en pantallas anchas (>= 80rem, cabe en el gutter del
+// contenedor de 72rem sin taparlo). Estilos en global.css (.section-rail*).
+// Accesible: <nav> etiquetado, links reales con numero + label visibles (labels
+// rotados, no ocultos tras hover), foco visible del sistema. Sin JS: sin
+// scrollspy, el acento aparece en hover/focus. Los links apuntan a las anclas
+// del home del idioma actual, asi que el riel sirve tambien fuera del home.
+import { getLocaleFromUrl, useTranslations, localizePath } from '../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const home = localizePath('', locale);
+
+const items = [
+  { label: t('nav.home'), href: home },
+  { label: t('nav.caseStudy'), href: `${home}#caso` },
+  { label: t('projects.title'), href: `${home}#proyectos` },
+  { label: t('skills.title'), href: `${home}#skills` },
+  { label: t('nav.certs'), href: `${home}#certs` },
+  { label: t('contact.title'), href: `${home}#${t('contact.anchor')}` },
+];
+---
+
+<nav class="section-rail" aria-label={t('a11y.sectionIndex')}>
+  <ul class="section-rail__list">
+    {
+      items.map((item, i) => (
+        <li>
+          <a class="section-rail__link" href={item.href}>
+            <span class="section-rail__num" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span class="section-rail__label">{item.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <span class="section-rail__ref" aria-hidden="true">REF · 2026-AB</span>
+</nav>

@@ -3,6 +3,7 @@
 // SEO (F5, doc 06): OG del idioma y JSON-LD Person + proyectos con repo publico.
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/sections/Hero.astro';
+import Marquee from '../../components/Marquee.astro';
 import CaseStudyTeaser from '../../components/sections/CaseStudyTeaser.astro';
 import Projects from '../../components/sections/Projects.astro';
 import Skills from '../../components/sections/Skills.astro';
@@ -25,6 +26,7 @@ const jsonLd = [personJsonLd(siteUrl), ...projects.map((entry) => projectJsonLd(
   jsonLd={jsonLd}
 >
   <Hero locale={locale} />
+  <Marquee />
   <CaseStudyTeaser locale={locale} />
   <Projects locale={locale} />
   <Skills locale={locale} />

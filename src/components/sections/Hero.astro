@@ -1,7 +1,10 @@
 ---
-// Hero (doc 05): linea de estado [.] con punto verde (pulso CSS, unico loop
-// permitido), titular grande en Archivo, subtitulo mono y CTAs. El contenido
-// nace visible; GSAP solo escalona la entrada desde [data-boot].
+// Hero (doc 05 + ADR 0011): pieza firma enmarcada con sombra dura desplazada
+// (sin blur, no es glassmorphism). El nombre en la display condensada es el
+// ancla visual (ADR 0011); la frase de valor sigue siendo el h1 en Archivo (SEO
+// + pitch de 30s). Linea de estado [.] con punto verde (pulso CSS, unico loop) y
+// folio mono que ecoan el motivo blueprint. El contenido nace visible; GSAP solo
+// escalona la entrada desde [data-boot].
 import type { Locale } from '../../i18n/ui';
 import { useTranslations, localizePath, cvPath } from '../../i18n/utils';
 import Button from '../ui/Button.astro';
@@ -12,24 +15,40 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+// El nombre se parte en dos lineas para el bloque display apilado.
+const [firstName, ...restName] = t('site.title').split(' ');
+const lastName = restName.join(' ');
 ---
 
-<section class="pt-16 pb-section sm:pt-24">
-  <p data-boot class="font-mono text-label font-medium tracking-wide text-status uppercase">
-    <span aria-hidden="true" class="inline-flex items-center"
-      >[<span class="status-pulse mx-1 inline-block size-2 rounded-full bg-status"></span>]</span
-    >
-    {t('hero.status')}
-  </p>
+<section class="pt-12 pb-section sm:pt-16">
+  <div
+    class="relative rounded-xs border border-line bg-surface px-5 py-8 shadow-hard sm:px-10 sm:py-12"
+  >
+    <div data-boot class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+      <p class="font-mono text-label font-medium tracking-wide text-status uppercase">
+        <span aria-hidden="true" class="inline-flex items-center"
+          >[<span class="status-pulse mx-1 inline-block size-2 rounded-full bg-status"></span>]</span
+        >
+        {t('hero.status')}
+      </p>
+      <span aria-hidden="true" class="font-mono text-label tracking-wide text-ink-soft uppercase">
+        SEC 01 · IDENTITY
+      </span>
+    </div>
 
-  <h1 data-boot class="mt-5 max-w-3xl text-display">{t('hero.title')}</h1>
+    <p data-boot class="hero-name mt-7">
+      <span class="block">{firstName}</span><span class="block">{lastName}</span>
+    </p>
 
-  <p data-boot class="mt-5 font-mono text-ink-soft">{t('hero.subtitle')}</p>
+    <h1 data-boot class="mt-6 max-w-3xl text-display">{t('hero.title')}</h1>
 
-  <div data-boot class="mt-9 flex flex-wrap items-center gap-3">
-    <Button href={localizePath('acp', locale)}>{t('hero.ctaCase')}</Button>
-    <Button href={cvPath(locale)} variant="secondary" download>
-      {t('hero.ctaCv')}
-    </Button>
+    <p data-boot class="mt-5 font-mono text-ink-soft">{t('hero.subtitle')}</p>
+
+    <div data-boot class="mt-9 flex flex-wrap items-center gap-3">
+      <Button href={localizePath('acp', locale)}>{t('hero.ctaCase')}</Button>
+      <Button href={cvPath(locale)} variant="secondary" download>
+        {t('hero.ctaCv')}
+      </Button>
+    </div>
   </div>
 </section>

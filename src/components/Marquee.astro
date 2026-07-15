@@ -1,0 +1,23 @@
+---
+// Marquee de stack (ADR 0011): tira mono en bucle horizontal, SOLO CSS (no suma
+// JS; estilos en global.css, .marquee*). Es decorativa (el stack real y
+// verificable vive en el hero y en Skills), asi que va aria-hidden. La pista
+// lleva el stack DOS veces para que el bucle a translateX(-50%) sea continuo; el
+// separador "//" en acento da el pulso de color. Se detiene en hover/focus y se
+// congela con reduced motion (global.css).
+const stack = ['Go', 'Flutter', 'React', 'PostgreSQL', 'Terraform', 'Oracle Cloud', 'TypeScript'];
+const strip = [...stack, ...stack];
+---
+
+<div class="marquee mt-4 mb-6 py-3" aria-hidden="true">
+  <div class="marquee__track font-mono text-label tracking-wide text-ink-soft uppercase">
+    {
+      strip.map((item) => (
+        <span class="mx-5 inline-flex items-center gap-4">
+          <span class="text-accent">//</span>
+          {item}
+        </span>
+      ))
+    }
+  </div>
+</div>

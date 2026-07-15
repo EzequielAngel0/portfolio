@@ -20,6 +20,9 @@
      que hace de borde + dos capas suaves de elevacion (ADR 0010: reforzadas). */
   --card-shadow:
     0 0 0 1px rgb(0 0 0 / 0.1), 0 1px 3px -1px rgb(0 0 0 / 0.1), 0 3px 6px 0 rgb(0 0 0 / 0.07);
+  /* Sombra dura firma (ADR 0011): desplazada, SIN blur (no es glassmorphism,
+     regla 7 doc 02). Solo la pieza firma del hero. */
+  --hard-shadow: 10px 10px 0 rgb(0 0 0 / 0.18);
 }
 
 /* Tema oscuro (neutro, sin morados ni orbes) */
@@ -34,6 +37,8 @@
   --line: rgb(237 235 230 / 0.22);
   /* En oscuro las capas de elevacion no se ven: solo el anillo (blanco puro) */
   --card-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
+  /* En oscuro la sombra dura pesa mas para leerse sobre el fondo casi negro */
+  --hard-shadow: 10px 10px 0 rgb(0 0 0 / 0.5);
 }
 
 /* Utilidades dark:* atadas al atributo data-theme (no a prefers-color-scheme) */
@@ -42,6 +47,9 @@
 @theme {
   --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  /* Display condensada (ADR 0011): SOLO para el nombre del hero (lineas cortas
+     en mayuscula). Cae a Archivo si el subset no carga. */
+  --font-display: 'Bebas Neue', 'Archivo Variable', ui-sans-serif, sans-serif;
 
   --color-paper: var(--paper);
   --color-surface: var(--surface);
@@ -54,6 +62,8 @@
 
   /* Sombra de tarjeta (utilidad shadow-card), conmutable por tema */
   --shadow-card: var(--card-shadow);
+  /* Sombra dura firma (utilidad shadow-hard), conmutable por tema (ADR 0011) */
+  --shadow-hard: var(--hard-shadow);
 
   /* Escala fluida (doc 05) */
   --text-display: clamp(2.6rem, 1.75rem + 4.2vw, 4.5rem);

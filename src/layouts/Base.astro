@@ -3,6 +3,8 @@ import type { ImageMetadata } from 'astro';
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
 import Icon from '../components/ui/Icon.astro';
+import BlueprintBackdrop from '../components/BlueprintBackdrop.astro';
+import SectionRail from '../components/SectionRail.astro';
 import {
   getLocaleFromUrl,
   getAlternates,
@@ -152,9 +154,21 @@ const lastName = restName.join(' ');
       type="font/woff2"
       crossorigin
     />
+    {/* Display del nombre (ADR 0011): 6.4 KB, arriba del pliegue en el hero */}
+    <link
+      rel="preload"
+      href={`${base}fonts/bebas-neue-latin-display.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
 
   <body>
+    {/* Capa blueprint estatica (ADR 0011): fondo de plano, visible sin JS, detras
+       de todo. El circuito animado (motion.ts) se inserta encima, tambien de fondo. */}
+    <BlueprintBackdrop />
+
     <a class="skip-link font-mono" href="#main">{t('a11y.skip')}</a>
 
     <header class="sticky top-0 z-50 border-b border-line bg-paper">
@@ -243,6 +257,11 @@ const lastName = restName.join(' ');
         {t('footer.status')}
       </p>
     </footer>
+
+    {/* Riel lateral de secciones (ADR 0011): indice fijo en el gutter izquierdo,
+       solo en pantallas anchas. Va al final del DOM (fixed) para no interrumpir el
+       orden de foco primario: skip-link, header, main, footer y luego el indice. */}
+    <SectionRail />
 
     {/* Toggle de tema: interruptible, persiste en localStorage, sin FOUC */}
     <script>

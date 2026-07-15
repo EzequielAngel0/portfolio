@@ -22,7 +22,7 @@ const projects = (await getLocalized('projects', locale)).sort(
 );
 ---
 
-<Section label={t('projects.title')}>
+<Section id="proyectos" label={t('projects.title')}>
   <ul data-stagger class="grid gap-5 md:grid-cols-2">
     {
       projects.map((project) => (

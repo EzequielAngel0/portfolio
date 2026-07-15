@@ -18,7 +18,7 @@ const t = useTranslations(locale);
 const homeCerts = certifications.featured.filter((cert) => cert.home);
 ---
 
-<Section label={t('certifications.title')}>
+<Section id="certs" label={t('certifications.title')}>
   <ul data-stagger class="grid gap-5 md:grid-cols-3">
     {
       homeCerts.map((cert) => (

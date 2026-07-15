@@ -27,6 +27,7 @@ export const ui = {
     'a11y.themeToLight': 'Cambiar a tema claro',
     'a11y.switchLang': 'Switch to English',
     'a11y.newTab': 'se abre en una pestaña nueva',
+    'a11y.sectionIndex': 'Índice de secciones',
 
     // Hero
     'hero.status': 'en producción · v2026.07',
@@ -102,6 +103,7 @@ export const ui = {
     'a11y.themeToLight': 'Switch to light theme',
     'a11y.switchLang': 'Cambiar a espanol',
     'a11y.newTab': 'opens in a new tab',
+    'a11y.sectionIndex': 'Section index',
 
     // Hero
     'hero.status': 'in production · v2026.07',

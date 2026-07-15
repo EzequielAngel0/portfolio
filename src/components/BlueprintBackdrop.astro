@@ -1,0 +1,42 @@
+---
+// Capa "blueprint" de fondo (ADR 0011): plano de ingenieria estatico detras de
+// todo el contenido, fusionado con el fondo circuito (ADR 0009 v2). Se dibuja en
+// SVG con los tokens --line/--ink-soft/--ink a baja opacidad (estilos en
+// global.css, .bg-blueprint). Es puramente decorativo: aria-hidden y sin eventos,
+// visible sin JS (mejora progresiva). El grano de papel es un ::after inline.
+// viewBox 1440x900 con slice: cubre el viewport sin deformar las lineas.
+---
+
+<div class="bg-blueprint" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+    <!-- Datum lines verticales (15/55/80%) y horizontales (20/60/85%) -->
+    <line class="bp-line" x1="216" y1="0" x2="216" y2="900" />
+    <line class="bp-line" x1="792" y1="0" x2="792" y2="900" />
+    <line class="bp-line" x1="1152" y1="0" x2="1152" y2="900" />
+    <line class="bp-line" x1="0" y1="180" x2="1440" y2="180" />
+    <line class="bp-line" x1="0" y1="540" x2="1440" y2="540" />
+    <line class="bp-line" x1="0" y1="765" x2="1440" y2="765" />
+
+    <!-- Contornos geometricos (cotas del plano) -->
+    <rect class="bp-shape" x="900" y="120" width="360" height="300" rx="4" />
+    <rect class="bp-shape" x="120" y="560" width="280" height="205" rx="4" />
+    <circle class="bp-shape" cx="792" cy="540" r="210" />
+    <circle class="bp-shape" cx="1152" cy="180" r="92" />
+
+    <!-- Puntos de la reticula en intersecciones -->
+    <circle class="bp-dot" cx="216" cy="180" r="2.5" />
+    <circle class="bp-dot" cx="792" cy="180" r="2.5" />
+    <circle class="bp-dot" cx="792" cy="540" r="2.5" />
+    <circle class="bp-dot" cx="1152" cy="765" r="2.5" />
+
+    <!-- Etiquetas de alta precision (mono) -->
+    <text class="bp-label" x="228" y="170">COORD_REF: X15.Y20</text>
+    <text class="bp-label" x="806" y="322">SYS.GRID.MAIN</text>
+    <text class="bp-label" x="912" y="110">SEC_A</text>
+    <text class="bp-label" x="132" y="800">BLPRNT_001</text>
+
+    <!-- Folios de seccion rotados -->
+    <text class="bp-label" transform="rotate(-90 58 760)" x="58" y="760">SEC: 01 / FOLIO: 001</text>
+    <text class="bp-label" transform="rotate(-90 1404 300)" x="1404" y="300">REF: SYS_OPERATIONS</text>
+  </svg>
+</div>
