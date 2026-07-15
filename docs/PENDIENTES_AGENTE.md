@@ -40,9 +40,9 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 `[hecho]` 2026-07-06 en `develop` (T1-T11 completas; merge a `master` lo decide el dueño). Detalle punto por punto y decisiones del dueño en [rondas/2026-07-06_mejoras-post-lanzamiento.md](rondas/2026-07-06_mejoras-post-lanzamiento.md); el prompt fuente queda marcado en [PROMPT_MEJORAS_POST_LANZAMIENTO.md](PROMPT_MEJORAS_POST_LANZAMIENTO.md). Piezas mayores: página de certificaciones bilingüe con catálogo completo verificable, renombrado a "ACP" con rutas `/acp/`, CV bilingüe por idioma, y motion ampliado (ADR 0009: intro con el nombre, trazo de tinta tras el cursor, GSAP por sección; ~61 fps medidos). Iteración 2 tras el pase visual del dueño (misma fecha, en el tracker): fondo circuito (ADR 0009 v2), paleta azul tinta con contraste subido (ADR 0010) y carrusel circular.
 
-## Próxima ronda: rediseño visual (preparada, bloqueada por el dueño)
+## Ronda: rediseño visual "blueprint" (ADR 0011)
 
-`[bloqueado]` El dueño sigue sin quedar satisfecho con estilo/colores; está explorando direcciones en herramientas externas con `PROMPTS_DISENO.md` (raíz, gitignored; D10 de su backlog). Cuando traiga la dirección elegida, el chat nuevo ejecuta [PROMPT_REDISENO_VISUAL.md](PROMPT_REDISENO_VISUAL.md): ADR 0011 con el mapeo a tokens ANTES de codificar, checklist de piezas acopladas a la paleta (theme-color de Base, OG, favicon, fondo circuito, fuentes) y los gates de siempre.
+`[hecho]` 2026-07-15 en la rama `feat/direccion-blueprint` (desde `develop`); **pendiente del dueño el pase visual en Podman y el merge a `develop`**. Se implementó la FORMA blueprint (capa de plano fusionada con el circuito, geometría dura, sombra dura firma, riel lateral accesible, marquee de stack, mono amplificado) y el nombre del hero en una display condensada (Bebas Neue, subset propio de 6.4 KB), SOBRE la paleta papel y tinta del ADR 0010 sin cambios y sin neón. Decisiones del dueño en el chat: presupuesto de fuentes (b) 4 woff2 y display = nombre como ancla (la frase de valor sigue como h1 en Archivo). `check` + `build` en verde; pase de reglas duras en verde. Detalle punto por punto: [rondas/2026-07-15_rediseno-blueprint.md](rondas/2026-07-15_rediseno-blueprint.md); decisión y mapeo: [ADR 0011](adr/0011-direccion-stitch.md).
 
 ## Reglas de mantenimiento
 

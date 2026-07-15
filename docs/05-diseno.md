@@ -62,20 +62,32 @@ Implementación: Tailwind 4 `@theme` + override de variables bajo `[data-theme="
 
 ### Tipografía
 
-Dos familias, self-hosted:
+Tres familias, self-hosted (4 woff2; la 3ra la suma el ADR 0011):
 
 | Rol | Fuente | Uso |
 | --- | --- | --- |
-| Display + texto | **Archivo** (variable, ejes wght y wdth) | Titulares en 600-800, grotesca técnica y confiada; cuerpo en 400. Es una grotesca precisa, no un serif editorial: alinea con el tono de "sistema/ingeniería" |
-| Datos | **IBM Plex Mono** (400/500) | Estado, cifras, etiquetas, versiones, stack, código. Siempre `tabular-nums` en cifras |
+| Titulares + texto | **Archivo** (variable, ejes wght y wdth) | Titulares en 600-800, grotesca técnica y confiada; cuerpo en 400. Es una grotesca precisa, no un serif editorial: alinea con el tono de "sistema/ingeniería". El **h1 del hero (la frase de valor) sigue en Archivo** por SEO y legibilidad |
+| Display del nombre | **Bebas Neue** (condensada, mayúscula, SIL OFL; ADR 0011) | SOLO el nombre gigante del hero (`ANGEL BARBOSA`), el ancla visual. Subset propio de mayúsculas/dígitos (6.4 KB, `scripts/subset-display.mjs`); cae a Archivo si no carga |
+| Datos | **IBM Plex Mono** (400/500) | Estado, cifras, etiquetas, versiones, stack, código, folios/coordenadas del motivo blueprint. Siempre `tabular-nums` en cifras |
 
-Escala fluida con `clamp()`: `display` (~2.6-4.5rem, Archivo 700, `text-wrap: balance`), `h2` (~1.6-2.2rem), `body` (1rem/1.65, `text-wrap: pretty`), `label-mono` (0.8125rem, mayúsculas con tracking ancho para eyebrows y líneas de estado tipo "EN PRODUCCIÓN · V2026.07").
+Escala fluida con `clamp()`: `hero-name` (~4-9rem, Bebas, mayúscula apilada), `display` (~2.6-4.5rem, Archivo 700, `text-wrap: balance`, es el h1), `h2` (~1.6-2.2rem), `body` (1rem/1.65, `text-wrap: pretty`), `label-mono` (0.8125rem, mayúsculas con tracking ancho para eyebrows y líneas de estado tipo "EN PRODUCCIÓN · V2026.07").
 
 ### Espaciado, radios, sombras
 
 - Contenedor máx. `72rem`, secciones con respiración generosa (`clamp(4rem, 10vh, 7.5rem)` vertical).
 - Radios pequeños y serios: 4-10px. Radios concéntricos en anidados: `exterior = interior + padding` (principio 1 de `make-interfaces-feel-better`).
 - Profundidad por sombras suaves en capas con transparencia, no por bordes duros; imágenes con outline `1px` `rgba(0,0,0,.1)` / `rgba(255,255,255,.1)` según tema.
+- **Sombra dura firma (`--shadow-hard`, ADR 0011):** desplazada `10px 10px 0` SIN blur (`.18` claro / `.5` oscuro), SOLO en la pieza firma del hero. No es glassmorphism (regla 7, doc 02): profundidad por desplazamiento, no por desenfoque.
+
+### Motivo "blueprint" (ADR 0011)
+
+Sobre la dirección "papel y tinta" (sin cambiar la paleta del ADR 0010) se aplica una capa de plano de ingeniería que refuerza el "sistema en producción":
+
+- **Fondo blueprint:** capa fija `aria-hidden` detrás del contenido (`BlueprintBackdrop.astro`), estática y **visible sin JS**: líneas datum, contornos geométricos, coordenadas (`COORD_REF: X15.Y20`) y folios (`SEC: 01 / FOLIO: 001`) en mono, más grano de papel inline. Se **fusiona** con el fondo circuito del ADR 0009 v2 (circuito animado en z -1, blueprint estática en z -2), calibrada para no saturar (líneas más tenues que un borde real).
+- **Hero como pieza firma:** panel enmarcado (`border-line` + `bg-surface` + `--shadow-hard`) con el nombre en la display condensada (ancla), la frase de valor como h1 y un folio mono.
+- **Riel lateral de secciones:** índice técnico fijo en el gutter izquierdo, solo `>= 80rem`, accesible (nav con links reales, labels visibles, foco del sistema), sin JS. Degrada ocultándose en pantallas angostas (la navegación real vive en el header).
+- **Marquee de stack:** tira mono en bucle (CSS, sin JS), decorativa (`aria-hidden`), se detiene en hover/focus y se congela con reduced motion.
+- El footer se mantiene recortado (ADR 0011 no le añade el nombre): sigue siendo "estado del sistema".
 
 ## Wireframes (texto)
 

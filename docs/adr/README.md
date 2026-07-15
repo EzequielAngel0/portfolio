@@ -12,3 +12,6 @@ Una decisión estructural por archivo. Formato: `NNNN-titulo.md` (contexto, deci
 | [0006](0006-analitica.md) | Analítica de visitas sin cookies (Cloudflare Web Analytics) | Aceptada |
 | [0007](0007-dominio-y-base.md) | Dominio propio angelezequiel.dev y base en raíz | Aceptada |
 | [0008](0008-astro7-node24-y-verificacion-podman.md) | Astro 7 + Node 24 LTS y verificación en contenedor (Podman) | Aceptada (actualiza 0001) |
+| [0009](0009-motion-ampliado.md) | Motion ampliado (intro, trazo de cursor, GSAP por sección) | Aceptada |
+| [0010](0010-paleta-azul-tinta.md) | Paleta revisada: acento azul tinta y verde reservado al estado | Aceptada |
+| [0011](0011-direccion-stitch.md) | Motivos "Blueprint" (de Stitch) sobre la paleta papel y tinta | Aceptada (implementada; extiende 0005/0010) |
