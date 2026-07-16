@@ -30,19 +30,19 @@ Todo lo demás se mantiene quieto y disciplinado.
 
 ## Tokens
 
-### Color (paleta revisada en el ADR 0010, 2026-07-06)
+### Color (paleta revisada en el ADR 0010, 2026-07-06; papel claro enfriado en la ronda blueprint, 2026-07-15)
 
 Tema claro ("papel"):
 
 | Token | Hex | Uso |
 | --- | --- | --- |
-| `--color-paper` | `#F6F5F1` | Fondo |
-| `--color-surface` | `#FFFFFF` | Tarjetas |
-| `--color-ink` | `#17181A` | Texto principal, titulares |
-| `--color-ink-soft` | `#4A4D52` | Texto secundario |
-| `--color-accent` | `#33618F` | Azul tinta interactivo: links, CTAs, credenciales, anillo de foco. ~6:1 sobre paper, AA texto normal (ADR 0010; antes verde `#1E6E4E`) |
-| `--color-status` | `#1E6E4E` | Verde operativo RESERVADO al estado: punto del hero, badge "en producción", línea de estado de la intro |
-| `--color-signal` | `#B86E00` | Ámbar para marcas puntuales. ~3.5:1 sobre paper: **solo texto grande o elementos gráficos, nunca texto normal** |
+| `--color-paper` | `#EEF1F5` | Fondo. Gris azulado frío alineado al acento (antes `#F6F5F1` cálido; ajuste de valor registrado en `rondas/2026-07-15_rediseno-blueprint.md`, feedback del dueño: menos brusco el salto claro/oscuro) |
+| `--color-surface` | `#F8FAFC` | Tarjetas. Casi blanco frío (antes `#FFFFFF` puro) |
+| `--color-ink` | `#17181A` | Texto principal, titulares (15.7:1 sobre paper) |
+| `--color-ink-soft` | `#4A4D52` | Texto secundario (7.5:1 sobre paper) |
+| `--color-accent` | `#33618F` | Azul tinta interactivo: links, CTAs, credenciales, anillo de foco. 5.7:1 sobre paper, AA texto normal (ADR 0010; antes verde `#1E6E4E`) |
+| `--color-status` | `#1E6E4E` | Verde operativo RESERVADO al estado: punto del hero, badge "en producción", línea de estado de la intro (5.5:1 sobre paper) |
+| `--color-signal` | `#B86E00` | Ámbar para marcas puntuales. 3.5:1 sobre paper: **solo texto grande o elementos gráficos, nunca texto normal** |
 | `--color-line` | `rgba(23,24,26,.22)` | Reglas, bordes de tabla, separadores (subida de .14 por legibilidad, ADR 0010) |
 
 Tema oscuro (oscuro neutro, sin morados ni orbes):

@@ -76,6 +76,8 @@ Recomendacion: (a) si el subset de Bebas queda muy chico; (b) si se necesitan am
 - **Marquee:** `src/components/Marquee.astro`, tira de stack mono en bucle CSS (no suma JS), `aria-hidden`, montada en ambos home tras el hero; se detiene en hover/focus y se congela con reduced motion.
 - **Verificacion:** `astro check` 0 errores, `astro build` 7 paginas en verde. Pase de reglas duras (sin em dash/emojis) en verde. Presupuesto JS intacto (blueprint/riel/marquee en CSS). Pendiente el pase visual del dueno en Podman.
 
+> Nota (iteracion 2, 2026-07-15): tras el primer pase visual del dueno se ajustaron los VALORES del tema claro (`--paper` a `#eef1f5`, `--surface` a `#f8fafc`, tinte frio) sin cambiar la direccion ni los roles: es un pulido registrado en el tracker (`rondas/2026-07-15_rediseno-blueprint.md`), no un ADR nuevo (umbral del proceso en `PROMPT_REDISENO_VISUAL.md`). La tabla de paleta de arriba refleja los valores del ADR 0010 al momento de la decision; los vigentes viven en `tokens.css` y en la tabla del doc 05. AA re-verificado numericamente sobre el papel nuevo (accent 5.7:1, status 5.5:1, ink-soft 7.5:1). Favicon y OG regenerados con el papel frio.
+
 ## Consecuencias
 
 - Se gana: caracter de plano de ingenieria coherente con el posicionamiento, SIN romper la paleta ni las reglas acordadas; el color base y el tema por defecto no cambian.
