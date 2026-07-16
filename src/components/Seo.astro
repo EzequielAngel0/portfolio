@@ -24,7 +24,7 @@ const {
   jsonLd = [],
   withAlternates = true,
 } = Astro.props;
-const site = Astro.site!; // 'https://angelezequiel.dev' (astro.config)
+const site = Astro.site!; // 'https://portfolio.angelezequiel.dev' (astro.config, ADR 0012)
 const locale = getLocaleFromUrl(Astro.url);
 const otherLocale = locale === 'es' ? 'en' : 'es';
 const t = useTranslations(locale);

@@ -65,7 +65,10 @@ const footer = () =>
       borderTopColor: LINE,
       paddingTop: 30,
     },
-    [mono(27, INK, 'Angel Barbosa', { fontWeight: 500 }), mono(27, INK_SOFT, 'angelezequiel.dev')],
+    [
+      mono(27, INK, 'Angel Barbosa', { fontWeight: 500 }),
+      mono(27, INK_SOFT, 'portfolio.angelezequiel.dev'),
+    ],
   );
 
 const homeCard = ({ status, title, subtitle }) =>

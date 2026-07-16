@@ -44,6 +44,10 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 `[hecho]` 2026-07-15/16 en `develop` (4 iteraciones; merge a `master` lo decide el dueño). Se implementó la FORMA blueprint (capa de plano fusionada con el circuito, geometría dura, sombra dura firma, riel lateral accesible, marquee de stack, mono amplificado) y el nombre del hero en una display condensada (Bebas Neue, subset propio, 4to woff2), SOBRE la paleta papel y tinta sin neón. Iteraciones tras los pases visuales del dueño: (2) hero compactado, footer "estado del sistema", tema claro enfriado (`--paper` `#eef1f5`; AA re-verificado), transición de tema (View Transitions) y restyle del diagrama ACP, con OG y favicons regenerados; (3) favicon con el monograma en Bebas y toggle de tema con sol/luna SVG; (4) hero con el NOMBRE COMPLETO en dos líneas + ficha técnica (conteo real de credenciales del catálogo), y contacto y footer como cajetín de plano (canales directos con hover de relleno). `check` + `build` + Podman + reglas duras en verde. Detalle: [rondas/2026-07-15_rediseno-blueprint.md](rondas/2026-07-15_rediseno-blueprint.md); decisión y mapeo: [ADR 0011](adr/0011-direccion-stitch.md).
 
+## Mudanza a subdominio (ADR 0012)
+
+`[bloqueado]` Preparada el 2026-07-16 en `develop` (rama `infra/subdominio-portfolio`): `public/CNAME`, `site` de `astro.config.mjs`, `robots.txt`, dominio del footer y 6 OG regeneradas con `portfolio.angelezequiel.dev`. El rediseño ya se desplegó a la raíz ese mismo día (ff `9390c0e..98de5e2`, verificado vivo). **El merge a `master` espera a que el dueño cree el `CNAME portfolio` en Cloudflare** (D11 de [PENDIENTES_DUENO.md](PENDIENTES_DUENO.md), con el orden completo: DNS, merge, Enforce HTTPS, redirect 301 de la raíz, hostname del beacon). Pendiente menor al siguiente retoque del CV: regenerar los 2 PDF (embeben URLs de la raíz; el redirect los cubre mientras).
+
 ## Reglas de mantenimiento
 
 - Si cambia el copy de `ui.ts` (hero) o el frontmatter del case study, regenerar las imágenes OG con `scripts/og-images.mjs` (espejan ese copy a mano). La página de certificaciones también tiene OG propia en ese script.

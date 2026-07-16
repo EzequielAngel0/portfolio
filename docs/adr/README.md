@@ -15,3 +15,4 @@ Una decisión estructural por archivo. Formato: `NNNN-titulo.md` (contexto, deci
 | [0009](0009-motion-ampliado.md) | Motion ampliado (intro, trazo de cursor, GSAP por sección) | Aceptada |
 | [0010](0010-paleta-azul-tinta.md) | Paleta revisada: acento azul tinta y verde reservado al estado | Aceptada |
 | [0011](0011-direccion-stitch.md) | Motivos "Blueprint" (de Stitch) sobre la paleta papel y tinta | Aceptada (implementada; extiende 0005/0010) |
+| [0012](0012-portfolio-a-subdominio.md) | Portfolio a portfolio.angelezequiel.dev, raíz para el hub | Aceptada (actualiza 0007) |
