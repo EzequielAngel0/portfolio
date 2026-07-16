@@ -20,9 +20,9 @@ const [firstName, ...restName] = t('site.title').split(' ');
 const lastName = restName.join(' ');
 ---
 
-<section class="pt-12 pb-section sm:pt-16">
+<section class="pt-8 pb-section sm:pt-10">
   <div
-    class="relative rounded-xs border border-line bg-surface px-5 py-8 shadow-hard sm:px-10 sm:py-12"
+    class="relative mx-auto max-w-4xl rounded-xs border border-line bg-surface px-5 py-7 shadow-hard sm:px-8 sm:py-9"
   >
     <div data-boot class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
       <p class="font-mono text-label font-medium tracking-wide text-status uppercase">
@@ -36,15 +36,15 @@ const lastName = restName.join(' ');
       </span>
     </div>
 
-    <p data-boot class="hero-name mt-7">
+    <p data-boot class="hero-name mt-5">
       <span class="block">{firstName}</span><span class="block">{lastName}</span>
     </p>
 
-    <h1 data-boot class="mt-6 max-w-3xl text-display">{t('hero.title')}</h1>
+    <h1 data-boot class="mt-4 max-w-2xl text-display">{t('hero.title')}</h1>
 
-    <p data-boot class="mt-5 font-mono text-ink-soft">{t('hero.subtitle')}</p>
+    <p data-boot class="mt-4 font-mono text-ink-soft">{t('hero.subtitle')}</p>
 
-    <div data-boot class="mt-9 flex flex-wrap items-center gap-3">
+    <div data-boot class="mt-7 flex flex-wrap items-center gap-3">
       <Button href={localizePath('acp', locale)}>{t('hero.ctaCase')}</Button>
       <Button href={cvPath(locale)} variant="secondary" download>
         {t('hero.ctaCv')}

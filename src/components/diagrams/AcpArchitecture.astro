@@ -242,11 +242,19 @@ const cylinderBody = ({ x, y, w, h }: NodeBox) =>
   }
 
   /* En pantallas angostas el diagrama scrollea en su propio contenedor en vez
-     de encoger el texto a lo ilegible; tabindex lo hace operable por teclado. */
+     de encoger el texto a lo ilegible; tabindex lo hace operable por teclado.
+     Iteracion 2026-07-15: hoja de plano (fondo papel + reticula de puntos tenue)
+     para que los nodos se lean como tarjetas elevadas encima. */
   .diagram-scroll {
     overflow-x: auto;
     border-radius: var(--radius-md);
-    background-color: var(--color-surface);
+    background-color: var(--color-paper);
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-ink) 12%, transparent) 1px,
+      transparent 1.5px
+    );
+    background-size: 22px 22px;
     box-shadow: var(--card-shadow);
   }
 
@@ -258,17 +266,19 @@ const cylinderBody = ({ x, y, w, h }: NodeBox) =>
     padding: 0.75rem;
   }
 
-  /* Trazos derivados del token de tinta: se adaptan a ambos temas */
+  /* Nodos como tarjetas: superficie mas clara que el papel del fondo (elevadas en
+     ambos temas), con borde tecnico e ink a mayor contraste que antes. */
   .node-box {
-    fill: var(--color-paper);
-    stroke: color-mix(in srgb, var(--color-ink) 32%, transparent);
-    stroke-width: 1;
+    fill: var(--color-surface);
+    stroke: color-mix(in srgb, var(--color-ink) 40%, transparent);
+    stroke-width: 1.25;
   }
 
+  /* Aristas y puntas con tinte del acento (mas color y guian la lectura) */
   .edge {
     fill: none;
-    stroke: color-mix(in srgb, var(--color-ink) 45%, transparent);
-    stroke-width: 1.25;
+    stroke: color-mix(in srgb, var(--color-accent) 60%, transparent);
+    stroke-width: 1.4;
   }
 
   .edge-dashed {
@@ -276,7 +286,7 @@ const cylinderBody = ({ x, y, w, h }: NodeBox) =>
   }
 
   .arrow-head {
-    fill: color-mix(in srgb, var(--color-ink) 45%, transparent);
+    fill: color-mix(in srgb, var(--color-accent) 65%, transparent);
   }
 
   .node-title {

@@ -5,6 +5,7 @@ import Seo from '../components/Seo.astro';
 import Icon from '../components/ui/Icon.astro';
 import BlueprintBackdrop from '../components/BlueprintBackdrop.astro';
 import SectionRail from '../components/SectionRail.astro';
+import { site } from '../data/site';
 import {
   getLocaleFromUrl,
   getAlternates,
@@ -89,7 +90,7 @@ const lastName = restName.join(' ');
       )
     }
     {/* La UI del navegador acompana al tema; los hex espejan --paper (tokens.css) */}
-    <meta name="theme-color" content="#f6f5f1" />
+    <meta name="theme-color" content="#eef1f5" />
 
     {/* Anti-FOUC de tema: corre antes del primer pintado. Claro por defecto (doc 04). */}
     <script is:inline>
@@ -252,10 +253,68 @@ const lastName = restName.join(' ');
       <slot />
     </main>
 
-    <footer class="mx-auto mt-24 max-w-page px-4 pb-10 sm:px-6">
-      <p class="border-t border-line pt-4 font-mono text-label text-ink-soft">
-        {t('footer.status')}
-      </p>
+    {/* Footer "estado del sistema" (doc 05, enriquecido en la iteracion 2026-07-15):
+       tres columnas mono con metadata REAL del sitio (regla 5, doc 02: nada
+       inventado) y una tira final con redes y dominio. */}
+    <footer class="mx-auto mt-16 max-w-page px-4 pb-10 sm:px-6">
+      <div class="grid gap-8 border-t border-line pt-8 font-mono text-label sm:grid-cols-3">
+        <div>
+          <p class="tracking-wide text-ink uppercase">{t('site.title')}</p>
+          <p class="mt-2 text-ink-soft">{t('footer.role')}</p>
+          <p class="mt-1 text-ink-soft">{site.location}</p>
+        </div>
+
+        <div>
+          <p class="tracking-wide text-ink-soft uppercase">{t('footer.system')}</p>
+          <ul class="mt-2 space-y-1 text-ink-soft">
+            <li>
+              <span aria-hidden="true" class="text-status">[ok]</span>
+              {t('footer.staticSite')}
+            </li>
+            <li>{t('footer.status')}</li>
+            <li>v2026.07</li>
+          </ul>
+        </div>
+
+        <nav aria-label={t('footer.nav')}>
+          <p class="tracking-wide text-ink-soft uppercase">{t('footer.nav')}</p>
+          <ul class="mt-2 space-y-1">
+            {
+              navItems.map((item) => (
+                <li>
+                  <a href={item.href} class="text-ink-soft transition-colors hover:text-accent">
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <div
+        class="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-line pt-4 font-mono text-label text-ink-soft"
+      >
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          {
+            site.socials.map((social) => (
+              <li>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-8 items-center gap-1.5 transition-colors hover:text-accent"
+                >
+                  <Icon name={social.icon} size={14} />
+                  {social.label}
+                  <span class="sr-only">({t('a11y.newTab')})</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <span>angelezequiel.dev</span>
+      </div>
     </footer>
 
     {/* Riel lateral de secciones (ADR 0011): indice fijo en el gutter izquierdo,
@@ -268,7 +327,7 @@ const lastName = restName.join(' ');
       const btn = document.getElementById('theme-toggle');
       const root = document.documentElement;
       // Espeja --paper por tema (tokens.css) para la UI del navegador.
-      const themeColors: Record<string, string> = { light: '#f6f5f1', dark: '#121417' };
+      const themeColors: Record<string, string> = { light: '#eef1f5', dark: '#121417' };
       const syncLabel = (theme: string) => {
         if (!btn) return;
         const next = theme === 'dark' ? 'light' : 'dark';
@@ -276,12 +335,26 @@ const lastName = restName.join(' ');
         if (label) btn.setAttribute('aria-label', label);
       };
       syncLabel(root.dataset.theme ?? 'light');
-      btn?.addEventListener('click', () => {
-        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      const applyTheme = (next: string) => {
         root.dataset.theme = next;
         document
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute('content', themeColors[next] ?? themeColors.light!);
+      };
+      // Soporte opcional de View Transitions (no en todos los navegadores ni en la
+      // lib de TS): acceso tipado defensivo.
+      const doc = document as Document & { startViewTransition?: (cb: () => void) => void };
+      btn?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        // Transicion suave (crossfade de toda la pagina), como la entrada de la
+        // intro; degrada a cambio instantaneo sin soporte o con reduced motion.
+        // Es API nativa: no suma peso de JS.
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (doc.startViewTransition && !reduce) {
+          doc.startViewTransition(() => applyTheme(next));
+        } else {
+          applyTheme(next);
+        }
         try {
           localStorage.setItem('theme', next);
         } catch (e) {

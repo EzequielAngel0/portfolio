@@ -89,6 +89,10 @@ export const ui = {
     'notFound.case': 'Ver el case study de ACP',
 
     'footer.status': 'ultima actualizacion 2026-07',
+    'footer.system': 'Estado del sistema',
+    'footer.staticSite': 'sitio estatico',
+    'footer.role': 'Full-Stack Developer',
+    'footer.nav': 'Navegacion',
   },
   en: {
     'site.title': 'Angel Barbosa',
@@ -165,6 +169,10 @@ export const ui = {
     'notFound.case': 'View the ACP case study',
 
     'footer.status': 'last updated 2026-07',
+    'footer.system': 'System status',
+    'footer.staticSite': 'static site',
+    'footer.role': 'Full-Stack Developer',
+    'footer.nav': 'Navigation',
   },
 } as const;
 

@@ -266,7 +266,8 @@
     text-transform: uppercase;
     line-height: 0.85;
     letter-spacing: 0.012em;
-    font-size: clamp(4rem, 13vw, 9rem);
+    /* Compactado (feedback del dueno): sigue siendo el ancla, sin dominar el panel */
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
   }
 
   /* Marquee de stack (ADR 0011): tira mono en bucle, SOLO CSS (no suma JS).
@@ -423,5 +424,17 @@
   /* El marquee queda quieto mostrando la primera copia (no a medio recorrido) */
   .marquee__track {
     transform: none !important;
+  }
+}
+
+/* Transicion de tema (View Transitions): crossfade de toda la pagina al alternar
+   claro/oscuro, como la entrada de la intro. Un pelo mas lento que el default
+   para que se sienta suave. Solo sin reduced motion (con reduce el toggle ni
+   siquiera arranca la transicion). */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
   }
 }

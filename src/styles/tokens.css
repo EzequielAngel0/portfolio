@@ -6,13 +6,16 @@
  * RESERVADO al estado operativo (punto del hero, badge "en produccion"): token status.
  */
 
-/* Tema claro ("papel"), por defecto */
+/* Tema claro ("papel"), por defecto.
+   Iteracion 2026-07-15: papel y superficie con tinte frio sutil hacia el azul
+   del acento (menos blanco puro, brillo mas bajo); asi el tema claro se siente
+   "con color" y el salto claro/oscuro es menos brusco (feedback del dueno). */
 :root {
-  --paper: #f6f5f1;
-  --surface: #ffffff;
+  --paper: #eef1f5; /* gris azulado muy claro, frio (antes calido #f6f5f1) */
+  --surface: #f8fafc; /* casi blanco frio, ya no blanco puro */
   --ink: #17181a;
   --ink-soft: #4a4d52;
-  --accent: #33618f; /* azul tinta, ~6:1 sobre paper (AA texto normal) */
+  --accent: #33618f; /* azul tinta, ~5.8:1 sobre el nuevo paper (AA texto normal) */
   --status: #1e6e4e; /* verde operativo, solo estado */
   --signal: #b86e00;
   --line: rgb(23 24 26 / 0.22);
