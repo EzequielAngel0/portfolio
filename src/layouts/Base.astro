@@ -228,10 +228,14 @@ const lastName = restName.join(' ');
               data-label-dark={t('a11y.themeToDark')}
               data-label-light={t('a11y.themeToLight')}
             >
-              {/* Estado visual con el vocabulario del sitio: [ ] claro, [*] oscuro */}
-              <span aria-hidden="true" class="font-mono text-label"
-                >[<span class="hidden dark:inline">*</span><span class="dark:hidden">&nbsp;</span
-                >]</span
+              {
+                /* Estado visual: sol en claro, luna en oscuro (SVG propios, pedido
+                  del dueno 2026-07-16; antes el vocabulario mono [ ]/[*]). La
+                  visibilidad la conmuta CSS via dark:, el JS no cambia. */
+              }
+              <span aria-hidden="true" class="dark:hidden"><Icon name="sun" size={16} /></span>
+              <span aria-hidden="true" class="hidden dark:inline"
+                ><Icon name="moon" size={16} /></span
               >
             </button>
 

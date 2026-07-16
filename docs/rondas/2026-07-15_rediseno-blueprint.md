@@ -47,6 +47,13 @@ Feedback del dueno viendo la rama en Podman. Cambios:
 
 Pendiente del dueno: 2do pase visual en Podman y merge a `develop`.
 
+## Iteracion 3 (2026-07-16, iconos de la identidad)
+
+Aclaracion del dueno tras el cierre: su pedido "cambia el icono del theme" de la iteracion 2 se referia a REDISENAR los iconos, no al sync de color. Cambios (rama `feat/iconos-tema`):
+
+- **Favicon:** el monograma pasa de Archivo 700 a la **display condensada Bebas Neue** (la del nombre del hero, ADR 0011), en ambos temas; se conserva el punto verde de estado. `scripts/favicons.mjs` actualizado (fuente y cuerpo 74 -> 88 para compensar lo condensado) y regenerados svg/ico/apple-touch.
+- **Boton de tema del header:** el vocabulario mono `[ ]`/`[*]` se reemplaza por **iconos SVG propios de sol/luna** (decision del dueno; doc 02 permite SVG propio). Sol en claro, luna en oscuro, conmutados por CSS (`dark:`); aria-labels, hit area 40x40 y el JS del toggle no cambian. Iconos `sun`/`moon` nuevos en `Icon.astro`.
+
 ## Notas para calibrar en la revision
 
 - **Sombra dura del panel del hero:** si pesa mucho, se baja el alpha de `--hard-shadow` o se aplica solo al bloque del nombre.

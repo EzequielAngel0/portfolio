@@ -1,9 +1,10 @@
-// Genera el favicon de la identidad (doc 07 F5): monograma "A" en Archivo 700
+// Genera el favicon de la identidad: monograma "A" en la display condensada
+// (Bebas Neue, la misma del nombre del hero desde el ADR 0011; antes Archivo 700)
 // mas el punto verde de estado (elemento firma, doc 05), sobre papel.
 // Salidas: public/favicon.svg (tematizado con prefers-color-scheme),
 // public/favicon.ico (16/32/48, PNG embebido) y public/apple-touch-icon.png (180).
 // Herramienta one-off: no es dependencia del proyecto ni corre en el build.
-// Uso: npm i --no-save satori @fontsource/archivo && node scripts/favicons.mjs
+// Uso: npm i --no-save satori @fontsource/bebas-neue && node scripts/favicons.mjs
 import { readFile, writeFile } from 'node:fs/promises';
 import satori from 'satori';
 import sharp from 'sharp';
@@ -13,9 +14,9 @@ const LIGHT = { paper: '#EEF1F5', ink: '#17181A', accent: '#1E6E4E' };
 const DARK = { paper: '#121417', ink: '#EDEBE6', accent: '#4CC38A' };
 const RX = 20; // radio del contenedor en viewBox 100
 
-const archivo700 = await readFile(
+const bebas400 = await readFile(
   new URL(
-    '../node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff',
+    '../node_modules/@fontsource/bebas-neue/files/bebas-neue-latin-400-normal.woff',
     import.meta.url,
   ),
 );
@@ -41,9 +42,11 @@ const mark = {
             props: {
               style: {
                 display: 'flex',
-                fontFamily: 'Archivo',
-                fontWeight: 700,
-                fontSize: 74,
+                fontFamily: 'Bebas Neue',
+                fontWeight: 400,
+                // Bebas es condensada (mas angosta y alta que Archivo): sube el
+                // cuerpo para conservar el peso visual del monograma en 100px.
+                fontSize: 88,
                 lineHeight: 1,
                 color: LIGHT.ink,
               },
@@ -72,7 +75,7 @@ const mark = {
 const raw = await satori(mark, {
   width: 100,
   height: 100,
-  fonts: [{ name: 'Archivo', weight: 700, style: 'normal', data: archivo700 }],
+  fonts: [{ name: 'Bebas Neue', weight: 400, style: 'normal', data: bebas400 }],
 });
 
 const openTag = /(<svg[^>]*>)/;
