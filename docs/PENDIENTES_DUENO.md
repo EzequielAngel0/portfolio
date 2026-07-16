@@ -17,11 +17,11 @@ Cosas que el asistente no puede hacer: respaldos externos, decisiones, publicar 
 - [ ] **D8 · Pasar las capturas de pantalla** (a futuro, opcional, no bloquea el lanzamiento): ACP (panel admin y apps) **anonimizadas** (sin datos personales, hosts, IPs ni tokens visibles; usar demo o difuminar) y SoloKey. Al agregarlas aparece el carrusel (doc 05, doc 02 regla 3).
 - [ ] **D10 · Explorar la dirección visual nueva** (2026-07-06): el dueño no quedó satisfecho con el estilo/colores actuales. Usar los prompts autocontenidos de `PROMPTS_DISENO.md` (raíz, gitignored) en v0/Lovable/Replit/Stitch/Realtime Colors, elegir una dirección y traer al siguiente chat capturas + hex con roles + fuentes (o URLs de Realtime Colors). Ese chat sigue `docs/PROMPT_REDISENO_VISUAL.md` (ADR 0011 antes de codificar).
 - [hecho] **D9 · Configurar el dominio** `angelezequiel.dev` (ADR 0007). Resuelto el 2026-07-06: apex y `www` apuntando a `ezequielangel0.github.io` en modo DNS only, custom domain guardado en GitHub Pages y "DNS check successful"; certificado TLS en emisión al cierre. Queda solo activar **Enforce HTTPS** cuando el certificado termine (checkbox en Settings, Pages).
-- [ ] **D11 · Mudanza a `portfolio.angelezequiel.dev`** (ADR 0012, decidida el 2026-07-16; el código ya está listo en `develop`, el agente NO lo sube a `master` hasta el paso 2). Orden para mínimo downtime:
-  1. En Cloudflare DNS: crear `CNAME portfolio -> ezequielangel0.github.io` (DNS only / nube gris).
-  2. Avisar al agente para que haga el merge a `master` (el deploy publica el `CNAME` nuevo).
-  3. En GitHub Settings, Pages: verificar custom domain `portfolio.angelezequiel.dev`, esperar el certificado y activar **Enforce HTTPS**.
-  4. En Cloudflare Web Analytics: actualizar el hostname del sitio del beacon (si el token cambia, pasarlo al agente para `Base.astro`).
+- [ ] **D11 · Mudanza a `portfolio.angelezequiel.dev`** (ADR 0012, decidida el 2026-07-16). Avance:
+  1. [hecho] Cloudflare DNS: `CNAME portfolio -> ezequielangel0.github.io` creado (2026-07-16).
+  2. [hecho] Merge a `master` y deploy con el `CNAME` nuevo (agente, 2026-07-16).
+  3. [ ] GitHub Settings, Pages: "DNS check successful" ya visible (2026-07-16); queda esperar el certificado y activar **Enforce HTTPS**.
+  4. [hecho] Web Analytics: el dueño creó el sitio del subdominio y entregó el token nuevo; beacon actualizado en `Base.astro` (2026-07-16). Confirmar visitas en el panel unos días después.
   - **Sin redirect de la raíz** (decisión del dueño 2026-07-16): al hub se entra por la raíz y de ahí se navega al portfolio. Mientras el hub no exista, la raíz responde 404 y los links viejos (LinkedIn, CVs) fallan temporalmente (ADR 0012).
 
 ## Decisiones resueltas en la entrevista
