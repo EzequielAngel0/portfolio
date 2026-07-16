@@ -21,8 +21,8 @@ Cosas que el asistente no puede hacer: respaldos externos, decisiones, publicar 
   1. En Cloudflare DNS: crear `CNAME portfolio -> ezequielangel0.github.io` (DNS only / nube gris).
   2. Avisar al agente para que haga el merge a `master` (el deploy publica el `CNAME` nuevo).
   3. En GitHub Settings, Pages: verificar custom domain `portfolio.angelezequiel.dev`, esperar el certificado y activar **Enforce HTTPS**.
-  4. En Cloudflare, Rules: redirect 301 `angelezequiel.dev/*` (y `www`) hacia `https://portfolio.angelezequiel.dev/$1`, el puente hasta que el hub tome la raíz (mantiene vivos los links de LinkedIn y de los CV en PDF).
-  5. En Cloudflare Web Analytics: actualizar el hostname del sitio del beacon (si el token cambia, pasarlo al agente para `Base.astro`).
+  4. En Cloudflare Web Analytics: actualizar el hostname del sitio del beacon (si el token cambia, pasarlo al agente para `Base.astro`).
+  - **Sin redirect de la raíz** (decisión del dueño 2026-07-16): al hub se entra por la raíz y de ahí se navega al portfolio. Mientras el hub no exista, la raíz responde 404 y los links viejos (LinkedIn, CVs) fallan temporalmente (ADR 0012).
 
 ## Decisiones resueltas en la entrevista
 

@@ -25,8 +25,9 @@ Servir el sitio en **`https://portfolio.angelezequiel.dev`** (GitHub Pages, cust
 1. **Cloudflare DNS:** crear `CNAME portfolio -> ezequielangel0.github.io` (recomendado "DNS only"/nube gris hasta que el certificado emita; ADR 0007 explica el porque).
 2. Avisar al agente: merge de esta rama a `master` -> el deploy publica el `CNAME` nuevo y Pages cambia el custom domain.
 3. **GitHub Pages:** verificar que el custom domain quedo en `portfolio.angelezequiel.dev` (Settings -> Pages), esperar el certificado y activar **Enforce HTTPS**.
-4. **Cloudflare Redirect Rule (puente hasta que exista el hub):** `angelezequiel.dev/*` (y `www`) -> `https://portfolio.angelezequiel.dev/$1` (301). Mantiene vivos los links ya compartidos (LinkedIn, CVs impresos) y la raiz no queda muerta; se retira cuando el hub tome la raiz.
-5. **Cloudflare Web Analytics:** actualizar el hostname del sitio del beacon (o crear sitio nuevo y actualizar el token en `Base.astro` si cambia).
+4. **Cloudflare Web Analytics:** actualizar el hostname del sitio del beacon (o crear sitio nuevo y actualizar el token en `Base.astro` si cambia).
+
+> **Sin redirect de la raiz (decision del dueno, 2026-07-16):** al hub se entra por la raiz y desde ahi se navega al portfolio con sus botones; no habra regla que redirija `angelezequiel.dev/*` al subdominio. Consecuencia asumida: entre la mudanza y el lanzamiento del hub, la raiz responde el 404 de GitHub y los links absolutos ya compartidos (LinkedIn, CVs en PDF) fallan temporalmente; el hub los recoge cuando tome la raiz.
 
 ## Consecuencias
 
