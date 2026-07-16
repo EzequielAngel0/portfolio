@@ -54,6 +54,15 @@ Aclaracion del dueno tras el cierre: su pedido "cambia el icono del theme" de la
 - **Favicon:** el monograma pasa de Archivo 700 a la **display condensada Bebas Neue** (la del nombre del hero, ADR 0011), en ambos temas; se conserva el punto verde de estado. `scripts/favicons.mjs` actualizado (fuente y cuerpo 74 -> 88 para compensar lo condensado) y regenerados svg/ico/apple-touch.
 - **Boton de tema del header:** el vocabulario mono `[ ]`/`[*]` se reemplaza por **iconos SVG propios de sol/luna** (decision del dueno; doc 02 permite SVG propio). Sol en claro, luna en oscuro, conmutados por CSS (`dark:`); aria-labels, hit area 40x40 y el JS del toggle no cambian. Iconos `sun`/`moon` nuevos en `Icon.astro`.
 
+## Iteracion 4 (2026-07-16, hero con nombre completo + contacto y footer como cajetin)
+
+Feedback del dueno: contacto y footer "siguen sin convencer" (texto flotando en vacio) y el hero debe llevar el nombre COMPLETO y mas cuerpo. Direccion aplicada: **cajetin de plano tecnico** (celdas bordeadas con hairlines, como el bloque de titulo de un plano), la conclusion natural del ADR 0011. Rama `feat/hero-contacto-footer`:
+
+- **Hero:** nombre completo `ANGEL EZEQUIEL / BARBOSA LOMELI` en dos lineas (clave nueva `hero.name`; `.hero-name` reducida a `clamp(2.7rem, 7.5vw, 5.75rem)` para caber a 360px) y, a la derecha, una **ficha tecnica** (cajetin `<dl>`): rol, base, stack y credenciales con el conteo REAL calculado de `certifications.json` en build (77, con link a la pagina). El stack salio de la linea suelta bajo el h1 (ahora vive en la ficha). Panel de nuevo a ancho completo.
+- **Contacto:** dos columnas: lead + mailto grande + ubicacion a la izquierda; a la derecha cajetin de **canales directos** (WhatsApp, LinkedIn, GitHub, X) como filas con valor real (numero, handle derivado de la URL) y hover/focus que invierte a relleno accent con texto papel (tratamiento "tecla" del ADR 0011; AA verificado: 5.7:1 claro, 7.5:1 oscuro).
+- **Footer:** el bloque de 3 columnas se encierra en un cajetin bordeado (celdas divididas: identidad, estado del sistema, navegacion) con tira inferior de redes + folio `REF: 2026-AB` + dominio.
+- i18n nuevas: `hero.name`, `hero.meta.*`, `contact.channels` (ES/EN). `check` + `build` en verde; reglas duras en verde; sin JS nuevo.
+
 ## Notas para calibrar en la revision
 
 - **Sombra dura del panel del hero:** si pesa mucho, se baja el alpha de `--hard-shadow` o se aplica solo al bloque del nombre.

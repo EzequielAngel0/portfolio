@@ -264,10 +264,11 @@
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;
-    line-height: 0.85;
+    line-height: 0.88;
     letter-spacing: 0.012em;
-    /* Compactado (feedback del dueno): sigue siendo el ancla, sin dominar el panel */
-    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    /* Nombre COMPLETO en dos lineas (iteracion 2026-07-16): cuerpo menor que el
+       del nombre corto para que "ANGEL EZEQUIEL" quepa hasta en 360px */
+    font-size: clamp(2.7rem, 7.5vw, 5.75rem);
   }
 
   /* Marquee de stack (ADR 0011): tira mono en bucle, SOLO CSS (no suma JS).

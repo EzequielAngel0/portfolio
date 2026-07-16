@@ -31,10 +31,17 @@ export const ui = {
 
     // Hero
     'hero.status': 'en producción · v2026.07',
+    'hero.name': 'Angel Ezequiel Barbosa Lomeli',
     'hero.title': 'Llevo sistemas completos de la idea a producción.',
     'hero.subtitle': 'Go · Flutter · React · Cloud (OCI)',
     'hero.ctaCase': 'Ver case study',
     'hero.ctaCv': 'Descargar CV (PDF)',
+    'hero.meta.title': 'Ficha técnica',
+    'hero.meta.role': 'Rol',
+    'hero.meta.base': 'Base',
+    'hero.meta.stack': 'Stack',
+    'hero.meta.certs': 'Credenciales',
+    'hero.meta.certsVerifiable': 'verificables',
 
     // Secciones del home
     'projects.title': 'Proyectos',
@@ -79,6 +86,7 @@ export const ui = {
     'contact.lead':
       'Si buscas a alguien que se haga cargo de un problema de punta a punta y lo deje corriendo en producción, escríbeme.',
     'contact.whatsapp': 'Escríbeme por WhatsApp',
+    'contact.channels': 'Canales directos',
 
     // 404 (pagina unica bilingue: GitHub Pages sirve un solo 404.html, doc 04)
     'notFound.eyebrow': '404 · ruta no encontrada',
@@ -111,10 +119,17 @@ export const ui = {
 
     // Hero
     'hero.status': 'in production · v2026.07',
+    'hero.name': 'Angel Ezequiel Barbosa Lomeli',
     'hero.title': 'I take complete systems from idea to production.',
     'hero.subtitle': 'Go · Flutter · React · Cloud (OCI)',
     'hero.ctaCase': 'View case study',
     'hero.ctaCv': 'Download CV (PDF)',
+    'hero.meta.title': 'Data sheet',
+    'hero.meta.role': 'Role',
+    'hero.meta.base': 'Base',
+    'hero.meta.stack': 'Stack',
+    'hero.meta.certs': 'Credentials',
+    'hero.meta.certsVerifiable': 'verifiable',
 
     // Home sections
     'projects.title': 'Projects',
@@ -159,6 +174,7 @@ export const ui = {
     'contact.lead':
       'If you’re looking for someone who can own a problem end-to-end and leave it running in production, get in touch.',
     'contact.whatsapp': 'Message me on WhatsApp',
+    'contact.channels': 'Direct channels',
 
     // 404 (single bilingual page: GitHub Pages serves one 404.html, doc 04)
     'notFound.eyebrow': '404 · route not found',

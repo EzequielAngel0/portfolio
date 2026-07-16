@@ -1,9 +1,14 @@
 ---
-// Contacto (doc 02): mailto grande, sin formulario (sitio estatico, cero
-// backend); redes con link directo y ubicacion. El id ancla el nav del header.
+// Contacto (doc 02 + iteracion 2026-07-16): mailto grande, sin formulario
+// (sitio estatico, cero backend). Dos columnas en desktop: a la izquierda el
+// lead + correo + ubicacion; a la derecha un cajetin de "canales directos"
+// estilo plano tecnico: filas con hairlines, valor real (numero, handle) y
+// hover que invierte a relleno accent (tratamiento "tecla" del ADR 0011).
+// El id ancla el nav del header y el riel lateral.
 import type { Locale } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 import { site } from '../../data/site';
+import type { IconName } from '../ui/Icon.astro';
 import Section from '../ui/Section.astro';
 import Icon from '../ui/Icon.astro';
 
@@ -13,48 +18,72 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+
+// Valores mostrados: datos reales derivados de site.ts (regla 5 doc 02).
+const handleFromUrl = (url: string) => {
+  const path = new URL(url).pathname.replace(/^\//, '');
+  return path.startsWith('in/') ? path : `@${path}`;
+};
+const channels: { label: string; value: string; href: string; icon: IconName }[] = [
+  {
+    label: 'WhatsApp',
+    value: site.whatsapp.display,
+    href: site.whatsapp.url,
+    icon: 'whatsapp',
+  },
+  ...site.socials.map((social) => ({
+    label: social.label,
+    value: handleFromUrl(social.url),
+    href: social.url,
+    icon: social.icon,
+  })),
+];
 ---
 
 <Section id={t('contact.anchor')} label={t('contact.title')}>
-  <p class="max-w-2xl text-ink-soft">{t('contact.lead')}</p>
+  <div class="grid gap-10 lg:grid-cols-[1fr_minmax(20rem,26rem)] lg:gap-14">
+    <div>
+      <p class="max-w-2xl text-ink-soft">{t('contact.lead')}</p>
 
-  <a
-    href={`mailto:${site.email}`}
-    class="mt-6 inline-block text-[clamp(1.2rem,3.5vw,2rem)] font-semibold break-all text-accent hover:underline"
-  >
-    {site.email}
-  </a>
+      <a
+        href={`mailto:${site.email}`}
+        class="mt-6 inline-block text-[clamp(1.2rem,3.5vw,2rem)] font-semibold break-all text-accent hover:underline"
+      >
+        {site.email}
+      </a>
 
-  <a
-    href={site.whatsapp.url}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={`${t('contact.whatsapp')}: ${site.whatsapp.display}`}
-    class="mt-5 flex min-h-10 w-fit items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
-  >
-    <Icon name="whatsapp" size={18} />
-    <span>{site.whatsapp.display}</span>
-    <span class="sr-only">({t('a11y.newTab')})</span>
-  </a>
+      <p class="mt-6 font-mono text-label text-ink-soft">{site.location}</p>
+    </div>
 
-  <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-    {
-      site.socials.map((social) => (
-        <li>
-          <a
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium transition-colors duration-150 hover:text-accent"
-          >
-            <Icon name={social.icon} size={16} />
-            {social.label}
-            <span class="sr-only">({t('a11y.newTab')})</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-
-  <p class="mt-6 font-mono text-label text-ink-soft">{site.location}</p>
+    {/* Cajetin de canales: filas reales, operables por teclado, foco visible */}
+    <ul class="h-fit rounded-xs border border-line font-mono text-label">
+      <li
+        class="border-b border-line px-4 py-2.5 font-medium tracking-wide text-ink-soft uppercase"
+      >
+        {t('contact.channels')}
+      </li>
+      {
+        channels.map((channel, index) => (
+          <li>
+            <a
+              href={channel.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                'flex min-h-11 items-center justify-between gap-4 px-4 py-2.5 transition-colors duration-150 hover:bg-accent hover:text-paper focus-visible:bg-accent focus-visible:text-paper',
+                index < channels.length - 1 && 'border-b border-line',
+              ]}
+            >
+              <span class="inline-flex items-center gap-2.5 font-medium">
+                <Icon name={channel.icon} size={15} />
+                {channel.label}
+              </span>
+              <span class="text-right">{channel.value}</span>
+              <span class="sr-only">({t('a11y.newTab')})</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Section>

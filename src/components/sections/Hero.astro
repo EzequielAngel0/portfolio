@@ -1,12 +1,15 @@
 ---
-// Hero (doc 05 + ADR 0011): pieza firma enmarcada con sombra dura desplazada
-// (sin blur, no es glassmorphism). El nombre en la display condensada es el
-// ancla visual (ADR 0011); la frase de valor sigue siendo el h1 en Archivo (SEO
-// + pitch de 30s). Linea de estado [.] con punto verde (pulso CSS, unico loop) y
-// folio mono que ecoan el motivo blueprint. El contenido nace visible; GSAP solo
-// escalona la entrada desde [data-boot].
+// Hero (doc 05 + ADR 0011, iteracion 2026-07-16): pieza firma enmarcada con
+// sombra dura. El nombre COMPLETO en la display condensada es el ancla (2
+// lineas); la frase de valor sigue siendo el h1 en Archivo (SEO + pitch de 30s).
+// A la derecha, una "ficha tecnica" estilo cajetin de plano con SOLO datos
+// reales (regla 5 doc 02): rol, base, stack y el conteo de credenciales
+// calculado del catalogo en build (nada hardcodeado que pueda quedar viejo).
+// El contenido nace visible; GSAP solo escalona la entrada desde [data-boot].
 import type { Locale } from '../../i18n/ui';
-import { useTranslations, localizePath, cvPath } from '../../i18n/utils';
+import { useTranslations, localizePath, cvPath, certsPath } from '../../i18n/utils';
+import { site } from '../../data/site';
+import certifications from '../../data/certifications.json';
 import Button from '../ui/Button.astro';
 
 interface Props {
@@ -15,14 +18,24 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-// El nombre se parte en dos lineas para el bloque display apilado.
-const [firstName, ...restName] = t('site.title').split(' ');
-const lastName = restName.join(' ');
+
+// Nombre completo apilado en dos lineas (nombres / apellidos).
+const nameWords = t('hero.name').split(' ');
+const nameLines = [nameWords.slice(0, 2).join(' '), nameWords.slice(2).join(' ')];
+
+// Conteo REAL del catalogo verificable (mismo dato que /certificaciones/).
+const certsTotal = certifications.groups.reduce((total, group) => total + group.items.length, 0);
+
+const sheet = [
+  { label: t('hero.meta.role'), value: t('footer.role') },
+  { label: t('hero.meta.base'), value: site.location },
+  { label: t('hero.meta.stack'), value: t('hero.subtitle') },
+];
 ---
 
 <section class="pt-8 pb-section sm:pt-10">
   <div
-    class="relative mx-auto max-w-4xl rounded-xs border border-line bg-surface px-5 py-7 shadow-hard sm:px-8 sm:py-9"
+    class="relative rounded-xs border border-line bg-surface px-5 py-7 shadow-hard sm:px-8 sm:py-9"
   >
     <div data-boot class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
       <p class="font-mono text-label font-medium tracking-wide text-status uppercase">
@@ -36,19 +49,48 @@ const lastName = restName.join(' ');
       </span>
     </div>
 
-    <p data-boot class="hero-name mt-5">
-      <span class="block">{firstName}</span><span class="block">{lastName}</span>
-    </p>
+    <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_minmax(15rem,19rem)] lg:gap-12">
+      <div>
+        <p data-boot class="hero-name">
+          {nameLines.map((line) => <span class="block">{line}</span>)}
+        </p>
 
-    <h1 data-boot class="mt-4 max-w-2xl text-display">{t('hero.title')}</h1>
+        <h1 data-boot class="mt-5 max-w-2xl text-display">{t('hero.title')}</h1>
 
-    <p data-boot class="mt-4 font-mono text-ink-soft">{t('hero.subtitle')}</p>
+        <div data-boot class="mt-7 flex flex-wrap items-center gap-3">
+          <Button href={localizePath('acp', locale)}>{t('hero.ctaCase')}</Button>
+          <Button href={cvPath(locale)} variant="secondary" download>
+            {t('hero.ctaCv')}
+          </Button>
+        </div>
+      </div>
 
-    <div data-boot class="mt-7 flex flex-wrap items-center gap-3">
-      <Button href={localizePath('acp', locale)}>{t('hero.ctaCase')}</Button>
-      <Button href={cvPath(locale)} variant="secondary" download>
-        {t('hero.ctaCv')}
-      </Button>
+      {/* Ficha tecnica (cajetin de plano): filas label/valor con hairlines */}
+      <div data-boot class="h-fit self-end rounded-xs border border-line font-mono text-label">
+        <p
+          class="border-b border-line px-4 py-2.5 font-medium tracking-wide text-ink-soft uppercase"
+        >
+          {t('hero.meta.title')}
+        </p>
+        <dl>
+          {
+            sheet.map((row) => (
+              <div class="flex justify-between gap-4 border-b border-line px-4 py-2.5">
+                <dt class="tracking-wide text-ink-soft uppercase">{row.label}</dt>
+                <dd class="text-right">{row.value}</dd>
+              </div>
+            ))
+          }
+          <div class="flex justify-between gap-4 px-4 py-2.5">
+            <dt class="tracking-wide text-ink-soft uppercase">{t('hero.meta.certs')}</dt>
+            <dd class="text-right">
+              <a href={certsPath(locale)} class="text-accent hover:underline">
+                {`${certsTotal} ${t('hero.meta.certsVerifiable')}`}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
