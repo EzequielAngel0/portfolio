@@ -8,7 +8,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import satori from 'satori';
 import sharp from 'sharp';
 
-const PAPER = '#F6F5F1';
+const PAPER = '#EEF1F5'; /* papel frio de la iteracion 2026-07-15 (tokens.css) */
 const INK = '#17181A';
 const INK_SOFT = '#4A4D52';
 const ACCENT = '#1E6E4E';
