@@ -33,9 +33,23 @@ Rama: `feat/direccion-blueprint` (desde `develop`). **Pendiente:** pase visual d
 - Pase visual en Podman (`podman compose up --build`, `http://portfolio:4321`): ambos temas, ES/EN, 360px, sin JS, reduced motion, ~60fps. Calibracion fina esperada (peso de la sombra dura del panel, intensidad de la blueprint, ritmo del marquee).
 - Tras su OK: merge de `feat/direccion-blueprint` a `develop`.
 
+## Iteracion 2 (2026-07-15, tras el 1er pase visual del dueno)
+
+Feedback del dueno viendo la rama en Podman. Cambios:
+
+| Pedido | Que se hizo |
+| --- | --- |
+| Hero se ve vacio -> compactar | Panel a `max-w-4xl` centrado, menos padding y menos `pt`, nombre mas chico (`.hero-name` a `clamp(3.5rem, 10vw, 7.5rem)`) y gaps mas ajustados. Sigue siendo el ancla, con menos vacio alrededor |
+| Contacto/footer vacio -> enriquecer | Footer reconstruido como panel "estado del sistema": 3 columnas mono (identidad, estado del sistema, navegacion) con **datos reales** (rol, ubicacion, `sitio estatico`, ultima actualizacion, `v2026.07`) + tira final con redes y dominio. `mt-24` -> `mt-16`. Claves i18n nuevas: `footer.system/staticSite/role/nav` (ES/EN) |
+| Tema claro no gusta -> mas colorido / menos brusco | `--paper` `#f6f5f1` (calido) -> `#eef1f5` (gris azulado frio) y `--surface` `#ffffff` -> `#f8fafc` (casi blanco frio, menos brillo). Tinte alineado al azul del acento; el salto claro/oscuro se siente menos brusco. `theme-color` hardcodeado en `Base.astro` actualizado a la par. Contraste AA se mantiene (accent ~5.8:1 sobre el nuevo paper) |
+| Transicion al cambiar el tema (como la intro) | Crossfade de toda la pagina via **View Transitions API** en el toggle (`Base.astro`), duracion 0.4s (`global.css`). Degrada a cambio instantaneo sin soporte o con reduced motion. API nativa: no suma JS |
+| Diagrama (case study) que se vea mejor | Restyle del bloque `<style>` de `AcpArchitecture.astro` (SIN tocar estructura ni etiquetas, precision intacta): fondo "hoja de plano" (papel + reticula de puntos), nodos como tarjetas elevadas (`fill: surface`), aristas y puntas con tinte del acento |
+
+Pendiente del dueno: 2do pase visual en Podman y merge a `develop`.
+
 ## Notas para calibrar en la revision
 
 - **Sombra dura del panel del hero:** si pesa mucho, se baja el alpha de `--hard-shadow` o se aplica solo al bloque del nombre.
 - **Blueprint:** `.bp-line` va a `opacity: .55` sobre `--line`; subir/bajar segun se lea en ambos temas.
 - **Riel:** aparece a `80rem`; si se quiere antes/despues, mover el breakpoint en `.section-rail`.
-- **Regenerar OG (opcional):** la paleta no cambio, asi que las 6 OG siguen validas. Si se quiere el nombre en Bebas tambien en las OG, cargar la fuente en `scripts/og-images.mjs` y regenerar.
+- **Regenerar OG (pendiente menor):** la iteracion 2 cambio el papel claro (`#f6f5f1` -> `#eef1f5`) y la superficie, asi que el fondo de las 6 OG (`PAPER`/`INK_SOFT` hardcodeados en `scripts/og-images.mjs`) quedo levemente desalineado con el sitio. Es sutil (las OG siguen legibles), pero al cerrar conviene actualizar esas constantes y regenerar (`npm i --no-save satori @fontsource/archivo && node scripts/og-images.mjs`). Si ademas se quiere el nombre en Bebas en las OG, cargar la fuente en el script.
