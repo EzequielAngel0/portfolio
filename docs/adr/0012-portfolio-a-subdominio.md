@@ -33,5 +33,5 @@ Servir el sitio en **`https://portfolio.angelezequiel.dev`** (GitHub Pages, cust
 
 - Se gana: la raiz queda libre para el hub del ecosistema; cada pieza con su hostname.
 - Se paga: los links absolutos ya publicados apuntan a la raiz; el redirect 301 del paso 4 los cubre. SEO: el sitio re-indexa bajo el hostname nuevo (301 preserva la mayor parte).
-- **Pendiente menor:** los 2 CV en PDF (`public/cv/`) embeben `https://angelezequiel.dev/` y `/en/acp/`; funcionan via redirect, pero al proximo retoque del CV se regeneran con el subdominio (fuentes en `perfil-mejorado/`, proceso en `PENDIENTES_AGENTE.md`).
+- **CVs regenerados (resuelto 2026-07-16):** los 2 PDF de `public/cv/` se regeneraron con los links al subdominio (fuentes de `perfil-mejorado/` actualizadas; script one-off nuevo `scripts/cv-pdf.mjs` con Edge headless, `preferCSSPageSize` + `printBackground`; verificados 1 pagina y links embebidos).
 - El ADR 0007 sigue siendo la referencia de la mecanica DNS/Pages; este solo cambia el hostname y el reparto raiz/subdominio.

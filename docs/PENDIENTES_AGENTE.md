@@ -46,7 +46,7 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 ## Mudanza a subdominio (ADR 0012)
 
-`[bloqueado]` Preparada el 2026-07-16 en `develop` (rama `infra/subdominio-portfolio`): `public/CNAME`, `site` de `astro.config.mjs`, `robots.txt`, dominio del footer y 6 OG regeneradas con `portfolio.angelezequiel.dev`. El rediseño ya se desplegó a la raíz ese mismo día (ff `9390c0e..98de5e2`, verificado vivo). **El merge a `master` espera a que el dueño cree el `CNAME portfolio` en Cloudflare** (D11 de [PENDIENTES_DUENO.md](PENDIENTES_DUENO.md), con el orden completo: DNS, merge, Enforce HTTPS, redirect 301 de la raíz, hostname del beacon). Pendiente menor al siguiente retoque del CV: regenerar los 2 PDF (embeben URLs de la raíz; el redirect los cubre mientras).
+`[hecho]` 2026-07-16, desplegada y verificada: `https://portfolio.angelezequiel.dev` vivo con certificado y Enforce HTTPS (http 301 a https), todas las rutas en 200, canonical/sitemap/OG con el subdominio, beacon con el token nuevo del dueño y la raíz liberada (404 de GitHub hasta que el hub la tome; sin redirect por decisión del dueño, ADR 0012). Los 2 CV en PDF se regeneraron con los links al subdominio (fuentes de `perfil-mejorado/` actualizadas; script one-off `scripts/cv-pdf.mjs`). D11 de [PENDIENTES_DUENO.md](PENDIENTES_DUENO.md) cerrado.
 
 ## Reglas de mantenimiento
 
