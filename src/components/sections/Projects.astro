@@ -1,7 +1,8 @@
 ---
 // Proyectos (docs 02 y 04): tarjetas tipograficas (captura opcional, D8),
-// badge de estado real y link al repo. La reja admite futuros proyectos;
-// featured va primero. ACP no entra aqui: es el case study.
+// badge de estado real y links a demo en vivo (si existe) y repo. La reja
+// admite futuros proyectos; featured va primero. ACP no entra aqui: es el
+// case study.
 import type { Locale } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
 import { getLocalized } from '../../lib/content';
@@ -44,21 +45,41 @@ const projects = (await getLocalized('projects', locale)).sort(
               ))}
             </ul>
 
-            {project.data.repoUrl && (
-              <a
-                href={project.data.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group mt-auto inline-flex min-h-10 items-center gap-2 self-start pt-5 font-mono text-label font-medium text-accent hover:underline"
-              >
-                {t('projects.viewRepo')}
-                <span class="sr-only">({t('a11y.newTab')})</span>
-                <Icon
-                  name="external"
-                  size={14}
-                  class="transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
+            {(project.data.demoUrl || project.data.repoUrl) && (
+              <div class="mt-auto flex flex-wrap gap-x-6 pt-5">
+                {project.data.demoUrl && (
+                  <a
+                    href={project.data.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
+                  >
+                    {t('projects.viewDemo')}
+                    <span class="sr-only">({t('a11y.newTab')})</span>
+                    <Icon
+                      name="external"
+                      size={14}
+                      class="transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
+                )}
+                {project.data.repoUrl && (
+                  <a
+                    href={project.data.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex min-h-10 items-center gap-2 font-mono text-label font-medium text-accent hover:underline"
+                  >
+                    {t('projects.viewRepo')}
+                    <span class="sr-only">({t('a11y.newTab')})</span>
+                    <Icon
+                      name="external"
+                      size={14}
+                      class="transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
+                )}
+              </div>
             )}
           </article>
         </li>

@@ -32,13 +32,14 @@ export function personJsonLd(siteUrl: string): JsonLd {
 }
 
 export function projectJsonLd(entry: CollectionEntry<'projects'>, siteUrl: string): JsonLd {
-  const { title, summary, stack, repoUrl, locale } = entry.data;
+  const { title, summary, stack, repoUrl, demoUrl, locale } = entry.data;
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     name: title,
     description: summary,
     ...(repoUrl ? { codeRepository: repoUrl } : {}),
+    ...(demoUrl ? { url: demoUrl } : {}),
     keywords: stack.join(', '),
     inLanguage: locale,
     author: personRef(siteUrl),

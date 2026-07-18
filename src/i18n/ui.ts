@@ -46,6 +46,7 @@ export const ui = {
     // Secciones del home
     'projects.title': 'Proyectos',
     'projects.viewRepo': 'Ver repositorio',
+    'projects.viewDemo': 'Ver demo en vivo',
     'skills.title': 'Skills',
     'certifications.title': 'Certificaciones',
     'certifications.view': 'Ver credencial',
@@ -134,6 +135,7 @@ export const ui = {
     // Home sections
     'projects.title': 'Projects',
     'projects.viewRepo': 'View repository',
+    'projects.viewDemo': 'View live demo',
     'skills.title': 'Skills',
     'certifications.title': 'Certifications',
     'certifications.view': 'View credential',

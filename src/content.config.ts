@@ -48,6 +48,7 @@ const projects = defineCollection({
       summary: z.string(),
       stack: z.array(z.string()).min(1),
       repoUrl: z.string().url().nullable(),
+      demoUrl: z.string().url().optional(),
       status: z.enum(['production', 'public-repo']),
       dates: z.string(),
       featured: z.boolean().default(false),
