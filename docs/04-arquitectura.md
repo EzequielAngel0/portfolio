@@ -92,6 +92,7 @@ public/
   summary: string,         // 1-2 líneas para la tarjeta
   stack: string[],
   repoUrl: string | null,  // null si es repo privado (ACP)
+  demoUrl?: string,        // OPCIONAL (2026-07-18): demo publica en vivo; la tarjeta pinta "ver demo" antes del repo
   status: 'production' | 'public-repo',
   dates: string,
   featured: boolean,

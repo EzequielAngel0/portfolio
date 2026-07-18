@@ -48,6 +48,10 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 `[hecho]` 2026-07-16, desplegada y verificada: `https://portfolio.angelezequiel.dev` vivo con certificado y Enforce HTTPS (http 301 a https), todas las rutas en 200, canonical/sitemap/OG con el subdominio, beacon con el token nuevo del dueño y la raíz liberada (404 de GitHub hasta que el hub la tome; sin redirect por decisión del dueño, ADR 0012). Los 2 CV en PDF se regeneraron con los links al subdominio (fuentes de `perfil-mejorado/` actualizadas; script one-off `scripts/cv-pdf.mjs`). D11 de [PENDIENTES_DUENO.md](PENDIENTES_DUENO.md) cerrado.
 
+## Ronda: DocuAgent y SoloKey v1.1.0 (2026-07-18)
+
+`[hecho]` 2026-07-18 en `develop` (merge a `master` lo decide el dueño). DocuAgent entra a proyectos (ES/EN, `status: production`, demo en vivo vía el campo nuevo `demoUrl` del esquema, doc 04) y SoloKey se reescribe como multiplataforma con sync P2P E2EE (v1.1.0). CV bilingüe actualizado (DocuAgent + SoloKey nuevo + Python/IA aplicada en skills + promedio 94.50) con PDFs regenerados a 1 página. LinkedIn y GitHub profile listos en `perfil-mejorado/` (`LinkedIn_PROYECTOS.md` nuevo). Prompt de publicación autocontenido creado en `C:\Proyectos\plantilla-proyecto\PROMPT_PUBLICACION.md`. Detalle: [rondas/2026-07-18_proyectos-docuagent-solokey.md](rondas/2026-07-18_proyectos-docuagent-solokey.md).
+
 ## Reglas de mantenimiento
 
 - Si cambia el copy de `ui.ts` (hero) o el frontmatter del case study, regenerar las imágenes OG con `scripts/og-images.mjs` (espejan ese copy a mano). La página de certificaciones también tiene OG propia en ese script.

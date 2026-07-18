@@ -22,7 +22,7 @@ Inventario del material fuente, mapeo hacia el sitio y las reglas duras que gobi
 - **Titular:** Software Engineer | Full-Stack Developer | Go · Flutter · React · Cloud (OCI)
 - **Posicionamiento:** toma problemas reales y los lleva de requisitos a producción, de punta a punta y frecuentemente en solitario. La prueba es ACP Suite.
 - **Contacto:** barbosalomeliangelezequiel@gmail.com · [linkedin.com/in/angelezequiel](https://linkedin.com/in/angelezequiel) · [github.com/EzequielAngel0](https://github.com/EzequielAngel0) · [x.com/Ezequiel27Angel](https://x.com/Ezequiel27Angel) · Jalisco, México
-- **Formación:** Desarrollo de Software, CETI (2022-2026, promedio 94.24) · Oracle Next Education (ONE), ruta Back-End, nivel Tech Advanced
+- **Formación:** Desarrollo de Software, CETI (2022-2026, promedio final 94.50, egresado) · Oracle Next Education (ONE), ruta Back-End, nivel Tech Advanced
 - **Idiomas:** Español nativo · Inglés B2
 
 ## Secciones del sitio y su fuente
@@ -31,7 +31,10 @@ Orden del home (según el brief):
 
 1. **Hero**: titular + posicionamiento + CTAs ("Ver case study", "Descargar CV"). Fuente: `LinkedIn_ES_EN.md` (titular opción A/B) + brief.
 2. **Case study ACP Suite** (resumen en home, página completa aparte): fuente `CASE_STUDY_ACP_ES_EN.md`. Cifras clave utilizables: 6 interfaces + 2 APIs · 1 desarrollador · en producción desde junio 2026 · 150+ pruebas · p95 < 100 ms · 0 vulnerabilidades HIGH/CRITICAL · costo de infra cercano a $0.
-3. **Proyectos**: SoloKey (password manager Android, zero-trust y offline-first: Flutter, Clean Architecture, Argon2id + AES-256-GCM vía Android KeyStore, generador TOTP, auditoría de contraseñas débiles). Repo público: https://github.com/EzequielAngel0/SoloKey. Diseñar la sección para admitir futuros proyectos.
+3. **Proyectos** (actualizado 2026-07-18):
+   - **DocuAgent** (agente RAG de documentación empresarial: LangGraph + FastAPI, Next.js 16, Cohere + Qdrant, PostgreSQL; citación de fuentes y validación anti-alucinación; en producción sobre VM ARM de OCI con Cloudflare Tunnel). Repo público: https://github.com/EzequielAngel0/DocuAgent · Demo: https://docuagent.angelezequiel.dev (la tarjeta enlaza ambos vía `demoUrl` + `repoUrl`).
+   - **SoloKey** (gestor de contraseñas local-first multiplataforma, Android + companion Windows desde la v1.1.0: Flutter, Clean Architecture, Argon2id + AES-256-GCM, sync P2P E2EE en LAN con X25519, TOTP, auditoría con HIBP k-anonymity, 510 pruebas). Repo público: https://github.com/EzequielAngel0/SoloKey.
+   - La sección admite futuros proyectos; el flujo para publicar uno nuevo vive en `C:\Proyectos\plantilla-proyecto\PROMPT_PUBLICACION.md` (genera tarjeta + CV + LinkedIn desde el repo del proyecto).
 4. **Skills**: agrupadas, NO como nube de logos suelta:
    - Backend: Go (pgx, sqlc), Java/Spring Boot, REST APIs, PostgreSQL, JWT/RBAC, Clean Architecture
    - Mobile: Flutter/Dart (offline-first, almacenamiento cifrado), Kotlin, Android
