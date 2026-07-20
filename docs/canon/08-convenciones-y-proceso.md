@@ -40,10 +40,12 @@ El deploy a Pages se dispara con push a `master`, así que `master` cumple el ro
 
 Igual que la plantilla, se separa lo que puede hacer el agente de lo que solo puede hacer el dueño:
 
-- **`docs/PENDIENTES_AGENTE.md`** (código, contenido, config ejecutable por Claude). Ya está esbozado como el plan por fases del doc 07; cuando arranque el desarrollo se materializa como checklist vivo.
+- **`docs/PENDIENTES_AGENTE.md`** (código, contenido, config ejecutable por Claude): el doc vivo único del agente, con el "Estado actual" del proyecto (compacto) y el backlog abierto. Es la primera parada de un chat nuevo.
 - **`docs/PENDIENTES_DUENO.md`** (solo Angel): respaldar `perfil-mejorado/` fuera del repo, verificar el deploy en la URL real, publicar el README de perfil de GitHub, actualizar LinkedIn, y cualquier decisión `TBD` que aparezca. Ver el archivo para el detalle.
 
 Regla continua: al cerrar cada bloque de trabajo, actualizar el tracker de la ronda + los dos `PENDIENTES_*` + el doc del área tocada.
+
+**Poda de pendientes (regla, 2026-07-20):** los `PENDIENTES_*` se mantienen COMPACTOS. Al cerrar una ronda, lo que quedó `[hecho]` no se acumula como bloque de detalle: se compacta a una sola línea con un puntero a su tracker de `rondas/` (que sí guarda el detalle), y el backlog vivo queda solo con lo abierto (`[ ]` / `[wip]` / `[bloqueado]`). `PENDIENTES_AGENTE.md` encabeza además con un "Estado actual" breve (la posición del proyecto), no con una bitácora larga. Un backlog lleno de cosas ya hechas es ruido que estorba para ver lo que falta. Por eso no existe un doc de bitácora aparte: el estado vivo va, compacto, dentro de `PENDIENTES_AGENTE.md`.
 
 ## Trackers de ronda (versión ligera)
 
@@ -51,7 +53,7 @@ Cada sesión de trabajo con volumen (una fase del doc 07, una auditoría) deja u
 
 ## Handoff a un chat nuevo: prompt corto que apunta al doc, no pegar el contenido
 
-Regla (2026-07-06): cuando una ronda de trabajo se prepara para ejecutarse en otra sesión, la instrucción para el chat nuevo se guarda como documento versionado en `docs/` (p. ej. `PROMPT_MEJORAS_POST_LANZAMIENTO.md`) y lo que el dueño pega en el chat nuevo es SOLO un prompt corto que le dice "lee ese archivo y sigue lo que dice", nunca el contenido completo del archivo.
+Regla (2026-07-06): cuando una ronda de trabajo se prepara para ejecutarse en otra sesión, la instrucción para el chat nuevo se guarda como documento versionado en `docs/prompts/` (p. ej. `PROMPT_MEJORAS_POST_LANZAMIENTO.md`) y lo que el dueño pega en el chat nuevo es SOLO un prompt corto que le dice "lee ese archivo y sigue lo que dice", nunca el contenido completo del archivo.
 
 - **Por qué, no por tokens:** el costo en tokens es casi idéntico en ambos casos (el contenido entra al contexto igual, se pegue o lo lea el modelo del disco; leerlo cuesta apenas una llamada de herramienta más). La razón real es operativa: el chat lee SIEMPRE la versión vigente del disco (no una copia pegada que envejece), se evita truncar o romper formato al pegar, y el dueño no carga con un pegado enorme.
 - **El prompt corto (<= ~10 líneas)** debe incluir: contexto mínimo (repo, estado del proyecto), el nombre del archivo a leer y seguir, y los guardarraíles críticos por si el chat no lee con cuidado (reglas duras del doc 02, commits/ramas del doc 08, y sobre todo "a `master` NUNCA hace merge el asistente"). Puede vivir al inicio del propio archivo de prompt como "versión corta para pegar".
