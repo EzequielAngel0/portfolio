@@ -45,7 +45,7 @@ Catálogo completo con estado en [`adr/README.md`](adr/README.md). Vigentes 0001
 
 ## Registros de ronda (rondas/)
 
-Bitácora fechada por tanda. De más reciente a más antigua: páginas Educación + Sobre mí (`2026-07-20`), perfil ciberseguridad + reorganización de docs (`2026-07-20`), proyectos DocuAgent + SoloKey (`2026-07-18`), rediseño blueprint (`2026-07-15`), mejoras post-lanzamiento (`2026-07-06`), beacon/D7 (`2026-07-06`) y las fases F0 a F6 (`2026-07-06_f0-f1` .. `_f6`).
+Bitácora fechada por tanda. De más reciente a más antigua: página Experiencia (`2026-07-20`), páginas Educación + Sobre mí (`2026-07-20`), perfil ciberseguridad + reorganización de docs (`2026-07-20`), proyectos DocuAgent + SoloKey (`2026-07-18`), rediseño blueprint (`2026-07-15`), mejoras post-lanzamiento (`2026-07-06`), beacon/D7 (`2026-07-06`) y las fases F0 a F6 (`2026-07-06_f0-f1` .. `_f6`).
 
 ## Prompts de handoff (prompts/)
 

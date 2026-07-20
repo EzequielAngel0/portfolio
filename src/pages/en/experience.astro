@@ -1,0 +1,15 @@
+---
+// Experience page in EN. Its ES pair lives at /experiencia/ (localized slug,
+// mapped in i18n/utils.ts for hreflang and the toggle).
+import Base from '../../layouts/Base.astro';
+import ExperienceTimeline from '../../components/exp/ExperienceTimeline.astro';
+import ogImage from '../../assets/og/experiencia.en.png';
+---
+
+<Base
+  title="Experience · Angel Barbosa"
+  description="Angel Barbosa's professional experience: Full-Stack Developer and sole developer of ACP, a ticketing and parcel platform live in production on Oracle Cloud (December 2025 - present)."
+  ogImage={ogImage}
+>
+  <ExperienceTimeline locale="en" />
+</Base>

@@ -1,0 +1,107 @@
+---
+// Pagina de Experiencia (/experiencia/): el rol profesional en ACP como una
+// ficha de puesto tipo LinkedIn (rol, empresa, periodo, logros), orientada a
+// puesto e impacto. COMPLEMENTA, no repite, el detalle tecnico del case study de
+// /acp/ (doc 04): aqui van los logros del rol; alli, problema/arquitectura/
+// seguridad. Copy verificable en src/data/experience.ts (reglas duras doc 02).
+// Mismo lenguaje blueprint que la linea de tiempo de educacion (rail + folios).
+// Estructura de <ol> lista para admitir mas puestos a futuro.
+import type { Locale } from '../../i18n/ui';
+import { useTranslations, localizePath, aboutPath } from '../../i18n/utils';
+import { experience } from '../../data/experience';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const role = experience[locale];
+const casePath = localizePath('acp', locale);
+
+// Un solo puesto por ahora; la lista queda preparada para varios.
+const roles = [role];
+---
+
+<article class="py-section">
+  <header>
+    <p data-boot class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('experience.eyebrow')}
+    </p>
+    <h1 data-boot class="mt-5 text-display">{t('experience.title')}</h1>
+    <p data-boot class="mt-5 max-w-2xl text-lg text-ink-soft text-pretty">{role.lead}</p>
+  </header>
+
+  {/* Ficha de puesto: rail datum a la izquierda, un folio por rol */}
+  <ol data-stagger class="mt-12 space-y-6 border-l border-line pl-5 sm:pl-8">
+    {
+      roles.map((item, index) => (
+        <li class="relative">
+          <span
+            aria-hidden="true"
+            class="absolute top-6 -left-[calc(1.25rem+3px)] size-1.5 rounded-full bg-status sm:-left-[calc(2rem+3px)]"
+          />
+          <div class="rounded-xs border border-line bg-surface p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+              <span
+                aria-hidden="true"
+                class="font-mono text-label tracking-wide text-ink-soft/70 uppercase"
+              >
+                SEC: EXP / FOLIO: {String(index + 1).padStart(3, '0')}
+              </span>
+              <Badge status="production" locale={locale} />
+            </div>
+
+            <h2 class="mt-4 text-[clamp(1.25rem,3.5vw,1.6rem)] leading-tight font-semibold text-pretty">
+              {item.role}
+            </h2>
+            <p class="mt-1 font-medium text-ink">{item.company}</p>
+            <p class="mt-2 font-mono text-label text-ink-soft">{item.meta}</p>
+
+            <p class="mt-5 max-w-2xl text-ink-soft text-pretty">{item.intro}</p>
+
+            <ul class="mt-5 space-y-3">
+              {item.achievements.map((achievement) => (
+                <li class="flex gap-3 text-pretty">
+                  <span
+                    aria-hidden="true"
+                    class="mt-2 size-1.5 shrink-0 rounded-[1px] bg-accent"
+                  />
+                  <span class="text-ink-soft">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  {/* Enlaces cruzados: el detalle tecnico y la bio */}
+  <nav data-reveal class="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
+    <a
+      href={casePath}
+      class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+    >
+      {t('experience.viewCase')}
+      <Icon
+        name="arrow-right"
+        size={14}
+        class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+      />
+    </a>
+    <a
+      href={aboutPath(locale)}
+      class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+    >
+      {t('experience.viewAbout')}
+      <Icon
+        name="arrow-right"
+        size={14}
+        class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+      />
+    </a>
+  </nav>
+</article>

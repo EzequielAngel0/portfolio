@@ -30,6 +30,7 @@ export default defineConfig({
           { es: `${base}certificaciones/`, en: `${base}en/certifications/` },
           { es: `${base}educacion/`, en: `${base}en/education/` },
           { es: `${base}sobre-mi/`, en: `${base}en/about/` },
+          { es: `${base}experiencia/`, en: `${base}en/experience/` },
         ];
         const pair = localizedPairs.find((p) => item.url === p.es || item.url === p.en);
         if (pair) {

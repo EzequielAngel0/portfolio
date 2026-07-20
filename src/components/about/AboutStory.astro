@@ -7,7 +7,13 @@
 // hilos con el stage marcado por TEXTO (real vs. exploracion), no por color.
 import { Image } from 'astro:assets';
 import type { Locale } from '../../i18n/ui';
-import { useTranslations, localizePath, cvPath, educationPath } from '../../i18n/utils';
+import {
+  useTranslations,
+  localizePath,
+  cvPath,
+  educationPath,
+  experiencePath,
+} from '../../i18n/utils';
 import { about } from '../../data/about';
 import { site } from '../../data/site';
 import Button from '../ui/Button.astro';
@@ -126,6 +132,17 @@ const github = site.socials.find((s) => s.label === 'GitHub')!;
         class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
       >
         {t('about.viewCase')}
+        <Icon
+          name="arrow-right"
+          size={14}
+          class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+        />
+      </a>
+      <a
+        href={experiencePath(locale)}
+        class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+      >
+        {t('about.viewExperience')}
         <Icon
           name="arrow-right"
           size={14}

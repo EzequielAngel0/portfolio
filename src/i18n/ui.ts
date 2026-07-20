@@ -22,6 +22,7 @@ export const ui = {
     'nav.contact': 'Contacto',
     'nav.about': 'Sobre mí',
     'nav.education': 'Educación',
+    'nav.experience': 'Experiencia',
     'nav.downloadCv': 'Descargar CV (PDF)',
     'a11y.nav': 'Navegación principal',
     'a11y.skip': 'Saltar al contenido',
@@ -85,6 +86,13 @@ export const ui = {
     'about.topicsLabel': 'Temas',
     'about.viewCase': 'Ver el case study de ACP',
     'about.viewEducation': 'Ver mi educación',
+    'about.viewExperience': 'Ver mi experiencia',
+
+    // Pagina Experiencia (/experiencia/)
+    'experience.eyebrow': 'Experiencia profesional',
+    'experience.title': 'Experiencia',
+    'experience.viewCase': 'Ver el case study técnico de ACP',
+    'experience.viewAbout': 'Ver sobre mí',
 
     // Case study (home y pagina /acp)
     'caseStudy.eyebrow': 'Case study · Repo privado (proyecto de cliente)',
@@ -92,6 +100,7 @@ export const ui = {
     'caseStudy.stack': 'Stack',
     'caseStudy.readFull': 'Leer case study completo',
     'caseStudy.toc': 'Contenido',
+    'caseStudy.viewRole': 'Ver mi rol en este proyecto',
 
     // Capturas y carrusel (aparecen solo cuando hay capturas, D8)
     'screenshots.title': 'Capturas',
@@ -134,6 +143,7 @@ export const ui = {
     'nav.contact': 'Contact',
     'nav.about': 'About',
     'nav.education': 'Education',
+    'nav.experience': 'Experience',
     'nav.downloadCv': 'Download CV (PDF)',
     'a11y.nav': 'Main navigation',
     'a11y.skip': 'Skip to content',
@@ -197,6 +207,13 @@ export const ui = {
     'about.topicsLabel': 'Topics',
     'about.viewCase': 'View the ACP case study',
     'about.viewEducation': 'View my education',
+    'about.viewExperience': 'View my experience',
+
+    // Experience page (/en/experience/)
+    'experience.eyebrow': 'Professional experience',
+    'experience.title': 'Experience',
+    'experience.viewCase': 'View the ACP technical case study',
+    'experience.viewAbout': 'View about me',
 
     // Case study (home and /acp page)
     'caseStudy.eyebrow': 'Case study · Private repo (client project)',
@@ -204,6 +221,7 @@ export const ui = {
     'caseStudy.stack': 'Stack',
     'caseStudy.readFull': 'Read the full case study',
     'caseStudy.toc': 'Contents',
+    'caseStudy.viewRole': 'View my role on this project',
 
     // Screenshots and carousel (rendered only when screenshots exist, D8)
     'screenshots.title': 'Screenshots',

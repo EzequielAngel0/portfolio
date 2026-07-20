@@ -210,6 +210,22 @@ const cards = [
     }),
   },
   {
+    file: 'experiencia.es.png',
+    tree: homeCard({
+      status: 'en producción · v2026.07',
+      title: 'Experiencia',
+      subtitle: 'Desarrollador Full-Stack en ACP, en producción en Oracle Cloud.',
+    }),
+  },
+  {
+    file: 'experiencia.en.png',
+    tree: homeCard({
+      status: 'in production · v2026.07',
+      title: 'Experience',
+      subtitle: 'Full-Stack Developer at ACP, live in production on Oracle Cloud.',
+    }),
+  },
+  {
     file: 'acp-suite.es.png',
     tree: caseCard({
       status: 'en producción',

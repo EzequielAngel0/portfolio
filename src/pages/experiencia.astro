@@ -1,0 +1,15 @@
+---
+// Pagina de Experiencia en ES. Su par EN vive en /en/experience/ (slug
+// localizado, mapeado en i18n/utils.ts para hreflang y el toggle).
+import Base from '../layouts/Base.astro';
+import ExperienceTimeline from '../components/exp/ExperienceTimeline.astro';
+import ogImage from '../assets/og/experiencia.es.png';
+---
+
+<Base
+  title="Experiencia · Angel Barbosa"
+  description="Experiencia profesional de Angel Barbosa: Desarrollador Full-Stack y desarrollador único de ACP, plataforma de boletaje y paquetería en producción en Oracle Cloud (diciembre 2025 - actualidad)."
+  ogImage={ogImage}
+>
+  <ExperienceTimeline locale="es" />
+</Base>

@@ -9,11 +9,13 @@
 | `/certificaciones/` | Catálogo completo de certificaciones (carrusel de destacadas + grupos), agregada en la ronda post-lanzamiento | ES |
 | `/educacion/` | Educación: formación académica formal en el CETI (tecnólogo egresado + ingeniería), línea de tiempo blueprint; agregada 2026-07-20 | ES |
 | `/sobre-mi/` | Sobre mí: bio ampliada, trayectoria y foto, con enfoque actual (ciberseguridad/AppSec y hardware); agregada 2026-07-20 | ES |
+| `/experiencia/` | Experiencia: rol en ACP (puesto y logros, LinkedIn-style), complementa el case study; agregada 2026-07-20 | ES |
 | `/en/` | Home | EN |
 | `/en/acp/` | Case study | EN |
 | `/en/certifications/` | Certifications (slug localizado; el par ES/EN se mapea explícito en `i18n/utils.ts` y en el `serialize` del sitemap) | EN |
 | `/en/education/` | Education (slug localizado; par de `/educacion/`) | EN |
 | `/en/about/` | About (slug localizado; par de `/sobre-mi/`) | EN |
+| `/en/experience/` | Experience (slug localizado; par de `/experiencia/`) | EN |
 | `/404` | Error con dirección (link al home en ambos idiomas) | ES/EN |
 
 Decisiones:
@@ -111,7 +113,7 @@ public/
 
 **`certifications.json`**: `[{ id, name, issuer, year, credentialUrl }]` + textos por idioma en `ui.ts` si hiciera falta matizar.
 
-**Páginas de contenido sin colección (2026-07-20):** Educación y Sobre mí no usan content collections (no son catálogos emparejados por slug). Educación lee `src/data/education.json` (dos etapas del CETI, `degree`/`note` con variante por idioma, `status` `graduated`/`upcoming`); Sobre mí lee `src/data/about.ts` (prosa ES/EN tipada, transcrita de `perfil-mejorado/` con reglas duras). La microcopia corta de ambas vive en `i18n/ui.ts` (`education.*`, `about.*`). La paridad ES/EN de sus rutas la dan `localizedRoutes` en `i18n/utils.ts` y el `serialize` del sitemap.
+**Páginas de contenido sin colección (2026-07-20):** Educación, Sobre mí y Experiencia no usan content collections (no son catálogos emparejados por slug). Educación lee `src/data/education.json` (dos etapas del CETI, `degree`/`note` con variante por idioma, `status` `graduated`/`upcoming`); Sobre mí lee `src/data/about.ts` (prosa ES/EN tipada); Experiencia lee `src/data/experience.ts` (rol en ACP ES/EN: `role`, `company`, `meta`, `intro`, `achievements`). Todas transcritas de `perfil-mejorado/` con reglas duras. La microcopia corta vive en `i18n/ui.ts` (`education.*`, `about.*`, `experience.*`). La paridad ES/EN de sus rutas la dan `localizedRoutes` en `i18n/utils.ts` y el `serialize` del sitemap.
 
 Regla: el emparejamiento ES/EN se hace por `slug`, y el build falla (validación en `content.config.ts`) si un slug existe en un idioma y no en el otro.
 

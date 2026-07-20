@@ -15,6 +15,7 @@ import {
   certsPath,
   aboutPath,
   educationPath,
+  experiencePath,
 } from '../i18n/utils';
 
 interface Props {
@@ -56,6 +57,7 @@ const casePath = localizePath('acp', locale);
 const certsHref = certsPath(locale);
 const aboutHref = aboutPath(locale);
 const educationHref = educationPath(locale);
+const experienceHref = experiencePath(locale);
 const contactHref = `${homePath}#${t('contact.anchor')}`;
 const navItems = [
   { href: homePath, label: t('nav.home'), path: homePath, hideBelow: 'sm' as const },
@@ -64,10 +66,12 @@ const navItems = [
   { href: certsHref, label: t('nav.certs'), path: certsHref, hideBelow: 'sm' as const },
   { href: contactHref, label: t('nav.contact'), path: null, hideBelow: 'sm' as const },
 ];
-// Footer: navegacion completa, incluye Educacion (que no esta en el header).
+// Footer: navegacion completa, incluye Experiencia y Educacion (que no estan en
+// el header). Experiencia va junto al case study (ambas paginas son de ACP).
 const footerNavItems = [
   { href: homePath, label: t('nav.home') },
   { href: casePath, label: t('nav.caseStudy') },
+  { href: experienceHref, label: t('nav.experience') },
   { href: aboutHref, label: t('nav.about') },
   { href: educationHref, label: t('nav.education') },
   { href: certsHref, label: t('nav.certs') },

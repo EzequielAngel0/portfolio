@@ -7,10 +7,11 @@
 // F2 en el .md; si el marcador falta, el build falla aqui con error explicito.
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { useTranslations } from '../../i18n/utils';
+import { useTranslations, experiencePath } from '../../i18n/utils';
 import Badge from '../ui/Badge.astro';
 import Tag from '../ui/Tag.astro';
 import Carousel from '../ui/Carousel.astro';
+import Icon from '../ui/Icon.astro';
 import AcpArchitecture from '../diagrams/AcpArchitecture.astro';
 
 interface Props {
@@ -75,6 +76,21 @@ const tocItems = [
         ))
       }
     </ul>
+
+    {/* Cruce a la vista de rol y logros (la contraparte de este detalle tecnico) */}
+    <p data-boot class="mt-6">
+      <a
+        href={experiencePath(locale)}
+        class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+      >
+        {t('caseStudy.viewRole')}
+        <Icon
+          name="arrow-right"
+          size={14}
+          class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+        />
+      </a>
+    </p>
   </header>
 
   <div class="mt-12 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-14">
