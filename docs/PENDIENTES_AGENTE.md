@@ -8,7 +8,7 @@ Marcadores: `[ ]` pendiente · `[wip]` en curso · `[hecho]` · `[bloqueado]` (e
 
 Portfolio en producción en `https://portfolio.angelezequiel.dev`, bilingüe ES/EN, tema claro/oscuro, dirección papel y tinta azul con capa blueprint. `develop` va adelante de `master` (el merge a `master`, que despliega, lo hace el dueño). Stack vigente: Astro 7 + Node 24 + Tailwind 4 + GSAP (ADR 0008); lockfile multiplataforma (regenerar en Linux al tocar deps nativas). Última ronda: 2026-07-20 (perfil ciberseguridad + reorganización de docs).
 
-**Abierto del agente ahora mismo:** solo los chores opcionales. Las tres páginas nuevas planeadas (Educación, Sobre mí, Experiencia) quedaron hechas el 2026-07-20 (en `develop`, pendientes de merge a `master`). Todo lo demás está hecho.
+**Abierto del agente ahora mismo:** solo los chores opcionales. Las tres páginas nuevas planeadas (Educación, Sobre mí, Experiencia) quedaron hechas el 2026-07-20 y **desplegadas en producción** ese mismo día: el dueño autorizó el merge a `master`, que se hizo en fast-forward (`863d258`) y el deploy salió en verde. Todo lo demás está hecho.
 
 ## Hecho (resumen; detalle en docs/rondas/)
 

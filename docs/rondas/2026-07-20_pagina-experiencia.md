@@ -36,4 +36,6 @@ Segundo lote de las paginas nuevas (el primero fue Educacion + Sobre mi, mismo d
 
 ## Al cerrar
 
-Actualizados `PENDIENTES_AGENTE.md` (Experiencia a hecho), `docs/canon/04-arquitectura.md` (rutas), `docs/README.md` y este tracker. Merge de la rama a `develop`; a `master` decide el dueno.
+Actualizados `PENDIENTES_AGENTE.md` (Experiencia a hecho), `docs/canon/04-arquitectura.md` (rutas), `docs/README.md` y este tracker. Merge de la rama a `develop`.
+
+**Desplegado a produccion el 2026-07-20:** el dueno autorizo explicitamente el merge a `master`, ejecutado en fast-forward (`c5275fe..863d258`, la convencion de este repo) junto con las paginas de Educacion y Sobre mi y la reorganizacion de docs pendiente. El workflow "Deploy to GitHub Pages" salio en verde (run 29763222109, 41 s) y se verificaron en vivo las 10 rutas (`/`, `/en/`, `/experiencia/`, `/en/experience/`, `/educacion/`, `/en/education/`, `/sobre-mi/`, `/en/about/`, `/acp/`, `/certificaciones/`), todas 200. Queda pendiente del dueno el pase manual de a11y (visual, teclado, lector) que no se hizo antes del merge.
