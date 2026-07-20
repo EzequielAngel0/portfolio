@@ -1,0 +1,158 @@
+---
+// Pagina Sobre mi (/sobre-mi/): bio ampliada y trayectoria en prosa que
+// complementa el hero tipografico del home sin repetir el case study (doc 04).
+// Copy verificable en src/data/about.ts (transcrito del material del dueno,
+// reglas duras doc 02). Foto self-hosted via astro:assets (CSP img-src 'self' y
+// presupuesto de 1 request externo, doc 06: nada de hotlink). Enfoque en dos
+// hilos con el stage marcado por TEXTO (real vs. exploracion), no por color.
+import { Image } from 'astro:assets';
+import type { Locale } from '../../i18n/ui';
+import { useTranslations, localizePath, cvPath, educationPath } from '../../i18n/utils';
+import { about } from '../../data/about';
+import { site } from '../../data/site';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import Tag from '../ui/Tag.astro';
+import portrait from '../../assets/about/angel-barbosa.jpg';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const copy = about[locale];
+
+const homeContact = `${localizePath('', locale)}#${t('contact.anchor')}`;
+const casePath = localizePath('acp', locale);
+const github = site.socials.find((s) => s.label === 'GitHub')!;
+---
+
+<article class="py-section">
+  <header>
+    <p data-boot class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('about.eyebrow')}
+    </p>
+    <h1 data-boot class="mt-5 text-display">{t('about.title')}</h1>
+    <p data-boot class="mt-5 max-w-2xl text-lg text-ink-soft text-pretty">{copy.lead}</p>
+  </header>
+
+  {/* Foto + intro: dos columnas en desktop, apiladas en movil (foto primero) */}
+  <div class="mt-12 grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-10">
+    <figure data-reveal class="w-40 shrink-0 sm:w-48">
+      <div class="overflow-hidden rounded-xs border border-line shadow-[var(--shadow-hard)]">
+        <Image
+          src={portrait}
+          alt={copy.photoAlt}
+          width={400}
+          height={400}
+          loading="eager"
+          class="block h-auto w-full"
+        />
+      </div>
+      <figcaption
+        aria-hidden="true"
+        class="mt-2 font-mono text-label tracking-wide text-ink-soft/70 uppercase"
+      >
+        {site.location}
+      </figcaption>
+    </figure>
+
+    <div data-reveal class="max-w-2xl space-y-4 text-pretty">
+      {copy.intro.map((para) => <p class="text-ink-soft">{para}</p>)}
+    </div>
+  </div>
+
+  {/* Trayectoria en prosa (formacion + ONE + ACP), sin repetir el case study */}
+  <section data-reveal class="mt-14 border-t border-line pt-8">
+    <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {copy.journeyTitle}
+    </h2>
+    <div class="mt-6 max-w-2xl space-y-4 text-pretty">
+      {copy.journey.map((para) => <p class="text-ink-soft">{para}</p>)}
+    </div>
+  </section>
+
+  {/* Enfoque actual: dos hilos con stage por texto (real vs. exploracion) */}
+  <section data-reveal class="mt-14 border-t border-line pt-8">
+    <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {copy.focusTitle}
+    </h2>
+    <p class="mt-6 max-w-2xl text-ink-soft text-pretty">{copy.focusIntro}</p>
+
+    <div data-stagger class="mt-8 grid gap-5 md:grid-cols-2">
+      {
+        copy.threads.map((thread) => (
+          <div class="flex flex-col rounded-xs border border-line bg-surface p-5 sm:p-6">
+            <span class="w-fit rounded-xs border border-line px-2 py-1 font-mono text-label tracking-wide text-ink-soft uppercase">
+              {thread.stage}
+            </span>
+            <h3 class="mt-4 text-lg font-semibold">{thread.title}</h3>
+            <p class="mt-2 text-ink-soft text-pretty">{thread.body}</p>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {thread.topics.map((topic) => (
+                <li>
+                  <Tag>{topic}</Tag>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Cierre: CTA y enlaces cruzados */}
+  <section data-reveal class="mt-14 border-t border-line pt-8">
+    <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {copy.closingTitle}
+    </h2>
+    <p class="mt-6 max-w-2xl text-ink-soft text-pretty">{copy.closing}</p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <Button href={homeContact} variant="primary">
+        {t('contact.title')}
+        <Icon name="arrow-right" size={16} />
+      </Button>
+      <Button href={cvPath(locale)} variant="secondary" download>
+        <Icon name="download" size={16} />
+        {t('nav.downloadCv')}
+      </Button>
+    </div>
+
+    <nav class="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+      <a
+        href={casePath}
+        class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+      >
+        {t('about.viewCase')}
+        <Icon
+          name="arrow-right"
+          size={14}
+          class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+        />
+      </a>
+      <a
+        href={educationPath(locale)}
+        class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+      >
+        {t('about.viewEducation')}
+        <Icon
+          name="arrow-right"
+          size={14}
+          class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+        />
+      </a>
+      <a
+        href={github.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+      >
+        <Icon name="github" size={14} />
+        {github.label}
+        <span class="sr-only">({t('a11y.newTab')})</span>
+      </a>
+    </nav>
+  </section>
+</article>

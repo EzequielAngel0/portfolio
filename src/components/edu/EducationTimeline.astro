@@ -1,0 +1,141 @@
+---
+// Pagina de Educacion (/educacion/): formacion academica formal en el CETI como
+// una linea de tiempo de folios en lenguaje blueprint (doc 05). Fechas y promedio
+// en mono/tabular, geometria dura, estado por TEXTO (egresado / proximo ingreso),
+// no por color solo (verde queda reservado al "operativo" del sitio, doc 05).
+// Datos verificables en src/data/education.json (regla 5 doc 02). Su par EN vive
+// en /en/education/ (slug localizado, mapeado en i18n/utils.ts).
+import education from '../../data/education.json';
+import type { Locale } from '../../i18n/ui';
+import { useTranslations, certsPath, aboutPath } from '../../i18n/utils';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+type Item = {
+  institution: string;
+  degree: Record<Locale, string>;
+  start: string;
+  end: string;
+  status: 'graduated' | 'upcoming';
+  gpa: string | null;
+  note: Record<Locale, string> | null;
+};
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const items = education.items as Item[];
+
+// Etiqueta de periodo derivada de start/end (YYYY-MM) sin dependencia de fechas.
+const MONTHS: Record<Locale, string[]> = {
+  es: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+};
+const fmt = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  return `${MONTHS[locale][(m ?? 1) - 1]} ${y}`;
+};
+const statusLabel = (status: Item['status']) =>
+  status === 'graduated' ? t('education.statusGraduated') : t('education.statusUpcoming');
+---
+
+<article class="py-section">
+  <header>
+    <p data-boot class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('education.eyebrow')}
+    </p>
+    <h1 data-boot class="mt-5 text-display">{t('education.title')}</h1>
+    <p data-boot class="mt-5 max-w-2xl text-lg text-ink-soft">{t('education.lead')}</p>
+  </header>
+
+  {/* Linea de tiempo: rail datum a la izquierda, un folio por formacion */}
+  <ol data-stagger class="mt-12 space-y-6 border-l border-line pl-5 sm:pl-8">
+    {
+      items.map((item, index) => (
+        <li class="relative">
+          {/* Nodo sobre el rail (decorativo; el orden real lo da el <ol>) */}
+          <span
+            aria-hidden="true"
+            class="absolute top-6 -left-[calc(1.25rem+3px)] size-1.5 rounded-full bg-ink-soft sm:-left-[calc(2rem+3px)]"
+          />
+          <div class="rounded-xs border border-line bg-surface p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+              <span
+                aria-hidden="true"
+                class="font-mono text-label tracking-wide text-ink-soft/70 uppercase"
+              >
+                SEC: EDU / FOLIO: {String(index + 1).padStart(3, '0')}
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xs border border-line px-2 py-1 font-mono text-label text-ink-soft">
+                <span
+                  class:list={[
+                    'size-1.5 rounded-full',
+                    item.status === 'graduated' ? 'bg-ink-soft' : 'border border-ink-soft',
+                  ]}
+                  aria-hidden="true"
+                />
+                {statusLabel(item.status)}
+              </span>
+            </div>
+
+            <h2 class="mt-4 text-[clamp(1.25rem,3.5vw,1.6rem)] leading-tight font-semibold text-pretty">
+              {item.degree[locale]}
+            </h2>
+            <p class="mt-1 text-ink-soft">{item.institution}</p>
+
+            <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-label">
+              <span class="text-ink tabular-nums">
+                {fmt(item.start)} - {fmt(item.end)}
+              </span>
+              {item.gpa && (
+                <span class="text-ink-soft">
+                  {t('education.gpaLabel')}: <span class="text-ink tabular-nums">{item.gpa}</span>
+                </span>
+              )}
+            </div>
+
+            {item.note && <p class="mt-4 text-sm text-ink-soft">{item.note[locale]}</p>}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  {/* Formacion mas alla del software: hardware/embebido/IoT (evidencia interna,
+     Purificador como proyecto escolar sin ficha, decision del dueno 2026-07-20) */}
+  <section data-reveal class="mt-14 border-t border-line pt-8">
+    <h2 class="font-mono text-label font-medium tracking-wide text-ink-soft uppercase">
+      {t('education.formationTitle')}
+    </h2>
+    <p class="mt-4 max-w-2xl text-ink-soft text-pretty">{t('education.formationNote')}</p>
+  </section>
+
+  {/* Enlaces cruzados */}
+  <nav data-reveal class="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
+    <a
+      href={certsPath(locale)}
+      class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+    >
+      {t('education.viewCerts')}
+      <Icon
+        name="arrow-right"
+        size={14}
+        class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+      />
+    </a>
+    <a
+      href={aboutPath(locale)}
+      class="group inline-flex min-h-10 items-center gap-1.5 font-mono text-label font-medium text-accent hover:underline"
+    >
+      {t('education.viewAbout')}
+      <Icon
+        name="arrow-right"
+        size={14}
+        class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+      />
+    </a>
+  </nav>
+</article>

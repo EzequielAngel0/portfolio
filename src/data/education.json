@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "institution": "Centro de Enseñanza Técnica Industrial (CETI)",
+      "degree": {
+        "es": "Tecnólogo en Desarrollo de Software",
+        "en": "Software Development Technologist"
+      },
+      "start": "2022-08",
+      "end": "2026-06",
+      "status": "graduated",
+      "gpa": "94.50 / 100",
+      "note": null
+    },
+    {
+      "institution": "Centro de Enseñanza Técnica Industrial (CETI)",
+      "degree": {
+        "es": "Ingeniería en Desarrollo de Software",
+        "en": "Software Development Engineering"
+      },
+      "start": "2026-08",
+      "end": "2029-06",
+      "status": "upcoming",
+      "gpa": null,
+      "note": {
+        "es": "Ingreso directo a 3er semestre.",
+        "en": "Direct entry into the 3rd semester."
+      }
+    }
+  ]
+}

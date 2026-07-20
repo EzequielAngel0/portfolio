@@ -1,0 +1,15 @@
+---
+// About page in EN. Its ES pair lives at /sobre-mi/ (localized slug, mapped in
+// i18n/utils.ts for hreflang and the toggle).
+import Base from '../../layouts/Base.astro';
+import AboutStory from '../../components/about/AboutStory.astro';
+import ogImage from '../../assets/og/sobre-mi.en.png';
+---
+
+<Base
+  title="About · Angel Barbosa"
+  description="Angel Barbosa: I design, build, and operate complete systems from idea to production. Background, education, and current focus on cybersecurity, AppSec, and hardware."
+  ogImage={ogImage}
+>
+  <AboutStory locale="en" />
+</Base>

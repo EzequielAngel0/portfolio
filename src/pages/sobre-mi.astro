@@ -1,0 +1,15 @@
+---
+// Pagina Sobre mi en ES. Su par EN vive en /en/about/ (slug localizado, mapeado
+// en i18n/utils.ts para hreflang y el toggle).
+import Base from '../layouts/Base.astro';
+import AboutStory from '../components/about/AboutStory.astro';
+import ogImage from '../assets/og/sobre-mi.es.png';
+---
+
+<Base
+  title="Sobre mí · Angel Barbosa"
+  description="Angel Barbosa: diseño, construyo y opero sistemas completos de la idea a producción. Trayectoria, formación y enfoque actual en ciberseguridad, AppSec y hardware."
+  ogImage={ogImage}
+>
+  <AboutStory locale="es" />
+</Base>

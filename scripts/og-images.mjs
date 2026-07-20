@@ -178,6 +178,38 @@ const cards = [
     }),
   },
   {
+    file: 'educacion.es.png',
+    tree: homeCard({
+      status: 'en producción · v2026.07',
+      title: 'Educación',
+      subtitle: 'CETI · del tecnólogo egresado a la ingeniería en curso.',
+    }),
+  },
+  {
+    file: 'educacion.en.png',
+    tree: homeCard({
+      status: 'in production · v2026.07',
+      title: 'Education',
+      subtitle: 'CETI · from the completed technologist to the engineering degree.',
+    }),
+  },
+  {
+    file: 'sobre-mi.es.png',
+    tree: homeCard({
+      status: 'en producción · v2026.07',
+      title: 'Sobre mí',
+      subtitle: 'De la idea a producción, y de la PCB a la nube.',
+    }),
+  },
+  {
+    file: 'sobre-mi.en.png',
+    tree: homeCard({
+      status: 'in production · v2026.07',
+      title: 'About',
+      subtitle: 'From idea to production, and from the PCB to the cloud.',
+    }),
+  },
+  {
     file: 'acp-suite.es.png',
     tree: caseCard({
       status: 'en producción',

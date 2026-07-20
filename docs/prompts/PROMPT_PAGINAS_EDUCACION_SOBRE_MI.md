@@ -1,5 +1,7 @@
 # Prompt para la ronda de paginas: Educacion + Sobre mi (copiar y pegar en un chat nuevo)
 
+> **Estado: EJECUTADA el 2026-07-20.** Educacion (`/educacion/` + `/en/education/`) y Sobre mi (`/sobre-mi/` + `/en/about/`) estan hechas en `develop` (rama `feat/paginas-educacion-sobre-mi`). Detalle en [`../rondas/2026-07-20_paginas-educacion-sobre-mi.md`](../rondas/2026-07-20_paginas-educacion-sobre-mi.md). Este archivo queda como registro del encargo.
+
 Redactado el 2026-07-20. Contexto: el portfolio esta en produccion en `portfolio.angelezequiel.dev` (F0-F7, rondas post-lanzamiento, rediseno blueprint ADR 0011 y mudanza a subdominio ADR 0012 hechas). El dueno quiere dos paginas nuevas para dejar el sitio mas completo: **Educacion** y **Sobre mi / historia**. Una tercera pagina (Experiencia profesional, rol en ACP) queda para un segundo lote y NO entra en esta ronda.
 
 ## Version corta (recomendada): pega SOLO esto en un chat nuevo abierto en el repo

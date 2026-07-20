@@ -7,9 +7,13 @@
 | `/` | Home: hero, resumen ACP, proyectos, skills, certificaciones destacadas, contacto | ES (idioma por defecto, sin prefijo) |
 | `/acp/` | Case study completo de ACP (hasta 2026-07-06 fue `/acp-suite/`; la ruta vieja quedó en 404, sin puente, decisión del dueño) | ES |
 | `/certificaciones/` | Catálogo completo de certificaciones (carrusel de destacadas + grupos), agregada en la ronda post-lanzamiento | ES |
+| `/educacion/` | Educación: formación académica formal en el CETI (tecnólogo egresado + ingeniería), línea de tiempo blueprint; agregada 2026-07-20 | ES |
+| `/sobre-mi/` | Sobre mí: bio ampliada, trayectoria y foto, con enfoque actual (ciberseguridad/AppSec y hardware); agregada 2026-07-20 | ES |
 | `/en/` | Home | EN |
 | `/en/acp/` | Case study | EN |
 | `/en/certifications/` | Certifications (slug localizado; el par ES/EN se mapea explícito en `i18n/utils.ts` y en el `serialize` del sitemap) | EN |
+| `/en/education/` | Education (slug localizado; par de `/educacion/`) | EN |
+| `/en/about/` | About (slug localizado; par de `/sobre-mi/`) | EN |
 | `/404` | Error con dirección (link al home en ambos idiomas) | ES/EN |
 
 Decisiones:
@@ -106,6 +110,8 @@ public/
 **Las imágenes son opcionales y se agregan a futuro** (pendiente D8): las tarjetas y el case study deben verse bien SIN capturas (degradan a diseño tipográfico), y el carrusel solo aparece cuando hay 1+ imágenes. Las imágenes viven en `src/assets/projects/` (optimizadas por `astro:assets`); las de ACP pasan el filtro de anonimización antes de entrar al repo (doc 02, regla 3).
 
 **`certifications.json`**: `[{ id, name, issuer, year, credentialUrl }]` + textos por idioma en `ui.ts` si hiciera falta matizar.
+
+**Páginas de contenido sin colección (2026-07-20):** Educación y Sobre mí no usan content collections (no son catálogos emparejados por slug). Educación lee `src/data/education.json` (dos etapas del CETI, `degree`/`note` con variante por idioma, `status` `graduated`/`upcoming`); Sobre mí lee `src/data/about.ts` (prosa ES/EN tipada, transcrita de `perfil-mejorado/` con reglas duras). La microcopia corta de ambas vive en `i18n/ui.ts` (`education.*`, `about.*`). La paridad ES/EN de sus rutas la dan `localizedRoutes` en `i18n/utils.ts` y el `serialize` del sitemap.
 
 Regla: el emparejamiento ES/EN se hace por `slug`, y el build falla (validación en `content.config.ts`) si un slug existe en un idioma y no en el otro.
 

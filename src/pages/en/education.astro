@@ -1,0 +1,15 @@
+---
+// Education page in EN. Its ES pair lives at /educacion/ (localized slug, mapped
+// in i18n/utils.ts for hreflang and the toggle).
+import Base from '../../layouts/Base.astro';
+import EducationTimeline from '../../components/edu/EducationTimeline.astro';
+import ogImage from '../../assets/og/educacion.en.png';
+---
+
+<Base
+  title="Education · Angel Barbosa"
+  description="Angel Barbosa's academic background at the Centro de Enseñanza Técnica Industrial (CETI): Software Development Technologist (graduated, 94.50 average) and Software Development Engineering."
+  ogImage={ogImage}
+>
+  <EducationTimeline locale="en" />
+</Base>

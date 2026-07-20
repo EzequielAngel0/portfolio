@@ -1,0 +1,16 @@
+---
+// Pagina de Educacion en ES. Su par EN vive en /en/education/ (slug localizado,
+// mapeado en i18n/utils.ts para hreflang y el toggle). Espeja el montaje de
+// certificaciones.astro: envuelve Base y monta el componente con locale.
+import Base from '../layouts/Base.astro';
+import EducationTimeline from '../components/edu/EducationTimeline.astro';
+import ogImage from '../assets/og/educacion.es.png';
+---
+
+<Base
+  title="Educación · Angel Barbosa"
+  description="Formación académica de Angel Barbosa en el Centro de Enseñanza Técnica Industrial (CETI): Tecnólogo en Desarrollo de Software (egresado, promedio 94.50) e Ingeniería en Desarrollo de Software."
+  ogImage={ogImage}
+>
+  <EducationTimeline locale="es" />
+</Base>

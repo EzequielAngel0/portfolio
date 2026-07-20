@@ -45,13 +45,13 @@ Catálogo completo con estado en [`adr/README.md`](adr/README.md). Vigentes 0001
 
 ## Registros de ronda (rondas/)
 
-Bitácora fechada por tanda. De más reciente a más antigua: perfil ciberseguridad + reorganización de docs (`2026-07-20`), proyectos DocuAgent + SoloKey (`2026-07-18`), rediseño blueprint (`2026-07-15`), mejoras post-lanzamiento (`2026-07-06`), beacon/D7 (`2026-07-06`) y las fases F0 a F6 (`2026-07-06_f0-f1` .. `_f6`).
+Bitácora fechada por tanda. De más reciente a más antigua: páginas Educación + Sobre mí (`2026-07-20`), perfil ciberseguridad + reorganización de docs (`2026-07-20`), proyectos DocuAgent + SoloKey (`2026-07-18`), rediseño blueprint (`2026-07-15`), mejoras post-lanzamiento (`2026-07-06`), beacon/D7 (`2026-07-06`) y las fases F0 a F6 (`2026-07-06_f0-f1` .. `_f6`).
 
 ## Prompts de handoff (prompts/)
 
 | Archivo | Ronda | Estado |
 | --- | --- | --- |
-| [prompts/PROMPT_PAGINAS_EDUCACION_SOBRE_MI.md](prompts/PROMPT_PAGINAS_EDUCACION_SOBRE_MI.md) | Páginas Educación + Sobre mí | Pendiente |
+| [prompts/PROMPT_PAGINAS_EDUCACION_SOBRE_MI.md](prompts/PROMPT_PAGINAS_EDUCACION_SOBRE_MI.md) | Páginas Educación + Sobre mí | Ejecutada 2026-07-20 |
 | [prompts/PROMPT_MEJORAS_POST_LANZAMIENTO.md](prompts/PROMPT_MEJORAS_POST_LANZAMIENTO.md) | Mejoras post-lanzamiento (T1-T11) | Ejecutada 2026-07-06 |
 | [prompts/PROMPT_REDISENO_VISUAL.md](prompts/PROMPT_REDISENO_VISUAL.md) | Rediseño visual (blueprint, ADR 0011) | Ejecutada 2026-07-15/16 |
 | [prompts/DIRECCION_STITCH.md](prompts/DIRECCION_STITCH.md) | Material fuente del rediseño (captura de Stitch) | Referencia |

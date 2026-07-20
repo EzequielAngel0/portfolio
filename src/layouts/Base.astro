@@ -13,6 +13,8 @@ import {
   localizePath,
   cvPath,
   certsPath,
+  aboutPath,
+  educationPath,
 } from '../i18n/utils';
 
 interface Props {
@@ -45,21 +47,31 @@ const otherLocale = locale === 'es' ? 'en' : 'es';
 const otherHref = alternates[otherLocale];
 
 // Nav del header (doc 04): aria-current por coincidencia exacta de ruta.
-// "Inicio" y "Contacto" se ocultan en movil (el logo cubre el inicio y contacto
-// es un anchor de scroll) para dejar sitio al boton de CV sin romper los 360px.
+// hideBelow oculta la entrada por debajo de un breakpoint: 'sm' deja solo Case
+// study en 360px (el logo cubre Inicio, Contacto es un anchor) para dejar sitio
+// al boton de CV; "Sobre mi" usa 'md' para no apretar el rango de 640px.
+// "Educacion" NO va al header (decision del dueno 2026-07-20): solo al footer.
 const homePath = localizePath('', locale);
 const casePath = localizePath('acp', locale);
 const certsHref = certsPath(locale);
+const aboutHref = aboutPath(locale);
+const educationHref = educationPath(locale);
+const contactHref = `${homePath}#${t('contact.anchor')}`;
 const navItems = [
-  { href: homePath, label: t('nav.home'), path: homePath, mobileHidden: true },
-  { href: casePath, label: t('nav.caseStudy'), path: casePath, mobileHidden: false },
-  { href: certsHref, label: t('nav.certs'), path: certsHref, mobileHidden: true },
-  {
-    href: `${homePath}#${t('contact.anchor')}`,
-    label: t('nav.contact'),
-    path: null,
-    mobileHidden: true,
-  },
+  { href: homePath, label: t('nav.home'), path: homePath, hideBelow: 'sm' as const },
+  { href: casePath, label: t('nav.caseStudy'), path: casePath, hideBelow: null },
+  { href: aboutHref, label: t('nav.about'), path: aboutHref, hideBelow: 'md' as const },
+  { href: certsHref, label: t('nav.certs'), path: certsHref, hideBelow: 'sm' as const },
+  { href: contactHref, label: t('nav.contact'), path: null, hideBelow: 'sm' as const },
+];
+// Footer: navegacion completa, incluye Educacion (que no esta en el header).
+const footerNavItems = [
+  { href: homePath, label: t('nav.home') },
+  { href: casePath, label: t('nav.caseStudy') },
+  { href: aboutHref, label: t('nav.about') },
+  { href: educationHref, label: t('nav.education') },
+  { href: certsHref, label: t('nav.certs') },
+  { href: contactHref, label: t('nav.contact') },
 ];
 const currentPath = Astro.url.pathname;
 
@@ -190,7 +202,8 @@ const lastName = restName.join(' ');
                   aria-current={item.path === currentPath ? 'page' : undefined}
                   class:list={[
                     'inline-flex min-h-10 items-center rounded-xs px-2 font-mono text-label transition-colors duration-150',
-                    item.mobileHidden && 'max-sm:hidden',
+                    item.hideBelow === 'sm' && 'max-sm:hidden',
+                    item.hideBelow === 'md' && 'max-md:hidden',
                     item.path === currentPath
                       ? 'text-ink underline underline-offset-[0.35em]'
                       : 'text-ink-soft hover:text-ink',
@@ -286,7 +299,7 @@ const lastName = restName.join(' ');
             <p class="tracking-wide text-ink-soft uppercase">{t('footer.nav')}</p>
             <ul class="mt-2 space-y-1">
               {
-                navItems.map((item) => (
+                footerNavItems.map((item) => (
                   <li>
                     <a href={item.href} class="text-ink-soft transition-colors hover:text-accent">
                       {item.label}

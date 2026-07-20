@@ -20,6 +20,8 @@ export const ui = {
     'nav.caseStudy': 'Case study',
     'nav.certs': 'Certificaciones',
     'nav.contact': 'Contacto',
+    'nav.about': 'Sobre mí',
+    'nav.education': 'Educación',
     'nav.downloadCv': 'Descargar CV (PDF)',
     'a11y.nav': 'Navegación principal',
     'a11y.skip': 'Saltar al contenido',
@@ -62,6 +64,27 @@ export const ui = {
     'certifications.prev': 'Anterior',
     'certifications.next': 'Siguiente',
     'certifications.status': '{current} de {total}',
+
+    // Pagina Educacion (/educacion/)
+    'education.title': 'Educación',
+    'education.eyebrow': 'Formación académica',
+    'education.lead':
+      'Mi formación académica formal en el Centro de Enseñanza Técnica Industrial (CETI): del tecnólogo egresado a la ingeniería en curso.',
+    'education.statusGraduated': 'Egresado',
+    'education.statusUpcoming': 'Próximo ingreso',
+    'education.gpaLabel': 'Promedio',
+    'education.formationTitle': 'Más allá del software',
+    'education.formationNote':
+      'La formación en el CETI no se limita al software: incluye electrónica de base, sistemas embebidos, IoT y seguridad de hardware. Un ejemplo es Purificador, un proyecto escolar de purificador de aire IoT (app móvil, firmware ESP32, sensores y control de un ventilador por PWM).',
+    'education.viewCerts': 'Ver certificaciones',
+    'education.viewAbout': 'Ver sobre mí',
+
+    // Pagina Sobre mi (/sobre-mi/)
+    'about.title': 'Sobre mí',
+    'about.eyebrow': 'Quién soy',
+    'about.topicsLabel': 'Temas',
+    'about.viewCase': 'Ver el case study de ACP',
+    'about.viewEducation': 'Ver mi educación',
 
     // Case study (home y pagina /acp)
     'caseStudy.eyebrow': 'Case study · Repo privado (proyecto de cliente)',
@@ -109,6 +132,8 @@ export const ui = {
     'nav.caseStudy': 'Case study',
     'nav.certs': 'Certifications',
     'nav.contact': 'Contact',
+    'nav.about': 'About',
+    'nav.education': 'Education',
     'nav.downloadCv': 'Download CV (PDF)',
     'a11y.nav': 'Main navigation',
     'a11y.skip': 'Skip to content',
@@ -151,6 +176,27 @@ export const ui = {
     'certifications.prev': 'Previous',
     'certifications.next': 'Next',
     'certifications.status': '{current} of {total}',
+
+    // Education page (/en/education/)
+    'education.title': 'Education',
+    'education.eyebrow': 'Academic background',
+    'education.lead':
+      'My formal academic background at the Centro de Enseñanza Técnica Industrial (CETI): from the completed technologist degree to the engineering degree in progress.',
+    'education.statusGraduated': 'Graduated',
+    'education.statusUpcoming': 'Starting soon',
+    'education.gpaLabel': 'Average',
+    'education.formationTitle': 'Beyond software',
+    'education.formationNote':
+      'CETI training is not limited to software: it includes foundational electronics, embedded systems, IoT, and hardware security. One example is Purificador, a school project for an IoT air purifier (mobile app, ESP32 firmware, sensors, and PWM fan control).',
+    'education.viewCerts': 'View certifications',
+    'education.viewAbout': 'View about me',
+
+    // About page (/en/about/)
+    'about.title': 'About',
+    'about.eyebrow': 'Who I am',
+    'about.topicsLabel': 'Topics',
+    'about.viewCase': 'View the ACP case study',
+    'about.viewEducation': 'View my education',
 
     // Case study (home and /acp page)
     'caseStudy.eyebrow': 'Case study · Private repo (client project)',

@@ -47,11 +47,23 @@ export function cvPath(locale: Locale): string {
 // apuntarian a una ruta inexistente como /en/certificaciones/).
 const localizedRoutes: { es: string; en: string }[] = [
   { es: 'certificaciones', en: 'certifications' },
+  { es: 'educacion', en: 'education' },
+  { es: 'sobre-mi', en: 'about' },
 ];
 
 // Ruta de la pagina de certificaciones por idioma (slug localizado).
 export function certsPath(locale: Locale): string {
   return localizePath(locale === 'en' ? 'certifications' : 'certificaciones', locale);
+}
+
+// Ruta de la pagina de educacion por idioma (slug localizado).
+export function educationPath(locale: Locale): string {
+  return localizePath(locale === 'en' ? 'education' : 'educacion', locale);
+}
+
+// Ruta de la pagina de sobre mi por idioma (slug localizado).
+export function aboutPath(locale: Locale): string {
+  return localizePath(locale === 'en' ? 'about' : 'sobre-mi', locale);
 }
 
 // Pares de URL por idioma para el toggle (enlace al equivalente exacto) y hreflang.

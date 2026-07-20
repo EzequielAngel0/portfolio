@@ -7,10 +7,11 @@
 // calculado del catalogo en build (nada hardcodeado que pueda quedar viejo).
 // El contenido nace visible; GSAP solo escalona la entrada desde [data-boot].
 import type { Locale } from '../../i18n/ui';
-import { useTranslations, localizePath, cvPath, certsPath } from '../../i18n/utils';
+import { useTranslations, localizePath, cvPath, certsPath, aboutPath } from '../../i18n/utils';
 import { site } from '../../data/site';
 import certifications from '../../data/certifications.json';
 import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -62,6 +63,17 @@ const sheet = [
           <Button href={cvPath(locale)} variant="secondary" download>
             {t('hero.ctaCv')}
           </Button>
+          <a
+            href={aboutPath(locale)}
+            class="group inline-flex min-h-11 items-center gap-1.5 px-1 font-mono text-label font-medium text-accent hover:underline"
+          >
+            {t('nav.about')}
+            <Icon
+              name="arrow-right"
+              size={14}
+              class="transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+            />
+          </a>
         </div>
       </div>
 

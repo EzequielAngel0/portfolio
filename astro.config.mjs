@@ -21,18 +21,21 @@ export default defineConfig({
         defaultLocale: 'es',
         locales: { es: 'es-MX', en: 'en-US' },
       },
-      // La pagina de certificaciones usa slug localizado (/certificaciones/ y
-      // /en/certifications/), asi que su par no lo arma el i18n por prefijo:
-      // se corrige a mano el alternate de esas dos URLs (T3).
+      // Paginas con slug localizado (certificaciones, educacion, sobre-mi): su
+      // par ES/EN no lo arma el i18n por prefijo /en, asi que se corrige a mano
+      // el alternate de esas URLs (T3 + ronda 2026-07-20).
       serialize(item) {
-        const certs = {
-          es: 'https://portfolio.angelezequiel.dev/certificaciones/',
-          en: 'https://portfolio.angelezequiel.dev/en/certifications/',
-        };
-        if (item.url === certs.es || item.url === certs.en) {
+        const base = 'https://portfolio.angelezequiel.dev/';
+        const localizedPairs = [
+          { es: `${base}certificaciones/`, en: `${base}en/certifications/` },
+          { es: `${base}educacion/`, en: `${base}en/education/` },
+          { es: `${base}sobre-mi/`, en: `${base}en/about/` },
+        ];
+        const pair = localizedPairs.find((p) => item.url === p.es || item.url === p.en);
+        if (pair) {
           item.links = [
-            { lang: 'es-MX', url: certs.es },
-            { lang: 'en-US', url: certs.en },
+            { lang: 'es-MX', url: pair.es },
+            { lang: 'en-US', url: pair.en },
           ];
         }
         return item;
