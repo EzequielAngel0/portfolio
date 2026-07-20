@@ -1,6 +1,6 @@
 # 05 · Sistema de diseño
 
-Elaborado siguiendo el proceso de la skill `frontend-design` (brainstorm, plan de tokens, autocrítica anti-default, construir), con el piso de calidad de `make-interfaces-feel-better`. La skill `web-design-guidelines` se usa como auditoría al final (doc 07, fase 6). La decisión de rumbo está registrada en [adr/0005-direccion-visual.md](adr/0005-direccion-visual.md).
+Elaborado siguiendo el proceso de la skill `frontend-design` (brainstorm, plan de tokens, autocrítica anti-default, construir), con el piso de calidad de `make-interfaces-feel-better`. La skill `web-design-guidelines` se usa como auditoría al final (doc 07, fase 6). La decisión de rumbo está registrada en [adr/0005-direccion-visual.md](../adr/0005-direccion-visual.md).
 
 ## Fundamento (sujeto, audiencia, trabajo de la página)
 

@@ -3,7 +3,7 @@
 // Uso: npm i --no-save satori @fontsource/archivo && node scripts/og-images.mjs
 // (sharp ya esta en el arbol como dependencia de Astro; la lockfile no cambia.)
 // El copy es VERBATIM de src/i18n/ui.ts y del frontmatter del case study (doc 02
-// regla 5: solo datos autorizados). Tokens del tema claro de docs/05-diseno.md.
+// regla 5: solo datos autorizados). Tokens del tema claro de docs/canon/05-diseno.md.
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import satori from 'satori';
 import sharp from 'sharp';

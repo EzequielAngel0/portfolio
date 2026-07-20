@@ -1,6 +1,6 @@
 # Ronda 2026-07-15 · Rediseno visual "blueprint" (ADR 0011)
 
-Implementacion de la direccion que el dueno trajo de Google Stitch, adaptada a las reglas del sitio: se adopta la **forma** blueprint (plano de ingenieria) **sobre la paleta papel y tinta** ya establecida (ADR 0010), **sin neon**. Fuente de la direccion: [`DIRECCION_STITCH.md`](../DIRECCION_STITCH.md). Decision y mapeo: [ADR 0011](../adr/0011-direccion-stitch.md). Prompt/proceso: [`PROMPT_REDISENO_VISUAL.md`](../PROMPT_REDISENO_VISUAL.md).
+Implementacion de la direccion que el dueno trajo de Google Stitch, adaptada a las reglas del sitio: se adopta la **forma** blueprint (plano de ingenieria) **sobre la paleta papel y tinta** ya establecida (ADR 0010), **sin neon**. Fuente de la direccion: [`DIRECCION_STITCH.md`](../prompts/DIRECCION_STITCH.md). Decision y mapeo: [ADR 0011](../adr/0011-direccion-stitch.md). Prompt/proceso: [`PROMPT_REDISENO_VISUAL.md`](../prompts/PROMPT_REDISENO_VISUAL.md).
 
 Rama: `feat/direccion-blueprint` (desde `develop`). **Pendiente:** pase visual del dueno en Podman y merge a `develop` (no lo hace el agente sin su OK).
 

@@ -9,7 +9,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import satori from 'satori';
 import sharp from 'sharp';
 
-// Tokens de docs/05-diseno.md (claro y oscuro; papel frio de la iteracion 2026-07-15).
+// Tokens de docs/canon/05-diseno.md (claro y oscuro; papel frio de la iteracion 2026-07-15).
 const LIGHT = { paper: '#EEF1F5', ink: '#17181A', accent: '#1E6E4E' };
 const DARK = { paper: '#121417', ink: '#EDEBE6', accent: '#4CC38A' };
 const RX = 20; // radio del contenedor en viewBox 100

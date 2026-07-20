@@ -6,7 +6,7 @@
 
 ## Contexto
 
-El dueno trajo una direccion generada con Google Stitch y pidio aplicar su estilo. La captura completa esta en [`../DIRECCION_STITCH.md`](../DIRECCION_STITCH.md). La maqueta tiene mucho caracter (plano de ingenieria: lineas datum, coordenadas, folios, geometria dura, marquee, sombras duras), pero su **paleta es neon** (lima `#c3f400`) y **oscura por defecto**: justo lo que el sitio ya habia descartado (ADR 0010: "tenue, nada neon"; ADR 0005 anti-default: evitar "negro + acento acido / terminal", base clara).
+El dueno trajo una direccion generada con Google Stitch y pidio aplicar su estilo. La captura completa esta en [`../prompts/DIRECCION_STITCH.md`](../prompts/DIRECCION_STITCH.md). La maqueta tiene mucho caracter (plano de ingenieria: lineas datum, coordenadas, folios, geometria dura, marquee, sombras duras), pero su **paleta es neon** (lima `#c3f400`) y **oscura por defecto**: justo lo que el sitio ya habia descartado (ADR 0010: "tenue, nada neon"; ADR 0005 anti-default: evitar "negro + acento acido / terminal", base clara).
 
 Instruccion del dueno (2026-07-15): adaptar el diseno a lo ya discutido, sin colores neon. Por lo tanto **se adopta la FORMA de Stitch, no su color**.
 

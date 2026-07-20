@@ -1,6 +1,6 @@
 # Ronda de mejoras post-lanzamiento (T1-T11) · 2026-07-06
 
-Ejecuta `docs/PROMPT_MEJORAS_POST_LANZAMIENTO.md`. Ramas cortas desde `develop` (una por ola), merge a `develop` al cerrar cada una; a `master` decide el dueno.
+Ejecuta `docs/prompts/PROMPT_MEJORAS_POST_LANZAMIENTO.md`. Ramas cortas desde `develop` (una por ola), merge a `develop` al cerrar cada una; a `master` decide el dueno.
 
 ## Estado por tarea
 

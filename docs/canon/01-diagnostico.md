@@ -17,7 +17,7 @@ Estructura: 8 componentes `.astro` (Header, Hero, About, Projects, Skills, CertP
 ## Hallazgos
 
 ### H1. Estética genérica y pesada
-El diseño actual es el look "glassmorphism oscuro" que hoy se lee como plantilla generada: 4 orbes de gradiente animados (morado, cyan, esmeralda, rosa), grid de fondo, canvas de partículas con JS propio, gradientes por todos lados. Además casi todo el estilo está inline en [Layout.astro](../src/layouts/Layout.astro) (colores hardcodeados en atributos `style`), lo que hace imposible tematizar.
+El diseño actual es el look "glassmorphism oscuro" que hoy se lee como plantilla generada: 4 orbes de gradiente animados (morado, cyan, esmeralda, rosa), grid de fondo, canvas de partículas con JS propio, gradientes por todos lados. Además casi todo el estilo está inline en [Layout.astro](../../src/layouts/Layout.astro) (colores hardcodeados en atributos `style`), lo que hace imposible tematizar.
 
 ### H2. Sin bilingüe ni tema claro
 Todo el sitio está solo en español y solo en oscuro (`<html lang="es">`, fondo `#07070d` fijo). El brief exige ES/EN con detección de idioma del navegador y tema claro/oscuro. No hay infraestructura para ninguna de las dos cosas: hay que construirla desde el layout.

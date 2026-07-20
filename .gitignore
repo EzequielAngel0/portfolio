@@ -38,9 +38,10 @@ skills-lock.json
 # Material fuente personal (no versionar; el contenido final vive en src/content/)
 perfil-mejorado/
 
-# Prompts personales para explorar el rediseno visual en herramientas externas
-# (la ronda versionada que los consume es docs/PROMPT_REDISENO_VISUAL.md)
+# Prompts personales de exploracion (no versionar; material de trabajo del dueno)
+# (la ronda versionada que consume los de diseno es docs/prompts/PROMPT_REDISENO_VISUAL.md)
 PROMPTS_DISENO.md
+PROMPTS_CIBERSEGURIDAD.md
 
 # Kit plantilla de arranque de proyectos (personal, reutilizable; no es de este repo)
 plantilla-proyecto/
